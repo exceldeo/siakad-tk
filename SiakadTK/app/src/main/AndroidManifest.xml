@@ -9,7 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".PasswordSetActivity"></activity>
+        <activity android:name=".ProfileSetActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".BasketActivity"
+            android:label="@string/title_activity_basket"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HistoryActivity"
+            android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProductDetailActivity"
+            android:label="@string/title_activity_product_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SearchListActivity" />
+        <activity
+            android:name=".ProductListActivity"
+            android:label="@string/title_activity_product_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".RegistrationFormActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".AnnouncementActivity" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" />
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
