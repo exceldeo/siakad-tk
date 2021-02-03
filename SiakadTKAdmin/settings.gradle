@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Siakad TK Admin"
