@@ -2,8 +2,8 @@ package app.siakad.siakadtk.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import app.siakad.siakadtk.ui.data.LoginDataSource
-import app.siakad.siakadtk.ui.data.LoginRepository
+import app.siakad.siakadtk.data.LoginDataSource
+import app.siakad.siakadtk.data.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

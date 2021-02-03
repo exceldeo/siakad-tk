@@ -1,6 +1,6 @@
-package app.siakad.siakadtk.ui.data
+package app.siakad.siakadtk.data
 
-import app.siakad.siakadtk.ui.data.model.LoggedInUser
+import app.siakad.siakadtk.data.model.LoggedInUser
 import java.io.IOException
 
 /**

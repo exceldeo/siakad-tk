@@ -1,6 +1,6 @@
-package app.siakad.siakadtk.ui.data
+package app.siakad.siakadtk.data
 
-import app.siakad.siakadtk.ui.data.model.LoggedInUser
+import app.siakad.siakadtk.data.model.LoggedInUser
 
 /**
  * Class that requests authentication and user information from the remote data source and

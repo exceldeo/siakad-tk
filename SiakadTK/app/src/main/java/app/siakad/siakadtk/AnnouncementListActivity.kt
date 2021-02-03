@@ -3,9 +3,9 @@ package app.siakad.siakadtk
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class BasketActivity : AppCompatActivity() {
+class AnnouncementListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_basket)
+        setContentView(R.layout.activity_announcement_list)
     }
 }

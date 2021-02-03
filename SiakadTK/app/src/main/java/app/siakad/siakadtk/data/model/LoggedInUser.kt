@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.ui.data.model
+package app.siakad.siakadtk.data.model
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

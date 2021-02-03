@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import app.siakad.siakadtk.ui.data.LoginRepository
-import app.siakad.siakadtk.ui.data.Result
+import app.siakad.siakadtk.data.LoginRepository
+import app.siakad.siakadtk.data.Result
 
-import app.siakad.siakadtk.ui.R
+import app.siakad.siakadtk.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

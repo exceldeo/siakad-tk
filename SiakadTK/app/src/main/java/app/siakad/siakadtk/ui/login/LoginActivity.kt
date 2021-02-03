@@ -15,7 +15,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 
-import app.siakad.siakadtk.ui.R
+import app.siakad.siakadtk.R
 
 class LoginActivity : AppCompatActivity() {
 

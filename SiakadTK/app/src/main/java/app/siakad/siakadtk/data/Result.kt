@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.ui.data
+package app.siakad.siakadtk.data
 
 /**
  * A generic class that holds a value with its loading status.
