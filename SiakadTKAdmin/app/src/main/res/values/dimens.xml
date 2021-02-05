@@ -7,4 +7,44 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!-- Header-->
+    <dimen name="header_title_text">24sp</dimen>
+    <dimen name="header_subtitle_text">18sp</dimen>
+
+    <!-- Card-->
+    <dimen name="card_title_text">18sp</dimen>
+    <dimen name="card_subtitle_text">16sp</dimen>
+    <dimen name="card_desc_text">12sp</dimen>
+
+    <!-- List-->
+    <dimen name="list_title_text">16sp</dimen>
+    <dimen name="list_subtitle_text">14sp</dimen>
+    <dimen name="list_desc_text">12sp</dimen>
+    <dimen name="list_status_text">10sp</dimen>
+    <dimen name="list_space">18dp</dimen>
+    <dimen name="list_corner">10dp</dimen>
+
+    <!-- Input-->
+    <dimen name="input_label_o_text">12sp</dimen>
+    <dimen name="input_input_text">14sp</dimen>
+
+    <!-- Button-->
+    <dimen name="button_text_text">16sp</dimen>
+
+    <!-- Container-->
+    <dimen name="container_padding_x">16dp</dimen>
+    <dimen name="container_padding_y">28dp</dimen>
+
+    <!-- Banner-->
+    <dimen name="banner_header_height">210dp</dimen>
+
+    <!-- Logo-->
+    <dimen name="small_logo">80dp</dimen>
+    <dimen name="large_logo">128dp</dimen>
+
+    <!-- Image-->
+    <dimen name="list_image">80dp</dimen>
+    <dimen name="list_grid_image">146dp</dimen>
+    <dimen name="icon">16dp</dimen>
 </resources>
