@@ -41,17 +41,185 @@
                 android:fontFamily="@font/poppins_semibold"/>
         </LinearLayout>
     </RelativeLayout>
-    <TextView
-        android:id="@+id/text_dashboard"
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingVertical="@dimen/container_padding_y"
+        android:paddingHorizontal="@dimen/container_padding_x">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pengumuman dan Notifikasi"
+                android:textSize="@dimen/card_title_text"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginBottom="8dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="106dp"
+                    android:src="@drawable/img_announcement_card_dashboard"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_notifications_black_24dp"
+                        app:tint="@android:color/white"
+                        android:layout_marginEnd="@dimen/container_padding_x"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:id="@+id/tv_dashboard_jumlah_pengumuman"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Pengumuman:"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:textColor="@color/colorProcess"/>
+
+                        <TextView
+                            android:id="@+id/tv_dashboard_jumlah_notifikasi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Notifikasi:"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:textColor="@color/colorProcess"/>
+
+                        <TextView
+                            android:id="@+id/btn_dashboard_lihat_semua_pengumuman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Lihat Semua"
+                            android:background="@drawable/ic_button_white_elevated"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data Pemesananan dan Daftar Ulang"
+                android:textSize="@dimen/card_title_text"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="@dimen/list_space"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="106dp"
+                    android:src="@drawable/img_announcement_card_dashboard"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_notifications_black_24dp"
+                        app:tint="@android:color/white"
+                        android:layout_marginEnd="@dimen/container_padding_x"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Pengumuman:"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:textColor="@color/colorProcess"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Notifikasi:"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:textColor="@color/colorProcess"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Lihat Semua"
+                            android:background="@drawable/ic_button_white_elevated"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aktivitas"
+                android:textSize="@dimen/card_title_text"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="@dimen/list_space"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/container_padding_x"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_dashboard_aktivitas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
