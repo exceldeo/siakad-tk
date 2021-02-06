@@ -43,4 +43,7 @@
     <string name="click_to_see_order">Klik untuk melanjutkan pemesanan.</string>
     <string name="keranjang_saya">Keranjang Saya</string>
     <string name="daftar_pengguna">Daftar Pengguna</string>
+    <string name="daftar_produk">Daftar Produk</string>
+    <string name="product_xxx">Product XXX</string>
+    <string name="until_date">Hingga 30 Januari 2021</string>
 </resources>

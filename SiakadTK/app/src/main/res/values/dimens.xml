@@ -18,6 +18,7 @@
     <dimen name="list_input_text">14sp</dimen>
     <dimen name="button_text">16sp</dimen>
     <dimen name="padding_text">4dp</dimen>
+    <dimen name="inner_padding">8dp</dimen>
 
     <dimen name="container_padding_x">16dp</dimen>
     <dimen name="container_padding_y">16dp</dimen>
@@ -31,7 +32,7 @@
     <dimen name="large_logo_size">128px</dimen>
     <dimen name="icon_size">16px</dimen>
     <dimen name="list_view_img_size">80px</dimen>
-    <dimen name="list_grid_img_size">146px</dimen>
+    <dimen name="list_grid_img_size">146dp</dimen>
     <dimen name="profile_img_size">132px</dimen>
 
     <dime name="corner">10dp</dime>
