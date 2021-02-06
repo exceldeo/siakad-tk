@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.ui.home
+package app.siakad.siakadtkadmin.ui.product
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtkadmin.R
 
-class HomeFragment : Fragment() {
+class ProductFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var productViewModel: ProductViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        productViewModel =
+                ViewModelProviders.of(this).get(ProductViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_product, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        productViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

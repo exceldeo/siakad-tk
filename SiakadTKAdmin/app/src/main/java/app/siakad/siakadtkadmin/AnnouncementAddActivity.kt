@@ -6,6 +6,6 @@ import android.os.Bundle
 class AnnouncementAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_announcement_add2)
+        setContentView(R.layout.activity_announcement_add)
     }
 }
