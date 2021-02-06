@@ -72,7 +72,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="106dp"
-                    android:src="@drawable/img_announcement_card_dashboard"/>
+                    android:src="@drawable/vc_bg_pengumuman_dashboard"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
