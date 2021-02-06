@@ -29,7 +29,12 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_order">Pemesanan</string>
-    <string name="title_profile">Profil</string>
+    <string name="title_profile">Profil Siswa</string>
     <string name="notification">Pengumuman</string>
     <string name="data_pengguna">Data Pengguna</string>
+    <string name="order_history">Riwayat Pembelian</string>
+    <string name="daftar_ulang">Daftar Ulang</string>
+    <string name="activity">Aktivitas</string>
+    <string name="nama_siswa">Nama : Fika Alifah Indriati</string>
+    <string name="kelas_siswa">Kelas : TK-A</string>
 </resources>

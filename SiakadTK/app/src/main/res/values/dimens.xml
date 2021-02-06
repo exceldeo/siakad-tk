@@ -17,6 +17,7 @@
     <dimen name="input_label_inside_text">8sp</dimen>
     <dimen name="list_input_text">14sp</dimen>
     <dimen name="button_text">16sp</dimen>
+    <dimen name="padding_text">4dp</dimen>
 
     <dimen name="container_padding_x">16dp</dimen>
     <dimen name="container_padding_y">16dp</dimen>
