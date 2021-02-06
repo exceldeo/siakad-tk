@@ -14,18 +14,42 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:src="@drawable/vc_large_banner"/>
 
         <TextView
-            android:id="@+id/text_profile"
+            android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_profile"
+            android:layout_marginTop="80dp"
             android:layout_marginStart="@dimen/container_padding_x"
-            android:layout_centerVertical="true"
             android:textSize="@dimen/header_title_text"
             android:textColor="@android:color/white"
             android:fontFamily="@font/poppins_semibold" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_marginTop="@dimen/container_padding_y"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/container_padding_x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/nama_siswa"
+            android:layout_below="@id/tv_profile"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/header_subtitle_text" />
+
+        <TextView
+            android:id="@+id/tv_class"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginStart="@dimen/container_padding_x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/kelas_siswa"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/header_subtitle_text" />
     </RelativeLayout>
 
     <ScrollView
@@ -33,12 +57,86 @@
         android:layout_height="match_parent"
         android:padding="@dimen/container_padding_x">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/data_pengguna"
-            android:textSize="@dimen/header_subtitle_text"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_pengguna"
+                android:textSize="@dimen/header_subtitle_text"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginBottom="@dimen/container_padding_y"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:background="@null"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:src="@drawable/ic_pembelian"
+                    tools:targetApi="lollipop" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_history"
+                    android:layout_columnWeight="1"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:textSize="@dimen/list_subtitle_text"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:targetApi="lollipop" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:background="@null"
+                    android:src="@drawable/ic_daftar_ulang"
+                    tools:targetApi="lollipop" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daftar_ulang"
+                    android:layout_columnWeight="1"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:textSize="@dimen/list_subtitle_text"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:targetApi="lollipop" />
+            </GridLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity"
+                android:textSize="@dimen/header_subtitle_text"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginTop="@dimen/container_padding_y"
+                android:layout_marginBottom="@dimen/container_padding_y"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </ListView>
+
+        </LinearLayout>
     </ScrollView>
 
 
