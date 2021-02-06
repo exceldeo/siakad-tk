@@ -21,6 +21,8 @@
 
     <dimen name="container_padding_x">16dp</dimen>
     <dimen name="container_padding_y">16dp</dimen>
+    <dimen name="container_double_padding_y">24dp</dimen>
+    <dimen name="container_padding_y_min">12dp</dimen>
     <dimen name="list_space">18dp</dimen>
     <dimen name="list_corner">16dp</dimen>
 
@@ -31,4 +33,6 @@
     <dimen name="list_view_img_size">80px</dimen>
     <dimen name="list_grid_img_size">146px</dimen>
     <dimen name="profile_img_size">132px</dimen>
+
+    <dime name="corner">10dp</dime>
 </resources>

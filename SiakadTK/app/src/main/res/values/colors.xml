@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#65A5EC</color>
+    <color name="colorSecondary">#D0E6FF</color>
     <color name="colorPrimaryLight">#F3F9FF</color>
     <color name="colorUnSelect">#C4C4C4</color>
     <color name="colorProcess">#FFD23F</color>
@@ -8,4 +9,5 @@
     <color name="colorSuccess">#65B580</color>
     <color name="colorLightGrey">#FCFCFC</color>
     <color name="colorBlack">#262626</color>
+
 </resources>

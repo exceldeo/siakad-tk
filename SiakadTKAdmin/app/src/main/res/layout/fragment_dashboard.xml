@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -86,8 +87,8 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:src="@drawable/ic_notifications_black_24dp"
-                        app:tint="@android:color/white"
-                        android:layout_marginEnd="@dimen/container_padding_x"/>
+                        android:layout_marginEnd="@dimen/container_padding_x"
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
