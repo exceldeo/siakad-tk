@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.ui.notifications
+package app.siakad.siakadtk.ui.order
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtk.R
 
-class NotificationsFragment : Fragment() {
+class OrderFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var orderViewModel: OrderViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        orderViewModel =
+                ViewModelProviders.of(this).get(OrderViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_order, container, false)
+        val textView: TextView = root.findViewById(R.id.text_order)
+        orderViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

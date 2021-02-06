@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Siakad TK</string>
-    <string name="title_home">Beranda</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifikasi</string>
+    <string name="title_home" translatable="false">Beranda</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications" translatable="false">Notifikasi</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Masuk atau Daftar</string>
-    <string name="action_sign_in_short">Daftar</string>
-    <string name="welcome">"Selamat Datang !"</string>
-    <string name="invalid_username">Username tidak valid</string>
-    <string name="invalid_password">Password harus >5 karakter</string>
-    <string name="login_failed">"Gagal masuk"</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
+    <string name="action_sign_in" translatable="false">Masuk atau Daftar</string>
+    <string name="action_sign_in_short" translatable="false">Daftar</string>
+    <string name="welcome" translatable="false">Selamat Datang</string>
+    <string name="invalid_username" translatable="false">Username tidak valid</string>
+    <string name="invalid_password" translatable="false">Password harus >5 karakter</string>
+    <string name="login_failed" translatable="false">"Gagal masuk"</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->
@@ -28,6 +28,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="title_product">Pemesanan</string>
+    <string name="title_order">Pemesanan</string>
     <string name="title_profile">Profil</string>
 </resources>

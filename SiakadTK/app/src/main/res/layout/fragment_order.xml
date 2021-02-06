@@ -5,22 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.order.OrderFragment"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp">
+        android:layout_height="224dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/vc_banner"/>
+            android:src="@drawable/vc_large_banner"/>
 
         <TextView
-            android:id="@+id/text_home"
+            android:id="@+id/text_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome"
+            android:text="@string/title_order"
             android:layout_marginStart="@dimen/container_padding_x"
             android:layout_centerVertical="true"
             android:textSize="@dimen/header_title_text"
