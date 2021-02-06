@@ -30,4 +30,6 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_order">Pemesanan</string>
     <string name="title_profile">Profil</string>
+    <string name="notification">Pengumuman</string>
+    <string name="data_pengguna">Data Pengguna</string>
 </resources>

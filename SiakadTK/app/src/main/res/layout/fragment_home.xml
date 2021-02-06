@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
     <RelativeLayout
@@ -27,4 +28,17 @@
             android:textColor="@android:color/white"
             android:fontFamily="@font/poppins_semibold" />
     </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/container_padding_x">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notification"
+            android:textSize="@dimen/header_subtitle_text"
+            android:fontFamily="@font/poppins_semibold"/>
+    </ScrollView>
 </LinearLayout>
