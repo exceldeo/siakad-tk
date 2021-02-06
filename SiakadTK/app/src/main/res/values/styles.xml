@@ -5,5 +5,4 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnSecondary">@color/colorPrimaryLight</item>
     </style>
-
 </resources>

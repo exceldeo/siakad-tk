@@ -55,7 +55,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/container_padding_x">
+        android:paddingStart="@dimen/container_padding_x"
+        android:paddingEnd="@dimen/container_padding_x">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,6 +69,7 @@
                 android:text="@string/data_pengguna"
                 android:textSize="@dimen/header_subtitle_text"
                 android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/colorBlack"
                 android:layout_marginBottom="@dimen/container_padding_y"/>
 
             <GridLayout
@@ -122,20 +124,22 @@
             </GridLayout>
 
             <TextView
+                android:id="@+id/tv_fprofile_activity_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/activity"
                 android:textSize="@dimen/header_subtitle_text"
                 android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/colorBlack"
                 android:layout_marginTop="@dimen/container_padding_y"
-                android:layout_marginBottom="@dimen/container_padding_y"/>
-            <ListView
+                android:layout_marginBottom="@dimen/container_padding_y_min"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fprofile_activity_list"
+                android:layout_below="@id/tv_fprofile_activity_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-            </ListView>
-
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_row_user_activity" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_list_tower"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/list_space">
+
+    <TextView
+        android:id="@+id/tv_useractivity_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/list_subtitle_text"
+        android:lines="1"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_medium"
+        tools:text="@string/title_user_activity"/>
+
+    <TextView
+        android:id="@+id/tv_useractivity_nama_barang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_below="@id/tv_useractivity_title"
+        android:textSize="@dimen/list_desc_text"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_alignParentStart="true"
+        android:lines="1"
+        tools:text="@string/nama_pesanan" />
+
+    <TextView
+        android:id="@+id/tv_useractivity_date"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tv_useractivity_title"
+        android:lines="1"
+        android:textSize="@dimen/list_desc_text"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="end"
+        tools:text="@string/example_date" />
+</RelativeLayout>

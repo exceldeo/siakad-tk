@@ -22,7 +22,7 @@ class ProfileFragment : Fragment() {
         profileViewModel =
                 ViewModelProviders.of(this).get(ProfileViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
-        val textView: TextView = root.findViewById(R.id.text_profile)
+        val textView: TextView = root.findViewById(R.id.tv_fprofile_activity_title)
         profileViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
