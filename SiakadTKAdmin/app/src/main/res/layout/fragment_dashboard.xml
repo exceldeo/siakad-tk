@@ -45,7 +45,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="@dimen/container_padding_y"
+        android:scrollbars="none"
+        android:paddingTop="@dimen/container_padding_y"
         android:paddingHorizontal="@dimen/container_padding_x">
 
         <LinearLayout
@@ -58,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pengumuman dan Notifikasi"
                 android:textSize="@dimen/card_title_text"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_extrabold"
                 android:layout_marginBottom="8dp"/>
 
             <RelativeLayout
@@ -128,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:text="Data Pemesananan dan Daftar Ulang"
                 android:textSize="@dimen/card_title_text"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_extrabold"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="@dimen/list_space"/>
 
@@ -196,17 +197,16 @@
                 android:layout_height="wrap_content"
                 android:text="Aktivitas"
                 android:textSize="@dimen/card_title_text"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_extrabold"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="@dimen/list_space"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 app:cardCornerRadius="@dimen/list_corner"
                 app:cardElevation="4dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="@dimen/container_padding_y">
 
                 <LinearLayout
                     android:layout_width="match_parent"
