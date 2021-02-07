@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_list_pengumuman"
+    android:layout_width="379dp"
+    android:layout_height="158dp"
+    android:layout_marginBottom="@dimen/list_space">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vc_pengumuman"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/container_double_padding_y">
+
+            <TextView
+                android:id="@+id/tv_item_daftar_ulang_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/belum_daftar_ulang"
+                android:gravity="left"
+                android:textColor="@color/colorProcess"
+                android:textSize="@dimen/card_title_text" />
+
+            <TextView
+                android:id="@+id/tv_item_daftar_ulang_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/desc_daftar_ulang"
+                android:gravity="left"
+                android:textSize="@dimen/list_status_text"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/btn_dashboard_lihat_semua_pengumuman"
+                android:layout_marginTop="@dimen/container_padding_y_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/list_desc_text"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:text="Daftar Ulang"
+                android:textColor="@color/colorPrimary"
+                android:textAllCaps="true"
+                android:background="@drawable/ic_button_elevated_white" />
+        </LinearLayout>
+    </FrameLayout>
+
+
+</RelativeLayout>

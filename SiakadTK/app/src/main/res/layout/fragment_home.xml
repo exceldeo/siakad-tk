@@ -34,11 +34,127 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/container_padding_x">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/notification"
-            android:textSize="@dimen/header_subtitle_text"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/tv_fhome_pengumuman_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pengumuman"
+                    android:textSize="@dimen/header_subtitle_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
+                <TextView
+                    android:id="@+id/tv_fhome_pengumuman_text"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lihat_semua"
+                    android:textSize="@dimen/list_desc_text"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="textEnd"
+                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="128dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_fhome_pengumuman_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_row_pengumuman" />
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/container_padding_y"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/tv_fhome_daftar_ulang_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daftar_ulang"
+                    android:textSize="@dimen/header_subtitle_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
+                <TextView
+                    android:id="@+id/tv_fhome_daftar_ulang_text"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lihat_semua"
+                    android:textSize="@dimen/list_desc_text"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="textEnd"
+                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="158dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_fhome_daftar_ulang_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_row_daftar_ulang" />
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/container_padding_y"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/tv_fhome_status_pemesanan_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status_pemesanan"
+                    android:textSize="@dimen/header_subtitle_text"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
+                <TextView
+                    android:id="@+id/tv_fhome_status_pemesanan_text"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lihat_semua"
+                    android:textSize="@dimen/list_desc_text"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="textEnd"
+                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fhome_status_pemesanan_list"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_grid_nota" />
+        </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

@@ -46,4 +46,11 @@
     <string name="daftar_produk">Daftar Produk</string>
     <string name="product_xxx">Product XXX</string>
     <string name="until_date">Hingga 30 Januari 2021</string>
+    <string name="pengumuman">Pengumuman</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="example_pengumuman_title">Pendaftaran Ulang Dibuka</string>
+    <string name="belum_daftar_ulang">Anda Belum Melakukan Daftar Ulang</string>
+    <string name="desc_daftar_ulang">Silahkan melakukan daftar ulang, sebelum tanggal 31 Januari.</string>
+    <string name="status_pemesanan">Status Pemesanan</string>
+    <string name="nota_pemesanan">Nota Pemesanan</string>
 </resources>
