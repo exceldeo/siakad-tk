@@ -30,4 +30,16 @@
         <item name="android:textSize">@dimen/list_desc_text</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
+
+    <style name="lTitle" parent="ListTitle">
+        <item name="android:textSize">@dimen/card_title_text</item>
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+    </style>
+
+    <style name="CommonButton">
+        <item name="android:padding">@dimen/input_text_padding</item>
+        <item name="android:textSize">@dimen/list_subtitle_text</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>

@@ -120,10 +120,10 @@
                             android:layout_height="wrap_content"
                             android:padding="8dp"
                             android:textSize="@dimen/list_subtitle_text"
-                            android:text="Lihat Semua"
-                            android:background="@drawable/ic_button_white_elevated"
                             android:fontFamily="@font/poppins_bold"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:text="Lihat Semua"
+                            android:background="@drawable/ic_button_white_elevated" />
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
