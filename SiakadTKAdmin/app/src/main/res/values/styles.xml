@@ -36,6 +36,16 @@
         <item name="android:fontFamily">@font/poppins_extrabold</item>
     </style>
 
+    <style name="mdTitle" parent="ListTitle">
+        <item name="android:textSize">@dimen/card_subtitle_text</item>
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+    </style>
+
+    <style name="mdContent">
+        <item name="android:textSize">@dimen/card_title_text</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+
     <style name="CommonButton">
         <item name="android:padding">@dimen/input_text_padding</item>
         <item name="android:textSize">@dimen/list_subtitle_text</item>
