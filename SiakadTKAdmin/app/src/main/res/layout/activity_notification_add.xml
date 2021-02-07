@@ -183,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/container_padding_x"
                 android:text="Batal"
+                android:textColor="@android:color/white"
                 style="@style/CommonButton"/>
         </androidx.cardview.widget.CardView>
 

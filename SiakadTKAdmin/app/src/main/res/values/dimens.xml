@@ -18,6 +18,7 @@
     <dimen name="card_desc_text">12sp</dimen>
     <dimen name="card_title_margin_bottom">4dp</dimen>
     <dimen name="card_title_ic_size">32dp</dimen>
+    <dimen name="card_content_ic_size">48dp</dimen>
 
     <!-- List-->
     <dimen name="list_title_text">16sp</dimen>
