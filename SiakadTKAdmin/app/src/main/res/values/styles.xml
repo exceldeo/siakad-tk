@@ -4,6 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnSecondary">@color/colorPrimaryLight</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,4 +16,18 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="ListTitle">
+        <item name="android:layout_marginBottom">@dimen/card_title_margin_bottom</item>
+        <item name="android:layout_marginTop">@dimen/list_space</item>
+    </style>
+
+    <style name="xsTitle">
+        <item name="android:textSize">@dimen/list_status_text</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="sTitle" parent="ListTitle">
+        <item name="android:textSize">@dimen/list_desc_text</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
 </resources>

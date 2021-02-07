@@ -30,6 +30,7 @@
     <!-- Input-->
     <dimen name="input_label_o_text">12sp</dimen>
     <dimen name="input_input_text">14sp</dimen>
+    <dimen name="input_text_padding">8dp</dimen>
 
     <!-- Button-->
     <dimen name="button_text_text">16sp</dimen>
