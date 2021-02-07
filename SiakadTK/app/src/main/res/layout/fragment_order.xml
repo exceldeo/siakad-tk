@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.order.OrderFragment"
+    android:background="@color/colorLightGrey"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -24,66 +25,105 @@
             android:layout_height="wrap_content"
             android:text="@string/title_order"
             android:layout_marginStart="@dimen/container_padding_x"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="80dp"
             android:textSize="@dimen/header_title_text"
             android:textColor="@android:color/white"
             android:fontFamily="@font/poppins_semibold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_forder_search"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/container_padding_x"
+            android:layout_below="@id/text_order"
+            android:background="@android:color/white"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            android:layout_marginStart="@dimen/container_padding_x"
+            android:layout_marginEnd="@dimen/container_padding_x"
+            tools:targetApi="lollipop">
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:paddingStart="@dimen/container_padding_x"
-       android:paddingEnd="@dimen/container_padding_x">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/container_padding_x"
+        android:paddingEnd="@dimen/container_padding_x">
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="91dp"
-           android:orientation="horizontal"
-           android:weightSum="3"
-           android:background="@drawable/vc_banner_order">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="vertical"
-               android:layout_weight="1"
-               android:gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="91dp"
+                android:background="@drawable/vc_banner_order"
+                android:orientation="horizontal">
 
-               <TextView
-                   android:id="@+id/tv_forder_keranjang_text"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:paddingStart="@dimen/container_padding_x"
-                   android:paddingEnd="@dimen/container_padding_x"
-                   android:fontFamily="@font/poppins_semibold"
-                   android:text="@string/keranjang_saya"
-                   android:textColor="@color/colorPrimary"
-                   android:textSize="@dimen/list_title_text"
-                   tools:targetApi="lollipop" />
+                <LinearLayout
+                    android:layout_width="264dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
-               <TextView
-                   android:id="@+id/tv_forder_desc_keranjang_text"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:paddingStart="@dimen/container_padding_x"
-                   android:paddingEnd="@dimen/container_padding_x"
-                   android:fontFamily="@font/poppins_regular"
-                   android:text="@string/click_to_see_order"
-                   android:textSize="@dimen/list_desc_text"
-                   tools:targetApi="lollipop" />
+                    <TextView
+                        android:id="@+id/tv_forder_keranjang_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:paddingStart="@dimen/container_padding_x"
+                        android:paddingEnd="@dimen/container_padding_x"
+                        android:text="@string/keranjang_saya"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/list_title_text"
+                        tools:targetApi="lollipop" />
 
-           </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_forder_desc_keranjang_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingStart="@dimen/container_padding_x"
+                        android:paddingEnd="@dimen/container_padding_x"
+                        android:text="@string/click_to_see_order"
+                        android:textSize="@dimen/list_desc_text"
+                        tools:targetApi="lollipop" />
+                </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/iv_rfig_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/container_padding_x"
+                    android:src="@drawable/ic_shopping_basket_color"
+                    tools:targetApi="lollipop" />
+            </LinearLayout>
 
-           <ImageView
-               android:id="@+id/iv_rfig_image"
-               android:padding="@dimen/container_padding_x"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_weight="2"
-               android:src="@drawable/ic_shopping_basket_color"
-               tools:targetApi="lollipop" />
-       </LinearLayout>
-   </ScrollView>
+            <TextView
+                android:id="@+id/tv_forder_product_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/daftar_produk"
+                android:textSize="@dimen/header_subtitle_text"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="@dimen/container_padding_y"
+                android:layout_marginBottom="@dimen/container_padding_y_min"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_forder_product_list"
+                android:layout_below="@id/tv_fprofile_activity_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_grid_product" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
