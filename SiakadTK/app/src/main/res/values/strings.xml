@@ -53,4 +53,8 @@
     <string name="desc_daftar_ulang">Silahkan melakukan daftar ulang, sebelum tanggal 31 Januari.</string>
     <string name="status_pemesanan">Status Pemesanan</string>
     <string name="nota_pemesanan">Nota Pemesanan</string>
+    <string name="example_produk">Seragam Olahraga, Buku Tema, Seragam Formal</string>
+    <string name="pendaftaran_ulang_dibuka">Pendaftaran Ulang Dibuka</string>
+    <string name="example_desc_pengumuman">Untuk seluruh wali murid TK Ini dimohon untuk segera melakukan pendaftaran ulang sebelum tanggal 31 Januari, Terimakasih!</string>
+    <string name="example_date_pengumuman_inside">Diumumkan pada, 12 Januari 2021</string>
 </resources>

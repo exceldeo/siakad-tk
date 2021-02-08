@@ -33,17 +33,54 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/product_xxx"
-                android:textSize="@dimen/card_subtitle_text"
+                android:text="Judul Produk :"
+                android:textSize="@dimen/card_desc_text"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/until_date"
+                android:text="@string/example_produk"
                 android:textSize="@dimen/card_desc_text"
+                android:textColor="@color/colorBlack"
                 android:fontFamily="@font/poppins_regular"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/inner_padding"
+                android:text="Tanggal Disetujui :"
+                android:textSize="@dimen/card_desc_text"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/poppins_regular"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Total Biaya : "
+                android:textSize="@dimen/card_desc_text"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/poppins_semibold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/inner_padding"
+                android:weightSum="3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Status : "
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_semibold"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_status_menunggu_pembayaran"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
