@@ -20,20 +20,35 @@
     <dimen name="padding_text">4dp</dimen>
     <dimen name="inner_padding">8dp</dimen>
 
-    <dimen name="container_padding_x">16dp</dimen>
-    <dimen name="container_padding_y">16dp</dimen>
     <dimen name="container_double_padding_y">24dp</dimen>
     <dimen name="container_padding_y_min">12dp</dimen>
     <dimen name="list_space">18dp</dimen>
     <dimen name="list_corner">16dp</dimen>
 
-    <dimen name="banner_header_height">210px</dimen>
     <dimen name="small_logo_size">80px</dimen>
     <dimen name="large_logo_size">128px</dimen>
     <dimen name="icon_size">16px</dimen>
-    <dimen name="list_view_img_size">80px</dimen>
+    <dimen name="list_view_img_size">80dp</dimen>
     <dimen name="list_grid_img_size">146dp</dimen>
     <dimen name="profile_img_size">132px</dimen>
+
+    <!-- Input-->
+    <dimen name="input_label_o_text">12sp</dimen>
+    <dimen name="input_input_text">14sp</dimen>
+    <dimen name="input_text_padding">8dp</dimen>
+    <dimen name="input_corner">10dp</dimen>
+    <dimen name="input_height">49dp</dimen>
+    <dimen name="input_space">8dp</dimen>
+
+    <!-- Button-->
+    <dimen name="button_text_text">16sp</dimen>
+
+    <!-- Container-->
+    <dimen name="container_padding_x">16dp</dimen>
+    <dimen name="container_padding_y">28dp</dimen>
+
+    <!-- Banner-->
+    <dimen name="banner_header_height">210dp</dimen>
 
     <dime name="corner">10dp</dime>
 </resources>

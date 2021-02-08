@@ -57,4 +57,14 @@
     <string name="pendaftaran_ulang_dibuka">Pendaftaran Ulang Dibuka</string>
     <string name="example_desc_pengumuman">Untuk seluruh wali murid TK Ini dimohon untuk segera melakukan pendaftaran ulang sebelum tanggal 31 Januari, Terimakasih!</string>
     <string name="example_date_pengumuman_inside">Diumumkan pada, 12 Januari 2021</string>
+    <string name="keranjang_pesanan">Keranjang Pesanan</string>
+    <string name="example_desc_basket_1">1 Buku Tema 5 Tanaman</string>
+    <string name="example_desc_basket_2">2 Buku Mengenal Hewan Di Rumah</string>
+    <string name="form_daftar_ulang">Form Daftar Ulang</string>
+    <string name="batal">Batal</string>
+    <string name="nama">Nama</string>
+    <string name="masukkan_nama">Masukkan Nama</string>
+    <string name="nama_orang_tua">Nama Orang Tua</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="histori_pembelian">Histori Pembelian</string>
 </resources>

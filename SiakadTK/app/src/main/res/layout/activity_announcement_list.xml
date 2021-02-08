@@ -43,8 +43,8 @@
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/poppins_semibold" />
         </LinearLayout>
-
     </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_forder_product_list"
         android:paddingStart="@dimen/container_padding_x"
