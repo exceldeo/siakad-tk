@@ -1,9 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProductAddActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/v_gudieline">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/container_padding_x"
+            android:paddingVertical="@dimen/container_padding_y"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/iv_product_add_foto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/container_padding_x">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_photo_upload_place"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_width="@dimen/card_title_ic_size"
+                        android:layout_height="@dimen/card_title_ic_size"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:tint="@color/colorPrimary"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tambahkan Foto"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/list_title_text"
+                        android:textColor="@color/colorPrimary"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/sTitle"
+                android:text="Nama Produk"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/list_corner"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/colorPrimaryLight"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="@dimen/list_corner">
+
+                    <EditText
+                        android:id="@+id/et_product_add_nama"
+                        android:padding="@dimen/input_text_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nama Produk"
+                        android:background="@android:color/transparent"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/sTitle"
+                android:text="Harga Produk"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/list_corner"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/colorPrimaryLight"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="@dimen/list_corner">
+
+                    <EditText
+                        android:id="@+id/et_product_add_harga"
+                        android:padding="@dimen/input_text_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Harga Produk"
+                        android:background="@android:color/transparent"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/sTitle"
+                android:text="Jumlah"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/list_corner"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/colorPrimaryLight"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="@dimen/list_corner">
+
+                    <EditText
+                        android:id="@+id/et_product_add_jumlah"
+                        android:padding="@dimen/input_text_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Jumlah Stok"
+                        android:background="@android:color/transparent"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/sTitle"
+                android:text="Tambahkan Form Kelengkapan Produk"/>
+
+            <RelativeLayout
+                android:id="@+id/iv_product_add_tambah_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_product_add_tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_data_form_add"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_width="@dimen/card_title_ic_size"
+                        android:layout_height="@dimen/card_title_ic_size"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:tint="@color/colorPrimary"
+                        android:layout_marginEnd="@dimen/container_padding_x"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Tambahkan Data"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="@dimen/card_subtitle_text"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/v_gudieline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/cv_order_detail"
+        android:background="@android:color/darker_gray" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_order_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="28dp"
+        app:cardCornerRadius="@dimen/list_corner"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ListTitle"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/container_padding_x"
+            android:layout_marginBottom="@dimen/container_padding_y">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_product_add_batal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:layout_marginEnd="@dimen/container_padding_x"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorUnSelect">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Balat"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_product_add_simpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Tambahkan Produk"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
