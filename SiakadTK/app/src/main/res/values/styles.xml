@@ -5,4 +5,61 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnSecondary">@color/colorPrimaryLight</item>
     </style>
+
+    <style name="ListTitle">
+        <item name="android:layout_marginBottom">@dimen/container_padding_y</item>
+        <item name="android:layout_marginTop">@dimen/list_space</item>
+    </style>
+
+    <style name="xsTitle">
+        <item name="android:textSize">@dimen/list_status_text</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="sTitle" parent="ListTitle">
+        <item name="android:textSize">@dimen/list_desc_text</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="lTitle" parent="ListTitle">
+        <item name="android:textSize">@dimen/card_title_text</item>
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+    </style>
+
+    <style name="mdTitle" parent="ListTitle">
+        <item name="android:textSize">@dimen/card_subtitle_text</item>
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+    </style>
+
+    <style name="mdContent">
+        <item name="android:textSize">@dimen/card_title_text</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="CommonButton">
+        <item name="android:padding">@dimen/input_text_padding</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/button_text</item>
+    </style>
+
+    <style name="DefaultMargin">
+        <item name="android:layout_marginStart">@dimen/container_padding_x</item>
+        <item name="android:layout_marginEnd">@dimen/container_padding_x</item>
+    </style>
+
+    <style name="InputText">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/list_subtitle_text</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="InputText.EdtText" >
+        <item name="android:padding">@dimen/inner_padding</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:layout_marginTop">@dimen/container_padding_x</item>
+    </style>
+
 </resources>
