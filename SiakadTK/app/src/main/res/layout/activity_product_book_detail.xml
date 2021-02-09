@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_aproduct_unidetail_header">
+        android:id="@+id/rl_aproduct_bookdetail_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -34,10 +34,10 @@
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:id="@+id/tv_aproduct_unidetail_title"
+                android:id="@+id/tv_aproduct_bookdetail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/seragam_formal"
+                android:text="@string/buku_tema_5"
                 android:layout_marginStart="@dimen/list_space"
                 android:textSize="@dimen/header_title_text"
                 android:textColor="@android:color/white"
@@ -45,14 +45,14 @@
         </LinearLayout>
     </RelativeLayout>
     <ImageView
-        android:id="@+id/iv_aproduct_unidetail_img"
+        android:id="@+id/iv_aproduct_bookdetail_img"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:scaleType="centerCrop"
         android:src="@drawable/example_image"
-        android:layout_below="@id/rl_aproduct_unidetail_header"/>
+        android:layout_below="@id/rl_aproduct_bookdetail_header"/>
     <LinearLayout
-        android:layout_below="@id/iv_aproduct_unidetail_img"
+        android:layout_below="@id/iv_aproduct_bookdetail_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/DefaultMargin"
@@ -94,5 +94,4 @@
             android:layout_height="@dimen/input_height"
             android:entries="@array/list_jenis_kelamin" />
     </LinearLayout>
-
 </RelativeLayout>
