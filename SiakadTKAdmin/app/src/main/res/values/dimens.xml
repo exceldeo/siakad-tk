@@ -48,7 +48,8 @@
     <dimen name="large_logo">128dp</dimen>
 
     <!-- Image-->
-    <dimen name="list_image">80dp</dimen>
+    <dimen name="list_image">84dp</dimen>
+    <dimen name="list_image_md">64dp</dimen>
     <dimen name="list_grid_image">146dp</dimen>
     <dimen name="icon">16dp</dimen>
 </resources>
