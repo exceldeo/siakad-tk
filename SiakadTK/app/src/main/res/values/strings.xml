@@ -75,4 +75,12 @@
     <string name="login_desc_text">Masuk menggunakan email atau akun sosial mediamu.</string>
     <string name="daftar_produk">Daftar Produk</string>
     <string name="daftar_pemesanan">Daftar Pemesanan</string>
+    <string name="seragam_formal">Seragam Formal</string>
+    <string name="buku_tema_5">Buku Tema 5</string>
+    <string name="wajib">Wajib</string>
+
+    <string-array name="list_jenis_kelamin">
+        <item>Perempuan</item>
+        <item>Laki-Laki</item>
+    </string-array>
 </resources>
