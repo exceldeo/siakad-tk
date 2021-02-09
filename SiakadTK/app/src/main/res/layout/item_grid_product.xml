@@ -25,7 +25,7 @@
                 android:layout_width="@dimen/list_grid_img_size"
                 android:layout_height="@dimen/list_grid_img_size"
                 android:src="@drawable/example_image"
-                app:riv_corner_radius="25dip"/>
+                app:riv_corner_radius="10dip"/>
             
             <TextView
                 android:layout_width="match_parent"
