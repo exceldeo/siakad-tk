@@ -81,6 +81,8 @@
     <string name="ukuran">Ukuran</string>
     <string name="jumlah">Jumlah</string>
     <string name="example_price">Rp 70.000</string>
+    <string name="add_to_basket">Tambahkan Ke Keranjang</string>
+    <string name="example_sum_price">Total: Rp 140.000</string>
 
     <string-array name="list_jenis_kelamin">
         <item>Perempuan</item>
