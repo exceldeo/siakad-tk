@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/container_padding_x"
+            android:layout_marginTop="@dimen/inner_padding"
             android:text="@string/jenis_kelamin"
             android:textSize="@dimen/list_desc_text"
             android:fontFamily="@font/poppins_regular"/>
@@ -98,7 +98,6 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <Spinner
-                android:id="@+id/sp_aproduct_bookdetail_jeniskelamin"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:paddingStart="@dimen/inner_padding"
@@ -117,6 +116,177 @@
             android:textAllCaps="true"
             android:fontFamily="@font/poppins_semibold"/>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/example_price"
+            android:textSize="@dimen/list_subtitle_text"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/poppins_regular"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/inner_padding"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/ukuran"
+                    android:textSize="@dimen/list_desc_text"
+                    android:fontFamily="@font/poppins_regular"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:layout_height="@dimen/input_height">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/vc_bg_input_unfilled"
+                        android:scaleType="fitXY"
+                        app:riv_corner_radius="10dip"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:paddingStart="@dimen/inner_padding"
+                        android:theme="@style/InputText"
+                        android:entries="@array/list_ukuran"
+                        android:spinnerMode="dropdown"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/inner_padding"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/jumlah"
+                    android:textSize="@dimen/list_desc_text"
+                    android:fontFamily="@font/poppins_regular"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:layout_height="@dimen/input_height">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/vc_bg_input_unfilled"
+                        android:scaleType="fitXY"
+                        app:riv_corner_radius="10dip"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:paddingStart="@dimen/inner_padding"
+                        android:theme="@style/InputText"
+                        android:entries="@array/list_jumlah"
+                        android:spinnerMode="dropdown"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/container_padding_x"
+            android:text="Bawahan"
+            android:textSize="@dimen/list_subtitle_text"
+            android:textColor="@color/colorBlack"
+            android:textAllCaps="true"
+            android:fontFamily="@font/poppins_semibold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/example_price"
+            android:textSize="@dimen/list_subtitle_text"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/inner_padding"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/ukuran"
+                    android:textSize="@dimen/list_desc_text"
+                    android:fontFamily="@font/poppins_regular"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:layout_height="@dimen/input_height">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/vc_bg_input_unfilled"
+                        android:scaleType="fitXY"
+                        app:riv_corner_radius="10dip"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:paddingStart="@dimen/inner_padding"
+                        android:theme="@style/InputText"
+                        android:entries="@array/list_ukuran"
+                        android:spinnerMode="dropdown"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/inner_padding"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/jumlah"
+                    android:textSize="@dimen/list_desc_text"
+                    android:fontFamily="@font/poppins_regular"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:layout_height="@dimen/input_height">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/vc_bg_input_unfilled"
+                        android:scaleType="fitXY"
+                        app:riv_corner_radius="10dip"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:paddingStart="@dimen/inner_padding"
+                        android:theme="@style/InputText"
+                        android:entries="@array/list_jumlah"
+                        android:spinnerMode="dropdown"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
