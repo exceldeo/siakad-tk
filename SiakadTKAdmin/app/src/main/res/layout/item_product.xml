@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="@dimen/cardview_default_elevation"
     app:cardCornerRadius="@dimen/list_corner"
     android:layout_marginVertical="@dimen/input_text_padding">
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/container_padding_x"
-        android:orientation="horizontal"
+        app:flexDirection="row"
         android:gravity="center_vertical">
 
         <androidx.cardview.widget.CardView
@@ -22,9 +22,9 @@
             app:cardCornerRadius="8dp">
 
             <ImageView
-                android:id="@+id/iv_item_order_detail"
-                android:layout_width="@dimen/list_image_md"
-                android:layout_height="@dimen/list_image_md"
+                android:id="@+id/iv_item_product"
+                android:layout_width="@dimen/list_image"
+                android:layout_height="@dimen/list_image"
                 android:src="@drawable/vc_bg_pengumuman"
                 android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
@@ -35,43 +35,32 @@
             android:orientation="vertical"
             app:layout_flexGrow="1"
             android:layout_marginStart="@dimen/list_corner"
-            android:layout_marginEnd="@dimen/list_corner">
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/tv_item_order_detail_nama_produk"
+                android:id="@+id/tv_item_product_nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buku Tema"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorPrimary"
                 android:fontFamily="@font/poppins_extrabold"
                 android:textSize="@dimen/card_title_text"/>
 
             <TextView
-                android:id="@+id/tv_item_order_detail_harga"
+                android:id="@+id/tv_item_product_stok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp. 90.000"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/poppins_semibold"
+                android:text="Jumlah Stok"
+                android:fontFamily="@font/poppins_regular"
+                android:ellipsize="end"
                 android:textSize="@dimen/card_subtitle_text"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/card_title_ic_size"
-                android:layout_height="@dimen/card_title_ic_size"
-                android:src="@drawable/ic_checkbox_check_inact"
-                android:layout_marginEnd="@dimen/container_padding_x"/>
-
-            <ImageView
-                android:layout_width="@dimen/card_title_ic_size"
-                android:layout_height="@dimen/card_title_ic_size"
-                android:src="@drawable/ic_checkbox_cross_inact"/>
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_item_product_edit"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_mode_edit"
+            android:layout_marginStart="@dimen/list_corner"/>
     </com.google.android.flexbox.FlexboxLayout>
 </androidx.cardview.widget.CardView>

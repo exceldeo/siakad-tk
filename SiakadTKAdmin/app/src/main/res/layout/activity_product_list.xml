@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/list_corner"
         android:elevation="0dp"
-
         app:cardBackgroundColor="@color/colorPrimary">
 
         <androidx.cardview.widget.CardView
@@ -90,7 +89,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_product_list_daftar_produk"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_product"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
