@@ -87,12 +87,36 @@
             android:textSize="@dimen/list_desc_text"
             android:fontFamily="@font/poppins_regular"/>
 
-        <Spinner
-            android:id="@+id/sp_aproduct_bookdetail_jeniskelamin"
-            android:layout_marginTop="@dimen/inner_padding"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/input_height"
-            android:entries="@array/list_jenis_kelamin" />
+            android:layout_marginTop="@dimen/inner_padding"
+            android:layout_height="@dimen/input_height">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/vc_bg_input_unfilled"
+                android:scaleType="fitXY"
+                app:riv_corner_radius="10dip"/>
+            <Spinner
+                android:id="@+id/sp_aproduct_bookdetail_jeniskelamin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:paddingStart="@dimen/inner_padding"
+                android:theme="@style/InputText"
+                android:entries="@array/list_jenis_kelamin"
+                android:spinnerMode="dropdown"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/container_padding_x"
+            android:text="Hem Putih"
+            android:textSize="@dimen/list_subtitle_text"
+            android:textColor="@color/colorBlack"
+            android:textAllCaps="true"
+            android:fontFamily="@font/poppins_semibold"/>
+
     </LinearLayout>
 
 </RelativeLayout>
