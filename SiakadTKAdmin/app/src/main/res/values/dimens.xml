@@ -32,6 +32,9 @@
     <dimen name="input_label_o_text">12sp</dimen>
     <dimen name="input_input_text">14sp</dimen>
     <dimen name="input_text_padding">8dp</dimen>
+    <dimen name="input_corner">10dp</dimen>
+    <dimen name="input_height">49dp</dimen>
+    <dimen name="input_space">8dp</dimen>
 
     <!-- Button-->
     <dimen name="button_text_text">16sp</dimen>
