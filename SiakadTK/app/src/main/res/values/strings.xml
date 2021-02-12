@@ -116,6 +116,16 @@
         <item>Laki-Laki</item>
     </string-array>
 
+    <string-array name="list_kelas">
+        <item>TK - A</item>
+        <item>TK - B</item>
+    </string-array>
+
+    <string-array name="list_ajaran">
+        <item>2020 / 2021</item>
+        <item>2021 / 2022</item>
+    </string-array>
+
     <string-array name="list_jumlah">
         <item>1 buah</item>
         <item>2 buah</item>
@@ -134,4 +144,7 @@
     <string name="panduan">
         1. Mengisi Request Form Pendaftaran Murid Baru (PMB) dari link yang diberikan Admin.<br></br> <br></br> 2. Melakukan transfer pembayaran untuk pembelian Form PMB sebesar Rp. 275.000,- dan mengirim bukti pembayaran ke Admin sesuai keterangan yang muncul saat mensubmit Request Form PMB.<br></br> <br></br> 3. Calon siswa baru menerima User ID dan Password dari Admin</string>
     <string name="prosedur_pendaftaran">Prosedur Pendaftaran</string>
+    <string name="example_nohp">08125288888</string>
+    <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
+    <string name="ulangi_password">Ulangi Password</string>
 </resources>
