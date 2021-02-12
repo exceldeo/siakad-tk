@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/list_corner"
+    android:elevation="0dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    android:layout_marginVertical="@dimen/appbar_padding_top">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorPrimaryLight"
+        android:layout_margin="1dp"
+        app:cardCornerRadius="@dimen/list_corner">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="row">
+
+            <EditText
+                android:id="@+id/et_item_addition_data_data"
+                android:padding="@dimen/input_text_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                android:textSize="@dimen/card_title_text"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@android:color/transparent"
+                app:layout_flexGrow="1"/>
+
+            <ImageView
+                android:id="@+id/iv_item_addition_data_hapus"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_delete"
+                android:layout_marginStart="@dimen/list_corner"
+                android:layout_marginEnd="@dimen/container_padding_x"/>
+        </com.google.android.flexbox.FlexboxLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
