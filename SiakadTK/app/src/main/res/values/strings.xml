@@ -78,9 +78,29 @@
     <string name="seragam_formal">Seragam Formal</string>
     <string name="buku_tema_5">Buku Tema 5</string>
     <string name="wajib">Wajib</string>
+    <string name="ukuran">Ukuran</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="example_price">Rp 70.000</string>
+    <string name="add_to_basket">Tambahkan Ke Keranjang</string>
+    <string name="example_sum_price">Total: Rp 140.000</string>
 
     <string-array name="list_jenis_kelamin">
         <item>Perempuan</item>
         <item>Laki-Laki</item>
+    </string-array>
+
+    <string-array name="list_jumlah">
+        <item>1 buah</item>
+        <item>2 buah</item>
+        <item>3 buah</item>
+        <item>4 buah</item>
+    </string-array>
+
+    <string-array name="list_ukuran">
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
     </string-array>
 </resources>
