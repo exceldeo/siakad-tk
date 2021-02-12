@@ -1,9 +1,104 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/settings"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_asettings_header">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vc_toolbar_bg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/container_padding_x"
+            android:layout_centerVertical="true"
+            android:paddingStart="@dimen/container_padding_x"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:id="@+id/tv_asettings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pengaturan"
+                android:layout_marginStart="@dimen/list_space"
+                android:textSize="@dimen/header_title_text"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/poppins_semibold" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/DefaultMargin"
+        android:layout_below="@id/rl_asettings_header">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Setelan Data Diri"
+            style="@style/LabelText"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorUnSelect"/>
+
+        <Button
+            android:id="@+id/btn_asettings_lihatubahprofil"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:text="@string/lihat_atau_ubah_profil"
+            android:drawableStart="@drawable/ic_mode_edit"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorBlack"
+            style="@style/InputText.EdtTextNoMargin"/>
+
+        <Button
+            android:id="@+id/btn_asettings_ubahemail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:text="@string/ubah_email"
+            android:drawableStart="@drawable/ic_mail"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorBlack"
+            style="@style/InputText.EdtTextNoMargin"/>
+
+        <Button
+            android:id="@+id/btn_asettings_ubahpassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:text="Ubah Password"
+            android:drawableStart="@drawable/ic_lock"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorBlack"
+            style="@style/InputText.EdtTextNoMargin"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_asettings_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/container_padding_x"
+        android:layout_marginEnd="@dimen/container_padding_x"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/keluar"
+        style="@style/CommonButton"
+        android:textColor="@android:color/white"
+        android:background="@drawable/fill_danger_button"
+        android:layout_marginTop="@dimen/container_double_padding_y" />
+</RelativeLayout>
