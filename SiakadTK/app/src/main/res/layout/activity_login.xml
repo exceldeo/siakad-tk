@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
             android:hint="@string/password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:drawableStart="@drawable/ic_lock"
             android:background="@drawable/fill_input"
             style="@style/InputText.EdtText"/>

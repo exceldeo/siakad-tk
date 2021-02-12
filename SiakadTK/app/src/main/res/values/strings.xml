@@ -83,6 +83,19 @@
     <string name="example_price">Rp 70.000</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
     <string name="example_sum_price">Total: Rp 140.000</string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="username">Username</string>
+    <string name="password_lama">Password Lama</string>
+    <string name="simpan">Simpan</string>
+    <string name="ubah_profil">Ubah Profil</string>
+    <string name="kelas">Kelas</string>
+    <string name="tahun_ajaran">Tahun Ajaran</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_hp_orang_tua">No. HP Orang Tua</string>
+    <string name="asal_sekolah">Asal Sekolah</string>
+    <string name="ubah_foto_profil">Ubah Foto Profil</string>
 
     <string-array name="list_jenis_kelamin">
         <item>Perempuan</item>

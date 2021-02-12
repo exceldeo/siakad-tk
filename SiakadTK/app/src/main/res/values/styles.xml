@@ -56,10 +56,23 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="LabelText">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/list_desc_text</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:layout_marginTop">@dimen/container_padding_x</item>
+    </style>
+
     <style name="InputText.EdtText" >
         <item name="android:padding">@dimen/inner_padding</item>
         <item name="android:drawablePadding">8dp</item>
         <item name="android:layout_marginTop">@dimen/container_padding_x</item>
+    </style>
+    <style name="InputText.EdtTextNoMargin" >
+        <item name="android:padding">@dimen/inner_padding</item>
+        <item name="android:drawablePadding">8dp</item>
     </style>
 
 </resources>
