@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.signup.SignupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:layout_centerVertical="true">
 
         <ImageView
-            android:id="@+id/iv_login_logo"
+            android:id="@+id/iv_signup_logo"
             android:layout_width="match_parent"
             android:layout_height="114dp"
             android:scaleType="centerInside"
@@ -26,7 +26,7 @@
             android:src="@drawable/ic_logo" />
 
         <TextView
-            android:id="@+id/tv_alogin_title"
+            android:id="@+id/tv_asignup_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/welcome_text_app"
@@ -34,17 +34,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:textColor="@color/colorBlack"
-            android:layout_marginBottom="@dimen/container_padding_y_min"/>
-
-        <TextView
-            android:id="@+id/tv_alogin_subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_desc_text"
-            android:textSize="@dimen/list_desc_text"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:layout_marginBottom="@dimen/container_padding_y_min"/>
+            android:layout_marginBottom="@dimen/container_padding_x"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -57,7 +47,28 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_login_email"
+                android:id="@+id/edt_signup_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:hint="@string/nama"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_name"
+                android:background="@android:color/transparent"
+                style="@style/InputText.EdtTextNoMargin"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginBottom="@dimen/container_padding_x">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/vc_bg_input_unfilled"
+                android:scaleType="fitXY"
+                app:riv_corner_radius="10dip"/>
+            <EditText
+                android:id="@+id/edt_signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:hint="@string/email"
@@ -78,7 +89,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_login_password"
+                android:id="@+id/edt_signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:hint="@string/password"
@@ -88,27 +99,36 @@
                 style="@style/InputText.EdtTextNoMargin"/>
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/tv_login_forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lupa_password"
-            android:padding="@dimen/padding_text"
-            android:textColor="@color/colorBlack"
-            android:fontFamily="@font/poppins_regular"
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_gravity="end"
-            android:gravity="end"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginBottom="@dimen/container_padding_x">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/vc_bg_input_unfilled"
+                android:scaleType="fitXY"
+                app:riv_corner_radius="10dip"/>
+            <EditText
+                android:id="@+id/edt_signup_repeat_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/ulangi_password"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_lock"
+                android:background="@android:color/transparent"
+                style="@style/InputText.EdtTextNoMargin"/>
+        </FrameLayout>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/masuk"
+            android:text="@string/daftar"
             style="@style/CommonButton"
             android:textColor="@android:color/white"
             android:background="@drawable/fill_primary_button"
-            android:layout_marginTop="@dimen/container_double_padding_y" />
+            android:layout_marginTop="@dimen/container_padding_x" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,21 +138,21 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
             <TextView
-                android:id="@+id/tv_login_doesnt_have_account"
+                android:id="@+id/tv_signup_have_an_acc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_text"
                 android:gravity="center_horizontal|bottom"
-                android:text="Tidak mempunyai akun?"
+                android:text="@string/sudah_mempunyai_akun"
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/tv_login_register_here"
+                android:id="@+id/tv_signup_login_here"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_text"
                 android:gravity="center_horizontal|bottom"
-                android:text="@string/daftar"
+                android:text="@string/masuk"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"/>
         </LinearLayout>

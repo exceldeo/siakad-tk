@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_list_tower"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/list_space">
+
+    <TextView
+        android:id="@+id/tv_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/list_title_text"
+        android:lines="1"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/poppins_medium"
+        tools:text="Buku"/>
+
+    <TextView
+        android:id="@+id/tv_item_kategori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/list_desc_text"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:lines="1"
+        tools:text="@string/nama_pesanan" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/tv_subitem_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/list_desc_text"
+            android:lines="1"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_weight="1"
+            tools:text="@string/hem_putih"/>
+
+        <TextView
+            android:id="@+id/tv_subitem_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/list_desc_text"
+            android:lines="1"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_weight="2"
+            android:gravity="end"
+            tools:text="@string/example_price"/>
+    </LinearLayout>
+</LinearLayout>

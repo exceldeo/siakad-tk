@@ -51,4 +51,5 @@
     <dimen name="banner_header_height">210dp</dimen>
 
     <dimen name="corner">10dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

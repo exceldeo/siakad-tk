@@ -83,10 +83,47 @@
     <string name="example_price">Rp 70.000</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
     <string name="example_sum_price">Total: Rp 140.000</string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="username">Username</string>
+    <string name="password_lama">Password Lama</string>
+    <string name="simpan">Simpan</string>
+    <string name="ubah_profil">Ubah Profil</string>
+    <string name="kelas">Kelas</string>
+    <string name="tahun_ajaran">Tahun Ajaran</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_hp_orang_tua">No. HP Orang Tua</string>
+    <string name="asal_sekolah">Asal Sekolah</string>
+    <string name="ubah_foto_profil">Ubah Foto Profil</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="lihat_atau_ubah_profil">Lihat atau Ubah Profil</string>
+    <string name="ubah_email">Ubah Email</string>
+    <string name="keluar">Keluar</string>
+    <string name="pemesanan_telah_selesai">Pemesanan telah selesai.</string>
+    <string name="hem_putih">Hem Putih</string>
+    <string name="bawahan">Bawahan</string>
+    <string name="detail_pemesanan">Detail Pemesanan</string>
+    <string name="tanggal_pesanan_dibayar">Tanggal Pesanan Dibayar</string>
+    <string name="tanggal_pesan">Tanggal Pesan</string>
+    <string name="tanggal_pesananan_disetujui">Tanggal Pesananan Disetujui</string>
+    <string name="detail_nota">Detail Nota</string>
+    <string name="terverivikasi_dan_menunggu_pembayaran">Terverivikasi dan menunggu pembayaran.</string>
+    <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
     <string-array name="list_jenis_kelamin">
         <item>Perempuan</item>
         <item>Laki-Laki</item>
+    </string-array>
+
+    <string-array name="list_kelas">
+        <item>TK - A</item>
+        <item>TK - B</item>
+    </string-array>
+
+    <string-array name="list_ajaran">
+        <item>2020 / 2021</item>
+        <item>2021 / 2022</item>
     </string-array>
 
     <string-array name="list_jumlah">
@@ -103,4 +140,11 @@
         <item>XL</item>
         <item>XXL</item>
     </string-array>
+
+    <string name="panduan">
+        1. Mengisi Request Form Pendaftaran Murid Baru (PMB) dari link yang diberikan Admin.<br></br> <br></br> 2. Melakukan transfer pembayaran untuk pembelian Form PMB sebesar Rp. 275.000,- dan mengirim bukti pembayaran ke Admin sesuai keterangan yang muncul saat mensubmit Request Form PMB.<br></br> <br></br> 3. Calon siswa baru menerima User ID dan Password dari Admin</string>
+    <string name="prosedur_pendaftaran">Prosedur Pendaftaran</string>
+    <string name="example_nohp">08125288888</string>
+    <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
+    <string name="ulangi_password">Ulangi Password</string>
 </resources>
