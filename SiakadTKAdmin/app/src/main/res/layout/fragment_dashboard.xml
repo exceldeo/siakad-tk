@@ -131,6 +131,76 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Data Pengguna"
+                style="@style/lTitle"
+                android:layout_marginBottom="@dimen/card_title_margin_bottom"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="106dp"
+                    android:src="@drawable/vc_bg_pengumuman_dashboard"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_baseline_person_24"
+                        android:layout_marginEnd="@dimen/container_padding_x"
+                        app:tint="@android:color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:id="@+id/tv_dashboard_jumlah_pengguna"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Pengguna:"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:textColor="@color/colorProcess"/>
+
+                        <TextView
+                            android:id="@+id/tv_dashboard_jumlah_pengguna_menunggu_verifikasi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Menunggu Verifikasi:"
+                            android:fontFamily="@font/poppins_extrabold"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:textColor="@color/colorProcess"/>
+
+                        <TextView
+                            android:id="@+id/btn_dashboard_lihat_semua_pengguna"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:textSize="@dimen/list_subtitle_text"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textAlignment="center"
+                            android:text="Lihat Semua"
+                            android:background="@drawable/ic_button_white_elevated" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Data Pemesananan dan Daftar Ulang"
                 android:textSize="@dimen/card_title_text"
                 android:fontFamily="@font/poppins_extrabold"

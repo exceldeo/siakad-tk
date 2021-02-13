@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/appbar_padding_top"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/list_corner">
+
+        <TextView
+            android:id="@+id/tv_item_user_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daftar Ulang"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="@dimen/card_title_text"/>
+
+        <ImageView
+            android:id="@+id/iv_order_detail_acc_all"
+            android:layout_width="@dimen/card_title_ic_size"
+            android:layout_height="@dimen/card_title_ic_size"
+            android:src="@drawable/ic_checkbox_check_inact"
+            android:layout_marginEnd="@dimen/container_padding_x"/>
+    </com.google.android.flexbox.FlexboxLayout>
+</LinearLayout>

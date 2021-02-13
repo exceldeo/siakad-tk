@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserDetailUnverActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_above="@id/v_gudieline">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/container_padding_x"
+            android:paddingVertical="@dimen/container_padding_y">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Lengkap"
+                style="@style/mdTitle"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/tv_user_detail_unver_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Namamu"
+                style="@style/mdContent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                style="@style/mdTitle"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/tv_user_detail_unver_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email@exam.com"
+                style="@style/mdContent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passsword"
+                style="@style/mdTitle"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/tv_user_detail_unver_passwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="********"
+                style="@style/mdContent"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bukti Pembayaran"
+                style="@style/mdTitle"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_user_detail_unver_buktibayar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Lihat Bukti"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/v_gudieline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/cv_user_detail"
+        android:background="@android:color/darker_gray" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_user_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="28dp"
+        app:cardCornerRadius="@dimen/list_corner"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ListTitle"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/container_padding_x"
+            android:layout_marginBottom="@dimen/container_padding_y">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_user_detail_unver_batal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:layout_marginEnd="@dimen/container_padding_x"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorDanger">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Tolak"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_user_detail_unver_simpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Verifikasi"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

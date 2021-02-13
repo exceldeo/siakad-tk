@@ -176,4 +176,5 @@
         <item>Perempuan</item>
         <item>Laki-Laki</item>
     </string-array>
+    <string name="title_activity_user">UserActivity</string>
 </resources>

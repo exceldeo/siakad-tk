@@ -59,6 +59,7 @@
                     android:drawableStart="@drawable/ic_mail"
                     android:background="@android:color/transparent"
                     android:drawablePadding="8dp"
+                    android:layout_margin="@dimen/input_text_padding"
                     android:padding="@dimen/input_text_padding"/>
             </androidx.cardview.widget.CardView>
         </androidx.cardview.widget.CardView>
@@ -82,11 +83,12 @@
                     android:id="@+id/et_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/input_height"
-                    android:hint="@string/email"
+                    android:hint="@string/password"
                     android:inputType="textEmailAddress"
                     android:drawableStart="@drawable/ic_lock"
                     android:background="@android:color/transparent"
                     android:drawablePadding="8dp"
+                    android:layout_margin="@dimen/input_text_padding"
                     android:padding="@dimen/input_text_padding"/>
             </androidx.cardview.widget.CardView>
         </androidx.cardview.widget.CardView>

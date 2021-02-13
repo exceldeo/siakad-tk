@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +11,7 @@
     tools:context=".ui.main.PlaceholderFragment">
 
     <TextView
-        android:id="@+id/tv_registration_jumlah"
+        android:id="@+id/tv_user_jumlah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jumlah"
@@ -35,10 +34,10 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_registration_daftar_siswa"
+                android:id="@+id/rv_user_daftar_siswa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_registration"/>
+                tools:listitem="@layout/item_user"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

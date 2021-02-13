@@ -164,7 +164,6 @@
             android:layout_marginBottom="@dimen/card_title_margin_bottom">
 
             <TextView
-                android:id="@+id/tv_notification_jumlah_notif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Daftar Pesananan"
@@ -180,12 +179,14 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/iv_order_detail_acc_all"
                     android:layout_width="@dimen/card_title_ic_size"
                     android:layout_height="@dimen/card_title_ic_size"
                     android:src="@drawable/ic_checkbox_check_inact"
                     android:layout_marginEnd="@dimen/container_padding_x"/>
 
                 <ImageView
+                    android:id="@+id/iv_order_detail_reject_all"
                     android:layout_width="@dimen/card_title_ic_size"
                     android:layout_height="@dimen/card_title_ic_size"
                     android:src="@drawable/ic_checkbox_cross_inact"
@@ -209,7 +210,7 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_notification_daftar_notif"
+                    android:id="@+id/rv_oreder_detail_daftar_pesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/item_order_detail"/>
