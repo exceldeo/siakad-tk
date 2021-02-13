@@ -15,19 +15,20 @@
         android:layout_marginStart="@dimen/list_corner">
 
         <TextView
-            android:id="@+id/tv_item_user_judul"
+            android:id="@+id/tv_item_user_detail_judul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Daftar Ulang"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/poppins_bold"
-            android:textSize="@dimen/card_title_text"/>
+            android:textSize="@dimen/card_title_text"
+            app:layout_flexGrow="1"/>
 
         <ImageView
-            android:id="@+id/iv_order_detail_acc_all"
+            android:id="@+id/iv_item_user_detail_acc"
             android:layout_width="@dimen/card_title_ic_size"
             android:layout_height="@dimen/card_title_ic_size"
-            android:src="@drawable/ic_checkbox_check_inact"
+            android:src="@drawable/ic_checkbox_check_act"
             android:layout_marginEnd="@dimen/container_padding_x"/>
     </com.google.android.flexbox.FlexboxLayout>
 </LinearLayout>

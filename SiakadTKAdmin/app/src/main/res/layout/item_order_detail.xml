@@ -63,12 +63,14 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/iv_item_order_detail_acc"
                 android:layout_width="@dimen/card_title_ic_size"
                 android:layout_height="@dimen/card_title_ic_size"
                 android:src="@drawable/ic_checkbox_check_inact"
                 android:layout_marginEnd="@dimen/container_padding_x"/>
 
             <ImageView
+                android:id="@+id/iv_item_order_detail_reject"
                 android:layout_width="@dimen/card_title_ic_size"
                 android:layout_height="@dimen/card_title_ic_size"
                 android:src="@drawable/ic_checkbox_cross_inact"/>
