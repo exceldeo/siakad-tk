@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="app.siakad.siakadtkadmin.ui.dashboard.DashboardFragment"
+        android:name="app.siakad.siakadtkadmin.ui.main.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_product"
-        android:name="app.siakad.siakadtkadmin.ui.product.ProductFragment"
+        android:name="app.siakad.siakadtkadmin.ui.main.product.ProductFragment"
         android:label="@string/title_product"
         tools:layout="@layout/fragment_product" />
 
     <fragment
         android:id="@+id/navigation_setting"
-        android:name="app.siakad.siakadtkadmin.ui.setting.SettingFragment"
+        android:name="app.siakad.siakadtkadmin.ui.main.setting.SettingFragment"
         android:label="@string/title_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

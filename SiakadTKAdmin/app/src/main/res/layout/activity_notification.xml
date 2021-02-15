@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingVertical="@dimen/container_padding_y"
     android:paddingHorizontal="@dimen/container_padding_x"
-    tools:context=".NotificationActivity">
+    tools:context=".ui.notification.NotificationActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

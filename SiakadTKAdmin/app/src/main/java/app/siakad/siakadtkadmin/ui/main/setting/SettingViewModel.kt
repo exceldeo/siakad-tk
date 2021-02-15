@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.ui.setting
+package app.siakad.siakadtkadmin.ui.main.setting
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

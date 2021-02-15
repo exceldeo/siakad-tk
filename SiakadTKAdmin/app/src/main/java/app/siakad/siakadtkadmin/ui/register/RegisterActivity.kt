@@ -1,11 +1,12 @@
-package app.siakad.siakadtkadmin
+package app.siakad.siakadtkadmin.ui.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtkadmin.R
 
-class ProductAddActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_add)
+        setContentView(R.layout.activity_register)
     }
 }

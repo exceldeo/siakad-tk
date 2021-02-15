@@ -1,7 +1,8 @@
-package app.siakad.siakadtkadmin
+package app.siakad.siakadtkadmin.ui.notification
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtkadmin.R
 
 class NotificationAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

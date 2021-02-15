@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/container_padding_x"
     android:paddingVertical="@dimen/container_padding_y"
-    tools:context=".AnnouncementAddActivity">
+    tools:context=".ui.announcement.AnnouncementAddActivity">
 
     <TextView
         android:layout_width="wrap_content"

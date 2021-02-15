@@ -1,11 +1,12 @@
-package app.siakad.siakadtkadmin
+package app.siakad.siakadtkadmin.ui.order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtkadmin.R
 
-class AnnouncementActivity : AppCompatActivity() {
+class OrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_announcement)
+        setContentView(R.layout.activity_order)
     }
 }

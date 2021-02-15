@@ -1,7 +1,8 @@
-package app.siakad.siakadtkadmin
+package app.siakad.siakadtkadmin.ui.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtkadmin.R
 
 class UserDetailUnverActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

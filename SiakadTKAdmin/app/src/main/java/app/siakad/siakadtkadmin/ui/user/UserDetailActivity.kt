@@ -1,11 +1,12 @@
-package app.siakad.siakadtkadmin
+package app.siakad.siakadtkadmin.ui.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtkadmin.R
 
-class OrderActivity : AppCompatActivity() {
+class UserDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order)
+        setContentView(R.layout.activity_user_detail)
     }
 }
