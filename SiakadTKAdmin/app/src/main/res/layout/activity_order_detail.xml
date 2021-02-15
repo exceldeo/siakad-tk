@@ -210,7 +210,7 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_oreder_detail_daftar_pesanan"
+                    android:id="@+id/rv_order_detail_daftar_pesanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/item_order_detail"/>
