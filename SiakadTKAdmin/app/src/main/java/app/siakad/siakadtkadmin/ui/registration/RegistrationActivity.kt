@@ -11,19 +11,25 @@ import app.siakad.siakadtkadmin.ui.main.SectionsPagerAdapter
 
 class RegistrationActivity : AppCompatActivity() {
 
+    private lateinit var pagerAdapter: SectionsPagerAdapter
+    private lateinit var viewPager: ViewPager
+    private lateinit var tab: TabLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = findViewById(R.id.fab)
+        setupItemView()
+        setupView()
+    }
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+    private fun setupItemView() {
+        viewPager = findViewById(R.id.view_pager_registration)
+        tab = findViewById(R.id.tabs_registration)
+    }
+
+    private fun setupView() {
+        pagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        viewPager.adapter = pagerAdapter
+        tab.setupWithViewPager(viewPager)
     }
 }

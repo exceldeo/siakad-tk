@@ -1,6 +1,7 @@
 package app.siakad.siakadtkadmin.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -14,6 +15,8 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.ui.main.MainActivity
+import app.siakad.siakadtkadmin.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,8 +31,38 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-        setupItemView()
 
+        supportActionBar?.hide()
+        setupItemView()
+        setupView()
+    }
+    
+    private fun setupItemView() {
+        etEmail = findViewById(R.id.et_login_email)
+        etPasswd = findViewById(R.id.et_login_password)
+        btnLogin = findViewById(R.id.btn_login_masuk)
+        tvSignUp = findViewById(R.id.tv_login_daftar)
+        pbLoading = findViewById(R.id.loading)
+
+        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
+            .get(LoginViewModel::class.java)
+    }
+
+    private fun setupView() {
+        btnLogin.setOnClickListener {
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        tvSignUp.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    private fun setupLoginView() {
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
@@ -91,17 +124,6 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(etEmail.text.toString(), etPasswd.text.toString())
             }
         }
-    }
-    
-    private fun setupItemView() {
-        etEmail = findViewById(R.id.et_login_email)
-        etPasswd = findViewById(R.id.et_login_password)
-        btnLogin = findViewById(R.id.btn_login_masuk)
-        tvSignUp = findViewById(R.id.tv_login_daftar)
-        pbLoading = findViewById(R.id.loading)
-
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

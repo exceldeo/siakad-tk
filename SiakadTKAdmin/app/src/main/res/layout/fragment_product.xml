@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/iv_product"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="186dp"
             android:src="@drawable/vc_banner"
             android:scaleType="centerCrop"/>

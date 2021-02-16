@@ -1,5 +1,6 @@
 package app.siakad.siakadtkadmin.ui.main.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.ui.announcement.AnnouncementActivity
+import app.siakad.siakadtkadmin.ui.order.OrderActivity
+import app.siakad.siakadtkadmin.ui.registration.RegistrationActivity
+import app.siakad.siakadtkadmin.ui.user.UserActivity
 
 class DashboardFragment : Fragment() {
 
@@ -32,6 +37,7 @@ class DashboardFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
         setupItemView(view)
+        setupView()
         return view
     }
 
@@ -50,5 +56,27 @@ class DashboardFragment : Fragment() {
 
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
+    }
+
+    private fun setupView() {
+        btnSeeAllAnnounce.setOnClickListener{
+            val intent = Intent(this@DashboardFragment.context, AnnouncementActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnSeeAllUser.setOnClickListener{
+            val intent = Intent(this@DashboardFragment.context, UserActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnOrder.setOnClickListener{
+            val intent = Intent(this@DashboardFragment.context, OrderActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnRegistration.setOnClickListener{
+            val intent = Intent(this@DashboardFragment.context, RegistrationActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
