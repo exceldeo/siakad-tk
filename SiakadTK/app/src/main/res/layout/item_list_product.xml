@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/detail_list_tower"
+    android:id="@+id/registration_form"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/list_space">
@@ -58,8 +58,5 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        
-
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

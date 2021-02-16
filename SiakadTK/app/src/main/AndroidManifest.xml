@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.signup.SignupActivity"></activity>
-        <activity android:name=".OrderDetailActivity" />
+        <activity android:name=".ProductUniformDetailActivity"></activity>
+        <activity android:name=".ui.signup.SignupActivity" />
+        <activity android:name=".ui.order.OrderDetailActivity" />
         <activity android:name=".HistoryDetailActivity" />
         <activity android:name=".PasswordActivity" />
         <activity android:name=".ProfileActivity" />
@@ -19,9 +20,9 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".BasketActivity" />
-        <activity android:name=".ProductDetailActivity" />
+        <activity android:name=".ProductBookDetailActivity" />
         <activity android:name=".ProductListActivity" />
-        <activity android:name=".OrderListActivity" />
+        <activity android:name=".ui.order.OrderListActivity" />
         <activity android:name=".RegistrationFormActivity" />
         <activity android:name=".AnnouncementListActivity" />
         <activity android:name=".WelcomeScreenActivity" />

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.order.OrderFragment"
+    tools:context=".ui.product.ProductFragment"
     android:background="@color/colorLightGrey"
     android:orientation="vertical">
 
@@ -20,7 +20,7 @@
             android:src="@drawable/vc_large_banner"/>
 
         <TextView
-            android:id="@+id/text_order"
+            android:id="@+id/tv_product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_order"
@@ -31,11 +31,10 @@
             android:fontFamily="@font/poppins_semibold" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_forder_search"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/container_padding_x"
-            android:layout_below="@id/text_order"
+            android:layout_below="@id/tv_product_title"
             android:background="@android:color/white"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
@@ -44,8 +43,10 @@
             tools:targetApi="lollipop">
 
             <SearchView
+                android:id="@+id/sv_product_cari_produk"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:queryHint="Cari Produk"/>
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
@@ -62,6 +63,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/btn_product_keranjang_saya"
                 android:layout_width="match_parent"
                 android:layout_height="91dp"
                 android:background="@drawable/vc_banner_order"
@@ -74,7 +76,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_forder_keranjang_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
@@ -86,7 +87,6 @@
                         tools:targetApi="lollipop" />
 
                     <TextView
-                        android:id="@+id/tv_forder_desc_keranjang_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -98,7 +98,6 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/iv_rfig_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/container_padding_x"
@@ -107,7 +106,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_forder_product_title"
+                android:id="@+id/tv_product_product_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/daftar_produk"
@@ -118,8 +117,8 @@
                 android:layout_marginBottom="@dimen/container_padding_y_min"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_forder_product_list"
-                android:layout_below="@id/tv_fprofile_activity_title"
+                android:id="@+id/rv_product_produk_list"
+                android:layout_below="@id/tv_product_product_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_grid_product" />

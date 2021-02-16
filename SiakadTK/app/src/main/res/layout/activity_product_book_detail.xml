@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductDetailActivity">
+    tools:context=".ProductBookDetailActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_aproduct_bookdetail_header">
+        android:id="@+id/rl_product_bookdetail_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -34,7 +34,6 @@
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:id="@+id/tv_aproduct_bookdetail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/buku_tema_5"
@@ -45,20 +44,21 @@
         </LinearLayout>
     </RelativeLayout>
     <ImageView
-        android:id="@+id/iv_aproduct_bookdetail_img"
+        android:id="@+id/iv_product_bookdetail_img"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:scaleType="centerCrop"
         android:src="@drawable/example_image"
-        android:layout_below="@id/rl_aproduct_bookdetail_header"/>
+        android:layout_below="@id/rl_product_bookdetail_header"/>
     <LinearLayout
-        android:layout_below="@id/iv_aproduct_bookdetail_img"
+        android:layout_below="@id/iv_product_bookdetail_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/DefaultMargin"
         android:layout_marginTop="@dimen/container_padding_x"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_product_bookdetail_kewajiban"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/wajib"
@@ -67,6 +67,7 @@
             android:fontFamily="@font/poppins_semibold"/>
 
         <TextView
+            android:id="@+id/tv_product_bookdetail_harga"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/example_price"
@@ -75,6 +76,7 @@
             android:fontFamily="@font/poppins_regular"/>
 
         <TextView
+            android:id="@+id/tv_product_bookdetail_batas_pesan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/until_date"
@@ -106,6 +108,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <Spinner
+                android:id="@+id/sp_product_bookdetail_jumlah"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:paddingStart="@dimen/inner_padding"
@@ -133,6 +136,7 @@
             android:layout_marginBottom="@dimen/container_padding_y">
 
             <TextView
+                android:id="@+id/tv_product_bookdetail_total_harga"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/example_sum_price"
@@ -141,7 +145,6 @@
                 android:fontFamily="@font/poppins_regular"/>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_registration_detail_simpan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
@@ -149,6 +152,7 @@
                 app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
+                    android:id="@+id/btn_product_bookdetail_tambah_ke_basket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"
