@@ -1,6 +1,7 @@
 package app.siakad.siakadtk.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,8 +13,10 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.cardview.widget.CardView
+import app.siakad.siakadtk.MainActivity
 
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.ui.signup.SignupActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,8 +31,24 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+        supportActionBar?.hide()
         setupItemWiew()
+        setupView()
+    }
+    private fun setupView() {
+        btnLogin.setOnClickListener {
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
+        tvSignUp.setOnClickListener {
+            val intent = Intent(this@LoginActivity, SignupActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+    private fun setupLoginView() {
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
