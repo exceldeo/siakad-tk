@@ -24,7 +24,7 @@
             android:src="@drawable/ic_logo" />
 
         <TextView
-            android:id="@+id/tv_aregister_title"
+            android:id="@+id/tv_register_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Selamat Datang Admin TK XIII !"
