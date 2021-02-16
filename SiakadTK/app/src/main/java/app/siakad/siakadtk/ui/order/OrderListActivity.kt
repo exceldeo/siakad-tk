@@ -1,7 +1,8 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtk.R
 
 class OrderListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="app.siakad.siakadtk.ui.order.OrderFragment"
+        android:id="@+id/navigation_product"
+        android:name="app.siakad.siakadtk.ui.product.ProductFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_product" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profile"
         android:name="app.siakad.siakadtk.ui.profile.ProfileFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_profile" />

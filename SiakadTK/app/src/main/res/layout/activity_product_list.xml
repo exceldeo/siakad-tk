@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_aproductlist_header">
+        android:id="@+id/rl_productlist_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:src="@drawable/vc_toolbar_bg"/>
 
         <LinearLayout
-            android:id="@+id/ll_aproductlist_title"
+            android:id="@+id/ll_productlist_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/container_padding_x"
@@ -34,7 +34,6 @@
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_aproductlist_search"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@android:color/white"
@@ -45,6 +44,7 @@
                 tools:targetApi="lollipop">
 
                 <SearchView
+                    android:id="@+id/sv_productlist_search_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </androidx.cardview.widget.CardView>
@@ -52,10 +52,10 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_forder_product_list"
+        android:id="@+id/rv_productlist_searched_product_list"
         android:paddingStart="@dimen/container_padding_x"
         android:paddingEnd="@dimen/container_padding_x"
-        android:layout_below="@id/rl_aproductlist_header"
+        android:layout_below="@id/rl_productlist_header"
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

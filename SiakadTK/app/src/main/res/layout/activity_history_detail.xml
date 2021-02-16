@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_ahistory_detail_header">
+        android:id="@+id/rl_historydetail_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -34,7 +34,6 @@
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:id="@+id/tv_aannouncement_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_nota"
@@ -48,7 +47,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rl_ahistory_detail_header"
+        android:layout_below="@id/rl_historydetail_header"
         android:paddingStart="@dimen/container_padding_x"
         android:paddingEnd="@dimen/container_padding_x">
 
@@ -58,11 +57,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_ahistory_nota_title"
                 android:layout_width="match_parent"
                 android:layout_weight="3"
                 android:layout_marginTop="@dimen/container_padding_x"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="@string/nota_pemesanan"
                 android:textSize="@dimen/header_subtitle_text"
                 android:fontFamily="@font/poppins_semibold"
@@ -82,7 +80,6 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
                     <TextView
-                        android:id="@+id/tv_ahistory_tglorder_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -91,7 +88,7 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/list_desc_text" />
                     <TextView
-                        android:id="@+id/tv_ahistory_tglorder_date"
+                        android:id="@+id/tv_historydetail_tglorder_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -107,7 +104,6 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
                     <TextView
-                        android:id="@+id/tv_ahistory_tglsetuju_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -116,7 +112,7 @@
                         android:layout_weight="2"
                         android:textSize="@dimen/list_desc_text" />
                     <TextView
-                        android:id="@+id/tv_ahistory_tglsetuju_date"
+                        android:id="@+id/tv_historydetail_tglsetuju_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -132,7 +128,6 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
                     <TextView
-                        android:id="@+id/tv_ahistory_tglbayar_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -141,7 +136,7 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/list_desc_text" />
                     <TextView
-                        android:id="@+id/tv_ahistory_tglbayar_date"
+                        android:id="@+id/tv_historydetail_tglbayar_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -162,7 +157,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_ahistory_detail_title_status"
+                    android:id="@+id/tv_historydetail_title_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -172,7 +167,7 @@
                     tools:targetApi="lollipop" />
 
                 <TextView
-                    android:id="@+id/tv_ahistory_detail_desc_status"
+                    android:id="@+id/tv_historydetail_desc_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
@@ -191,7 +186,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_ahistory_detail_title_detail_order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -202,7 +196,7 @@
 
                 <ListView
                     android:layout_marginTop="@dimen/container_padding_x"
-                    android:id="@+id/rv_forder_product_list"
+                    android:id="@+id/rv_historydetail_product_ordered_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/item_row_product_item" />
@@ -215,7 +209,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv_subitem_name"
+                    android:id="@+id/tv_historydetail_total_harga"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"

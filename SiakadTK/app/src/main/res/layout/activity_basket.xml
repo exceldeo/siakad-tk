@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rv_abasket_header">
+        android:id="@+id/rv_basket_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -33,7 +33,6 @@
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:id="@+id/text_pengumuman"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/keranjang_pesanan"
@@ -44,11 +43,11 @@
         </LinearLayout>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_forder_product_list"
+        android:id="@+id/rv_basket_order_nota_list"
         android:paddingStart="@dimen/container_padding_x"
         android:paddingEnd="@dimen/container_padding_x"
-        android:layout_below="@id/rv_abasket_header"
-        android:layout_marginTop="@dimen/container_padding_y"
+        android:layout_below="@id/rv_basket_header"
+        android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_row_basket" />

@@ -1,10 +1,10 @@
-package app.siakad.siakadtk.ui.order
+package app.siakad.siakadtk.ui.product
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class OrderViewModel : ViewModel() {
+class ProductViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "Pemesanan"

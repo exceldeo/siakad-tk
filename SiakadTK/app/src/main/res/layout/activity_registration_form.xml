@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rv_aregistrationform_header">
+        android:id="@+id/rv_registrationform_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -27,13 +27,13 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/ibtn_registrationform_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:id="@+id/tv_aregistrationform_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/form_daftar_ulang"
@@ -46,12 +46,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_below="@id/rv_aregistrationform_header">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rv_registrationform_header">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingBottom="100dp"
             style="@style/DefaultMargin">
 
             <TextView
@@ -71,11 +72,63 @@
                     android:scaleType="fitXY"
                     app:riv_corner_radius="10dip"/>
                 <EditText
-                    android:id="@+id/et_aregistrationform_add_nama"
+                    android:id="@+id/et_registrationform_nama"
                     android:padding="@dimen/input_text_padding"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/masukkan_nama"
+                    style="@style/InputText"
+                    android:background="@android:color/transparent"/>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/LabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tanggal_lahir" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/inner_padding"
+                android:layout_height="@dimen/input_height">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/vc_bg_input_unfilled"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="10dip"/>
+                <EditText
+                    android:id="@+id/et_registrationform_ttl"
+                    android:padding="@dimen/input_text_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/example_date"
+                    style="@style/InputText"
+                    android:background="@android:color/transparent"/>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/LabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asal_sekolah" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/inner_padding"
+                android:layout_height="@dimen/input_height">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/vc_bg_input_unfilled"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="10dip"/>
+                <EditText
+                    android:id="@+id/et_registrationform_asal_sekolah"
+                    android:padding="@dimen/input_text_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/asal_sekolah"
                     style="@style/InputText"
                     android:background="@android:color/transparent"/>
             </RelativeLayout>
@@ -111,6 +164,7 @@
                             android:scaleType="fitXY"
                             app:riv_corner_radius="10dip"/>
                         <Spinner
+                            android:id="@+id/sp_registrationform_jenis_kelamin"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/input_height"
                             android:paddingStart="@dimen/inner_padding"
@@ -144,6 +198,7 @@
                             android:scaleType="fitXY"
                             app:riv_corner_radius="10dip"/>
                         <Spinner
+                            android:id="@+id/sp_registrationform_kelas"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/input_height"
                             android:paddingStart="@dimen/inner_padding"
@@ -172,7 +227,7 @@
                     android:scaleType="fitXY"
                     app:riv_corner_radius="10dip"/>
                 <EditText
-                    android:id="@+id/et_aregistrationform_add_namaortu"
+                    android:id="@+id/et_registrationform_nama_ortu"
                     android:padding="@dimen/input_text_padding"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -199,7 +254,7 @@
                     android:scaleType="fitXY"
                     app:riv_corner_radius="10dip"/>
                 <EditText
-                    android:id="@+id/et_aregistrationform_add_alamat"
+                    android:id="@+id/et_registrationform_alamat"
                     android:padding="@dimen/input_text_padding"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -207,6 +262,7 @@
                     style="@style/InputText"
                     android:background="@android:color/transparent"/>
             </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,6 +295,7 @@
                             android:scaleType="fitXY"
                             app:riv_corner_radius="10dip"/>
                         <EditText
+                            android:id="@+id/et_registrationform_no_hp_ortu"
                             android:padding="@dimen/input_text_padding"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -272,6 +329,7 @@
                             android:scaleType="fitXY"
                             app:riv_corner_radius="10dip"/>
                         <Spinner
+                            android:id="@+id/sp_registrationform_tahun_ajaran"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/input_height"
                             android:paddingStart="@dimen/inner_padding"
@@ -288,6 +346,7 @@
                 style="@style/LabelText"
                 android:text="@string/unggah_bukti_pembayaran"/>
             <Button
+                android:id="@+id/btn_registrationform_upload_bukti_bayar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/container_padding_x"
@@ -301,7 +360,6 @@
     </ScrollView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_registration_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="28dp"
@@ -319,7 +377,6 @@
             android:layout_marginBottom="@dimen/container_padding_y">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_registration_detail_batal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
@@ -328,6 +385,7 @@
                 app:cardBackgroundColor="@color/colorUnSelect">
 
                 <TextView
+                    android:id="@+id/btn_registrationform_batal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"
@@ -337,7 +395,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_registration_detail_simpan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
@@ -345,6 +402,7 @@
                 app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
+                    android:id="@+id/btn_registrationform_simpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"

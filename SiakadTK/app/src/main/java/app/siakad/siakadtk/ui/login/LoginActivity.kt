@@ -10,48 +10,44 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import androidx.cardview.widget.CardView
 
 import app.siakad.siakadtk.R
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
-
+    private lateinit var etEmail: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var btnLogin: CardView
+    private lateinit var tvForgotPassword: TextView
+    private lateinit var tvSignUp: TextView
+    private lateinit var pbLoading: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-
-        val username = findViewById<EditText>(R.id.edt_login_email)
-        val password = findViewById<EditText>(R.id.edt_login_password)
-        val login = findViewById<Button>(R.id.btn_login)
-        val loading = findViewById<ProgressBar>(R.id.loading)
-
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        setupItemWiew()
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
-            login.isEnabled = loginState.isDataValid
+            btnLogin.isEnabled = loginState.isDataValid
 
             if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
+                etEmail.error = getString(loginState.usernameError)
             }
             if (loginState.passwordError != null) {
-                password.error = getString(loginState.passwordError)
+                etPassword.error = getString(loginState.passwordError)
             }
         })
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
-            loading.visibility = View.GONE
+            pbLoading.visibility = View.GONE
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -64,18 +60,18 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        username.afterTextChanged {
+        etEmail.afterTextChanged {
             loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
+                etEmail.text.toString(),
+                etPassword.text.toString()
             )
         }
 
-        password.apply {
+        etPassword.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                    etEmail.text.toString(),
+                    etPassword.text.toString()
                 )
             }
 
@@ -83,18 +79,30 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
+                            etEmail.text.toString(),
+                            etPassword.text.toString()
                         )
                 }
                 false
             }
 
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
+            btnLogin.setOnClickListener {
+                pbLoading.visibility = View.VISIBLE
+                loginViewModel.login(etEmail.text.toString(), etPassword.text.toString())
             }
         }
+    }
+
+    private fun setupItemWiew() {
+        etEmail = findViewById(R.id.et_login_email)
+        etPassword = findViewById(R.id.et_login_password)
+        btnLogin = findViewById(R.id.btn_login_masuk)
+        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
+        tvSignUp = findViewById(R.id.tv_login_daftar)
+        pbLoading = findViewById(R.id.loading)
+
+        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
+            .get(LoginViewModel::class.java)
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

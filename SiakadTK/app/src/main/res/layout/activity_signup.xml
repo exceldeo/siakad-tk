@@ -18,7 +18,6 @@
         android:layout_centerVertical="true">
 
         <ImageView
-            android:id="@+id/iv_signup_logo"
             android:layout_width="match_parent"
             android:layout_height="114dp"
             android:scaleType="centerInside"
@@ -26,7 +25,6 @@
             android:src="@drawable/ic_logo" />
 
         <TextView
-            android:id="@+id/tv_asignup_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/welcome_text_app"
@@ -68,7 +66,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_signup_email"
+                android:id="@+id/et_signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:hint="@string/email"
@@ -89,7 +87,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_signup_password"
+                android:id="@+id/et_signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:hint="@string/password"
@@ -110,7 +108,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_signup_repeat_password"
+                android:id="@+id/et_signup_repeat_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/ulangi_password"
@@ -121,7 +119,7 @@
         </FrameLayout>
 
         <Button
-            android:id="@+id/btn_signup"
+            android:id="@+id/btn_signup_daftar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/daftar"
@@ -138,7 +136,6 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
             <TextView
-                android:id="@+id/tv_signup_have_an_acc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_text"
@@ -147,7 +144,7 @@
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/tv_signup_login_here"
+                android:id="@+id/btn_signup_masuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_text"

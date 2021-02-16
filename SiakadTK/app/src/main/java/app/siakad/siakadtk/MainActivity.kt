@@ -3,6 +3,7 @@ package app.siakad.siakadtk
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -10,17 +11,28 @@ import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var botnavMain: BottomNavigationView
+    private lateinit var navconMain: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        supportActionBar?.hide()
+        setupItemView()
+        setupView()
+    }
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+    private fun setupItemView() {
+        botnavMain = findViewById(R.id.botnav_view)
+        navconMain = findNavController(R.id.nav_host_fragment)
+    }
+    private fun setupView() {
         val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+            R.id.navigation_home,
+            R.id.navigation_product,
+            R.id.navigation_profile
+        ))
+        setupActionBarWithNavController(navconMain, appBarConfiguration)
+        botnavMain.setupWithNavController(navconMain)
     }
 }

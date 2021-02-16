@@ -147,4 +147,5 @@
     <string name="example_nohp">08125288888</string>
     <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
     <string name="ulangi_password">Ulangi Password</string>
+    <string name="atasan">Atasan</string>
 </resources>

@@ -1,11 +1,12 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtk.R
 
-class ProductDetailActivity : AppCompatActivity() {
+class OrderDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_uniform_detail)
+        setContentView(R.layout.activity_order_detail)
     }
 }

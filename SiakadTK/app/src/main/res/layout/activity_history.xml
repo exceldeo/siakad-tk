@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_ahistory_header">
+        android:id="@+id/rl_history_header">
 
         <ImageView
             android:layout_width="match_parent"
@@ -33,7 +33,6 @@
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
-                android:id="@+id/tv_ahistory_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/histori_pembelian"
@@ -45,8 +44,8 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_ahistory_nota_list"
-        android:layout_below="@id/rl_ahistory_header"
+        android:id="@+id/rv_history_order_list"
+        android:layout_below="@id/rl_history_header"
         style="@style/DefaultMargin"
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"

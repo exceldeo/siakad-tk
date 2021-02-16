@@ -18,7 +18,6 @@
             android:src="@drawable/vc_banner"/>
 
         <TextView
-            android:id="@+id/text_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome"
@@ -45,7 +44,6 @@
                 android:orientation="horizontal"
                 android:weightSum="4">
                 <TextView
-                    android:id="@+id/tv_fhome_pengumuman_title"
                     android:layout_width="0dp"
                     android:layout_weight="3"
                     android:layout_height="wrap_content"
@@ -55,7 +53,7 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginBottom="@dimen/container_padding_y_min"/>
                 <TextView
-                    android:id="@+id/tv_fhome_pengumuman_text"
+                    android:id="@+id/tv_home_pengumuman_lihat_semua"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -73,7 +71,7 @@
                 android:layout_height="128dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_fhome_pengumuman_list"
+                    android:id="@+id/rv_home_pengumuman_list"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/item_row_pengumuman" />
@@ -86,7 +84,6 @@
                 android:layout_marginTop="@dimen/container_padding_y"
                 android:weightSum="4">
                 <TextView
-                    android:id="@+id/tv_fhome_daftar_ulang_title"
                     android:layout_width="0dp"
                     android:layout_weight="3"
                     android:layout_height="wrap_content"
@@ -96,7 +93,7 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginBottom="@dimen/container_padding_y_min"/>
                 <TextView
-                    android:id="@+id/tv_fhome_daftar_ulang_text"
+                    android:id="@+id/tv_home_daful_lihat_semua"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -114,7 +111,7 @@
                 android:layout_height="158dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_fhome_daftar_ulang_list"
+                    android:id="@+id/rv_home_daful_list"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/item_row_daftar_ulang" />
@@ -127,7 +124,6 @@
                 android:layout_marginTop="@dimen/container_padding_y"
                 android:weightSum="4">
                 <TextView
-                    android:id="@+id/tv_fhome_status_pemesanan_title"
                     android:layout_width="0dp"
                     android:layout_weight="3"
                     android:layout_height="wrap_content"
@@ -137,7 +133,7 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginBottom="@dimen/container_padding_y_min"/>
                 <TextView
-                    android:id="@+id/tv_fhome_status_pemesanan_text"
+                    android:id="@+id/tv_home_statuspesan_lihat_semua"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -150,7 +146,7 @@
                     android:layout_marginBottom="@dimen/container_padding_y_min"/>
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_fhome_status_pemesanan_list"
+                android:id="@+id/rv_home_statuspesan_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_grid_nota" />

@@ -57,7 +57,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_login_email"
+                android:id="@+id/et_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:hint="@string/email"
@@ -78,7 +78,7 @@
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
             <EditText
-                android:id="@+id/edt_login_password"
+                android:id="@+id/et_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_height"
                 android:hint="@string/password"
@@ -101,7 +101,7 @@
             android:gravity="end"/>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_login_masuk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/masuk"
@@ -118,7 +118,6 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
             <TextView
-                android:id="@+id/tv_login_doesnt_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_text"
@@ -127,7 +126,7 @@
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/tv_login_register_here"
+                android:id="@+id/tv_login_daftar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_text"
