@@ -1,5 +1,6 @@
 package app.siakad.siakadtkadmin.ui.register
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -11,8 +12,10 @@ import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.ui.login.LoggedInUserView
+import app.siakad.siakadtkadmin.ui.login.LoginActivity
 import app.siakad.siakadtkadmin.ui.login.LoginViewModel
 import app.siakad.siakadtkadmin.ui.login.LoginViewModelFactory
+import app.siakad.siakadtkadmin.ui.main.MainActivity
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -26,6 +29,10 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        supportActionBar?.hide()
+        setupItemView()
+        setupView()
     }
 
     private fun setupItemView() {
@@ -35,6 +42,20 @@ class RegisterActivity : AppCompatActivity() {
         btnSignup = findViewById(R.id.btn_register_daftar)
         tvLogin = findViewById(R.id.tv_register_masuk)
         pbLoading = findViewById(R.id.loading)
+    }
+
+    private fun setupView() {
+        btnSignup.setOnClickListener {
+            val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        tvLogin.setOnClickListener {
+            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

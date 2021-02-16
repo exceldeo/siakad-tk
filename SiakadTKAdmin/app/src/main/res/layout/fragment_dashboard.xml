@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/iv_dashboard"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="123dp"
             android:src="@drawable/vc_banner"
             android:scaleType="centerCrop"/>
@@ -65,68 +65,76 @@
                 android:fontFamily="@font/poppins_extrabold"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom"/>
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="106dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                android:elevation="@dimen/cardview_default_elevation">
 
-                <ImageView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="106dp"
-                    android:src="@drawable/vc_bg_pengumuman_dashboard"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="8dp">
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_notifications_black_24dp"
-                        android:layout_marginEnd="@dimen/container_padding_x"
-                        app:tint="@android:color/white" />
+                        android:layout_width="match_parent"
+                        android:layout_height="106dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/vc_bg_pengumuman_dashboard"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="end">
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:padding="8dp">
 
-                        <TextView
-                            android:id="@+id/tv_dashboard_jumlah_pengumuman"
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_notifications_black_24dp"
+                            android:layout_marginEnd="@dimen/container_padding_x"
+                            app:tint="@android:color/white" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Jumlah Pengumuman:"
-                            android:fontFamily="@font/poppins_extrabold"
-                            android:textSize="@dimen/list_subtitle_text"
-                            android:textColor="@color/colorProcess"/>
+                            android:orientation="vertical"
+                            android:gravity="end">
 
-                        <TextView
-                            android:id="@+id/tv_dashboard_jumlah_notifikasi"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Jumlah Notifikasi:"
-                            android:fontFamily="@font/poppins_extrabold"
-                            android:textSize="@dimen/list_subtitle_text"
-                            android:textColor="@color/colorProcess"/>
+                            <TextView
+                                android:id="@+id/tv_dashboard_jumlah_pengumuman"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Jumlah Pengumuman:"
+                                android:fontFamily="@font/poppins_extrabold"
+                                android:textSize="@dimen/list_subtitle_text"
+                                android:textColor="@color/colorProcess"/>
 
-                        <TextView
-                            android:id="@+id/btn_dashboard_lihat_semua_pengumuman"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:textSize="@dimen/list_subtitle_text"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textAlignment="center"
-                            android:text="Lihat Semua"
-                            android:background="@drawable/ic_button_white_elevated" />
+                            <TextView
+                                android:id="@+id/tv_dashboard_jumlah_notifikasi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Jumlah Notifikasi:"
+                                android:fontFamily="@font/poppins_extrabold"
+                                android:textSize="@dimen/list_subtitle_text"
+                                android:textColor="@color/colorProcess"/>
+
+                            <TextView
+                                android:id="@+id/btn_dashboard_lihat_semua_pengumuman"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:textSize="@dimen/list_subtitle_text"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textAlignment="center"
+                                android:text="Lihat Semua"
+                                android:background="@drawable/ic_button_white_elevated" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -135,68 +143,76 @@
                 style="@style/lTitle"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom"/>
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="106dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                android:elevation="@dimen/cardview_default_elevation">
 
-                <ImageView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="106dp"
-                    android:src="@drawable/vc_bg_pengumuman_dashboard"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="8dp">
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_baseline_person_24"
-                        android:layout_marginEnd="@dimen/container_padding_x"
-                        app:tint="@android:color/white" />
+                        android:layout_width="match_parent"
+                        android:layout_height="106dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/vc_bg_pengumuman_dashboard"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="end">
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:padding="8dp">
 
-                        <TextView
-                            android:id="@+id/tv_dashboard_jumlah_pengguna"
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/ic_baseline_person_24"
+                            android:layout_marginEnd="@dimen/container_padding_x"
+                            app:tint="@android:color/white" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Jumlah Pengguna:"
-                            android:fontFamily="@font/poppins_extrabold"
-                            android:textSize="@dimen/list_subtitle_text"
-                            android:textColor="@color/colorProcess"/>
+                            android:orientation="vertical"
+                            android:gravity="end">
 
-                        <TextView
-                            android:id="@+id/tv_dashboard_jumlah_pengguna_menunggu_verifikasi"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Menunggu Verifikasi:"
-                            android:fontFamily="@font/poppins_extrabold"
-                            android:textSize="@dimen/list_subtitle_text"
-                            android:textColor="@color/colorProcess"/>
+                            <TextView
+                                android:id="@+id/tv_dashboard_jumlah_pengguna"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Jumlah Pengguna:"
+                                android:fontFamily="@font/poppins_extrabold"
+                                android:textSize="@dimen/list_subtitle_text"
+                                android:textColor="@color/colorProcess"/>
 
-                        <TextView
-                            android:id="@+id/btn_dashboard_lihat_semua_pengguna"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:textSize="@dimen/list_subtitle_text"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textAlignment="center"
-                            android:text="Lihat Semua"
-                            android:background="@drawable/ic_button_white_elevated" />
+                            <TextView
+                                android:id="@+id/tv_dashboard_jumlah_pengguna_menunggu_verifikasi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Menunggu Verifikasi:"
+                                android:fontFamily="@font/poppins_extrabold"
+                                android:textSize="@dimen/list_subtitle_text"
+                                android:textColor="@color/colorProcess"/>
+
+                            <TextView
+                                android:id="@+id/btn_dashboard_lihat_semua_pengguna"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:textSize="@dimen/list_subtitle_text"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textAlignment="center"
+                                android:text="Lihat Semua"
+                                android:background="@drawable/ic_button_white_elevated" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -18,58 +18,66 @@
         android:fontFamily="@font/poppins_extrabold"
         android:layout_marginBottom="8dp"/>
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="106dp"
+        app:cardCornerRadius="@dimen/list_corner"
+        android:elevation="@dimen/cardview_default_elevation">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="106dp"
-            android:src="@drawable/vc_bg_pengumuman_dashboard"/>
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="@dimen/appbar_padding_top">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="106dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/vc_bg_pengumuman_dashboard"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="end">
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="@dimen/appbar_padding_top">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Notifikasi Untuk Pengguna"
-                    android:fontFamily="@font/poppins_extrabold"
-                    android:textSize="@dimen/list_title_text"
-                    android:textColor="@color/colorProcess"/>
+                    android:orientation="vertical"
+                    android:gravity="end">
 
-                <TextView
-                    android:id="@+id/tv_announcement_notifikasi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah:"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textSize="@dimen/list_desc_text"
-                    android:textColor="@android:color/white"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Notifikasi Untuk Pengguna"
+                        android:fontFamily="@font/poppins_extrabold"
+                        android:textSize="@dimen/list_title_text"
+                        android:textColor="@color/colorProcess"/>
 
-                <TextView
-                    android:id="@+id/btn_announcement_lihat_semua_notifikasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="Lihat Semua"
-                    android:textSize="@dimen/list_subtitle_text"
-                    android:background="@drawable/ic_button_white_elevated"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/tv_announcement_notifikasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah:"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="@dimen/list_desc_text"
+                        android:textColor="@android:color/white"/>
+
+                    <TextView
+                        android:id="@+id/btn_announcement_lihat_semua_notifikasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Lihat Semua"
+                        android:textSize="@dimen/list_subtitle_text"
+                        android:background="@drawable/ic_button_white_elevated"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textAlignment="center" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
