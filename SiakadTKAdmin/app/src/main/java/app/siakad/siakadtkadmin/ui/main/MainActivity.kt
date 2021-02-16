@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_dashboard,
             R.id.navigation_setting
         ))
-        setupActionBarWithNavController(navconMain, appBarConfiguration)
+//        setupActionBarWithNavController(navconMain, appBarConfiguration)
         botnavMain.setupWithNavController(navconMain)
     }
 }
