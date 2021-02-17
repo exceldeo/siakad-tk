@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".ui.register.RegisterActivity"></activity>
-        <activity android:name=".ui.user.UserDetailActivity"/>
-        <activity android:name=".ui.user.UserDetailUnverActivity" />
+        <activity android:name=".ui.user.detail.UserDetailActivity"/>
+        <activity android:name=".ui.user.detail.UserDetailUnverActivity" />
         <activity android:name=".ui.user.UserActivity" />
         <activity android:name=".ui.product.ProductEditActivity" />
         <activity android:name=".ui.product.ProductAddActivity" />

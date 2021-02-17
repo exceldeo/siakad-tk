@@ -36,7 +36,7 @@
             android:layout_marginStart="@dimen/list_corner">
 
             <TextView
-                android:id="@+id/tv_item_registration_judul"
+                android:id="@+id/tv_item_registration_nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Siswa A"

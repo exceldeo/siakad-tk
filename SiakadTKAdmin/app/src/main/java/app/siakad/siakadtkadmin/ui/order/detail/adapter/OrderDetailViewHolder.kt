@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.item_order.view.*
 import kotlinx.android.synthetic.main.item_order_detail.view.*
 
 class OrderDetailViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    fun itemOrder(item: OrderDetail) {
+    fun insertOrderDetail(item: OrderDetail) {
         with(itemView) {
             iv_item_order_detail
             tv_item_order_detail_nama_produk.text = item.namaProduk

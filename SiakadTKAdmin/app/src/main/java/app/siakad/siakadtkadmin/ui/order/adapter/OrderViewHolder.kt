@@ -6,7 +6,7 @@ import app.siakad.siakadtkadmin.data.model.Order
 import kotlinx.android.synthetic.main.item_order.view.*
 
 class OrderViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    fun itemOrder(item: Order) {
+    fun insertOrder(item: Order) {
         with(itemView) {
             iv_item_order
             tv_item_order_judul.text = item.namaSiswa
