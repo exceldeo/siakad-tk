@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.ui.order
+package app.siakad.siakadtkadmin.ui.order.detail
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

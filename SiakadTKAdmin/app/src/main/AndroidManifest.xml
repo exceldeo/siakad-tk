@@ -16,7 +16,7 @@
         <activity android:name=".ui.product.ProductEditActivity" />
         <activity android:name=".ui.product.ProductAddActivity" />
         <activity android:name=".ui.product.ProductListActivity" />
-        <activity android:name=".ui.order.OrderDetailActivity" />
+        <activity android:name=".ui.order.detail.OrderDetailActivity" />
         <activity android:name=".ui.order.OrderActivity" />
         <activity android:name=".ui.registration.RegistrationDetailActivity" />
         <activity android:name=".ui.registration.RegistrationActivity" />
