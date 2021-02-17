@@ -5,81 +5,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/container_padding_x"
-    android:paddingVertical="@dimen/container_padding_y"
     tools:context=".ui.user.UserDetailActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama Lengkap"
-        style="@style/mdTitle"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/colorPrimary"/>
-
-    <TextView
-        android:id="@+id/tv_user_detail_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Namamu"
-        style="@style/mdContent"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        style="@style/mdTitle"
-        android:textColor="@color/colorPrimary"/>
-
-    <TextView
-        android:id="@+id/tv_user_detail_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="email@exam.com"
-        style="@style/mdContent"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Passsword"
-        style="@style/mdTitle"
-        android:textColor="@color/colorPrimary"/>
-
-    <TextView
-        android:id="@+id/tv_user_detail_passwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="********"
-        style="@style/mdContent"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data Pengguna"
-        style="@style/mdTitle"
-        android:layout_marginBottom="0dp"
-        android:textColor="@color/colorPrimary"/>
-
-    <View
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/colorPrimary"/>
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
 
-    <ScrollView
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/container_padding_x"
+        android:paddingVertical="@dimen/container_padding_y">
 
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap"
+            style="@style/mdTitle"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/tv_user_detail_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Namamu"
+            style="@style/mdContent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            style="@style/mdTitle"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/tv_user_detail_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email@exam.com"
+            style="@style/mdContent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passsword"
+            style="@style/mdTitle"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/tv_user_detail_passwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="********"
+            style="@style/mdContent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Pengguna"
+            style="@style/mdTitle"
+            android:layout_marginBottom="0dp"
+            android:textColor="@color/colorPrimary"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/colorPrimary"/>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:scrollbars="none">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_user_detail_daftar_data"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_user_detail"/>
-        </LinearLayout>
-    </ScrollView>
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_user_detail_daftar_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_user_detail"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

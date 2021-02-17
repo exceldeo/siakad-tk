@@ -55,4 +55,5 @@
     <dimen name="list_image_md">64dp</dimen>
     <dimen name="list_grid_image">146dp</dimen>
     <dimen name="icon">16dp</dimen>
+    <dimen name="appbar_height">123dp</dimen>
 </resources>
