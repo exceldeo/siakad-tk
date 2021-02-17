@@ -1,15 +1,19 @@
 package app.siakad.siakadtk.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.AnnouncementListActivity
+import app.siakad.siakadtk.HistoryActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.RegistrationFormActivity
+import app.siakad.siakadtk.ui.order.OrderListActivity
 
 class HomeFragment : Fragment() {
 
@@ -28,6 +32,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         setupItemView(view)
+        setupView()
         return view
     }
     
@@ -36,7 +41,7 @@ class HomeFragment : Fragment() {
             tvSeeAllAnnouncement = v.findViewById(R.id.tv_home_pengumuman_lihat_semua)
             rvAnnouncement = v.findViewById(R.id.rv_home_pengumuman_list)
             tvSeeAllRegistration = v.findViewById(R.id.tv_home_daful_lihat_semua)
-            rvRegistration = v.findViewById(R.id.tv_home_daful_lihat_semua)
+            rvRegistration = v.findViewById(R.id.rv_home_daful_list)
             tvSeeAllOrderStatus = v.findViewById(R.id.tv_home_statuspesan_lihat_semua)
             rvOrderStatus = v.findViewById(R.id.rv_home_statuspesan_list)
         }
@@ -47,5 +52,22 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
+    }
+
+    private fun setupView() {
+        tvSeeAllAnnouncement.setOnClickListener{
+            val intent = Intent(this@HomeFragment.context, AnnouncementListActivity::class.java)
+            startActivity(intent)
+        }
+
+        tvSeeAllRegistration.setOnClickListener{
+            val intent = Intent(this@HomeFragment.context, RegistrationFormActivity::class.java)
+            startActivity(intent)
+        }
+
+        tvSeeAllOrderStatus.setOnClickListener{
+            val intent = Intent(this@HomeFragment.context, OrderListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

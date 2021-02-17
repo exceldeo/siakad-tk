@@ -6,6 +6,11 @@
         <item name="colorOnSecondary">@color/colorPrimaryLight</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="ListTitle">
         <item name="android:layout_marginBottom">@dimen/container_padding_y</item>
         <item name="android:layout_marginTop">@dimen/list_space</item>
