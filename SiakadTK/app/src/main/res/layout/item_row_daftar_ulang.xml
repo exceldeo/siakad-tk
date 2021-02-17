@@ -25,7 +25,7 @@
             android:padding="@dimen/container_double_padding_y">
 
             <TextView
-                android:id="@+id/tv_item_daftar_ulang_title"
+                android:id="@+id/tv_item_daful_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
@@ -35,7 +35,7 @@
                 android:textSize="@dimen/card_title_text" />
 
             <TextView
-                android:id="@+id/tv_item_daftar_ulang_desc"
+                android:id="@+id/tv_item_daful_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/desc_daftar_ulang"
@@ -44,19 +44,15 @@
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/white" />
 
-            <TextView
-                android:id="@+id/btn_dashboard_lihat_semua_pengumuman"
-                android:layout_marginTop="@dimen/container_padding_y_min"
+            <ImageButton
+                android:id="@+id/ibtn_item_daful"
+                android:layout_marginTop="@dimen/container_padding_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/list_desc_text"
-                android:fontFamily="@font/poppins_bold"
                 android:layout_gravity="end"
                 android:gravity="center"
-                android:text="Daftar Ulang"
-                android:textColor="@color/colorPrimary"
-                android:textAllCaps="true"
-                android:background="@drawable/ic_button_elevated_white" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_daful_start"/>
         </LinearLayout>
     </FrameLayout>
 

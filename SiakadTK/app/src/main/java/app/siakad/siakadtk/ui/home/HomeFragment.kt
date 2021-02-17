@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -27,8 +28,9 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var tvSeeAllAnnouncement: TextView
     private lateinit var rvAnnouncement: RecyclerView
-    private lateinit var tvSeeAllRegistration: TextView
-    private lateinit var rvRegistration: RecyclerView
+    private lateinit var tvStatusRegistrationTitle: TextView
+    private lateinit var tvStatusRegistrationDesc: TextView
+    private lateinit var ibtnStatusRegistration: ImageButton
     private lateinit var tvSeeAllOrderStatus: TextView
     private lateinit var rvOrderStatus: RecyclerView
     private var listNota: ArrayList<Nota> = arrayListOf()
@@ -49,8 +51,9 @@ class HomeFragment : Fragment() {
         if(v != null) {
             tvSeeAllAnnouncement = v.findViewById(R.id.tv_home_pengumuman_lihat_semua)
             rvAnnouncement = v.findViewById(R.id.rv_home_pengumuman_list)
-            tvSeeAllRegistration = v.findViewById(R.id.tv_home_daful_lihat_semua)
-            rvRegistration = v.findViewById(R.id.rv_home_daful_list)
+            tvStatusRegistrationTitle = v.findViewById(R.id.tv_home_item_daful_title)
+            tvStatusRegistrationDesc = v.findViewById(R.id.tv_home_item_daful_desc)
+            ibtnStatusRegistration = v.findViewById(R.id.ibtn_home_item_daful)
             tvSeeAllOrderStatus = v.findViewById(R.id.tv_home_statuspesan_lihat_semua)
             rvOrderStatus = v.findViewById(R.id.rv_home_statuspesan_list)
 
@@ -89,7 +92,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        tvSeeAllRegistration.setOnClickListener{
+        ibtnStatusRegistration.setOnClickListener{
             val intent = Intent(this@HomeFragment.context, RegistrationFormActivity::class.java)
             startActivity(intent)
         }
