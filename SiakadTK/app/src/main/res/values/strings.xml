@@ -111,6 +111,14 @@
     <string name="terverivikasi_dan_menunggu_pembayaran">Terverivikasi dan menunggu pembayaran.</string>
     <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
+    <string name="registration_detail_price">
+        Dengan Perincian <br></br> 1. Worksheet <br></br> 2. Field Trip Tahunan <br></br> 3. Iuran IDPP
+    </string>
+
+    <string name="registration_detail_transfer">
+        Transfer ke Rekening BNI: <br></br> a.n SekolahTK  <br></br> 1234567
+    </string>
+
     <string-array name="list_jenis_kelamin">
         <item>Perempuan</item>
         <item>Laki-Laki</item>
@@ -148,4 +156,8 @@
     <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
     <string name="ulangi_password">Ulangi Password</string>
     <string name="atasan">Atasan</string>
+    <string name="info_pendaftaran">Info Pendaftaran</string>
+    <string name="total_biaya">Total Biaya</string>
+    <string name="status_pendaftaran">Status Pendaftaran</string>
+    <string name="hingga">Hingga</string>
 </resources>

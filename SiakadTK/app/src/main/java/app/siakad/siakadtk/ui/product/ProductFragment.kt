@@ -9,9 +9,13 @@ import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.ui.basket.BasketActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.ui.announcement.Announcement
+import app.siakad.siakadtk.ui.nota.ListNotaAdapter
 
 class ProductFragment : Fragment() {
 
@@ -19,6 +23,8 @@ class ProductFragment : Fragment() {
     private lateinit var svProduct: SearchView
     private lateinit var btnMyBasket: LinearLayout
     private lateinit var rvProduct: RecyclerView
+    private var listProduct: ArrayList<Product> = arrayListOf()
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -37,7 +43,17 @@ class ProductFragment : Fragment() {
             svProduct = v.findViewById(R.id.sv_product_cari_produk)
             btnMyBasket = v.findViewById(R.id.btn_product_keranjang_saya)
             rvProduct =v.findViewById(R.id.rv_product_produk_list)
+
+            rvProduct.setHasFixedSize(true)
+            listProduct.addAll(ProductsData.listData)
+            showProductRecyclerList()
         }
+    }
+
+    private fun showProductRecyclerList() {
+        rvProduct.layoutManager = GridLayoutManager(this.context, 2)
+        val listProductAdapter = ListProductAdapter(listProduct)
+        rvProduct.adapter = listProductAdapter
     }
 
     private fun setupView() {

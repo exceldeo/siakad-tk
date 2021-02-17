@@ -25,6 +25,7 @@ class RegistrationFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_form)
         setupItemView()
+        setupView()
     }
 
     private fun setupItemView() {
@@ -42,4 +43,11 @@ class RegistrationFormActivity : AppCompatActivity() {
         btnCancel = findViewById(R.id.btn_registrationform_batal)
         btnSimpan = findViewById(R.id.btn_registrationform_simpan)
     }
+
+    private fun setupView() {
+        ibtnBack.setOnClickListener{
+
+        }
+    }
+
 }

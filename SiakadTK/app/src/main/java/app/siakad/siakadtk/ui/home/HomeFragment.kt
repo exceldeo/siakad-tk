@@ -22,6 +22,7 @@ import app.siakad.siakadtk.ui.nota.NotasData
 import app.siakad.siakadtk.ui.registration.RegistrationFormActivity
 import app.siakad.siakadtk.ui.order.OrderListActivity
 import app.siakad.siakadtk.ui.profile.UserActivities
+import app.siakad.siakadtk.ui.registration.RegistrationActivity
 
 class HomeFragment : Fragment() {
 
@@ -93,7 +94,7 @@ class HomeFragment : Fragment() {
         }
 
         ibtnStatusRegistration.setOnClickListener{
-            val intent = Intent(this@HomeFragment.context, RegistrationFormActivity::class.java)
+            val intent = Intent(this@HomeFragment.context, RegistrationActivity::class.java)
             startActivity(intent)
         }
 
