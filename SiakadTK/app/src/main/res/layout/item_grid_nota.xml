@@ -22,6 +22,7 @@
             android:padding="@dimen/container_padding_x">
             
             <TextView
+                android:id="@+id/tv_nota_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/inner_padding"
@@ -39,6 +40,7 @@
                 android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
+                android:id="@+id/tv_nota_macam_produk"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/example_produk"
@@ -46,39 +48,68 @@
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/poppins_regular"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/inner_padding"
-                android:text="Tanggal Disetujui :"
-                android:textSize="@dimen/card_desc_text"
-                android:textColor="@color/colorBlack"
-                android:fontFamily="@font/poppins_regular"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="Tanggal Disetujui :"
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+                <TextView
+                    android:id="@+id/tv_nota_tgl_disetujui"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_text"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/example_date"
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Total Biaya : "
-                android:textSize="@dimen/card_desc_text"
-                android:textColor="@color/colorBlack"
-                android:fontFamily="@font/poppins_semibold"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Biaya : "
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_semibold"/>
+                <TextView
+                    android:id="@+id/tv_nota_total_harga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/example_price"
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/inner_padding"
-                android:weightSum="3">
+                android:layout_marginTop="@dimen/inner_padding">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Status : "
                     android:textSize="@dimen/card_desc_text"
                     android:textColor="@color/colorBlack"
                     android:fontFamily="@font/poppins_semibold"/>
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_nota_status"
+                    android:layout_marginStart="@dimen/container_padding_x"
+                    android:layout_width="122dp"
+                    android:layout_height="28dp"
                     android:src="@drawable/ic_status_menunggu_pembayaran"/>
             </LinearLayout>
         </LinearLayout>

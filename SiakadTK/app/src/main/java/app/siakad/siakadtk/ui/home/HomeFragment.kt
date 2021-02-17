@@ -8,11 +8,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.ui.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.ui.nota.ListNotaAdapter
+import app.siakad.siakadtk.ui.nota.Nota
+import app.siakad.siakadtk.ui.nota.NotasData
 import app.siakad.siakadtk.ui.registration.RegistrationFormActivity
 import app.siakad.siakadtk.ui.order.OrderListActivity
+import app.siakad.siakadtk.ui.profile.UserActivities
 
 class HomeFragment : Fragment() {
 
@@ -23,7 +28,8 @@ class HomeFragment : Fragment() {
     private lateinit var rvRegistration: RecyclerView
     private lateinit var tvSeeAllOrderStatus: TextView
     private lateinit var rvOrderStatus: RecyclerView
-    
+    private var listNota: ArrayList<Nota> = arrayListOf()
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -43,6 +49,10 @@ class HomeFragment : Fragment() {
             rvRegistration = v.findViewById(R.id.rv_home_daful_list)
             tvSeeAllOrderStatus = v.findViewById(R.id.tv_home_statuspesan_lihat_semua)
             rvOrderStatus = v.findViewById(R.id.rv_home_statuspesan_list)
+
+            rvOrderStatus.setHasFixedSize(true)
+            listNota.addAll(NotasData.listData)
+            showNotaRecyclerList()
         }
 
         homeViewModel =
@@ -51,6 +61,12 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
+    }
+
+    private fun showNotaRecyclerList() {
+        rvOrderStatus.layoutManager = LinearLayoutManager(this.context)
+        val listNotaAdapter = ListNotaAdapter(listNota)
+        rvOrderStatus.adapter = listNotaAdapter
     }
 
     private fun setupView() {
