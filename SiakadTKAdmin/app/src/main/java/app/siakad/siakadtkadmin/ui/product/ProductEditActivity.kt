@@ -1,7 +1,9 @@
 package app.siakad.siakadtkadmin.ui.product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.Toolbar
@@ -30,6 +32,19 @@ class ProductEditActivity : AppCompatActivity() {
         setupView()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this@ProductEditActivity, ProductListActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun setupItemView() {
         toolbar = findViewById(R.id.toolbar_main)
         btnEditPhoto = findViewById(R.id.btn_product_edit_ganti_foto)
@@ -46,6 +61,7 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     private fun setupAppBar() {
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_clear_24)
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

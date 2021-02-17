@@ -1,18 +1,17 @@
 package app.siakad.siakadtkadmin.ui.announcement
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.ui.main.MainActivity
 import app.siakad.siakadtkadmin.ui.notification.NotificationActivity
+
 
 class AnnouncementActivity : AppCompatActivity() {
 
@@ -31,6 +30,19 @@ class AnnouncementActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this@AnnouncementActivity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupItemView() {
