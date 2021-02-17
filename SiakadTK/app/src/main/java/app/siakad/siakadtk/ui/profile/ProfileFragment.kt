@@ -1,5 +1,6 @@
 package app.siakad.siakadtk.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.HistoryActivity
+import app.siakad.siakadtk.ProfileActivity
 import app.siakad.siakadtk.R
-import org.w3c.dom.Text
+import app.siakad.siakadtk.RegistrationFormActivity
 
 class ProfileFragment : Fragment() {
 
@@ -21,6 +24,7 @@ class ProfileFragment : Fragment() {
     private lateinit var tvStudentName: TextView
     private lateinit var tvClassStudent: TextView
     private lateinit var rvMyActivity: RecyclerView
+    private var list: ArrayList<UserActivities> = arrayListOf()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -29,6 +33,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         setupItemView(view)
+        setupView()
         return view
     }
 
@@ -39,8 +44,31 @@ class ProfileFragment : Fragment() {
             tvStudentName = v.findViewById(R.id.tv_profile_nama_siswa)
             tvClassStudent = v.findViewById(R.id.tv_profile_kelas_siswa)
             rvMyActivity = v.findViewById(R.id.rv_profile_activity_list)
+
+            rvMyActivity.setHasFixedSize(true)
+
+            list.addAll(UserActivitiesData.listData)
+            showMyActivityRecyclerList()
         }
         profileViewModel =
             ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+    }
+
+    private fun setupView() {
+        ibtnHistory.setOnClickListener{
+            val intent = Intent(this@ProfileFragment.context, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        ibtnRegistration.setOnClickListener{
+            val intent = Intent(this@ProfileFragment.context, RegistrationFormActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun showMyActivityRecyclerList() {
+        rvMyActivity.layoutManager = LinearLayoutManager(this.context)
+        val listUserActivitiesAdapter = ListUserActivitiesAdapter(list)
+        rvMyActivity.adapter = listUserActivitiesAdapter
     }
 }

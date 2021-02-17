@@ -18,7 +18,7 @@
         tools:text="@string/title_user_activity"/>
 
     <TextView
-        android:id="@+id/tv_useractivity_nama_barang"
+        android:id="@+id/tv_useractivity_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"

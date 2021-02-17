@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
-    private lateinit var btnLogin: CardView
+    private lateinit var btnLogin: Button
     private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar

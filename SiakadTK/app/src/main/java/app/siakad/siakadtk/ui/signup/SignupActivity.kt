@@ -3,16 +3,14 @@ package app.siakad.siakadtk.ui.signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtk.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.ui.login.LoginActivity
-import app.siakad.siakadtk.ui.login.LoginViewModel
-import app.siakad.siakadtk.ui.login.LoginViewModelFactory
 
 class SignupActivity : AppCompatActivity() {
 
@@ -20,7 +18,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var etRepeatPassword: EditText
-    private lateinit var btnSignup: CardView
+    private lateinit var btnSignup: Button
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
