@@ -1,8 +1,9 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.announcement
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.R
 
 class AnnouncementListActivity : AppCompatActivity() {
 

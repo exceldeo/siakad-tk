@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.registration.RegistrationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vc_toolbar_bg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/container_padding_x"
+            android:layout_centerVertical="true"
+            android:paddingStart="@dimen/container_padding_x"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ibtn_registration_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daftar_ulang"
+                android:layout_marginStart="@dimen/list_space"
+                android:textSize="@dimen/header_title_text"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/poppins_semibold" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DefaultMargin"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/container_padding_x"
+                android:background="@drawable/fill_input"
+                android:padding="@dimen/container_padding_x"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/info_pendaftaran"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/list_title_text"
+                    tools:targetApi="lollipop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Uang Kegiatan Tahun Ajaran 2020-2021"
+                    android:textSize="@dimen/list_desc_text"
+                    tools:targetApi="lollipop" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/total_biaya"
+                        android:textSize="@dimen/list_desc_text" />
+                    <TextView
+                        android:id="@+id/tv_registration_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_text"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/example_price"
+                        android:textSize="@dimen/list_desc_text" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_registration_detail"
+                    android:layout_marginTop="@dimen/padding_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/registration_detail_price"
+                    android:textSize="@dimen/list_desc_text" />
+
+                <TextView
+                    android:id="@+id/tv_registration_transfer"
+                    android:layout_marginTop="@dimen/padding_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/registration_detail_transfer"
+                    android:textSize="@dimen/list_desc_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/container_padding_x"
+                android:background="@drawable/fill_input"
+                android:padding="@dimen/container_padding_x"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/status_pendaftaran"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/list_title_text"
+                    tools:targetApi="lollipop" />
+
+                <TextView
+                    android:id="@+id/tv_registration_desc_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/terverivikasi_dan_menunggu_pembayaran"
+                    android:textSize="@dimen/list_desc_text" />
+
+                <ImageView
+                    android:id="@+id/iv_registration_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:src="@drawable/ic_status_proses"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_registration_go_to_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:text="@string/form_daftar_ulang"
+                style="@style/CommonButton"
+                android:textColor="@android:color/white"
+                android:background="@drawable/fill_primary_button"
+                android:layout_marginTop="@dimen/container_double_padding_y" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/vc_banner"/>
 
         <TextView
@@ -75,6 +75,8 @@
                     android:id="@+id/rv_home_pengumuman_list"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_row_pengumuman" />
             </HorizontalScrollView>
 
@@ -93,30 +95,57 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/colorBlack"
                     android:layout_marginBottom="@dimen/container_padding_y_min"/>
-                <TextView
-                    android:id="@+id/tv_home_daful_lihat_semua"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lihat_semua"
-                    android:textSize="@dimen/list_desc_text"
-                    android:textAllCaps="true"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/colorPrimary"
-                    android:textAlignment="textEnd"
-                    android:layout_marginBottom="@dimen/container_padding_y_min"/>
             </LinearLayout>
 
-            <HorizontalScrollView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="158dp">
+                android:layout_height="match_parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_home_daful_list"
-                    android:layout_width="wrap_content"
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/item_row_daftar_ulang" />
-            </HorizontalScrollView>
+                    app:riv_corner_radius="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vc_pengumuman" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/container_double_padding_y">
+
+                    <TextView
+                        android:id="@+id/tv_home_item_daful_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="left"
+                        android:text="@string/belum_daftar_ulang"
+                        android:textColor="@color/colorProcess"
+                        android:textSize="@dimen/card_title_text" />
+
+                    <TextView
+                        android:id="@+id/tv_home_item_daful_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="left"
+                        android:text="@string/desc_daftar_ulang"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/list_status_text" />
+
+                    <ImageButton
+                        android:id="@+id/ibtn_home_item_daful"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/container_padding_x"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:src="@drawable/ic_daful_start" />
+                </LinearLayout>
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,6 +181,5 @@
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_grid_nota" />
         </LinearLayout>
-
     </ScrollView>
 </LinearLayout>

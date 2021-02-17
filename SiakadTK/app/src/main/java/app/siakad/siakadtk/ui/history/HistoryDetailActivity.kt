@@ -1,9 +1,10 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.history
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.R
 
 class HistoryDetailActivity : AppCompatActivity() {
     private lateinit var tvDateOrder: TextView

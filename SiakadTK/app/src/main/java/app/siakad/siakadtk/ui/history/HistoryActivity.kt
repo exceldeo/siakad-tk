@@ -1,11 +1,10 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.history
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtk.ui.profile.ProfileFragment
+import app.siakad.siakadtk.R
 
 class HistoryActivity : AppCompatActivity() {
 

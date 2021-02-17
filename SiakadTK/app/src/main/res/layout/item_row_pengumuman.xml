@@ -6,6 +6,7 @@
     android:id="@+id/detail_list_pengumuman"
     android:layout_width="308dp"
     android:layout_height="128dp"
+    android:layout_marginEnd="@dimen/container_padding_x"
     android:layout_marginBottom="@dimen/list_space">
 
     <FrameLayout
@@ -39,9 +40,8 @@
                 android:layout_height="wrap_content"
                 android:text="Hingga 31 Januari 2021"
                 android:gravity="left"
-                android:textAllCaps="true"
-                android:textSize="@dimen/card_subtitle_text"
-                android:fontFamily="@font/poppins_semibold"
+                android:textSize="@dimen/list_desc_text"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </FrameLayout>
