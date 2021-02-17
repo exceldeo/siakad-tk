@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.ui.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.ui.announcement.Announcement
+import app.siakad.siakadtk.ui.announcement.AnnouncementsData
+import app.siakad.siakadtk.ui.announcement.ListAnnouncementAdapter
 import app.siakad.siakadtk.ui.nota.ListNotaAdapter
 import app.siakad.siakadtk.ui.nota.Nota
 import app.siakad.siakadtk.ui.nota.NotasData
@@ -29,6 +32,7 @@ class HomeFragment : Fragment() {
     private lateinit var tvSeeAllOrderStatus: TextView
     private lateinit var rvOrderStatus: RecyclerView
     private var listNota: ArrayList<Nota> = arrayListOf()
+    private var listAnnouncement: ArrayList<Announcement> = arrayListOf()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -50,6 +54,10 @@ class HomeFragment : Fragment() {
             tvSeeAllOrderStatus = v.findViewById(R.id.tv_home_statuspesan_lihat_semua)
             rvOrderStatus = v.findViewById(R.id.rv_home_statuspesan_list)
 
+            rvAnnouncement.setHasFixedSize(true)
+            listAnnouncement.addAll(AnnouncementsData.listData)
+            showAnnouncementRecyclerList()
+
             rvOrderStatus.setHasFixedSize(true)
             listNota.addAll(NotasData.listData)
             showNotaRecyclerList()
@@ -67,6 +75,12 @@ class HomeFragment : Fragment() {
         rvOrderStatus.layoutManager = LinearLayoutManager(this.context)
         val listNotaAdapter = ListNotaAdapter(listNota)
         rvOrderStatus.adapter = listNotaAdapter
+    }
+
+    private fun showAnnouncementRecyclerList() {
+        rvAnnouncement.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        val listAnnouncementAdapter = ListAnnouncementAdapter(listAnnouncement)
+        rvAnnouncement.adapter = listAnnouncementAdapter
     }
 
     private fun setupView() {

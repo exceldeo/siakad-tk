@@ -22,15 +22,14 @@ class ListNotaAdapter (val listNota: ArrayList<Nota>): RecyclerView.Adapter<List
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val nota = listNota[position]
 
-        Glide.with(holder.itemView.context)
-            .load(nota.status)
-            .apply(RequestOptions())
-            .into(holder.ivStatus)
-
         holder.tvTitle.text = nota.title
         holder.tvProducts.text = nota.product
         holder.tvDateAccepted.text = nota.dateAccepted
         holder.tvTotalPrice.text = nota.totalPrice.toString()
+        Glide.with(holder.itemView.context)
+            .load(nota.status)
+            .apply(RequestOptions())
+            .into(holder.ivStatus)
     }
 
     override fun getItemCount(): Int {

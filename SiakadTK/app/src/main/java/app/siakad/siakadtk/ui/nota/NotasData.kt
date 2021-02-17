@@ -30,7 +30,8 @@ object NotasData {
     private val notasStatus = intArrayOf(
         R.drawable.ic_status_menunggu_pembayaran,
         R.drawable.ic_status_proses,
-        R.drawable.ic_status_selesai)
+        R.drawable.ic_status_selesai,
+        R.drawable.ic_status_menunggu_pembayaran)
 
 
     val listData: ArrayList<Nota>

@@ -75,6 +75,8 @@
                     android:id="@+id/rv_home_pengumuman_list"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_row_pengumuman" />
             </HorizontalScrollView>
 
