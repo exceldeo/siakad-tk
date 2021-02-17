@@ -1,9 +1,10 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.product
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.R
 
 class ProductListActivity : AppCompatActivity() {
 

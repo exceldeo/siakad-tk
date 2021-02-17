@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtk.HistoryActivity
-import app.siakad.siakadtk.ProfileActivity
+import app.siakad.siakadtk.ui.history.HistoryActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.RegistrationFormActivity
+import app.siakad.siakadtk.ui.registration.RegistrationFormActivity
 
 class ProfileFragment : Fragment() {
 

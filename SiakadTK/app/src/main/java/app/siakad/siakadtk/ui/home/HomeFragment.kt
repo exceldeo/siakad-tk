@@ -9,10 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtk.AnnouncementListActivity
-import app.siakad.siakadtk.HistoryActivity
+import app.siakad.siakadtk.ui.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.RegistrationFormActivity
+import app.siakad.siakadtk.ui.registration.RegistrationFormActivity
 import app.siakad.siakadtk.ui.order.OrderListActivity
 
 class HomeFragment : Fragment() {

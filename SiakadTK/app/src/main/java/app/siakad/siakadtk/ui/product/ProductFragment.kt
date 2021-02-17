@@ -10,9 +10,8 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtk.BasketActivity
+import app.siakad.siakadtk.ui.basket.BasketActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.ui.order.OrderListActivity
 
 class ProductFragment : Fragment() {
 

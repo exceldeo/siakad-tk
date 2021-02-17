@@ -1,12 +1,10 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.basket
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtk.ui.order.OrderListActivity
-import app.siakad.siakadtk.ui.product.ProductFragment
+import app.siakad.siakadtk.R
 
 class BasketActivity : AppCompatActivity() {
 

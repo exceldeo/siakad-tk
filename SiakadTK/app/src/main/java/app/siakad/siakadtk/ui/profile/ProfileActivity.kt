@@ -1,10 +1,11 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import app.siakad.siakadtk.R
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileActivity : AppCompatActivity() {

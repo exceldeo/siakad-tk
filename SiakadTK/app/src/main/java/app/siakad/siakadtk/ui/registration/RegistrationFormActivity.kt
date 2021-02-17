@@ -1,9 +1,9 @@
-package app.siakad.siakadtk
+package app.siakad.siakadtk.ui.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import de.hdodenhof.circleimageview.CircleImageView
+import app.siakad.siakadtk.R
 
 class RegistrationFormActivity : AppCompatActivity() {
 
