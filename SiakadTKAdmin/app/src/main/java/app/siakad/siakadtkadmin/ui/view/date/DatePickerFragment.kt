@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.ui.announcement.view.date
+package app.siakad.siakadtkadmin.ui.view.date
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
-import app.siakad.siakadtkadmin.ui.announcement.view.date.DateListener
 import java.util.*
 
 class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {

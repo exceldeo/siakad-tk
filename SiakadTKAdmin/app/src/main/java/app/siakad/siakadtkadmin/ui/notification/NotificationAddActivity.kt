@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.ui.announcement.AnnouncementActivity
+import app.siakad.siakadtkadmin.ui.view.date.DatePickerHelper
 
 class NotificationAddActivity : AppCompatActivity() {
 
@@ -22,6 +23,8 @@ class NotificationAddActivity : AppCompatActivity() {
     private lateinit var etDate: EditText
     private lateinit var btnCancel: CardView
     private lateinit var btnSave: CardView
+
+    private lateinit var datePicker: DatePickerHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +55,19 @@ class NotificationAddActivity : AppCompatActivity() {
         etDate = findViewById(R.id.et_notification_add_tanggal)
         btnCancel = findViewById(R.id.btn_notification_add_batal)
         btnSave = findViewById(R.id.btn_notification_add_simpan)
+
+        datePicker = DatePickerHelper(supportFragmentManager)
     }
 
     private fun setupView() {
         setupAppBar()
+
+        ivDate.setOnClickListener {
+            datePicker.showDialog()
+        }
+        etDate.setOnClickListener {
+            datePicker.showDialog()
+        }
     }
 
     private fun setupAppBar() {
