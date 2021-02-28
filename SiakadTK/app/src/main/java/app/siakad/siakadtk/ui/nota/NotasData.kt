@@ -1,7 +1,7 @@
 package app.siakad.siakadtk.ui.nota
 
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.ui.profile.UserActivities
+import app.siakad.siakadtk.data.model.Nota
 
 object NotasData {
     private val notasNames = arrayOf(

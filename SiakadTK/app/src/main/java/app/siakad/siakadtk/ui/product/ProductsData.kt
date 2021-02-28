@@ -1,6 +1,7 @@
 package app.siakad.siakadtk.ui.product
 
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.data.model.Product
 
 object ProductsData {
     private val productNames = arrayOf(
@@ -11,11 +12,6 @@ object ProductsData {
     private val productStatus = arrayOf(
         "Wajib",
         "Opsional"
-    )
-
-    private val productDeadline = arrayOf(
-        "21/01/2021",
-        "21/02/2021"
     )
 
     private val productPrice = intArrayOf(
@@ -33,7 +29,6 @@ object ProductsData {
                 val book = Product()
                 book.title = productNames[position]
                 book.status = productStatus[position]
-                book.dateDeadline = productDeadline[position]
                 book.price = productPrice[position]
                 book.img = productImg[position]
                 list.add(book)

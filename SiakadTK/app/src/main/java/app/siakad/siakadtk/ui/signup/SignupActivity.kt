@@ -21,6 +21,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var btnSignup: Button
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
+    private lateinit var btnUploadBukti: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -35,18 +36,21 @@ class SignupActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.et_signup_email)
         etPassword = findViewById(R.id.et_signup_password)
         etRepeatPassword = findViewById(R.id.et_signup_repeat_password)
+        btnUploadBukti = findViewById(R.id.btn_signup_upload_bukti)
         btnSignup = findViewById(R.id.btn_signup_daftar)
         tvLogin = findViewById(R.id.btn_signup_masuk)
         pbLoading = findViewById(R.id.loading)
     }
 
     private fun setupView() {
+        btnUploadBukti.setOnClickListener {
+            //tampil modal buat upload bukti bayar
+        }
         btnSignup.setOnClickListener {
             val intent = Intent(this@SignupActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
-
         tvLogin.setOnClickListener {
             val intent = Intent(this@SignupActivity, LoginActivity::class.java)
             startActivity(intent)

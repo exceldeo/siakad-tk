@@ -13,15 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.ui.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.ui.announcement.Announcement
+import app.siakad.siakadtk.data.model.Announcement
 import app.siakad.siakadtk.ui.announcement.AnnouncementsData
-import app.siakad.siakadtk.ui.announcement.ListAnnouncementAdapter
-import app.siakad.siakadtk.ui.nota.ListNotaAdapter
-import app.siakad.siakadtk.ui.nota.Nota
+import app.siakad.siakadtk.ui.announcement.AnnouncementAdapter
+import app.siakad.siakadtk.ui.nota.NotaAdapter
+import app.siakad.siakadtk.data.model.Nota
 import app.siakad.siakadtk.ui.nota.NotasData
-import app.siakad.siakadtk.ui.registration.RegistrationFormActivity
 import app.siakad.siakadtk.ui.order.OrderListActivity
-import app.siakad.siakadtk.ui.profile.UserActivities
 import app.siakad.siakadtk.ui.registration.RegistrationActivity
 
 class HomeFragment : Fragment() {
@@ -77,14 +75,14 @@ class HomeFragment : Fragment() {
 
     private fun showNotaRecyclerList() {
         rvOrderStatus.layoutManager = LinearLayoutManager(this.context)
-        val listNotaAdapter = ListNotaAdapter(listNota)
-        rvOrderStatus.adapter = listNotaAdapter
+        val notaAdapter = NotaAdapter(listNota)
+        rvOrderStatus.adapter = notaAdapter
     }
 
     private fun showAnnouncementRecyclerList() {
         rvAnnouncement.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-        val listAnnouncementAdapter = ListAnnouncementAdapter(listAnnouncement)
-        rvAnnouncement.adapter = listAnnouncementAdapter
+        val announcementAdapter = AnnouncementAdapter(listAnnouncement)
+        rvAnnouncement.adapter = announcementAdapter
     }
 
     private fun setupView() {

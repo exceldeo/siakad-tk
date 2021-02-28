@@ -10,12 +10,10 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.ui.basket.BasketActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.ui.announcement.Announcement
-import app.siakad.siakadtk.ui.nota.ListNotaAdapter
+import app.siakad.siakadtk.data.model.Product
 
 class ProductFragment : Fragment() {
 
@@ -52,7 +50,7 @@ class ProductFragment : Fragment() {
 
     private fun showProductRecyclerList() {
         rvProduct.layoutManager = GridLayoutManager(this.context, 2)
-        val listProductAdapter = ListProductAdapter(listProduct)
+        val listProductAdapter = ProductAdapter(listProduct)
         rvProduct.adapter = listProductAdapter
     }
 

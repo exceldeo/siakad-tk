@@ -1,7 +1,6 @@
 package app.siakad.siakadtk.ui.announcement
 
-import app.siakad.siakadtk.R
-import app.siakad.siakadtk.ui.nota.Nota
+import app.siakad.siakadtk.data.model.Announcement
 
 object AnnouncementsData {
     private val announcementsTitle = arrayOf(
@@ -14,12 +13,6 @@ object AnnouncementsData {
         "Silahkan melakukan daftar ulang, sebelum tanggal 31 Januari.",
     )
 
-    private val announcementsDateTimestamp = arrayOf(
-        "21/01/2021",
-        "21/02/2021",
-        "21/03/2021"
-    )
-
     val listData: ArrayList<Announcement>
         get() {
             val list = arrayListOf<Announcement>()
@@ -27,7 +20,6 @@ object AnnouncementsData {
                 val announce = Announcement()
                 announce.title = announcementsTitle[position]
                 announce.desc = announcementsDesc[position]
-                announce.dateTimestamp = announcementsDateTimestamp[position]
                 list.add(announce)
             }
             return list

@@ -121,7 +121,7 @@
             </FrameLayout>
 
             <Button
-                android:id="@+id/btn_registrationform_upload_bukti_bayar"
+                android:id="@+id/btn_signup_upload_bukti"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_text"

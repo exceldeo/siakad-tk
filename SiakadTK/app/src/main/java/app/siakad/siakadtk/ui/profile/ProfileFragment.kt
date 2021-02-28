@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.ui.history.HistoryActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.data.model.UserActivities
 import app.siakad.siakadtk.ui.registration.RegistrationActivity
-import app.siakad.siakadtk.ui.registration.RegistrationFormActivity
 
 class ProfileFragment : Fragment() {
 
@@ -68,7 +68,7 @@ class ProfileFragment : Fragment() {
 
     private fun showMyActivityRecyclerList() {
         rvMyActivity.layoutManager = LinearLayoutManager(this.context)
-        val listUserActivitiesAdapter = ListUserActivitiesAdapter(list)
+        val listUserActivitiesAdapter = UserActivitiesAdapter(list)
         rvMyActivity.adapter = listUserActivitiesAdapter
     }
 }

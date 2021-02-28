@@ -48,6 +48,15 @@ class RegistrationFormActivity : AppCompatActivity() {
         ibtnBack.setOnClickListener{
 
         }
+        btnUploadBukti.setOnClickListener {
+            //tampil modal buat upload bukti bayar
+        }
+        btnCancel.setOnClickListener{
+
+        }
+        btnSimpan.setOnClickListener {
+
+        }
     }
 
 }
