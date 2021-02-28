@@ -1,9 +1,13 @@
 package app.siakad.siakadtk.ui.registration
 
+import android.content.Intent
+import android.content.ActivityNotFoundException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import app.siakad.siakadtk.R
+import com.androidbuffer.kotlinfilepicker.KotConstants
+import com.androidbuffer.kotlinfilepicker.KotRequest
 
 class RegistrationFormActivity : AppCompatActivity() {
 
@@ -21,6 +25,8 @@ class RegistrationFormActivity : AppCompatActivity() {
     private lateinit var btnCancel: TextView
     private lateinit var btnSimpan: TextView
 
+    private val REQUEST_FILE = 1001
+    private val REQUEST_CAMERA = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_form)
@@ -49,7 +55,7 @@ class RegistrationFormActivity : AppCompatActivity() {
 
         }
         btnUploadBukti.setOnClickListener {
-            //tampil modal buat upload bukti bayar
+            showFileChooser()
         }
         btnCancel.setOnClickListener{
 
@@ -57,6 +63,13 @@ class RegistrationFormActivity : AppCompatActivity() {
         btnSimpan.setOnClickListener {
 
         }
+    }
+
+    private fun showFileChooser() {
+        KotRequest.File(this, REQUEST_FILE)
+            .setMimeType(KotConstants.FILE_TYPE_FILE_ALL)
+            .pick()
+        KotRequest.Camera(this).setRequestCode(REQUEST_CAMERA).pick()
     }
 
 }

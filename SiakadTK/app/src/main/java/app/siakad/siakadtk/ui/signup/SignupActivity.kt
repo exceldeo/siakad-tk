@@ -1,5 +1,6 @@
 package app.siakad.siakadtk.ui.signup
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,8 @@ import androidx.cardview.widget.CardView
 import app.siakad.siakadtk.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.ui.login.LoginActivity
+import com.androidbuffer.kotlinfilepicker.KotRequest
+import com.androidbuffer.kotlinfilepicker.KotResult
 
 class SignupActivity : AppCompatActivity() {
 
@@ -22,6 +25,8 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
     private lateinit var btnUploadBukti: Button
+
+    private val REQUEST_CAMERA = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -44,7 +49,6 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setupView() {
         btnUploadBukti.setOnClickListener {
-            //tampil modal buat upload bukti bayar
         }
         btnSignup.setOnClickListener {
             val intent = Intent(this@SignupActivity, MainActivity::class.java)
@@ -57,5 +61,4 @@ class SignupActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }
