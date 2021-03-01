@@ -21,6 +21,7 @@
             android:padding="@dimen/container_padding_x">
 
             <TextView
+                android:id="@+id/tv_item_pengumumanin_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/inner_padding"
@@ -30,6 +31,7 @@
                 android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
+                android:id="@+id/tv_item_pengumumanin_desc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/example_desc_pengumuman"
@@ -39,6 +41,7 @@
                 android:fontFamily="@font/poppins_regular"/>
 
             <TextView
+                android:id="@+id/tv_item_pengumumanin_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/example_date_pengumuman_inside"
