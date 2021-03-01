@@ -1,16 +1,17 @@
 package app.siakad.siakadtkadmin.ui.notification
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
+<<<<<<< HEAD
 import app.siakad.siakadtkadmin.ui.announcement.AnnouncementActivity
 import app.siakad.siakadtkadmin.ui.view.date.DatePickerHelper
+=======
+>>>>>>> parent of 94db125... back press handle
 
 class NotificationAddActivity : AppCompatActivity() {
 
@@ -32,19 +33,6 @@ class NotificationAddActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                val intent = Intent(this@NotificationAddActivity, NotificationActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun setupItemView() {
@@ -71,7 +59,6 @@ class NotificationAddActivity : AppCompatActivity() {
     }
 
     private fun setupAppBar() {
-        toolbar.setNavigationIcon(R.drawable.ic_baseline_clear_24)
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
