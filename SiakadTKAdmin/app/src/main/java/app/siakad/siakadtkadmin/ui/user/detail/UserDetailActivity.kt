@@ -1,14 +1,18 @@
 package app.siakad.siakadtkadmin.ui.user.detail
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+<<<<<<< HEAD:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/detail/UserDetailActivity.kt
+<<<<<<< HEAD:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/detail/UserDetailActivity.kt
 import app.siakad.siakadtkadmin.ui.user.UserActivity
+=======
+>>>>>>> parent of 94db125... back press handle:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/UserDetailActivity.kt
+=======
+>>>>>>> parent of 94db125... back press handle:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/UserDetailActivity.kt
 
 class UserDetailActivity : AppCompatActivity() {
 
@@ -26,19 +30,6 @@ class UserDetailActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                val intent = Intent(this@UserDetailActivity, UserActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun setupItemView() {
