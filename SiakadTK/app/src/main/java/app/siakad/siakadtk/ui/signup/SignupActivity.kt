@@ -1,22 +1,23 @@
 package app.siakad.siakadtk.ui.signup
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.cardview.widget.CardView
+import android.text.TextUtils
+import android.util.Log
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import app.siakad.siakadtk.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.ui.login.LoginActivity
-import com.androidbuffer.kotlinfilepicker.KotRequest
-import com.androidbuffer.kotlinfilepicker.KotResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 
 class SignupActivity : AppCompatActivity() {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -34,6 +35,30 @@ class SignupActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
+        auth = Firebase.auth
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            reload()
+        }
+    }
+
+    private fun reload() {
+        auth.currentUser!!.reload().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                updateUI(auth.currentUser)
+                Toast.makeText(this@SignupActivity,
+                    "Reload successful!",
+                    Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this@SignupActivity,
+                    "Failed to reload user.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun setupItemView() {
@@ -51,6 +76,7 @@ class SignupActivity : AppCompatActivity() {
         btnUploadBukti.setOnClickListener {
         }
         btnSignup.setOnClickListener {
+            createAccount(etEmail.text.toString(), etName.text.toString(), etPassword.text.toString(), etRepeatPassword.text.toString())
             val intent = Intent(this@SignupActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -61,4 +87,117 @@ class SignupActivity : AppCompatActivity() {
             finish()
         }
     }
+    
+    private fun createAccount(email: String, fullname: String, password: String, repeatpassword: String) {
+        if(!validateForm()){
+            return
+        }
+        
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                }
+                
+            }
+    }
+
+    private fun signIn(email: String, password: String) {
+        if (!validateForm()) {
+            return
+        }
+
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                    checkForMultiFactorFailure(task.exception!!)
+                }
+
+                if (!task.isSuccessful) {
+                    //
+                }
+            }
+
+    }
+
+    private fun signOut() {
+        auth.signOut()
+        updateUI(null)
+    }
+
+    private fun sendEmailVerification() {
+        val user = auth.currentUser!!
+        user.sendEmailVerification()
+            .addOnCompleteListener(this) { task ->
+
+                if (task.isSuccessful) {
+                    Toast.makeText(baseContext,
+                        "Verification email sent to ${user.email} ",
+                        Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(baseContext,
+                        "Failed to send verification email.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun checkForMultiFactorFailure(exception: Exception) {
+
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        val email = etEmail.text.toString()
+        if(TextUtils.isEmpty(email)) {
+            etEmail.error = "Required."
+            valid = false
+        } else {
+            etEmail.error = null
+        }
+
+        val fullname = etName.text.toString()
+        if(TextUtils.isEmpty(fullname)) {
+            etPassword.error = "Required."
+            valid = false
+        } else {
+            etPassword.error = null
+        }
+
+        val password = etPassword.text.toString()
+        if(TextUtils.isEmpty(password)) {
+            etPassword.error = "Required."
+            valid = false
+        } else {
+            etPassword.error = null
+        }
+
+        val repeatpassword = etRepeatPassword.text.toString()
+        if(TextUtils.isEmpty(repeatpassword)) {
+            etRepeatPassword.error = "Required."
+            valid = false
+        } else {
+            etRepeatPassword.error = null
+        }
+
+
+        return valid
+    }
+
 }

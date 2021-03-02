@@ -12,9 +12,9 @@ class AnnouncementViewHolder(v: View): RecyclerView.ViewHolder(v) {
             tv_item_pengumuman_title.text = item.title
             tv_item_pengumuman_desc.text = item.desc
 
-            tv_item_pengumumanin_title.text = item.title
-            tv_item_pengumumanin_desc.text = item.desc
-            tv_item_pengumumanin_date.text = item.date.toString()
+//            tv_item_pengumumanin_title.text = item.title
+//            tv_item_pengumumanin_desc.text = item.desc
+//            tv_item_pengumumanin_date.text = item.date.toString()
         }
     }
 }

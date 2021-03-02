@@ -12,7 +12,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import androidx.cardview.widget.CardView
 import app.siakad.siakadtk.MainActivity
 
 import app.siakad.siakadtk.R
