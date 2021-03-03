@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+<<<<<<< HEAD
         <activity android:name=".ui.register.RegisterActivity"></activity>
         <activity android:name=".ui.user.detail.UserDetailActivity"/>
         <activity android:name=".ui.user.detail.UserDetailUnverActivity" />
@@ -26,12 +27,31 @@
         <activity android:name=".ui.announcement.AnnouncementActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.SplashScreenActivity" >
+=======
+        <activity android:name=".presentation.register.RegisterActivity"></activity>
+        <activity android:name=".presentation.user.UserDetailActivity"/>
+        <activity android:name=".presentation.user.UserDetailUnverActivity" />
+        <activity android:name=".presentation.user.UserActivity" />
+        <activity android:name=".presentation.product.ProductEditActivity" />
+        <activity android:name=".presentation.product.ProductAddActivity" />
+        <activity android:name=".presentation.product.ProductListActivity" />
+        <activity android:name=".presentation.order.OrderDetailActivity" />
+        <activity android:name=".presentation.order.OrderActivity" />
+        <activity android:name=".presentation.registration.RegistrationDetailActivity" />
+        <activity android:name=".presentation.registration.RegistrationActivity" />
+        <activity android:name=".presentation.notification.NotificationAddActivity" />
+        <activity android:name=".presentation.notification.NotificationActivity" />
+        <activity android:name=".presentation.announcement.AnnouncementAddActivity" />
+        <activity android:name=".presentation.announcement.AnnouncementActivity" />
+        <activity android:name=".presentation.login.LoginActivity" />
+        <activity android:name=".presentation.SplashScreenActivity" >
+>>>>>>> admin2
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".presentation.main.MainActivity"/>
     </application>
 
 </manifest>

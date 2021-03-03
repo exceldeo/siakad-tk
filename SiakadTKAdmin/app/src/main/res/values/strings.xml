@@ -177,4 +177,11 @@
         <item>Laki-Laki</item>
     </string-array>
     <string name="title_activity_user">UserActivity</string>
+    <string name="empty_input">Isian tidak boleh kosong!</string>
+    <string name="weak_passwd">Password harus lebih dari 6 karakter</string>
+    <string name="err_conf_passwd">Konfirmasi Password harus sama!</string>
+    <string name="scs_regis">Berhasil daftar</string>
+    <string name="fail_regis">Gagal daftar, pastikan masukkan data dengan benar dan coba lagi</string>
+    <string name="scs_login">Berhasil masuk</string>
+    <string name="fail_login">Terjadi kesalahan, pastikan data yang Anda masukkan benar dan silahkan coba lagi!</string>
 </resources>
