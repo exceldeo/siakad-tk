@@ -8,14 +8,9 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.ui.login.LoggedInUserView
 import app.siakad.siakadtkadmin.ui.login.LoginActivity
-import app.siakad.siakadtkadmin.ui.login.LoginViewModel
-import app.siakad.siakadtkadmin.ui.login.LoginViewModelFactory
 import app.siakad.siakadtkadmin.ui.main.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task

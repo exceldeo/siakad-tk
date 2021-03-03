@@ -17,15 +17,22 @@ import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.ui.main.MainActivity
 import app.siakad.siakadtkadmin.ui.register.RegisterActivity
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import java.lang.Exception
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
     private lateinit var etEmail: EditText
     private lateinit var etPasswd: EditText
     private lateinit var btnLogin: CardView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
+
+    private val fbAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,16 +50,13 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btn_login_masuk)
         tvSignUp = findViewById(R.id.tv_login_daftar)
         pbLoading = findViewById(R.id.loading)
-
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
     }
 
     private fun setupView() {
         btnLogin.setOnClickListener {
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (validateInput()) {
+                loginAdmin()
+            }
         }
 
         tvSignUp.setOnClickListener {
@@ -62,94 +66,45 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupLoginView() {
-        loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
-            val loginState = it ?: return@Observer
+    private fun validateInput(): Boolean {
+        var returnState = true
 
-            // disable login button unless both etEmail / etPasswd is valid
-            btnLogin.isEnabled = loginState.isDataValid
-
-            if (loginState.usernameError != null) {
-                etEmail.error = getString(loginState.usernameError)
-            }
-            if (loginState.passwordError != null) {
-                etPasswd.error = getString(loginState.passwordError)
-            }
-        })
-
-        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
-            val loginResult = it ?: return@Observer
-
-            pbLoading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
-            }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
-            }
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
-        })
-
-        etEmail.afterTextChanged {
-            loginViewModel.loginDataChanged(
-                etEmail.text.toString(),
-                etPasswd.text.toString()
-            )
+        if (etEmail.text.isEmpty()) {
+            etEmail.error = getString(R.string.empty_input)
+            returnState = false
         }
 
-        etPasswd.apply {
-            afterTextChanged {
-                loginViewModel.loginDataChanged(
-                    etEmail.text.toString(),
-                    etPasswd.text.toString()
-                )
-            }
+        if (etPasswd.text.isEmpty()) {
+            etPasswd.error = getString(R.string.empty_input)
+            returnState = false
+        } else if (etPasswd.text.length < 6) {
+            etPasswd.error = getString(R.string.weak_passwd)
+            returnState = false
+        }
 
-            setOnEditorActionListener { _, actionId, _ ->
-                when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            etEmail.text.toString(),
-                            etPasswd.text.toString()
-                        )
+        return returnState
+    }
+
+    private fun loginAdmin() {
+        fbAuth.signInWithEmailAndPassword(etEmail.text.toString(), etPasswd.text.toString()).addOnSuccessListener(
+            object : OnSuccessListener<AuthResult> {
+                override fun onSuccess(p0: AuthResult?) {
+                    showToast(getString(R.string.scs_login))
+                    navigateToMain()
                 }
-                false
-            }
-
-            btnLogin.setOnClickListener {
-                pbLoading.visibility = View.VISIBLE
-                loginViewModel.login(etEmail.text.toString(), etPasswd.text.toString())
-            }
-        }
+            })
+            .addOnFailureListener(this, OnFailureListener {
+                e: Exception -> showToast(getString(R.string.fail_login))
+            })
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+    private fun navigateToMain() {
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
-}
-
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
-        }
-
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
 }
