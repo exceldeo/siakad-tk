@@ -1,12 +1,15 @@
 package app.siakad.siakadtkadmin.presentation.notification
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.presentation.announcement.AnnouncementActivity
 import app.siakad.siakadtkadmin.presentation.view.date.DatePickerHelper
 
 class NotificationAddActivity : AppCompatActivity() {
@@ -29,6 +32,21 @@ class NotificationAddActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(
+                    Intent(
+                        this@NotificationAddActivity,
+                        NotificationActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupItemView() {

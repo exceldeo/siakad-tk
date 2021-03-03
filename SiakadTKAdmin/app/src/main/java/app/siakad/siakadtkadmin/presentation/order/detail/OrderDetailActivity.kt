@@ -1,13 +1,17 @@
 package app.siakad.siakadtkadmin.presentation.order.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.presentation.main.MainActivity
+import app.siakad.siakadtkadmin.presentation.order.OrderActivity
 
 class OrderDetailActivity : AppCompatActivity() {
 
@@ -32,6 +36,21 @@ class OrderDetailActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(
+                    Intent(
+                        this@OrderDetailActivity,
+                        OrderActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupItemView() {
