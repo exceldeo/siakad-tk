@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import app.siakad.siakadtkadmin.R
 import java.util.*
 
 class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
@@ -18,7 +19,7 @@ class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DATE)
 
-        return DatePickerDialog(activity as Context, this, year, month, day)
+        return DatePickerDialog(activity as Context, R.style.DialogTheme, this, year, month, day)
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
