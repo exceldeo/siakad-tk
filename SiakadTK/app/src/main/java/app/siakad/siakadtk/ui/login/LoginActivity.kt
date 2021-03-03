@@ -2,112 +2,43 @@ package app.siakad.siakadtk.ui.login
 
 import android.app.Activity
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.view.inputmethod.EditorInfo
+import android.text.TextUtils
 import android.widget.*
 import app.siakad.siakadtk.MainActivity
 
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.ui.signup.SignupActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
     private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
+
+    private var auth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
         supportActionBar?.hide()
         setupItemWiew()
         setupView()
     }
-    private fun setupView() {
-        btnLogin.setOnClickListener {
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
-        tvSignUp.setOnClickListener {
-            val intent = Intent(this@LoginActivity, SignupActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-    }
-    private fun setupLoginView() {
-        loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
-            val loginState = it ?: return@Observer
-
-            // disable login button unless both username / password is valid
-            btnLogin.isEnabled = loginState.isDataValid
-
-            if (loginState.usernameError != null) {
-                etEmail.error = getString(loginState.usernameError)
-            }
-            if (loginState.passwordError != null) {
-                etPassword.error = getString(loginState.passwordError)
-            }
-        })
-
-        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
-            val loginResult = it ?: return@Observer
-
-            pbLoading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
-            }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
-            }
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
-        })
-
-        etEmail.afterTextChanged {
-            loginViewModel.loginDataChanged(
-                etEmail.text.toString(),
-                etPassword.text.toString()
-            )
-        }
-
-        etPassword.apply {
-            afterTextChanged {
-                loginViewModel.loginDataChanged(
-                    etEmail.text.toString(),
-                    etPassword.text.toString()
-                )
-            }
-
-            setOnEditorActionListener { _, actionId, _ ->
-                when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            etEmail.text.toString(),
-                            etPassword.text.toString()
-                        )
-                }
-                false
-            }
-
-            btnLogin.setOnClickListener {
-                pbLoading.visibility = View.VISIBLE
-                loginViewModel.login(etEmail.text.toString(), etPassword.text.toString())
-            }
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null) {
+            navigateToMain()
         }
     }
 
@@ -118,38 +49,66 @@ class LoginActivity : AppCompatActivity() {
         tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
         tvSignUp = findViewById(R.id.tv_login_daftar)
         pbLoading = findViewById(R.id.loading)
-
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
-    }
-
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
-    }
-}
-
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
+    private fun setupView() {
+        btnLogin.setOnClickListener {
+            if (validateForm()) {
+                login()
+            }
         }
 
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        tvSignUp.setOnClickListener {
+            val intent = Intent(this@LoginActivity, SignupActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
+    private fun login() {
+        auth.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    showToast(getString(R.string.scs_login))
+                    val user = auth.currentUser
+                    navigateToMain()
+                } else {
+                    showToast(getString(R.string.fail_login))
+                }
+
+                if (!task.isSuccessful) {
+                    showToast(getString(R.string.fail_login))
+                }
+            }
+
+    }
+    private fun navigateToMain() {
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        val email = etEmail.text.toString()
+        if(TextUtils.isEmpty(email)) {
+            etEmail.error = getString(R.string.empty_input)
+            valid = false
+        }
+        val password = etPassword.text.toString()
+        if(TextUtils.isEmpty(password)) {
+            etPassword.error = getString(R.string.empty_input)
+            valid = false
+        } else if (password.length < 6) {
+            etPassword.error = getString(R.string.weak_passwd)
+            valid = false
+        }
+
+        return valid
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
 }

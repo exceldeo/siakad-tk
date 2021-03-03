@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.ui.announcement
+package app.siakad.siakadtk.ui.announcement.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +11,6 @@ class AnnouncementViewHolder(v: View): RecyclerView.ViewHolder(v) {
         with(itemView) {
             tv_item_pengumuman_title.text = item.title
             tv_item_pengumuman_desc.text = item.desc
-
-//            tv_item_pengumumanin_title.text = item.title
-//            tv_item_pengumumanin_desc.text = item.desc
-//            tv_item_pengumumanin_date.text = item.date.toString()
         }
     }
 }

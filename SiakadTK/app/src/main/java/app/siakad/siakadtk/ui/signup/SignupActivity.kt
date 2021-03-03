@@ -3,6 +3,7 @@ package app.siakad.siakadtk.ui.signup
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -17,7 +18,6 @@ import com.google.firebase.ktx.Firebase
 
 
 class SignupActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -26,8 +26,8 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
     private lateinit var btnUploadBukti: Button
+    private var auth = FirebaseAuth.getInstance()
 
-    private val REQUEST_CAMERA = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -35,30 +35,6 @@ class SignupActivity : AppCompatActivity() {
 
         setupItemView()
         setupView()
-        auth = Firebase.auth
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            reload()
-        }
-    }
-
-    private fun reload() {
-        auth.currentUser!!.reload().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                updateUI(auth.currentUser)
-                Toast.makeText(this@SignupActivity,
-                    "Reload successful!",
-                    Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this@SignupActivity,
-                    "Failed to reload user.",
-                    Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun setupItemView() {
@@ -76,64 +52,33 @@ class SignupActivity : AppCompatActivity() {
         btnUploadBukti.setOnClickListener {
         }
         btnSignup.setOnClickListener {
-            createAccount(etEmail.text.toString(), etName.text.toString(), etPassword.text.toString(), etRepeatPassword.text.toString())
-            val intent = Intent(this@SignupActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (validateForm()) {
+                createAccount()
+            } else {
+                showToast("Ulangi pendaftaran")
+            }
         }
         tvLogin.setOnClickListener {
             val intent = Intent(this@SignupActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        etPassword.transformationMethod = PasswordTransformationMethod()
+        etRepeatPassword.transformationMethod = PasswordTransformationMethod()
     }
     
-    private fun createAccount(email: String, fullname: String, password: String, repeatpassword: String) {
-        if(!validateForm()){
-            return
-        }
-        
-        auth.createUserWithEmailAndPassword(email, password)
+    private fun createAccount() {
+        auth.createUserWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    updateUI(user)
+                    showToast(getString(R.string.scs_regis))
+                    sendEmailVerification()
+                    navigateToMain()
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
-                }
-                
-            }
-    }
-
-    private fun signIn(email: String, password: String) {
-        if (!validateForm()) {
-            return
-        }
-
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
-                    checkForMultiFactorFailure(task.exception!!)
-                }
-
-                if (!task.isSuccessful) {
-                    //
+                    showToast(getString(R.string.fail_regis))
                 }
             }
-
-    }
-
-    private fun signOut() {
-        auth.signOut()
-        updateUI(null)
     }
 
     private fun sendEmailVerification() {
@@ -153,51 +98,48 @@ class SignupActivity : AppCompatActivity() {
             }
     }
 
-    private fun checkForMultiFactorFailure(exception: Exception) {
-
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
-
-    }
-
     private fun validateForm(): Boolean {
         var valid = true
 
         val email = etEmail.text.toString()
         if(TextUtils.isEmpty(email)) {
-            etEmail.error = "Required."
+            etEmail.error = getString(R.string.empty_input)
             valid = false
-        } else {
-            etEmail.error = null
         }
-
         val fullname = etName.text.toString()
         if(TextUtils.isEmpty(fullname)) {
-            etPassword.error = "Required."
+            etName.error = getString(R.string.empty_input)
             valid = false
-        } else {
-            etPassword.error = null
         }
 
         val password = etPassword.text.toString()
         if(TextUtils.isEmpty(password)) {
-            etPassword.error = "Required."
+            etPassword.error = getString(R.string.empty_input)
             valid = false
-        } else {
-            etPassword.error = null
+        } else if (password.length < 6) {
+            etPassword.error = getString(R.string.weak_passwd)
+            valid = false
         }
 
         val repeatpassword = etRepeatPassword.text.toString()
         if(TextUtils.isEmpty(repeatpassword)) {
-            etRepeatPassword.error = "Required."
+            etRepeatPassword.error = getString(R.string.empty_input)
             valid = false
-        } else {
-            etRepeatPassword.error = null
+        } else if(repeatpassword != password) {
+            etRepeatPassword.error = getString(R.string.err_conf_passwd)
+            valid = false
         }
-
 
         return valid
     }
 
+    private fun navigateToMain() {
+        val intent = Intent(this@SignupActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
 }

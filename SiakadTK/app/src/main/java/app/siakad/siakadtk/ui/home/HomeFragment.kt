@@ -15,7 +15,7 @@ import app.siakad.siakadtk.ui.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.data.model.Announcement
 import app.siakad.siakadtk.ui.announcement.AnnouncementsData
-import app.siakad.siakadtk.ui.announcement.AnnouncementAdapter
+import app.siakad.siakadtk.ui.announcement.adapter.AnnouncementAdapter
 import app.siakad.siakadtk.ui.nota.NotaAdapter
 import app.siakad.siakadtk.data.model.Nota
 import app.siakad.siakadtk.ui.nota.NotasData
