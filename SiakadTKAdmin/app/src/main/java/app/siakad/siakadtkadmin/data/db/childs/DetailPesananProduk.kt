@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.domain.models
+package app.siakad.siakadtkadmin.data.db.childs
 
 import android.os.Parcelable
 import com.google.firebase.database.Exclude
@@ -11,5 +11,6 @@ data class DetailPesananProduk (
     var pesananId: String? = null,
     var ukuran: String? = null,
     var jumlah: Int = 0,
-    var harga: Int = 0
+    var harga: Int = 0,
+    var status: String? = null
 ): Parcelable

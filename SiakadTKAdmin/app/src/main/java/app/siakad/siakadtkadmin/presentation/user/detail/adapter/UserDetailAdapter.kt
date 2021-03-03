@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.models.DetailUser
 
 class UserDetailAdapter() : RecyclerView.Adapter<UserDetailViewHolder>() {
 
-    private val detailUserList: ArrayList<DetailUser> = arrayListOf()
+    private val detailUserList: ArrayList<Unit> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDetailViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_user_detail, parent, false)

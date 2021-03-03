@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.models.DaftarUlang
+import app.siakad.siakadtkadmin.domain.models.DaftarUlangModel
 
 class RegistrationAdapter() : RecyclerView.Adapter<RegistrationViewHolder>() {
 
-    private val daftarUlangList: ArrayList<DaftarUlang> = arrayListOf()
+    private val daftarUlangList: ArrayList<DaftarUlangModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegistrationViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_registration, parent, false)

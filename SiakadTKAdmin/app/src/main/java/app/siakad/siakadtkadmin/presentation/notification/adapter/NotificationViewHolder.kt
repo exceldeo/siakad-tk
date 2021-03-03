@@ -2,11 +2,11 @@ package app.siakad.siakadtkadmin.presentation.notification.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtkadmin.domain.models.Notifikasi
+import app.siakad.siakadtkadmin.domain.models.NotifikasiModel
 import kotlinx.android.synthetic.main.item_announcement.view.*
 
 class NotificationViewHolder(v: View) :  RecyclerView.ViewHolder(v) {
-    fun insertNotification(item: Notifikasi) {
+    fun insertNotification(item: NotifikasiModel) {
         with(itemView) {
             tv_item_announcement_judul.text = item.judul
             tv_item_announcement_isi.text = item.keterangan

@@ -2,11 +2,11 @@ package app.siakad.siakadtkadmin.presentation.user.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtkadmin.domain.models.User
+import app.siakad.siakadtkadmin.domain.models.SiswaModel
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    fun insertOrder(item: User) {
+    fun insertOrder(item: SiswaModel) {
         with(itemView) {
             iv_item_user
 //            item.fotoSiswa

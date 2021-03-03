@@ -1,6 +1,7 @@
 package app.siakad.siakadtkadmin.data
 
-import app.siakad.siakadtkadmin.domain.models.User
+import app.siakad.siakadtkadmin.data.db.childs.User
+import app.siakad.siakadtkadmin.domain.models.SiswaModel
 
 class MainRepository {
     companion object {

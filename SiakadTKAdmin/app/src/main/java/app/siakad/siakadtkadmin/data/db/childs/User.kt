@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.domain.models
+package app.siakad.siakadtkadmin.data.db.childs
 
 import android.os.Parcelable
 import com.google.firebase.database.Exclude
