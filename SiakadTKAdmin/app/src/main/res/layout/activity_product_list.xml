@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.product.ProductListActivity">
+    tools:context=".presentation.product.ProductListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
