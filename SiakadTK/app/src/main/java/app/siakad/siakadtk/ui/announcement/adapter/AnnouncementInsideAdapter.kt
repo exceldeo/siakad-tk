@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.ui.announcement
+package app.siakad.siakadtk.ui.announcement.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +8,14 @@ import app.siakad.siakadtk.R
 import app.siakad.siakadtk.data.model.Announcement
 import app.siakad.siakadtk.ui.announcement.adapter.AnnouncementViewHolder
 
-class AnnouncementInsideAdapter(val announcementList: ArrayList<Announcement>) : RecyclerView.Adapter<AnnouncementViewHolder>(){
+class AnnouncementInsideAdapter(val announcementList: ArrayList<Announcement>) : RecyclerView.Adapter<AnnouncementInsideViewHolder>(){
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AnnouncementViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AnnouncementInsideViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_pengumuman_inside, viewGroup, false)
-        return AnnouncementViewHolder(view)
+        return AnnouncementInsideViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AnnouncementViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AnnouncementInsideViewHolder, position: Int) {
         val announcement = announcementList[position]
         holder.insertAnnouncement(announcement)
     }
