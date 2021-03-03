@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.item_user_detail.view.*
 
 class UserDetailViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     fun insertOrder(item: UserDetail) {
-        with(itemView) {
-            tv_item_user_detail_judul.text = item.namaAktivitas
-
-            if (item.status) {
-                iv_item_user_detail_acc
-            }
-        }
+//        with(itemView) {
+//            tv_item_user_detail_judul.text = item.namaAktivitas
+//
+//            if (item.status) {
+//                iv_item_user_detail_acc
+//            }
+//        }
     }
 }

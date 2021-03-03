@@ -6,13 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-<<<<<<< HEAD:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/detail/UserDetailActivity.kt
-<<<<<<< HEAD:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/detail/UserDetailActivity.kt
 import app.siakad.siakadtkadmin.ui.user.UserActivity
-=======
->>>>>>> parent of 94db125... back press handle:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/UserDetailActivity.kt
-=======
->>>>>>> parent of 94db125... back press handle:SiakadTKAdmin/app/src/main/java/app/siakad/siakadtkadmin/ui/user/UserDetailActivity.kt
 
 class UserDetailActivity : AppCompatActivity() {
 
