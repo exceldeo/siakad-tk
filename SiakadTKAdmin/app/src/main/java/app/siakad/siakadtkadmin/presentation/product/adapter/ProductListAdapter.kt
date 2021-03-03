@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.data.model.ProductList
+import app.siakad.siakadtkadmin.domain.models.Produk
 
 class ProductListAdapter() : RecyclerView.Adapter<ProductListViewHolder>() {
 
-    private val productList: ArrayList<ProductList> = arrayListOf()
+    private val produk: ArrayList<Produk> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_product_list, parent, false)
@@ -16,7 +16,7 @@ class ProductListAdapter() : RecyclerView.Adapter<ProductListViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return produk.size
     }
 
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {

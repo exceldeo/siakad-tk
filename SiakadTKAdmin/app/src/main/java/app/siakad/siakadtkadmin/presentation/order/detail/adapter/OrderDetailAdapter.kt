@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.data.model.Order
-import app.siakad.siakadtkadmin.data.model.OrderDetail
+import app.siakad.siakadtkadmin.domain.models.DetailPesananProduk
 
 class OrderDetailAdapter() : RecyclerView.Adapter<OrderDetailViewHolder>() {
 
-    private val orderDetailList: ArrayList<OrderDetail> = arrayListOf()
+    private val orderDetailList: ArrayList<DetailPesananProduk> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderDetailViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)

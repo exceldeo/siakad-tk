@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.data.model.Registration
-import app.siakad.siakadtkadmin.data.model.User
+import app.siakad.siakadtkadmin.domain.models.User
 
 class UserAdapter() : RecyclerView.Adapter<UserViewHolder>() {
 
