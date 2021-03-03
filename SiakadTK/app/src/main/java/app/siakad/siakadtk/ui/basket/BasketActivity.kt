@@ -1,15 +1,20 @@
 package app.siakad.siakadtk.ui.basket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.MainActivity
 import app.siakad.siakadtk.R
 
 class BasketActivity : AppCompatActivity() {
+    private val pageTitle = "Keranjang Saya"
 
+    private lateinit var toolbar: Toolbar
     private lateinit var rvBasket: RecyclerView
-    private lateinit var ibtnBack: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,12 +24,17 @@ class BasketActivity : AppCompatActivity() {
     }
 
     private fun setupItemWiew() {
+        toolbar = findViewById(R.id.toolbar_main)
         rvBasket = findViewById(R.id.rv_basket_order_nota_list)
-        ibtnBack = findViewById(R.id.ibtn_basket_back)
     }
 
     private fun setupView() {
-        ibtnBack.setOnClickListener{
-        }
+        setupAppBar()
+    }
+
+    private fun setupAppBar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

@@ -1,15 +1,20 @@
 package app.siakad.siakadtk.ui.history
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.MainActivity
 import app.siakad.siakadtk.R
 
 class HistoryActivity : AppCompatActivity() {
+    private val pageTitle = "Riwayat Pembayaran"
 
+    private lateinit var toolbar: Toolbar
     private lateinit var rvHistory: RecyclerView
-    private lateinit var ibtnBack: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,13 +24,32 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun setupItemWiew() {
+        toolbar = findViewById(R.id.toolbar_main)
         rvHistory = findViewById(R.id.rv_history_order_list)
-        ibtnBack = findViewById(R.id.ibtn_history_back)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(
+                    Intent(
+                        this@HistoryActivity,
+                        MainActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupView() {
-        ibtnBack.setOnClickListener{
+        setupAppBar()
+    }
 
-        }
+    private fun setupAppBar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

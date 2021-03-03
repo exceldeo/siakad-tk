@@ -6,56 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.product.ProductListActivity">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rl_productlist_header">
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
 
-        <ImageView
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_productlist_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/container_padding_x"
+        android:background="@android:color/white"
+        android:layout_below="@id/ab_toolbar_main"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        android:layout_marginStart="@dimen/container_padding_x"
+        android:layout_marginEnd="@dimen/container_padding_x"
+        tools:targetApi="lollipop">
+
+        <SearchView
+            android:id="@+id/sv_productlist_search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/vc_toolbar_bg"/>
-
-        <LinearLayout
-            android:id="@+id/ll_productlist_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/container_padding_x"
-            android:layout_marginTop="48dp"
-            android:paddingStart="@dimen/container_padding_x"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@android:color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
-                android:layout_marginStart="@dimen/padding_text"
-                android:layout_marginEnd="@dimen/container_padding_x"
-                tools:targetApi="lollipop">
-
-                <SearchView
-                    android:id="@+id/sv_productlist_search_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </RelativeLayout>
+            android:layout_height="wrap_content" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_productlist_searched_product_list"
         android:paddingStart="@dimen/container_padding_x"
         android:paddingEnd="@dimen/container_padding_x"
-        android:layout_below="@id/rl_productlist_header"
+        android:layout_below="@id/cv_productlist_search_bar"
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

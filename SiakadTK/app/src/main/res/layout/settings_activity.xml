@@ -1,51 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/settings">
+    android:id="@+id/settings"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rl_asettings_header">
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/vc_toolbar_bg"/>
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/container_padding_x"
-            android:layout_centerVertical="true"
-            android:paddingStart="@dimen/container_padding_x"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
-
-            <TextView
-                android:id="@+id/tv_asettings_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pengaturan"
-                android:layout_marginStart="@dimen/list_space"
-                android:textSize="@dimen/header_title_text"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/poppins_semibold" />
-        </LinearLayout>
-    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         style="@style/DefaultMargin"
-        android:layout_below="@id/rl_asettings_header">
+        android:layout_below="@id/ab_toolbar_main">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,6 +63,7 @@
             android:textColor="@color/colorBlack"
             style="@style/InputText.EdtTextNoMargin"/>
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_asettings_save"
         android:layout_width="match_parent"
@@ -102,4 +77,4 @@
         android:textColor="@android:color/white"
         android:background="@drawable/fill_danger_button"
         android:layout_marginTop="@dimen/container_double_padding_y" />
-</RelativeLayout>
+</LinearLayout>
