@@ -3,6 +3,7 @@ package app.siakad.siakadtkadmin.ui.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -16,6 +17,10 @@ import app.siakad.siakadtkadmin.ui.login.LoginActivity
 import app.siakad.siakadtkadmin.ui.login.LoginViewModel
 import app.siakad.siakadtkadmin.ui.login.LoginViewModelFactory
 import app.siakad.siakadtkadmin.ui.main.MainActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -25,6 +30,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var btnSignup: CardView
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
+
+    private val fbAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +53,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupView() {
         btnSignup.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (validateInput()) {
+                registerAdmin()
+            }
         }
 
         tvLogin.setOnClickListener {
@@ -56,20 +63,54 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        etPasswd.transformationMethod = PasswordTransformationMethod()
+        etConfirmPasswd.transformationMethod = PasswordTransformationMethod()
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
+    private fun validateInput(): Boolean {
+        var returnState = true
 
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+        if (etEmail.text.isEmpty()) {
+            etEmail.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
+        if (etPasswd.text.isEmpty()) {
+            etPasswd.error = getString(R.string.empty_input)
+            returnState = false
+        } else if (etPasswd.text.length < 6) {
+            etPasswd.error = getString(R.string.weak_passwd)
+            returnState = false
+        }
+
+        if (etConfirmPasswd.text.toString() != etPasswd.text.toString()) {
+            etConfirmPasswd.error = getString(R.string.err_conf_passwd)
+            returnState = false
+        }
+
+        return returnState
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    private fun registerAdmin() {
+        fbAuth.createUserWithEmailAndPassword(etEmail.text.toString(), etPasswd.text.toString()).addOnCompleteListener(
+            OnCompleteListener { task: Task<AuthResult> ->
+                if (task.isSuccessful) {
+                    showToast(getString(R.string.scs_regis))
+                    navigateToMain()
+                } else {
+                    showToast(getString(R.string.fail_regis))
+                }
+            })
+    }
+
+    private fun navigateToMain() {
+        val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
