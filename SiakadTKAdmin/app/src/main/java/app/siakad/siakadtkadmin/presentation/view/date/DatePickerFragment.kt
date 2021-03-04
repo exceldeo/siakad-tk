@@ -11,22 +11,42 @@ import java.util.*
 
 class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
 
-    private lateinit var dateListener: DateListener
+    private var dateListener: DateListener? = null
+
+    companion object {
+        const val YEAR_ARG = "YEAR"
+        const val MONTH_ARG = "MONTH"
+        const val DAY_ARG = "DAY"
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val calendar: Calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DATE)
+        var year = calendar.get(Calendar.YEAR)
+        var month = calendar.get(Calendar.MONTH)
+        var day = calendar.get(Calendar.DATE)
+
+        if (arguments != null) {
+            year = requireArguments().getInt(YEAR_ARG)
+            month = requireArguments().getInt(MONTH_ARG)
+            day = requireArguments().getInt(DAY_ARG)
+        }
 
         return DatePickerDialog(activity as Context, R.style.DialogTheme, this, year, month, day)
     }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
-        dateListener.onDataSet(year,month, day)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        dateListener = context as DateListener?
     }
 
-    fun setDateListener(listener: DateListener) {
-        dateListener = listener
+    override fun onDetach() {
+        super.onDetach()
+        if (dateListener != null) {
+            dateListener = null
+        }
+    }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
+        dateListener?.onDataSet(year,month, day)
     }
 }
