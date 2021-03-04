@@ -1,12 +1,12 @@
-package app.siakad.siakadtk.ui.announcement
+package app.siakad.siakadtk.ui.announcement.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.data.model.Announcement
+import app.siakad.siakadtk.ui.announcement.adapter.AnnouncementViewHolder
 
 class AnnouncementAdapter(val announcementList: ArrayList<Announcement>) : RecyclerView.Adapter<AnnouncementViewHolder>(){
 

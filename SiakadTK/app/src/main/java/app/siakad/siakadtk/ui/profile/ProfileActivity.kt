@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtk.R
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileActivity : AppCompatActivity() {
+    private val pageTitle = "Profil Siswa"
 
-    private lateinit var ibtnBack: ImageButton
+    private lateinit var toolbar: Toolbar
     private lateinit var civProfileImg: CircleImageView
     private lateinit var btnChangeProfileImg: TextView
     private lateinit var etName: EditText
@@ -29,10 +31,14 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         setupItemView()
+        setupView()
+    }
+
+    private fun setupView() {
+        setupAppBar()
     }
 
     private fun setupItemView() {
-        ibtnBack = findViewById(R.id.ibtn_aprofile_back)
         civProfileImg = findViewById(R.id.civ_aprofile_user_img)
         btnChangeProfileImg = findViewById(R.id.btn_aprofile_ubah_foto)
         etName = findViewById(R.id.et_aprofile_nama)
@@ -48,5 +54,9 @@ class ProfileActivity : AppCompatActivity() {
         btnSimpan = findViewById(R.id.btn_aprofile_simpan)
     }
 
-
+    private fun setupAppBar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 }

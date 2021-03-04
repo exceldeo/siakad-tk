@@ -1,55 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.basket.BasketActivity">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rv_basket_header">
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/vc_toolbar_bg"/>
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/container_padding_x"
-            android:layout_centerVertical="true"
-            android:paddingStart="@dimen/container_padding_x"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/ibtn_basket_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/keranjang_pesanan"
-                android:layout_marginStart="@dimen/list_space"
-                android:textSize="@dimen/header_title_text"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/poppins_semibold" />
-        </LinearLayout>
-    </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_basket_order_nota_list"
         android:paddingStart="@dimen/container_padding_x"
         android:paddingEnd="@dimen/container_padding_x"
-        android:layout_below="@id/rv_basket_header"
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_row_basket" />
-</RelativeLayout>
+</LinearLayout>

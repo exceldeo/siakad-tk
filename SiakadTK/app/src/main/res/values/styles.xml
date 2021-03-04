@@ -11,6 +11,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/header_title_text</item>
+    </style>
+
     <style name="ListTitle">
         <item name="android:layout_marginBottom">@dimen/container_padding_y</item>
         <item name="android:layout_marginTop">@dimen/list_space</item>

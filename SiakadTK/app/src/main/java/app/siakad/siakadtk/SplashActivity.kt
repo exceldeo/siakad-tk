@@ -3,6 +3,7 @@ package app.siakad.siakadtk
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import app.siakad.siakadtk.ui.login.LoginActivity
 import app.siakad.siakadtk.ui.signup.SignupActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -7,49 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.product.ProductBookDetailActivity">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rl_product_bookdetail_header">
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/vc_toolbar_bg"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/container_padding_x"
-            android:layout_centerVertical="true"
-            android:paddingStart="@dimen/container_padding_x"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/buku_tema_5"
-                android:layout_marginStart="@dimen/list_space"
-                android:textSize="@dimen/header_title_text"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/poppins_semibold" />
-        </LinearLayout>
-    </RelativeLayout>
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
     <ImageView
         android:id="@+id/iv_product_bookdetail_img"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:scaleType="centerCrop"
         android:src="@drawable/example_image"
-        android:layout_below="@id/rl_product_bookdetail_header"/>
+        android:layout_below="@id/ab_toolbar_main"/>
     <LinearLayout
         android:layout_below="@id/iv_product_bookdetail_img"
         android:layout_width="match_parent"

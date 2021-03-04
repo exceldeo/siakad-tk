@@ -1,18 +1,24 @@
 package app.siakad.siakadtk.ui.announcement
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import app.siakad.siakadtk.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.data.model.Announcement
+import app.siakad.siakadtk.ui.announcement.adapter.AnnouncementInsideAdapter
 
 class AnnouncementListActivity : AppCompatActivity() {
 
+    private val pageTitle = "Pengumuman"
+
+    private lateinit var toolbar: Toolbar
     private lateinit var rvAnnouncement: RecyclerView
     private var listAnnouncement: ArrayList<Announcement> = arrayListOf()
-    private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,22 +28,41 @@ class AnnouncementListActivity : AppCompatActivity() {
     }
 
     private fun setupItemView() {
+        toolbar = findViewById(R.id.toolbar_main)
         rvAnnouncement = findViewById(R.id.rv_announcement_daftar_pengumuman)
-        btnBack = findViewById(R.id.btn_announcement_back)
         rvAnnouncement.setHasFixedSize(true)
         listAnnouncement.addAll(AnnouncementsData.listData)
         showAnnouncementRecyclerList()
     }
 
-    private fun setupView() {
-        btnBack.setOnClickListener {
-            
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(
+                    Intent(
+                        this@AnnouncementListActivity,
+                        MainActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
+    private fun setupView() {
+        setupAppBar()
+    }
+
     private fun showAnnouncementRecyclerList() {
-        rvAnnouncement.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rvAnnouncement.layoutManager = LinearLayoutManager(this)
         val announcementAdapter = AnnouncementInsideAdapter(listAnnouncement)
         rvAnnouncement.adapter = announcementAdapter
+    }
+
+    private fun setupAppBar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

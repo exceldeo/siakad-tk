@@ -5,13 +5,15 @@ import android.content.ActivityNotFoundException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtk.R
 import com.androidbuffer.kotlinfilepicker.KotConstants
 import com.androidbuffer.kotlinfilepicker.KotRequest
 
 class RegistrationFormActivity : AppCompatActivity() {
+    private val pageTitle = "Form Pendaftaran"
 
-    private lateinit var ibtnBack: ImageButton
+    private lateinit var toolbar: Toolbar
     private lateinit var etName: EditText
     private lateinit var etBornDate: EditText
     private lateinit var spGender: Spinner
@@ -35,7 +37,7 @@ class RegistrationFormActivity : AppCompatActivity() {
     }
 
     private fun setupItemView() {
-        ibtnBack = findViewById(R.id.ibtn_registrationform_back)
+        toolbar = findViewById(R.id.toolbar_main)
         etName = findViewById(R.id.et_registrationform_nama)
         etBornDate = findViewById(R.id.et_registrationform_ttl)
         spGender = findViewById(R.id.sp_registrationform_jenis_kelamin)
@@ -51,9 +53,7 @@ class RegistrationFormActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        ibtnBack.setOnClickListener{
-
-        }
+        setupAppBar()
         btnUploadBukti.setOnClickListener {
             showFileChooser()
         }
@@ -63,6 +63,12 @@ class RegistrationFormActivity : AppCompatActivity() {
         btnSimpan.setOnClickListener {
 
         }
+    }
+
+    private fun setupAppBar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun showFileChooser() {
