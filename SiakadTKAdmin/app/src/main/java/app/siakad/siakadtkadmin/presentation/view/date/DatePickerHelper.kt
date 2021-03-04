@@ -18,7 +18,7 @@ class DatePickerHelper(fm: FragmentManager):
         datePicker =
             DatePickerFragment()
         calendar = Calendar.getInstance()
-        datePicker.setDateListener(this)
+        setDate()
     }
 
     override fun onDataSet(year: Int, month: Int, day: Int) {

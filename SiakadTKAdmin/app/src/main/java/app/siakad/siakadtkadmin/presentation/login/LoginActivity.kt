@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.data.repositories.MainRepository
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.register.RegisterActivity
 import com.google.android.gms.tasks.OnFailureListener
@@ -40,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         setupItemView()
         setupView()
     }
-    
+
     private fun setupItemView() {
         etEmail = findViewById(R.id.et_login_email)
         etPasswd = findViewById(R.id.et_login_password)
@@ -83,19 +84,25 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginAdmin() {
-        fbAuth.signInWithEmailAndPassword(etEmail.text.toString(), etPasswd.text.toString()).addOnSuccessListener(
-            object : OnSuccessListener<AuthResult> {
-                override fun onSuccess(p0: AuthResult?) {
-                    showToast(getString(R.string.scs_login))
-                    navigateToMain()
-                }
-            })
-            .addOnFailureListener(this, OnFailureListener {
-                e: Exception -> showToast(getString(R.string.fail_login))
+        fbAuth.signInWithEmailAndPassword(etEmail.text.toString(), etPasswd.text.toString())
+            .addOnSuccessListener(
+                object : OnSuccessListener<AuthResult> {
+                    override fun onSuccess(auth: AuthResult?) {
+                        showToast(getString(R.string.scs_login))
+                        navigateToMain()
+                    }
+                })
+            .addOnFailureListener(this, OnFailureListener { e: Exception ->
+                showToast(getString(R.string.fail_login))
             })
     }
 
     private fun navigateToMain() {
+        MainRepository.setUser(
+            fbAuth.currentUser!!.uid,
+            etEmail.text.toString(),
+            etPasswd.text.toString()
+        )
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()

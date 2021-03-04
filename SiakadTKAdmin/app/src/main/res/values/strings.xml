@@ -184,4 +184,8 @@
     <string name="fail_regis">Gagal daftar, pastikan masukkan data dengan benar dan coba lagi</string>
     <string name="scs_login">Berhasil masuk</string>
     <string name="fail_login">Terjadi kesalahan, pastikan data yang Anda masukkan benar dan silahkan coba lagi!</string>
+    <string name="scs_get_data">Data berhasil diambil</string>
+    <string name="fail_get_data">Data gagal diambil</string>
+    <string name="scs_set_data">Data berhasil ditambahkan</string>
+    <string name="fail_set_data">Data gagal ditambahkan</string>
 </resources>

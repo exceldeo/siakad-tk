@@ -1,7 +1,6 @@
-package app.siakad.siakadtkadmin.data
+package app.siakad.siakadtkadmin.data.repositories
 
-import app.siakad.siakadtkadmin.data.db.childs.User
-import app.siakad.siakadtkadmin.domain.models.SiswaModel
+import app.siakad.siakadtkadmin.data.db.refs.User
 
 class MainRepository {
     companion object {
@@ -15,5 +14,9 @@ class MainRepository {
         const val DETAIL_PESANAN_PRODUK_REF = "DetailPesananProduk"
 
         lateinit var currentUser: User
+
+        fun setUser(userId: String, email: String, passwd: String) {
+            currentUser = User(userId = userId, email = email, passwd = passwd)
+        }
     }
 }

@@ -8,18 +8,27 @@ import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 
 class AnnouncementAdater : RecyclerView.Adapter<AnnouncementViewHolder>() {
 
-    private val pengumumanList: ArrayList<PengumumanModel> = arrayListOf()
+    private val announcementList: ArrayList<PengumumanModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnouncementViewHolder {
-        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_announcement, parent, false)
+        val viewHolder =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_announcement, parent, false)
         return AnnouncementViewHolder(viewHolder)
     }
 
     override fun getItemCount(): Int {
-        return pengumumanList.size
+        return announcementList.size
     }
 
     override fun onBindViewHolder(holder: AnnouncementViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.insertAnnouncement(announcementList[position])
+    }
+
+    fun changeDataList(data: ArrayList<PengumumanModel>) {
+        if (announcementList.size > 0)
+            announcementList.clear()
+
+        announcementList.addAll(data)
+        this.notifyDataSetChanged()
     }
 }

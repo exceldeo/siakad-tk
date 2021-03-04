@@ -9,7 +9,6 @@ import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.presentation.announcement.AnnouncementActivity
 import app.siakad.siakadtkadmin.presentation.view.date.DatePickerHelper
 
 class NotificationAddActivity : AppCompatActivity() {
