@@ -33,11 +33,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nama" />
 
-            <com.google.android.material.card.MaterialCardView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/input_corner"
-                android:background="@drawable/input_cardview">
+                android:layout_marginTop="@dimen/inner_padding"
+                android:layout_height="@dimen/input_height">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/vc_bg_input_unfilled"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="10dip"/>
                 <EditText
                     android:id="@+id/et_registrationform_nama"
                     android:padding="@dimen/input_text_padding"
@@ -46,7 +51,7 @@
                     android:hint="@string/masukkan_nama"
                     style="@style/InputText"
                     android:background="@android:color/transparent"/>
-            </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
 
             <TextView
                 style="@style/LabelText"

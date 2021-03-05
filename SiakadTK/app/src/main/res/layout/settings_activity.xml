@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/settings"
@@ -31,7 +31,7 @@
             android:background="@color/colorUnSelect"/>
 
         <Button
-            android:id="@+id/btn_asettings_lihatubahprofil"
+            android:id="@+id/btn_settings_lihatubahprofil"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
             android:text="@string/lihat_atau_ubah_profil"
@@ -42,7 +42,7 @@
             style="@style/InputText.EdtTextNoMargin"/>
 
         <Button
-            android:id="@+id/btn_asettings_ubahemail"
+            android:id="@+id/btn_settings_ubahemail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
             android:text="@string/ubah_email"
@@ -53,7 +53,7 @@
             style="@style/InputText.EdtTextNoMargin"/>
 
         <Button
-            android:id="@+id/btn_asettings_ubahpassword"
+            android:id="@+id/btn_settings_ubahpassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
             android:text="Ubah Password"
@@ -65,16 +65,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_asettings_save"
+        android:id="@+id/btn_settings_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/container_padding_x"
         android:layout_marginEnd="@dimen/container_padding_x"
         android:layout_marginBottom="40dp"
-        android:layout_alignParentBottom="true"
         android:text="@string/keluar"
         style="@style/CommonButton"
         android:textColor="@android:color/white"
         android:background="@drawable/fill_danger_button"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/container_double_padding_y" />
-</LinearLayout>
+</RelativeLayout>

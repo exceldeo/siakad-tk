@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PengumumanModel
 
-class AnnouncementInsideAdapter(val announcementList: ArrayList<PengumumanModel>) : RecyclerView.Adapter<AnnouncementInsideViewHolder>(){
+class AnnouncementInsideAdapter() : RecyclerView.Adapter<AnnouncementInsideViewHolder>(){
+
+    private val announcementList: ArrayList<PengumumanModel> = arrayListOf()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AnnouncementInsideViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_pengumuman_inside, viewGroup, false)
@@ -21,5 +23,13 @@ class AnnouncementInsideAdapter(val announcementList: ArrayList<PengumumanModel>
 
     override fun getItemCount(): Int {
         return announcementList.size
+    }
+
+    fun changeDataList(data: ArrayList<PengumumanModel>) {
+        if (announcementList.size > 0)
+            announcementList.clear()
+
+        announcementList.addAll(data)
+        this.notifyDataSetChanged()
     }
 }

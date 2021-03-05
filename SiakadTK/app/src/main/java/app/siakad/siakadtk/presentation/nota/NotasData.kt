@@ -1,7 +1,6 @@
 package app.siakad.siakadtk.presentation.nota
 
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.data.db.childs.Pesanan
 import app.siakad.siakadtk.domain.models.PesananModel
 
 object NotasData {

@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PengumumanModel
 
-class AnnouncementAdapter(val announcementList: ArrayList<PengumumanModel>) : RecyclerView.Adapter<AnnouncementViewHolder>(){
+class AnnouncementAdapter() : RecyclerView.Adapter<AnnouncementViewHolder>(){
+
+    private val announcementList: ArrayList<PengumumanModel> = arrayListOf()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AnnouncementViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_pengumuman, viewGroup, false)
@@ -21,5 +23,13 @@ class AnnouncementAdapter(val announcementList: ArrayList<PengumumanModel>) : Re
 
     override fun getItemCount(): Int {
         return announcementList.size
+    }
+
+    fun changeDataList(data: ArrayList<PengumumanModel>) {
+        if (announcementList.size > 0)
+            announcementList.clear()
+
+        announcementList.addAll(data)
+        this.notifyDataSetChanged()
     }
 }

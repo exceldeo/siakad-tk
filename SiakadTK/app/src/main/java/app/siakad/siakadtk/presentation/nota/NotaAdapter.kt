@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.data.db.childs.Pesanan
 import app.siakad.siakadtk.domain.models.PesananModel
 
 class NotaAdapter (val listNota: ArrayList<PesananModel>): RecyclerView.Adapter<NotaViewHolder>(){

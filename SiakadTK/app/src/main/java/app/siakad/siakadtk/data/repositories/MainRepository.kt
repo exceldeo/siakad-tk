@@ -1,6 +1,7 @@
-package app.siakad.siakadtk.data
+package app.siakad.siakadtk.data.repositories
 
-import app.siakad.siakadtk.data.db.childs.User
+import app.siakad.siakadtk.data.db.refs.User
+import com.google.firebase.auth.FirebaseAuth
 
 class MainRepository {
     companion object {

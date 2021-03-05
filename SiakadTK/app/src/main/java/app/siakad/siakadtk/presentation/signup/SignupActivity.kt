@@ -32,6 +32,13 @@ class SignupActivity : AppCompatActivity() {
         setupView()
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null) {
+            navigateToMain()
+        }
+    }
+
     private fun setupItemView() {
         etName = findViewById(R.id.edt_signup_name)
         etEmail = findViewById(R.id.et_signup_email)

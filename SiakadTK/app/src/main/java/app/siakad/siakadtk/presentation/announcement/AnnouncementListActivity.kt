@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.main.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PengumumanModel
 import app.siakad.siakadtk.presentation.announcement.inside.adapter.AnnouncementInsideAdapter
+import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
 
 class AnnouncementListActivity : AppCompatActivity() {
 
@@ -18,21 +21,24 @@ class AnnouncementListActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var rvAnnouncement: RecyclerView
-    private var listAnnouncement: ArrayList<PengumumanModel> = arrayListOf()
+    private lateinit var rvAnnouncementAdapter: AnnouncementInsideAdapter
+
+    private lateinit var vmAnnouncement: AnnouncementViewModel
+    private lateinit var announcementListObserver: Observer<ArrayList<PengumumanModel>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_announcement_list)
         setupItemView()
         setupView()
+        setupObserver()
     }
 
     private fun setupItemView() {
         toolbar = findViewById(R.id.toolbar_main)
         rvAnnouncement = findViewById(R.id.rv_announcement_daftar_pengumuman)
         rvAnnouncement.setHasFixedSize(true)
-        listAnnouncement.addAll(AnnouncementsData.listData)
-        showAnnouncementRecyclerList()
+        rvAnnouncementAdapter = AnnouncementInsideAdapter()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -52,17 +58,32 @@ class AnnouncementListActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
-    }
 
-    private fun showAnnouncementRecyclerList() {
-        rvAnnouncement.layoutManager = LinearLayoutManager(this)
-        val announcementAdapter = AnnouncementInsideAdapter(listAnnouncement)
-        rvAnnouncement.adapter = announcementAdapter
+        rvAnnouncement.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@AnnouncementListActivity)
+            adapter = rvAnnouncementAdapter
+        }
+
+        vmAnnouncement = ViewModelProvider(
+            this,
+            ViewModelFactory(this, this)
+        ).get(AnnouncementViewModel::class.java)
     }
 
     private fun setupAppBar() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupObserver() {
+        announcementListObserver = Observer { list ->
+            if (list.size > 0) {
+                rvAnnouncementAdapter.changeDataList(list)
+            }
+        }
+
+        vmAnnouncement.getAnnouncementList().observe(this, announcementListObserver)
     }
 }

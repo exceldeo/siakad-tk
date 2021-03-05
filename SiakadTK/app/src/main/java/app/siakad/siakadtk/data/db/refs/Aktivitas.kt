@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.data.db.childs
+package app.siakad.siakadtk.data.db.refs
 
 import android.os.Parcelable
 import com.google.firebase.database.Exclude

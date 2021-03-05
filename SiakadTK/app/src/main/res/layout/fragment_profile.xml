@@ -50,6 +50,14 @@
             android:text="@string/kelas_siswa"
             android:textColor="@android:color/white"
             android:textSize="@dimen/header_subtitle_text" />
+
+        <ImageView
+            android:id="@+id/iv_profile_btn_pengaturan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings_fill"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/container_padding_x"/>
     </RelativeLayout>
 
     <ScrollView
