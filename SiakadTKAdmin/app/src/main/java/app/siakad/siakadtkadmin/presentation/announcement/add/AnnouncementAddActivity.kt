@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.announcement
+package app.siakad.siakadtkadmin.presentation.announcement.add
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.presentation.announcement.AnnouncementActivity
+import app.siakad.siakadtkadmin.presentation.announcement.AnnouncementViewModel
 import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.view.date.DateListener
 import app.siakad.siakadtkadmin.presentation.view.date.DatePickerFragment
@@ -32,7 +34,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
     private lateinit var datePicker: DatePickerFragment
     private lateinit var calendar: Calendar
 
-    private lateinit var vmAnnouncement: AnnouncementViewModel
+    private lateinit var vmAnnouncementAdd: AnnouncementAddViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,7 +102,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
 
         btnSave.setOnClickListener {
             if (validateInput()) {
-                vmAnnouncement.setData(
+                vmAnnouncementAdd.setData(
                     etTitle.text.toString(),
                     etContent.text.toString(),
                     etDate.text.toString()
@@ -108,10 +110,10 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
             }
         }
 
-        vmAnnouncement = ViewModelProvider(
+        vmAnnouncementAdd = ViewModelProvider(
             this,
             ViewModelFactory(this, this)
-        ).get(AnnouncementViewModel::class.java)
+        ).get(AnnouncementAddViewModel::class.java)
     }
 
     private fun setupAppBar() {

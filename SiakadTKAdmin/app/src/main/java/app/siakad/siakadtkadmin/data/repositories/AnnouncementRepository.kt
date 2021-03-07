@@ -14,10 +14,13 @@ import com.google.firebase.database.ValueEventListener
 
 class AnnouncementRepository(private val context: Context) {
     private var announcementList = MutableLiveData<ArrayList<PengumumanModel>>()
-    private val announcementDB = FirebaseRef<Pengumuman>(MainRepository.PENGUMUMAN_REF, context)
 
-    fun getAllData() {
-        announcementDB.getRef().addValueEventListener(object : ValueEventListener{
+    companion object {
+        val announcementDB = FirebaseRef(MainRepository.PENGUMUMAN_REF).getRef()
+    }
+
+    fun initEventListener() {
+        announcementDB.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -47,7 +50,7 @@ class AnnouncementRepository(private val context: Context) {
         val newKey = announcementDB.getKey().toString()
         val newData = Pengumuman(
             pengumumanId = newKey,
-            adminId = MainRepository.currentUser.userId,
+            adminId = AuthenticationRepository.currentUser.userId,
             judul = data.judul,
             keterangan = data.keterangan,
             tanggal = data.tanggal

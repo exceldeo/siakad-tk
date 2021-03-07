@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.presentation.announcement.adapter.AnnouncementAdater
+import app.siakad.siakadtkadmin.presentation.announcement.add.AnnouncementAddActivity
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
 

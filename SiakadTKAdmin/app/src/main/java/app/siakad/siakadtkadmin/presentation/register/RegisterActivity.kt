@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.data.repositories.MainRepository
 import app.siakad.siakadtkadmin.presentation.login.LoginActivity
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
@@ -101,6 +102,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun navigateToMain() {
         val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+
         startActivity(intent)
         finish()
     }

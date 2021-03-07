@@ -12,11 +12,5 @@ class MainRepository {
         const val PESANAN_REF = "Pesanan"
         const val PRODUK_REF = "Produk"
         const val DETAIL_PESANAN_PRODUK_REF = "DetailPesananProduk"
-
-        lateinit var currentUser: User
-
-        fun setUser(userId: String, email: String, passwd: String) {
-            currentUser = User(userId = userId, email = email, passwd = passwd)
-        }
     }
 }

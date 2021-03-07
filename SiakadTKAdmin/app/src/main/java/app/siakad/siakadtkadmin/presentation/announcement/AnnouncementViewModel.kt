@@ -9,17 +9,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class AnnouncementViewModel(private val ctx: Context, private val lcOwner: LifecycleOwner) :
+class AnnouncementViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
     ViewModel() {
     private val announcementList = MutableLiveData<ArrayList<PengumumanModel>>()
-    private val announcementRepository = AnnouncementRepository(ctx)
+    private val announcementRepository = AnnouncementRepository(context)
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
     private lateinit var announcementRepoObserver: Observer<ArrayList<PengumumanModel>>
 
     init {
         vmCoroutineScope.launch {
-            announcementRepository.getAllData()
+            announcementRepository.initEventListener()
         }
         setupObserver()
     }
@@ -36,17 +36,5 @@ class AnnouncementViewModel(private val ctx: Context, private val lcOwner: Lifec
 
     fun getAnnouncementList(): LiveData<ArrayList<PengumumanModel>> {
         return announcementList
-    }
-
-    fun setData(title: String, content: String, date: String) {
-        vmCoroutineScope.launch {
-            announcementRepository.insertData(
-                PengumumanModel(
-                    judul = title,
-                    keterangan = content,
-                    tanggal = date
-                )
-            )
-        }
     }
 }

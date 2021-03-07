@@ -7,7 +7,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class FirebaseRef<T>(private val refName: String, private val ctx: Context) {
+class FirebaseRef(private val refName: String) {
 
     private val db: DatabaseReference = FirebaseDatabase.getInstance().getReference(refName)
 
