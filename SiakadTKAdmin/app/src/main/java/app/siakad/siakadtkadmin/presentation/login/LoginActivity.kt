@@ -8,16 +8,12 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.data.repositories.MainRepository
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.login.LoginViewModel
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.register.RegisterActivity
-import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.utils.listener.AuthenticationListener
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import java.lang.Exception
 
 class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
@@ -71,7 +67,12 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         }
 
         vmLogin =
-            ViewModelProvider(this, ViewModelFactory(this, this)).get(LoginViewModel::class.java)
+            ViewModelProvider(this,
+                ViewModelFactory(
+                    this,
+                    this
+                )
+            ).get(LoginViewModel::class.java)
     }
 
     private fun validateInput(): Boolean {

@@ -9,8 +9,8 @@ import android.widget.Switch
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.main.setting.SettingViewModel
 import app.siakad.siakadtkadmin.presentation.view.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.view.alert.AlertListener
 

@@ -22,7 +22,7 @@
         <activity android:name=".presentation.registration.RegistrationActivity" />
         <activity android:name=".presentation.notification.NotificationAddActivity" />
         <activity android:name=".presentation.notification.NotificationActivity" />
-        <activity android:name=".presentation.announcement.add.AnnouncementAddActivity" />
+        <activity android:name=".presentation.announcement.AnnouncementAddActivity" />
         <activity android:name=".presentation.announcement.AnnouncementActivity" />
         <activity android:name=".presentation.login.LoginActivity" />
         <activity android:name=".presentation.SplashScreenActivity" >
