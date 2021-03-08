@@ -1,12 +1,23 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.ModelContainer
 import app.siakad.siakadtkadmin.domain.models.UserModel
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import java.lang.Exception
 
 class AuthenticationRepository {
+    private val authState = MutableLiveData<ModelContainer<String>>()
+
     companion object {
         val fbAuth = FirebaseAuth.getInstance()
-
         lateinit var currentUser: UserModel
         var userState: Boolean = false
 
@@ -18,10 +29,29 @@ class AuthenticationRepository {
             )
             userState = true
         }
+    }
 
-        fun deleteUser() {
-            fbAuth.signOut()
-            userState = false
+    fun login(email: String, passwd: String) {
+        fbAuth.signInWithEmailAndPassword(email, passwd).addOnSuccessListener {
+            authState.postValue(ModelContainer.getSuccesModel("Berhasil masuk!"))
+        }.addOnFailureListener { e -> authState.postValue(ModelContainer.getFailModel()) }
+    }
+
+    fun register(email: String, passwd: String) {
+        fbAuth.createUserWithEmailAndPassword(email, passwd).addOnCompleteListener { task: Task<AuthResult> ->
+            if (task.isSuccessful) {
+                authState.postValue(ModelContainer.getSuccesModel("Berhasil daftar"))
+            } else {
+                authState.postValue(ModelContainer.getFailModel())
+            }
         }
+    }
+
+    fun logout() {
+        fbAuth.signOut()
+    }
+
+    fun getAuthState() : LiveData<ModelContainer<String>> {
+        return authState
     }
 }

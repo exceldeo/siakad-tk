@@ -7,9 +7,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class PengumumanModel (
     @get:Exclude
-    var pengumumanId: String? = null,
-    var adminId: String? = null,
-    var judul: String? = null,
-    var keterangan: String? = null,
-    var tanggal: String? = null
+    var pengumumanId: String = "",
+    var adminId: String = "",
+    var judul: String = "",
+    var keterangan: String = "",
+    var tanggal: String = ""
 ): Parcelable

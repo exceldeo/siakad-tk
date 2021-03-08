@@ -1,11 +1,11 @@
-package app.siakad.siakadtkadmin.infrastructure.viewmodels.main.setting
+package app.siakad.siakadtkadmin.infrastructure.viewmodels.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtkadmin.domain.ModelContainer
+import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 
-class SettingViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
     private val _text = MutableLiveData<ModelContainer<String>>()
     private val authRepository = AuthenticationRepository()
 

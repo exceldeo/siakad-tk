@@ -7,9 +7,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class DaftarUlangModel (
     @get:Exclude
-    var dafulId: String? = null,
-    var userId: String? = null,
-    var tanggal: String? = null,
-    var status: String? = null,
-    var fotoBayar: String? = null
+    var dafulId: String = "",
+    var userId: String = "",
+    var tanggal: String = "",
+    var status: String = "",
+    var fotoBayar: String = ""
 ): Parcelable

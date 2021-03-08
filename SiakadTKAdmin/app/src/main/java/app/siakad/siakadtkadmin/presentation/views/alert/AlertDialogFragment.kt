@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.view.alert
+package app.siakad.siakadtkadmin.presentation.views.alert
 
 import android.app.Dialog
 import android.content.Context

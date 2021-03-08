@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.infrastructure
+package app.siakad.siakadtkadmin.domain
 
 enum class ModelState {
     SUCCESS,

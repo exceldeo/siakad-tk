@@ -7,11 +7,11 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class UserModel (
     @get:Exclude
-    var userId: String? = null,
-    var nama: String? = null,
-    var alamat: String? = null,
-    var noHP: String? = null,
-    var email: String? = null,
-    var passwd: String? = null,
-    var role: Boolean = false
+    var userId: String = "",
+    var nama: String = "",
+    var alamat: String = "",
+    var noHP: String = "",
+    var email: String = "",
+    var passwd: String = "",
+    var role: String = ""
 ): Parcelable

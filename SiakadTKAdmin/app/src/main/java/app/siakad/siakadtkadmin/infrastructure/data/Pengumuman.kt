@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Pengumuman (
-    var pengumumanId: String? = null,
-    var judul: String? = null,
-    var keterangan: String? = null,
-    var tanggal: String? = null
+    var pengumumanId: String = "",
+    var judul: String = "",
+    var keterangan: String = "",
+    var tanggal: String = ""
 ): Parcelable

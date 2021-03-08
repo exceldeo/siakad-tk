@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.login.LoginViewModel
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.register.RegisterActivity
@@ -24,11 +25,10 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var pbLoading: ProgressBar
 
     private lateinit var vmLogin: LoginViewModel
-    private val fbAuth = FirebaseAuth.getInstance()
 
     override fun onStart() {
         super.onStart()
-        if (fbAuth.currentUser != null) {
+        if (AuthenticationRepository.fbAuth.currentUser != null) {
             navigateToMain()
         }
     }

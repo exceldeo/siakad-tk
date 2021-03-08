@@ -7,10 +7,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class NotifikasiModel (
     @get:Exclude
-    var notifikasiId: String? = null,
-    var adminId: String? = null,
-    var userId: String? = null,
-    var judul: String? = null,
-    var keterangan: String? = null,
-    var tanggal: String? = null
+    var notifikasiId: String = "",
+    var adminId: String = "",
+    var userId: String = "",
+    var judul: String = "",
+    var keterangan: String = "",
+    var tanggal: String = ""
 ): Parcelable

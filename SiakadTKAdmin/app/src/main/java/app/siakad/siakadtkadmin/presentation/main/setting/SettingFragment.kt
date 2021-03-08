@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.main.setting.SettingViewModel
-import app.siakad.siakadtkadmin.presentation.view.alert.AlertDialogFragment
-import app.siakad.siakadtkadmin.presentation.view.alert.AlertListener
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 
-class SettingFragment : Fragment(), AlertListener {
+class SettingFragment : Fragment() {
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private lateinit var swtchRegistration: Switch
@@ -57,9 +57,5 @@ class SettingFragment : Fragment(), AlertListener {
         btnKeluar.setOnClickListener {
             alertDialog.show(this@SettingFragment.parentFragmentManager, null)
         }
-    }
-
-    override fun alertAction() {
-        vmSetting.keluar()
     }
 }

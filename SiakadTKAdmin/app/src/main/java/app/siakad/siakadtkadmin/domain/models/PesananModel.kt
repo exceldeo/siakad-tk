@@ -7,9 +7,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class PesananModel (
     @get:Exclude
-    var pesananId: String? = null,
+    var pesananId: String = "",
     var detailPesananId: Array<String>? = null,
-    var userId: String? = null,
-    var tanggalPesan: String? = null,
-    var statusPesan: String? = null
+    var userId: String = "",
+    var tanggalPesan: String = "",
+    var statusPesan: String = ""
 ): Parcelable

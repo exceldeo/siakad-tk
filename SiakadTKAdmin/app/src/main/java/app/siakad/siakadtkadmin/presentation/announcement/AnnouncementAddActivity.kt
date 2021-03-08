@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.factory.ViewModelFactory
-import app.siakad.siakadtkadmin.presentation.view.date.DateListener
-import app.siakad.siakadtkadmin.presentation.view.date.DatePickerFragment
+import app.siakad.siakadtkadmin.presentation.views.date.DateListener
+import app.siakad.siakadtkadmin.presentation.views.date.DatePickerFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
