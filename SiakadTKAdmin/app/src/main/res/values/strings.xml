@@ -188,4 +188,17 @@
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="fail_login_not_admin">Akun ini bukan Admin</string>
+    <string name="fail_get_user">Gagal mendapatkan Akun</string>
+    <string name="fail_set_user">Gagal menambahkan Pengguna</string>
 </resources>

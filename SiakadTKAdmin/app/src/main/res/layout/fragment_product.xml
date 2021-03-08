@@ -33,12 +33,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:layout_width="16dp"
-                    android:layout_height="12dp"
-                    android:layout_marginEnd="@dimen/list_space"
-                    android:src="@drawable/ic_menu" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

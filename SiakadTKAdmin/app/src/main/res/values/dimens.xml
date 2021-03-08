@@ -56,4 +56,6 @@
     <dimen name="list_grid_image">146dp</dimen>
     <dimen name="icon">16dp</dimen>
     <dimen name="appbar_height">123dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
 </resources>

@@ -9,15 +9,20 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.register.RegisterViewModel
 import app.siakad.siakadtkadmin.presentation.login.LoginActivity
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
+import app.siakad.siakadtkadmin.presentation.utils.listener.AuthenticationListener
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     private lateinit var etEmail: EditText
     private lateinit var etPasswd: EditText
@@ -26,7 +31,14 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
 
-    private val fbAuth = FirebaseAuth.getInstance()
+    private lateinit var vmRegister: RegisterViewModel
+
+    override fun onStart() {
+        super.onStart()
+        if (AuthenticationRepository.fbAuth.currentUser != null) {
+            navigateToMain()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +56,15 @@ class RegisterActivity : AppCompatActivity() {
         btnSignup = findViewById(R.id.btn_register_daftar)
         tvLogin = findViewById(R.id.tv_register_masuk)
         pbLoading = findViewById(R.id.loading)
+
+        vmRegister =
+            ViewModelProvider(this, ViewModelFactory(this, this)).get(RegisterViewModel::class.java)
     }
 
     private fun setupView() {
         btnSignup.setOnClickListener {
             if (validateInput()) {
-                registerAdmin()
+                vmRegister.registerAdmin(etEmail.text.toString(), etPasswd.text.toString())
             }
         }
 
@@ -87,25 +102,14 @@ class RegisterActivity : AppCompatActivity() {
         return returnState
     }
 
-    private fun registerAdmin() {
-        fbAuth.createUserWithEmailAndPassword(etEmail.text.toString(), etPasswd.text.toString()).addOnCompleteListener(
-            OnCompleteListener { task: Task<AuthResult> ->
-                if (task.isSuccessful) {
-                    showToast(getString(R.string.scs_regis))
-                    navigateToMain()
-                } else {
-                    showToast(getString(R.string.fail_regis))
-                }
-            })
-    }
-
-    private fun navigateToMain() {
+    override fun navigateToMain() {
         val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+
         startActivity(intent)
         finish()
     }
 
-    private fun showToast(msg: String) {
+    override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

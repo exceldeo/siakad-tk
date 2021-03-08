@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.main.PageViewModel
 
 /**
  * A placeholder fragment containing a simple view.

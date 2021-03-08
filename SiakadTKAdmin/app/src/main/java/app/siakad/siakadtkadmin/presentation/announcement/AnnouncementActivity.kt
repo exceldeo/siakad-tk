@@ -13,10 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.models.PengumumanModel
+import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.announcement.AnnouncementViewModel
 import app.siakad.siakadtkadmin.presentation.announcement.adapter.AnnouncementAdater
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
-import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.factory.ViewModelFactory
 
 class AnnouncementActivity : AppCompatActivity() {
 
@@ -30,7 +31,7 @@ class AnnouncementActivity : AppCompatActivity() {
     private lateinit var rvAnnouncAdapter: AnnouncementAdater
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
-    private lateinit var announcementListObserver: Observer<ArrayList<PengumumanModel>>
+    private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +82,10 @@ class AnnouncementActivity : AppCompatActivity() {
 
         vmAnnouncement = ViewModelProvider(
             this,
-            ViewModelFactory(this, this)
+            ViewModelFactory(
+                this,
+                this
+            )
         ).get(AnnouncementViewModel::class.java)
     }
 

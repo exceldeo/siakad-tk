@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.models.NotifikasiModel
+import app.siakad.siakadtkadmin.infrastructure.data.Notifikasi
 
 class NotificationAdapter() : RecyclerView.Adapter<NotificationViewHolder>() {
 
-    private val notificationList: ArrayList<NotifikasiModel> = arrayListOf()
+    private val notificationList: ArrayList<Notifikasi> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_announcement, parent, false)

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.main.dashboard.DashboardViewModel
 import app.siakad.siakadtkadmin.presentation.announcement.AnnouncementActivity
 import app.siakad.siakadtkadmin.presentation.notification.NotificationActivity
 import app.siakad.siakadtkadmin.presentation.order.OrderActivity

@@ -2,20 +2,21 @@ package app.siakad.siakadtkadmin.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.data.repositories.MainRepository
+import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.login.LoginViewModel
 import app.siakad.siakadtkadmin.presentation.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.register.RegisterActivity
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.AuthResult
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.utils.listener.AuthenticationListener
 import com.google.firebase.auth.FirebaseAuth
-import java.lang.Exception
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
     private lateinit var etEmail: EditText
     private lateinit var etPasswd: EditText
@@ -23,11 +24,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
 
-    private val fbAuth = FirebaseAuth.getInstance()
+    private lateinit var vmLogin: LoginViewModel
 
     override fun onStart() {
         super.onStart()
-        if (fbAuth.currentUser != null) {
+        if (AuthenticationRepository.fbAuth.currentUser != null) {
             navigateToMain()
         }
     }
@@ -51,9 +52,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
+        etPasswd.transformationMethod = PasswordTransformationMethod()
+
         btnLogin.setOnClickListener {
             if (validateInput()) {
-                loginAdmin()
+                vmLogin.loginAdmin(etEmail.text.toString(), etPasswd.text.toString())
             }
         }
 
@@ -62,6 +65,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        vmLogin =
+            ViewModelProvider(this,
+                ViewModelFactory(
+                    this,
+                    this
+                )
+            ).get(LoginViewModel::class.java)
     }
 
     private fun validateInput(): Boolean {
@@ -83,32 +94,14 @@ class LoginActivity : AppCompatActivity() {
         return returnState
     }
 
-    private fun loginAdmin() {
-        fbAuth.signInWithEmailAndPassword(etEmail.text.toString(), etPasswd.text.toString())
-            .addOnSuccessListener(
-                object : OnSuccessListener<AuthResult> {
-                    override fun onSuccess(auth: AuthResult?) {
-                        showToast(getString(R.string.scs_login))
-                        navigateToMain()
-                    }
-                })
-            .addOnFailureListener(this, OnFailureListener { e: Exception ->
-                showToast(getString(R.string.fail_login))
-            })
-    }
-
-    private fun navigateToMain() {
-        MainRepository.setUser(
-            fbAuth.currentUser!!.uid,
-            etEmail.text.toString(),
-            etPasswd.text.toString()
-        )
+    override fun navigateToMain() {
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
+
         startActivity(intent)
         finish()
     }
 
-    private fun showToast(msg: String) {
+    override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
