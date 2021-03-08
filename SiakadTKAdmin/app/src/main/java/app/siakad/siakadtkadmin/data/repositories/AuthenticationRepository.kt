@@ -14,5 +14,10 @@ class AuthenticationRepository {
             currentUser = User(userId = userId, email = email, passwd = passwd)
             userState = true
         }
+
+        fun deleteUser() {
+            fbAuth.signOut()
+            userState = false
+        }
     }
 }

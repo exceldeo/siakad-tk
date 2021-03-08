@@ -3,11 +3,13 @@ package app.siakad.siakadtkadmin.presentation.main.setting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import app.siakad.siakadtkadmin.data.repositories.AuthenticationRepository
+import app.siakad.siakadtkadmin.domain.DataModel
 
 class SettingViewModel : ViewModel() {
+    private val _text = MutableLiveData<DataModel<String>>()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    fun keluar() {
+        AuthenticationRepository.deleteUser()
     }
-    val text: LiveData<String> = _text
 }
