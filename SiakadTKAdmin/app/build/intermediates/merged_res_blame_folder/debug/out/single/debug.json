@@ -1,0 +1,1430 @@
+[
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_menu.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_file_upload.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_file_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_home.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_dashboard.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_vc_banner.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\vc_banner.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_build.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_build.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_status_proses.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_status_proses.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_checkbox_check_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_checkbox_check_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_user_detail.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_user_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_build.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_build.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_account_circle.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_thinitalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_thinitalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_name.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_name.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_product.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_product.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_menu.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_menu_gallery.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_menu_gallery.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_calendar_today_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_calendar_today_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_main_product.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_main_product.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_checkbox_cross_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_checkbox_cross_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_person_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_person_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_daftar_ulang.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_daftar_ulang.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_checkbox_cross_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_checkbox_cross_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_name.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_name.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_vc_large_banner.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\vc_large_banner.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_registration.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_registration.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_registration_detail.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_registration_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_calendar_today_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_calendar_today_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_dashboard_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_dashboard_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vc_bg_pengumuman_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\vc_bg_pengumuman_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_data_form_add.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_data_form_add.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_delete.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_checkbox_check_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_checkbox_check_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vc_banner_child.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\vc_banner_child.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_notifikasi.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_notifikasi.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_checkbox_cross_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_checkbox_cross_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_person_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_person_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_shopping_basket_black_24dp.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_shopping_basket_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_file_upload.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_file_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_dashboard_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_dashboard_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_notifikasi.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_notifikasi.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_order_detail.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_order_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_vc_bg_pengumuman.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\vc_bg_pengumuman.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_photo_upload_place.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_photo_upload_place.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_daftar_ulang.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_daftar_ulang.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_vc_banner_child.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\vc_banner_child.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_checkbox_cross_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_checkbox_cross_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_person_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_person_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\navigation_mobile_navigation.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\navigation\\mobile_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_home.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_shopping_basket_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_shopping_basket_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_pembelian.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_pembelian.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_delete.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vc_bg_pengumuman_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\vc_bg_pengumuman_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_delete.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_name.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_name.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_vc_bg_pengumuman_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vc_bg_pengumuman_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_notifikasi.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_notifikasi.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_product.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_product.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_notifications_black_24dp.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_home.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_checkbox_check_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_checkbox_check_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_checkbox_cross_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_checkbox_cross_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_toolbar.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_lock.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_lock.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_status_menunggu_pembayaran.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_status_menunggu_pembayaran.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_mode_edit.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_mode_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_menu.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_notifikasi.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_notifikasi.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_person_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_person_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_addition_data.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_addition_data.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_file_upload.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_file_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_photo_upload_place.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_photo_upload_place.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_account_circle.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_name.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_name.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_lightitalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_lightitalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_file_upload.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_file_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_checkbox_check_act.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_checkbox_check_act.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_list.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_product_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_italic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_italic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_order.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_order.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vc_large_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\vc_large_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_user.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_shopping_basket_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_shopping_basket_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_pembelian.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_pembelian.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_thin.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_thin.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_blackitalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_blackitalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_daftar_ulang.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_daftar_ulang.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_announcement.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_announcement.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vc_large_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\vc_large_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_name.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_name.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_menu_camera.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_menu_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_vc_bg_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vc_bg_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_mode_edit.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_mode_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_name.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_name.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_lock.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_lock.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_vc_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\vc_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_checkbox_cross_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_checkbox_cross_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_vc_banner_child.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\vc_banner_child.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_mail.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_announcement_add.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_announcement_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_person_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_person_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_data_form_add.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_data_form_add.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_mediumitalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_mediumitalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_user_detail_unver.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_user_detail_unver.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_button_white_elevated.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_button_white_elevated.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_status_selesai.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_status_selesai.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_build.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_build.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_dashboard_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_dashboard_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_mode_edit.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_mode_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_photo_upload_place.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_photo_upload_place.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_daftar_ulang.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_daftar_ulang.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_checkbox_check_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_checkbox_check_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_mode_edit.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_mode_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_extrabolditalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_extrabolditalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_shopping_basket_color.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_shopping_basket_color.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_status_proses.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_status_proses.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_shopping_basket_color.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_shopping_basket_color.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_product.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_product.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_notification.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_notification.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_menu.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_person_24.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_person_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_checkbox_check_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_checkbox_check_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vc_banner_child.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\vc_banner_child.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_product.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_product.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_data_form_add.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_data_form_add.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_menu_slideshow.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_light.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_light.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_dashboard_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_dashboard_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_setting.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\fragment_setting.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_checkbox_check_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_checkbox_check_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_announcement.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_announcement.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_product.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\fragment_product.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_vc_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vc_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_calendar_today_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_calendar_today_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_photo_upload_place.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_photo_upload_place.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_extralight.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_extralight.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_home.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_home_black_24dp.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_status_selesai.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_status_selesai.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_vc_large_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vc_large_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_dashboard_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_dashboard_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_delete.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_button_white_elevated.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_button_white_elevated.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vc_bg_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\vc_bg_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_status_proses.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_status_proses.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vc_bg_pengumuman_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vc_bg_pengumuman_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_status_selesai.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_status_selesai.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_shopping_basket_color.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_shopping_basket_color.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_checkbox_cross_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_checkbox_cross_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vc_bg_pengumuman_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\vc_bg_pengumuman_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_checkbox_cross_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_checkbox_cross_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_name.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_name.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_menu.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_mail.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_checkbox_cross_act.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_checkbox_cross_act.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_order_detail.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_order_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_notifikasi.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_notifikasi.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_vc_large_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\vc_large_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_daftar_ulang.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_daftar_ulang.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_calendar_today_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_calendar_today_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_extrabold.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_extrabold.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_build.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_build.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_checkbox_check_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_checkbox_check_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_add_24.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_add_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_pembelian.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_pembelian.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_daftar_ulang.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_daftar_ulang.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_semibolditalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_semibolditalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable_side_nav_bar.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_lock.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_lock.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_mail.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_user.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\fragment_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_file_upload.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_file_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_edit.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_product_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_vc_bg_pengumuman_dashboard.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\vc_bg_pengumuman_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_product_list.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_product_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_status_menunggu_pembayaran.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_status_menunggu_pembayaran.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_calendar_today_24.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_calendar_today_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_pembelian.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_pembelian.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_checkbox_check_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_checkbox_check_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_account_circle.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_mail.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_shopping_basket_color.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_shopping_basket_color.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vc_banner_child.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vc_banner_child.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_pengumuman.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_pengumuman.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_checkbox_cross_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_checkbox_cross_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_build.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_build.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_account_circle.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_checkbox_cross_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_checkbox_cross_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_add.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_product_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vc_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vc_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_person_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_person_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_logo.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_checkbox_check_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_checkbox_check_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_lock.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_lock.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_product.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_product.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_dashboard_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_dashboard_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vc_large_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\vc_large_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_lock.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_lock.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_file_upload.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_file_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_button_white_elevated.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_button_white_elevated.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_build.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_build.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_mail.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_mail.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_status_menunggu_pembayaran.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_status_menunggu_pembayaran.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_product.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_product.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_home.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_calendar_today_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_calendar_today_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_shopping_basket_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_shopping_basket_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_status_selesai.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_status_selesai.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_file_upload.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_file_upload.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_notifikasi.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_notifikasi.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_account_circle.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_status_selesai.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_status_selesai.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vc_bg_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\vc_bg_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_mode_edit.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_mode_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_photo_upload_place.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_photo_upload_place.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_delete.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_registration.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_registration.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_dashboard_black_24dp.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_dashboard_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_status_menunggu_pembayaran.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_status_menunggu_pembayaran.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_status_proses.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_status_proses.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_mode_edit.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_mode_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_status_menunggu_pembayaran.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_status_menunggu_pembayaran.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_extralightitalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_extralightitalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_vc_bg_pengumuman_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\vc_bg_pengumuman_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_vc_banner_child.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\vc_banner_child.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_delete.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_dashboard.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vc_banner_child.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\vc_banner_child.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_mail.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_checkbox_cross_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_checkbox_cross_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_mail.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_semibold.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_semibold.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_checkbox_check_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_checkbox_check_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_mode_edit.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_mode_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_data_form_add.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_data_form_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_checkbox_cross_inact.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_checkbox_cross_inact.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_daftar_ulang.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_daftar_ulang.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_data_form_add.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_data_form_add.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_shopping_basket_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_shopping_basket_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_pembelian.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_pembelian.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_button_white_elevated.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_button_white_elevated.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_calendar_today_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_calendar_today_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_pembelian.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_pembelian.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_checkbox_check_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_checkbox_check_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_status_selesai.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_status_selesai.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_button_white_elevated.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_button_white_elevated.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_data_form_add.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_data_form_add.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_user_detail.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_user_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_notifikasi.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_notifikasi.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_status_proses.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_status_proses.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_logo.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_status_proses.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_status_proses.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_black.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_black.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_menu.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_checkbox_cross_inact.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_checkbox_cross_inact.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_button_white_elevated.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_button_white_elevated.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_photo_upload_place.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_photo_upload_place.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_dashboard.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_dashboard.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_add_24.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_add_24.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vc_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\vc_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_home.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vc_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\vc_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_shopping_basket_color.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_shopping_basket_color.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash_screen.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_splash_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_data_form_add.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_data_form_add.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_order.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_order.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_vc_bg_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\vc_bg_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_shopping_basket_color.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_shopping_basket_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_user.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\item_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_status_proses.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_status_proses.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_account_circle.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_status_selesai.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_status_selesai.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_delete.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_status_menunggu_pembayaran.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_status_menunggu_pembayaran.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_photo_upload_place.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_photo_upload_place.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vc_bg_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\vc_bg_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_registration.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\fragment_registration.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_lock.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_lock.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_checkbox_check_inact.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_checkbox_check_inact.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_shopping_basket_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_shopping_basket_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vc_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\vc_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vc_large_banner.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vc_large_banner.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_shopping_basket_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_shopping_basket_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_bold.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_bold.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_pengumuman.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_bolditalic.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_bolditalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_menu.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_menu.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_checkbox_check_act.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_checkbox_check_act.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_pembelian.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_pembelian.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_notification_add.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_notification_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_account_circle.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_account_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_status_menunggu_pembayaran.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_status_menunggu_pembayaran.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_shopping_basket_color.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_shopping_basket_color.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_regular.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_regular.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_lock.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_lock.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_product.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_product.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_build.xml.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_build.xml"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_home_black_24dp.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_medium.ttf.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\src\\main\\res\\font\\poppins_medium.ttf"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_button_white_elevated.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_button_white_elevated.png"
+    },
+    {
+        "merged": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vc_bg_pengumuman.png.flat",
+        "source": "C:\\Users\\indri\\Documents\\_Bismillah\\siakad-tk\\SiakadTKAdmin\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\vc_bg_pengumuman.png"
+    }
+]

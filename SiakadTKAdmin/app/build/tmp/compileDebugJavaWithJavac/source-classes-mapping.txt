@@ -1,0 +1,2 @@
+app/siakad/siakadtkadmin/BuildConfig.java
+ app.siakad.siakadtkadmin.BuildConfig

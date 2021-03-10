@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.androidbuffer:kotlinfilepicker:v0.0.4-alpha@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/91425cb8d0d02f3e5b61c9a68c94f09d/jetified-kotlinfilepicker-v0.0.4-alpha/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/91425cb8d0d02f3e5b61c9a68c94f09d/jetified-kotlinfilepicker-v0.0.4-alpha/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/91425cb8d0d02f3e5b61c9a68c94f09d/jetified-kotlinfilepicker-v0.0.4-alpha/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.androidbuffer/kotlinfilepicker/v0.0.4-alpha/bc58aa3e81f9851b61e717fce5f34b39ade1ee3c/kotlinfilepicker-v0.0.4-alpha-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

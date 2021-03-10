@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <pickBest>false</pickBest>
+        <target>android-29</target>
+      </config>
+    </shared>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f68498c4-6fa7-46ab-accb-0d143832ecc2" name="Default Changelist" comment="kotreq file">
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/ModelContainer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/ModelState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/DetailKeranjangProdukModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/DetailPesananProdukModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/DetailUserModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/KeranjangModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/NotifikasiModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/UserModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/UserRoleModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/repositories/AnnouncementRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/repositories/AuthenticationRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/repositories/RegisterRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/repositories/UserRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Aktivitas.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/DaftarUlang.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/DetailKeranjangProduk.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/DetailPesanan.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Keranjang.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Notifikasi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Pengumuman.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Pesanan.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Produk.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/Siswa.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/announcement/AnnouncementViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/login/LoginViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/main/MainViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/main/PageViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/main/profile/ProfileViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/register/RegisterViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/order/adapter/OrderAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/utils/listener/AuthenticationListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/drawable/ic_book.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/drawable/ic_seragam.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_grid_product_type.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/FirebaseRef.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/repositories/FirebaseRef.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/Aktivitas.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/DaftarUlang.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/DetailPesananProduk.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/DetailProduk.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/data/DetailProduk.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/DetailUser.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/Pengumuman.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/Pesanan.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/db/refs/User.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/repositories/AnnouncementRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/data/repositories/MainRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/repositories/MainRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/AktivitasModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/AktivitasModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/DaftarUlangModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/DaftarUlangModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/DetailPesananModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/PengumumanModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/PengumumanModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/PesananModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/PesananModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/ProdukModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/ProdukModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/domain/models/SiswaModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/AnnouncementListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/AnnouncementListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/AnnouncementViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/AnnouncementsData.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/adapter/AnnouncementAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/adapter/AnnouncementAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/adapter/AnnouncementViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/adapter/AnnouncementViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/inside/adapter/AnnouncementInsideAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/inside/adapter/AnnouncementInsideAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/inside/adapter/AnnouncementInsideViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/announcement/inside/adapter/AnnouncementInsideViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/basket/BasketActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/basket/BasketActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/home/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/main/home/HomeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/adapter/ProductAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductBookDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/detail/book/ProductBookDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/detail/ProductListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductUniformDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/detail/uniform/ProductUniformDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/adapter/ProductViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/main/product/ProductViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/product/ProductsData.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/ProfileViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/SettingsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/SettingsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/UserActivitiesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/UserActivitiesAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/UserActivitiesData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/UserActivitiesData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/UserActivitiesViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/main/profile/UserActivitiesViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/nota/NotaAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/nota/NotaViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/order/adapter/OrderViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/nota/NotasData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/order/NotasData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/order/OrderDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/order/detail/OrderDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/registration/RegistrationActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/registration/RegistrationActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/registration/RegistrationFormActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/registration/form/RegistrationFormActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/presentation/utils/factory/ViewModelFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/java/app/siakad/siakadtk/infrastructure/viewmodels/factory/ViewModelFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_basket.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_basket.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_history_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_history_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_order_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_order_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_order_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_order_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_product_book_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_product_book_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_product_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_product_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_product_uniform_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_product_uniform_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_registration_form.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/activity_registration_form.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/fragment_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/fragment_product.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_grid_nota.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_grid_order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_grid_product.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_list_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_product_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_daftar_ulang.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_daftar_ulang.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_pengumuman.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_pengumuman.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_product_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/layout/item_row_orderdetail_product.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SiakadTK/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1o60iia3kNH8lmMvpmJ8AjvYw85" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SiakadTK" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Siakad_TK_Admin.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f68498c4-6fa7-46ab-accb-0d143832ecc2" name="Default Changelist" comment="" />
+      <created>1612591862124</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612591862124</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="kotreq file" />
+    <option name="LAST_COMMIT_MESSAGE" value="kotreq file" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="96" y="155" width="591" height="417" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1615311465743">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="96" y="155" width="591" height="417" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1615311465743" />
+    <state x="263" y="119" key="AndroidCreateResourceFileDialog" timestamp="1615300077587">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1615300077587" />
+    <state x="263" y="69" key="AndroidThemeDialog" timestamp="1612625286247">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="263" y="69" key="AndroidThemeDialog/0.0.1366.728@0.0.1366.728" timestamp="1612625286247" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1615395505057">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1615395505057" />
+    <state width="1322" height="2" key="GridCell.Tab.0.bottom" timestamp="1613546428935">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1613546428935" />
+    <state width="1322" height="2" key="GridCell.Tab.0.center" timestamp="1613546428935">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1613546428935" />
+    <state width="1322" height="2" key="GridCell.Tab.0.left" timestamp="1613546428935">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1613546428935" />
+    <state width="1322" height="2" key="GridCell.Tab.0.right" timestamp="1613546428935">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1613546428935" />
+    <state x="185" y="149" width="956" height="534" key="find.popup" timestamp="1615208529813">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="185" y="149" width="956" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1615208529813" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1614771814647">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1614771814647" />
+  </component>
+</project>

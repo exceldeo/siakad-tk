@@ -1,0 +1,193 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="app.siakad.siakadtkadmin"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml
+10
+11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+12    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:25:5-79
+13-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:25:22-76
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:26:5-67
+14-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:26:22-64
+15
+16    <application
+16-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:5:5-36:19
+17        android:allowBackup="true"
+17-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:6:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.3.2] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\73240f9acbea2ddaad9435bac92c9bda\core-1.3.2\AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:7:9-43
+21        android:label="@string/app_name"
+21-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:8:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:9:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:10:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme.NoActionBar" >
+25-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:11:9-52
+26        <activity android:name="app.siakad.siakadtkadmin.presentation.register.RegisterActivity" />
+26-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:12:9-76
+26-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:12:19-73
+27        <activity android:name="app.siakad.siakadtkadmin.presentation.user.detail.UserDetailActivity" />
+27-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:13:9-81
+27-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:13:19-78
+28        <activity android:name="app.siakad.siakadtkadmin.presentation.user.detail.UserDetailUnverActivity" />
+28-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:14:9-86
+28-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:14:19-83
+29        <activity android:name="app.siakad.siakadtkadmin.presentation.user.UserActivity" />
+29-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:15:9-68
+29-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:15:19-65
+30        <activity android:name="app.siakad.siakadtkadmin.presentation.product.ProductEditActivity" />
+30-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:16:9-78
+30-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:16:19-75
+31        <activity android:name="app.siakad.siakadtkadmin.presentation.product.ProductAddActivity" />
+31-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:17:9-77
+31-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:17:19-74
+32        <activity android:name="app.siakad.siakadtkadmin.presentation.product.ProductListActivity" />
+32-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:18:9-78
+32-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:18:19-75
+33        <activity android:name="app.siakad.siakadtkadmin.presentation.order.detail.OrderDetailActivity" />
+33-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:19:9-83
+33-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:19:19-80
+34        <activity android:name="app.siakad.siakadtkadmin.presentation.order.OrderActivity" />
+34-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:20:9-70
+34-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:20:19-67
+35        <activity android:name="app.siakad.siakadtkadmin.presentation.registration.RegistrationDetailActivity" />
+35-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:21:9-90
+35-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:21:19-87
+36        <activity android:name="app.siakad.siakadtkadmin.presentation.registration.RegistrationActivity" />
+36-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:22:9-84
+36-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:22:19-81
+37        <activity android:name="app.siakad.siakadtkadmin.presentation.notification.NotificationAddActivity" />
+37-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:23:9-87
+37-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:23:19-84
+38        <activity android:name="app.siakad.siakadtkadmin.presentation.notification.NotificationActivity" />
+38-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:24:9-84
+38-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:24:19-81
+39        <activity android:name="app.siakad.siakadtkadmin.presentation.announcement.AnnouncementAddActivity" />
+39-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:25:9-87
+39-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:25:19-84
+40        <activity android:name="app.siakad.siakadtkadmin.presentation.announcement.AnnouncementActivity" />
+40-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:26:9-84
+40-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:26:19-81
+41        <activity android:name="app.siakad.siakadtkadmin.presentation.login.LoginActivity" />
+41-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:27:9-70
+41-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:27:19-67
+42        <activity android:name="app.siakad.siakadtkadmin.presentation.SplashScreenActivity" >
+42-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:28:9-34:20
+42-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:28:19-68
+43            <intent-filter>
+43-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:29:13-33:29
+44                <action android:name="android.intent.action.MAIN" />
+44-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:30:17-69
+44-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:30:25-66
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:32:17-77
+46-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:32:27-74
+47            </intent-filter>
+48        </activity>
+49        <activity android:name="app.siakad.siakadtkadmin.presentation.main.MainActivity" />
+49-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:35:9-68
+49-->C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTKAdmin\app\src\main\AndroidManifest.xml:35:19-65
+50
+51        <service
+51-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:29:9-35:19
+52            android:name="com.google.firebase.components.ComponentDiscoveryService"
+52-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:30:13-84
+53            android:directBootAware="true"
+53-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
+54            android:exported="false" >
+54-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:31:13-37
+55            <meta-data
+55-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:32:13-34:85
+56                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+56-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:33:17-109
+57                android:value="com.google.firebase.components.ComponentRegistrar" />
+57-->[com.google.firebase:firebase-database:19.6.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\e4b9ee000091808372518bbfc11d614e\jetified-firebase-database-19.6.0\AndroidManifest.xml:34:17-82
+58            <meta-data
+58-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
+59                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+59-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
+60                android:value="com.google.firebase.components.ComponentRegistrar" />
+60-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
+61            <!--
+62                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+63                clients to use it as well, by defining this registrar in their own core/common library.
+64            -->
+65            <meta-data
+65-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
+66                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+66-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
+67                android:value="com.google.firebase.components.ComponentRegistrar" />
+67-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
+68        </service>
+69
+70        <activity
+70-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
+71            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+71-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
+72            android:excludeFromRecents="true"
+72-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
+73            android:exported="true"
+73-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
+74            android:launchMode="singleTask"
+74-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
+75            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+75-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
+76            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+76-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\67ea22afb48ce57749659120cd8d3b72\jetified-firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
+77        <activity
+77-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\0fc42afbf34fb7acd0e00287f6e5aa29\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+78            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+78-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\0fc42afbf34fb7acd0e00287f6e5aa29\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+79            android:exported="false"
+79-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\0fc42afbf34fb7acd0e00287f6e5aa29\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+80            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+80-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\0fc42afbf34fb7acd0e00287f6e5aa29\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+81
+82        <provider
+82-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
+83            android:name="com.google.firebase.provider.FirebaseInitProvider"
+83-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
+84            android:authorities="app.siakad.siakadtkadmin.firebaseinitprovider"
+84-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
+85            android:directBootAware="true"
+85-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
+86            android:exported="false"
+86-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
+87            android:initOrder="100" />
+87-->[com.google.firebase:firebase-common:19.5.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\b0f6035a8879b77543b292e1d35b7dd9\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
+88
+89        <meta-data
+89-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\05351fa0d30b51415af5ccfac87c7302\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+90            android:name="com.google.android.gms.version"
+90-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\05351fa0d30b51415af5ccfac87c7302\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+91            android:value="@integer/google_play_services_version" />
+91-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\05351fa0d30b51415af5ccfac87c7302\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+92
+93        <provider
+93-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\377c9e5fb0543ed5e89d794200d58108\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+94            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+94-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\377c9e5fb0543ed5e89d794200d58108\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+95            android:authorities="app.siakad.siakadtkadmin.lifecycle-process"
+95-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\377c9e5fb0543ed5e89d794200d58108\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+96            android:exported="false"
+96-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\377c9e5fb0543ed5e89d794200d58108\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+97            android:multiprocess="true" />
+97-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\377c9e5fb0543ed5e89d794200d58108\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+98    </application>
+99
+100</manifest>
