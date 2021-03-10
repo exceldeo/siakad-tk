@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\014d60a4b304159bfd9e286fe6073554\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics-ktx:18.0.2] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\5036544f8dc357af02e4f7c83ee5e507\jetified-firebase-analytics-ktx-18.0.2\AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-auth-ktx:20.0.2] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\78ea827dcfb442ee874797de133374fc\jetified-firebase-auth-ktx-20.0.2\AndroidManifest.xml:2:1-17:12
@@ -93,25 +93,25 @@ MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\indri\.gradle\caches\t
 MERGED from [com.makeramen:roundedimageview:2.3.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\04f1feee81e3aa3d156f2b15eceb136b\jetified-roundedimageview-2.3.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android:flexbox:2.0.1] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\3291ff1189761f84f8395af4fa7024d0\jetified-flexbox-2.0.1\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\973abc1ad7c5569288f750940e8f6610\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
 	package
 		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
 		INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-41:12
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:1-42:12
 		INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:5:5-39:19
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:5:5-40:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:18.0.2] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\5036544f8dc357af02e4f7c83ee5e507\jetified-firebase-analytics-ktx-18.0.2\AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:18.0.2] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\5036544f8dc357af02e4f7c83ee5e507\jetified-firebase-analytics-ktx-18.0.2\AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-auth-ktx:20.0.2] C:\Users\indri\.gradle\caches\transforms-2\files-2.1\78ea827dcfb442ee874797de133374fc\jetified-firebase-auth-ktx-20.0.2\AndroidManifest.xml:7:5-15:19
@@ -191,93 +191,97 @@ MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\indri\.gradle\caches\t
 	android:theme
 		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:11:9-52
 activity#app.siakad.siakadtk.presentation.registration.RegistrationActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:12:9-93
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:12:9-83
 	android:name
 		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:12:19-81
 activity#app.siakad.siakadtk.presentation.signup.SignupActivity
 ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:13:9-72
 	android:name
 		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:13:19-69
-activity#app.siakad.siakadtk.presentation.main.product.ProductUniformDetailActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:14:9-111
+activity#app.siakad.siakadtk.presentation.order.detail.OrderDetailActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:14:9-83
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:14:19-108
-activity#app.siakad.siakadtk.presentation.order.OrderDetailActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:15:9-76
-	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:15:19-73
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:14:19-80
 activity#app.siakad.siakadtk.presentation.history.detail.HistoryDetailActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:16:9-87
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:15:9-87
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:16:19-84
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:15:19-84
 activity#app.siakad.siakadtk.presentation.main.profile.PasswordActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:17:9-80
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:16:9-80
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:17:19-77
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:16:19-77
 activity#app.siakad.siakadtk.presentation.main.profile.ProfileActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:18:9-98
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:17:9-79
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:18:19-95
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:17:19-76
 activity#app.siakad.siakadtk.presentation.main.profile.SettingsActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:19:9-80
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:18:9-80
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:19:19-77
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:18:19-77
 activity#app.siakad.siakadtk.presentation.history.HistoryActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:20:9-74
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:19:9-74
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:20:19-71
-activity#app.siakad.siakadtk.presentation.basket.BasketActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:21:9-72
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:19:19-71
+activity#app.siakad.siakadtk.presentation.main.product.basket.BasketActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:20:9-85
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:21:19-69
-activity#app.siakad.siakadtk.presentation.main.product.ProductBookDetailActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:22:9-108
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:20:19-82
+activity#app.siakad.siakadtk.presentation.main.product.detail.book.ProductBookDetailActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:21:9-101
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:22:19-105
-activity#app.siakad.siakadtk.presentation.main.product.ProductListActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:23:9-102
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:21:19-98
+activity#app.siakad.siakadtk.presentation.main.product.detail.book.ProductBookListActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:22:9-99
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:23:19-99
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:22:19-96
+activity#app.siakad.siakadtk.presentation.main.product.detail.uniform.ProductUniformListActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:23:9-105
+	android:name
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:23:19-102
+activity#app.siakad.siakadtk.presentation.main.product.detail.uniform.ProductUniformDetailActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:24:9-107
+	android:name
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:24:19-104
 activity#app.siakad.siakadtk.presentation.order.OrderListActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:24:9-74
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:25:9-74
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:24:19-71
-activity#app.siakad.siakadtk.presentation.registration.RegistrationFormActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:25:9-88
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:25:19-71
+activity#app.siakad.siakadtk.presentation.registration.form.RegistrationFormActivity
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:26:9-93
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:25:19-85
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:26:19-90
 activity#app.siakad.siakadtk.presentation.announcement.AnnouncementListActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:26:9-88
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:27:9-88
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:26:19-85
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:27:19-85
 activity#app.siakad.siakadtk.WelcomeScreenActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:27:9-59
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:28:9-59
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:27:19-56
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:28:19-56
 activity#app.siakad.siakadtk.presentation.login.LoginActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:28:9-70
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:29:9-70
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:28:19-67
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:29:19-67
 activity#app.siakad.siakadtk.SplashActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:29:9-37:20
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:30:9-38:20
 	android:theme
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:31:13-63
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:32:13-63
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:30:13-43
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:31:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:32:13-36:29
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:33:13-37:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:33:17-69
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:34:17-69
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:33:25-66
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:35:17-77
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:36:17-77
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:35:27-74
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:36:27-74
 activity#app.siakad.siakadtk.presentation.main.MainActivity
-ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:38:9-68
+ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:39:9-68
 	android:name
-		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:38:19-65
+		ADDED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml:39:19-65
 uses-sdk
 INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\indri\Documents\_Bismillah\siakad-tk\SiakadTK\app\src\main\AndroidManifest.xml

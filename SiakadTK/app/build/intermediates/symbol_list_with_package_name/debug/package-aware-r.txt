@@ -1876,6 +1876,7 @@ drawable googleg_standard_color_18
 drawable ic_account_circle
 drawable ic_arrow_down_24dp
 drawable ic_baseline_arrow_back_ios_24
+drawable ic_book
 drawable ic_button_elevated_white
 drawable ic_clock_black_24dp
 drawable ic_daftar_ulang
@@ -1901,6 +1902,7 @@ drawable ic_name
 drawable ic_notifications_black_24dp
 drawable ic_pembelian
 drawable ic_product
+drawable ic_seragam
 drawable ic_settings_fill
 drawable ic_shopping_basket_color
 drawable ic_status_menunggu_pembayaran
@@ -2066,8 +2068,10 @@ id btn_aprofile_batal
 id btn_aprofile_simpan
 id btn_aprofile_ubah_foto
 id btn_login_masuk
+id btn_product_book
 id btn_product_bookdetail_tambah_ke_basket
 id btn_product_keranjang_saya
+id btn_product_seragam
 id btn_product_unidetail_tambah_ke_basket
 id btn_registration_go_to_form
 id btn_registrationform_batal
@@ -2118,7 +2122,8 @@ id counterclockwise
 id custom
 id customPanel
 id cut
-id cv_productlist_search_bar
+id cv_product_booklist_search_bar
+id cv_product_unilist_search_bar
 id cv_registration_detail
 id dark
 id date_picker_actions
@@ -2354,6 +2359,7 @@ id rightToLeft
 id right_icon
 id right_side
 id riv_item_product_img
+id riv_product_img_produk
 id rounded
 id row
 id row_index_key
@@ -2366,8 +2372,8 @@ id rv_history_order_list
 id rv_historydetail_product_ordered_list
 id rv_home_pengumuman_list
 id rv_home_statuspesan_list
-id rv_product_produk_list
-id rv_productlist_searched_product_list
+id rv_product_booklist_searched_product_list
+id rv_product_unilist_searched_product_list
 id rv_profile_activity_list
 id save_non_transition_alpha
 id save_overlay_view
@@ -2440,8 +2446,8 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
-id sv_product_cari_produk
-id sv_productlist_search_bar
+id sv_product_booklist_search_bar
+id sv_product_unilist_search_bar
 id switchWidget
 id tabMode
 id tag_accessibility_actions
@@ -2521,8 +2527,7 @@ id tv_item_pengumuman_title
 id tv_item_pengumumanin_date
 id tv_item_pengumumanin_desc
 id tv_item_pengumumanin_title
-id tv_item_product_deadline
-id tv_item_product_status
+id tv_item_product_jumlah
 id tv_item_product_title
 id tv_item_title
 id tv_login_daftar
@@ -2535,6 +2540,7 @@ id tv_product_bookdetail_batas_pesan
 id tv_product_bookdetail_harga
 id tv_product_bookdetail_kewajiban
 id tv_product_bookdetail_total_harga
+id tv_product_jenis_produk
 id tv_product_product_title
 id tv_product_title
 id tv_product_unidetail_batas_pesan
@@ -2642,8 +2648,9 @@ layout activity_order_detail
 layout activity_order_list
 layout activity_password
 layout activity_product_book_detail
-layout activity_product_list
+layout activity_product_book_list
 layout activity_product_uniform_detail
+layout activity_product_uniform_list
 layout activity_profile
 layout activity_registration
 layout activity_registration_form
@@ -2671,14 +2678,13 @@ layout fragment_home
 layout fragment_product
 layout fragment_profile
 layout image_frame
-layout item_grid_nota
-layout item_grid_product
-layout item_list_product
+layout item_grid_order
 layout item_row_basket
 layout item_row_daftar_ulang
+layout item_row_orderdetail_product
 layout item_row_pengumuman
 layout item_row_pengumuman_inside
-layout item_row_product_item
+layout item_row_product_detail
 layout item_row_user_activity
 layout item_toolbar
 layout material_chip_input_combo
@@ -2764,6 +2770,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout unused_item_grid_product_type
 menu bottom_nav_menu
 mipmap ic_icon_logo
 mipmap ic_icon_logo_foreground
@@ -2816,6 +2823,7 @@ string bawahan
 string belum_daftar_ulang
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string buku
 string buku_tema_5
 string character_counter_content_description
 string character_counter_overflowed_content_description
@@ -2865,6 +2873,7 @@ string example_date_pengumuman_inside
 string example_desc_basket_1
 string example_desc_basket_2
 string example_desc_pengumuman
+string example_jumlah
 string example_nohp
 string example_pengumuman_title
 string example_price
@@ -2878,9 +2887,12 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fail_get_data
+string fail_get_user
 string fail_login
+string fail_login_not_siswa
 string fail_regis
 string fail_set_data
+string fail_set_user
 string form_daftar_ulang
 string gcm_defaultSenderId
 string google_api_key
@@ -2898,6 +2910,7 @@ string invalid_username
 string item_view_role_description
 string jenis_kelamin
 string jumlah
+string jumlah_produk
 string kelas
 string kelas_siswa
 string keluar
@@ -2934,6 +2947,9 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string menu_gallery
+string menu_home
+string menu_slideshow
 string messages_header
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
@@ -3008,6 +3024,7 @@ string scs_login
 string scs_regis
 string scs_set_data
 string search_menu_title
+string seragam
 string seragam_formal
 string signature_title
 string simpan

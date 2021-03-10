@@ -6,12 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.infrastructure.data.Produk
-import app.siakad.siakadtk.presentation.main.product.adapter.ProductViewHolder
 
 class ProductAdapter (val productList: ArrayList<Produk>): RecyclerView.Adapter<ProductViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ProductViewHolder {
-        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_grid_product_type, viewGroup, false)
+        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.unused_item_grid_product_type, viewGroup, false)
         return ProductViewHolder(view)
     }
 
