@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.presentation.registration.form.RegistrationFormActivity
 
 class RegistrationActivity : AppCompatActivity() {
     private val pageTitle = "Daftar Ulang"

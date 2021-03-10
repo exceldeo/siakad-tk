@@ -1,6 +1,6 @@
 package app.siakad.siakadtk.presentation.main.profile
 
-import app.siakad.siakadtk.domain.models.AktivitasModel
+import app.siakad.siakadtk.infrastructure.data.Aktivitas
 
 object UserActivitiesData {
     private val userActivitiesNames = arrayOf(
@@ -21,11 +21,11 @@ object UserActivitiesData {
 //        "21/02/2021"
 //    )
 
-    val listData: ArrayList<AktivitasModel>
+    val listData: ArrayList<Aktivitas>
         get() {
-            val list = arrayListOf<AktivitasModel>()
+            val list = arrayListOf<Aktivitas>()
             for (position in userActivitiesNames.indices) {
-                val activity = AktivitasModel()
+                val activity = Aktivitas()
                 activity.judul = userActivitiesNames[position]
                 activity.keterangan = userActivitiesDetails[position]
 //                activity.date = userActivitiesDates[position]

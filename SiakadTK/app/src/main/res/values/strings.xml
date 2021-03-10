@@ -48,7 +48,7 @@
     <string name="pengumuman">Pengumuman</string>
     <string name="lihat_semua">Lihat Semua</string>
     <string name="example_pengumuman_title">Pendaftaran Ulang Dibuka</string>
-    <string name="belum_daftar_ulang">Anda Belum Melakukan Daftar Ulang</string>
+    <string name="belum_daftar_ulang">Anda Belum Daftar Ulang</string>
     <string name="desc_daftar_ulang">Silahkan melakukan daftar ulang, sebelum tanggal 31 Januari.</string>
     <string name="status_pemesanan">Status Pemesanan</string>
     <string name="nota_pemesanan">Nota Pemesanan</string>
@@ -80,7 +80,9 @@
     <string name="wajib">Wajib</string>
     <string name="ukuran">Ukuran</string>
     <string name="jumlah">Jumlah</string>
+    <string name="jumlah_produk">Jumlah Tersedia : </string>
     <string name="example_price">Rp 70.000</string>
+    <string name="example_jumlah">100</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
     <string name="example_sum_price">Total: Rp 140.000</string>
     <string name="ubah_password">Ubah Password</string>
@@ -172,4 +174,14 @@
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
+    <string name="buku">Buku</string>
+    <string name="seragam">Seragam</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="fail_login_not_siswa">Akun ini bukan Siswa</string>
+    <string name="fail_get_user">Gagal mendapatkan Akun</string>
+    <string name="fail_set_user">Gagal menambahkan Pengguna</string>
+
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.product.ProductListActivity">
+    tools:context=".presentation.main.product.detail.ProductListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ab_toolbar_main"
@@ -43,5 +43,5 @@
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_list_product" />
+        tools:listitem="@layout/item_row_product_detail" />
 </RelativeLayout>
