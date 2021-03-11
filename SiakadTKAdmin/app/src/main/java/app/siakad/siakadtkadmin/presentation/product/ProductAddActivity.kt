@@ -1,5 +1,6 @@
 package app.siakad.siakadtkadmin.presentation.product
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -21,6 +22,8 @@ class ProductAddActivity : AppCompatActivity() {
     private lateinit var btnCancel: CardView
     private lateinit var btnSave: CardView
 
+    private lateinit var dialogUniform: UniformProductDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_add)
@@ -38,10 +41,16 @@ class ProductAddActivity : AppCompatActivity() {
         btnAddData = findViewById(R.id.iv_product_add_tambah_data)
         btnCancel = findViewById(R.id.btn_product_add_batal)
         btnSave = findViewById(R.id.btn_product_add_simpan)
+
+        dialogUniform = UniformProductDialog()
     }
 
     private fun setupView() {
         setupAppBar()
+
+        btnAddData.setOnClickListener{
+            dialogUniform.show(supportFragmentManager, null)
+        }
     }
 
     private fun setupAppBar() {
