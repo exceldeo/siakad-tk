@@ -8,7 +8,7 @@ import app.siakad.siakadtkadmin.infrastructure.data.Produk
 
 class ProductListAdapter() : RecyclerView.Adapter<ProductListViewHolder>() {
 
-    private val produk: ArrayList<Produk> = arrayListOf()
+    private val produk: ArrayList<Any> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_product_list, parent, false)

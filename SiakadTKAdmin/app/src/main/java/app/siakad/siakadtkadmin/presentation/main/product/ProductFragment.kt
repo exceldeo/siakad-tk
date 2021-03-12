@@ -13,20 +13,19 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.main.product.ProductViewModel
 import app.siakad.siakadtkadmin.presentation.product.ProductAddActivity
+import app.siakad.siakadtkadmin.presentation.product.ProductListActivity
 
 class ProductFragment : Fragment() {
 
-    private lateinit var productViewModel: ProductViewModel
     private lateinit var svProduct: SearchView
     private lateinit var btnUniform: CardView
+    private lateinit var btnBook: CardView
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        productViewModel =
-                ViewModelProviders.of(this).get(ProductViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_product, container, false)
 
         setupItemView(view)
@@ -39,12 +38,20 @@ class ProductFragment : Fragment() {
         if (v != null) {
             svProduct = v.findViewById(R.id.sv_product_cari_produk)
             btnUniform = v.findViewById(R.id.btn_product_uniform)
+            btnBook = v.findViewById(R.id.btn_product_buku)
         }
     }
 
     private fun setupView() {
         btnUniform.setOnClickListener {
-            startActivity(Intent(this@ProductFragment.activity, ProductAddActivity::class.java))
+            val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
+            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
+            startActivity(intent)
+        }
+        btnUniform.setOnClickListener {
+            val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
+            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
+            startActivity(intent)
         }
     }
 }

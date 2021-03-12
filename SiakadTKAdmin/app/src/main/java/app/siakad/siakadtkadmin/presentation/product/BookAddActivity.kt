@@ -1,15 +1,15 @@
 package app.siakad.siakadtkadmin.presentation.product
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.RelativeLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.presentation.product.dialog.UniformProductDialog
 
-class ProductAddActivity : AppCompatActivity() {
+class BookAddActivity : AppCompatActivity() {
 
     private val pageTitle = "Tambah Produk"
 

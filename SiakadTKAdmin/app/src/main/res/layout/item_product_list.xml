@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/container_padding_x"
         app:flexDirection="row"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        app:alignItems="center">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
                 android:id="@+id/tv_item_product_stok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jumlah Stok"
+                android:text="Jumlah Barang"
                 android:fontFamily="@font/poppins_regular"
                 android:ellipsize="end"
                 android:textSize="@dimen/card_subtitle_text"/>
@@ -58,8 +59,8 @@
 
         <ImageView
             android:id="@+id/iv_item_product_edit"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:src="@drawable/ic_mode_edit"
             android:layout_marginStart="@dimen/list_corner"/>
     </com.google.android.flexbox.FlexboxLayout>

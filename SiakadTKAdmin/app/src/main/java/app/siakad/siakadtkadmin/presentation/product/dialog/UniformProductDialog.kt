@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.product
+package app.siakad.siakadtkadmin.presentation.product.dialog
 
 import android.app.Dialog
 import android.content.Context
