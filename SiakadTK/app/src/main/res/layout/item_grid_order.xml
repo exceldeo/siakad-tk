@@ -110,7 +110,7 @@
                     android:layout_marginStart="@dimen/container_padding_x"
                     android:layout_width="122dp"
                     android:layout_height="28dp"
-                    android:src="@drawable/ic_status_menunggu_pembayaran"/>
+                    android:src="@drawable/ic_status_proses"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.presentation.main.product.detail
+package app.siakad.siakadtk.presentation.main.product.detail.uniform
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 
-class ProductListActivity : AppCompatActivity() {
-    private val pageTitle = "Jenis Produk"
+class ProductUniformListActivity : AppCompatActivity() {
+    private val pageTitle = "List Seragam"
 
     private lateinit var toolbar: Toolbar
     private lateinit var svProduct: SearchView
@@ -16,15 +16,15 @@ class ProductListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_list)
+        setContentView(R.layout.activity_product_uniform_list)
         setupItemView()
         setupView()
     }
 
     private fun setupItemView() {
         toolbar = findViewById(R.id.toolbar_main)
-        svProduct = findViewById(R.id.sv_productlist_search_bar)
-        rvSearchedProduct = findViewById(R.id.rv_productlist_searched_product_list)
+        svProduct = findViewById(R.id.sv_product_unilist_search_bar)
+        rvSearchedProduct = findViewById(R.id.rv_product_unilist_searched_product_list)
     }
 
     private fun setupView() {

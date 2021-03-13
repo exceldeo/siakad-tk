@@ -13,7 +13,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var tvProductKewajiban: TextView
     private lateinit var tvProductOrderDeadline: TextView
-    private lateinit var tvProductJenisKelamin: TextView
+    private lateinit var spProductJenisKelamin: Spinner
     private lateinit var tvProductTopPrice: TextView
     private lateinit var spProductTopSize: Spinner
     private lateinit var spProductTopSum: Spinner
@@ -34,7 +34,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar_main)
         tvProductKewajiban = findViewById(R.id.tv_product_unidetail_kewajiban)
         tvProductOrderDeadline = findViewById(R.id.tv_product_unidetail_batas_pesan)
-        tvProductJenisKelamin = findViewById(R.id.sp_product_unidetail_jeniskelamin)
+        spProductJenisKelamin = findViewById(R.id.sp_product_unidetail_jeniskelamin)
         tvProductTopPrice = findViewById(R.id.tv_product_unidetail_price_atasan)
         spProductTopSize = findViewById(R.id.sp_product_unidetail_ukuran_atasan)
         spProductTopSum = findViewById(R.id.sp_product_unidetail_jumlah_atasan)

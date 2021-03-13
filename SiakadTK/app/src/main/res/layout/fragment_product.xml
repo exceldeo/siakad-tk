@@ -11,13 +11,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="224dp">
+        android:layout_height="140dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/vc_large_banner"/>
+            android:src="@drawable/vc_banner"/>
 
         <TextView
             android:id="@+id/tv_product_title"
@@ -29,33 +29,12 @@
             android:textSize="@dimen/header_title_text"
             android:textColor="@android:color/white"
             android:fontFamily="@font/poppins_semibold" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="@dimen/container_padding_x"
-            android:layout_below="@id/tv_product_title"
-            android:background="@android:color/white"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
-            android:layout_marginStart="@dimen/container_padding_x"
-            android:layout_marginEnd="@dimen/container_padding_x"
-            tools:targetApi="lollipop">
-
-            <SearchView
-                android:id="@+id/sv_product_cari_produk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:queryHint="Cari Produk"/>
-
-        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/container_padding_x"
-        android:paddingEnd="@dimen/container_padding_x"
+        android:padding="@dimen/container_padding_x"
         android:layout_marginBottom="60dp">
 
         <LinearLayout

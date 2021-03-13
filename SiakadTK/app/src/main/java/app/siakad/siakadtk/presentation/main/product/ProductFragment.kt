@@ -12,15 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtk.presentation.main.product.basket.BasketActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.infrastructure.data.Produk
 import app.siakad.siakadtk.infrastructure.viewmodels.main.product.ProductViewModel
-import app.siakad.siakadtk.presentation.main.product.detail.book.ProductBookDetailActivity
-import app.siakad.siakadtk.presentation.main.product.detail.uniform.ProductUniformDetailActivity
+import app.siakad.siakadtk.presentation.main.product.detail.book.ProductBookListActivity
+import app.siakad.siakadtk.presentation.main.product.detail.uniform.ProductUniformListActivity
 
 class ProductFragment : Fragment() {
 
     private lateinit var productViewModel: ProductViewModel
-    private lateinit var svProduct: SearchView
+//    private lateinit var svProduct: SearchView
     private lateinit var btnMyBasket: LinearLayout
     private lateinit var btnBookProduct: ImageButton
     private lateinit var btnUniformProduct: ImageButton
@@ -40,7 +39,7 @@ class ProductFragment : Fragment() {
 
     private fun setupItemView(v: View?) {
         if(v != null) {
-            svProduct = v.findViewById(R.id.sv_product_cari_produk)
+//            svProduct = v.findViewById(R.id.sv_product_cari_produk)
             btnMyBasket = v.findViewById(R.id.btn_product_keranjang_saya)
             btnBookProduct = v.findViewById(R.id.btn_product_book)
             btnUniformProduct  = v.findViewById(R.id.btn_product_seragam)
@@ -53,11 +52,11 @@ class ProductFragment : Fragment() {
             startActivity(intent)
         }
         btnBookProduct.setOnClickListener{
-            val intent = Intent(this@ProductFragment.context, ProductBookDetailActivity::class.java)
+            val intent = Intent(this@ProductFragment.context, ProductBookListActivity::class.java)
             startActivity(intent)
         }
         btnUniformProduct.setOnClickListener{
-            val intent = Intent(this@ProductFragment.context, ProductUniformDetailActivity::class.java)
+            val intent = Intent(this@ProductFragment.context, ProductUniformListActivity::class.java)
             startActivity(intent)
         }
     }
