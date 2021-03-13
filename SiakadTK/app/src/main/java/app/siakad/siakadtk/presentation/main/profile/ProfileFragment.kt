@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.history.HistoryActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.domain.models.AktivitasModel
+import app.siakad.siakadtk.infrastructure.data.Aktivitas
+import app.siakad.siakadtk.infrastructure.viewmodels.main.profile.ProfileViewModel
 import app.siakad.siakadtk.presentation.registration.RegistrationActivity
 
 class ProfileFragment : Fragment() {
@@ -26,7 +27,7 @@ class ProfileFragment : Fragment() {
     private lateinit var tvClassStudent: TextView
     private lateinit var rvMyActivity: RecyclerView
     private lateinit var ivSetting: ImageView
-    private var list: ArrayList<AktivitasModel> = arrayListOf()
+    private var list: ArrayList<Aktivitas> = arrayListOf()
 
     override fun onCreateView(
             inflater: LayoutInflater,

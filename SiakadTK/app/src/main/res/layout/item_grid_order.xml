@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_list_tower"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/list_space">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="@dimen/list_corner"
+        app:cardElevation="0dp"
+        card_view:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/container_padding_x">
+            
+            <TextView
+                android:id="@+id/tv_nota_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/inner_padding"
+                android:text="@string/nota_pemesanan"
+                android:textSize="@dimen/card_title_text"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/poppins_semibold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Judul Produk :"
+                android:textSize="@dimen/card_desc_text"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/poppins_semibold"/>
+
+            <TextView
+                android:id="@+id/tv_nota_macam_produk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/example_produk"
+                android:textSize="@dimen/card_desc_text"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/poppins_regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="Tanggal Disetujui :"
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+                <TextView
+                    android:id="@+id/tv_nota_tgl_disetujui"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_text"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/example_date"
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Biaya : "
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_semibold"/>
+                <TextView
+                    android:id="@+id/tv_nota_total_harga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/example_price"
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/inner_padding">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status : "
+                    android:textSize="@dimen/card_desc_text"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_semibold"/>
+                <ImageView
+                    android:id="@+id/iv_nota_status"
+                    android:layout_marginStart="@dimen/container_padding_x"
+                    android:layout_width="122dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_status_proses"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
