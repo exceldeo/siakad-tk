@@ -1,14 +1,14 @@
-package app.siakad.siakadtkadmin.infrastructure.data
+package app.siakad.siakadtkadmin.infrastructure.data.product
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Seragam (
+data class Produk (
     var produkId: String = "",
     var namaProduk: String = "",
     var jenisKelamin: String = "",
     var fotoProduk: String = "",
     var jumlah: Int = 0,
-    var detailProduk: ArrayList<DetailSeragam>? = arrayListOf()
+    var detailProduk: Map<String, DetailSeragam> = mapOf()
 ): Parcelable

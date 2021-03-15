@@ -1,11 +1,14 @@
 package app.siakad.siakadtkadmin.infrastructure.viewmodels.factory
 
+import android.app.Notification
 import android.content.Context
 import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.announcement.AnnouncementViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.login.LoginViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.main.setting.SettingViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.notification.NotificationAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.notification.NotificationViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.register.RegisterViewModel
 
 class ViewModelFactory(
@@ -22,6 +25,18 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(AnnouncementAddViewModel::class.java) -> {
                 AnnouncementAddViewModel(
+                    ctx,
+                    owner
+                ) as T
+            }
+            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
+                NotificationViewModel(
+                    ctx,
+                    owner
+                ) as T
+            }
+            modelClass.isAssignableFrom(NotificationAddViewModel::class.java) -> {
+                NotificationAddViewModel(
                     ctx,
                     owner
                 ) as T

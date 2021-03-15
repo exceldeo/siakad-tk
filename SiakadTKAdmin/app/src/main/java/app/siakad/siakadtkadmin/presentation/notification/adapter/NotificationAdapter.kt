@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.NotifikasiModel
 import app.siakad.siakadtkadmin.infrastructure.data.Notifikasi
+import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 
 class NotificationAdapter() : RecyclerView.Adapter<NotificationViewHolder>() {
 
@@ -20,6 +22,14 @@ class NotificationAdapter() : RecyclerView.Adapter<NotificationViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.insertNotification(notificationList[position])
+    }
+
+    fun changeDataList(data: ArrayList<Notifikasi>) {
+        if (notificationList.size > 0)
+            notificationList.clear()
+
+        notificationList.addAll(data)
+        this.notifyDataSetChanged()
     }
 }

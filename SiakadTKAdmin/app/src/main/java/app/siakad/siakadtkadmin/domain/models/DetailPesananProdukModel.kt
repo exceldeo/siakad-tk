@@ -9,6 +9,7 @@ data class DetailPesananProdukModel (
     @get:Exclude
     var detialPesananId: String = "",
     var pesananId: String = "",
+    var produkId: String = "",
     var ukuran: String = "",
     var jumlah: Int = 0,
     var harga: Int = 0,

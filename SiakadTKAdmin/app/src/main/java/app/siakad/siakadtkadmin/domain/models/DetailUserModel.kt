@@ -16,5 +16,6 @@ data class DetailUserModel (
     var fotoBayarAwal: String = "",
     var jenisKelamin: String = "",
     var kelas: String = "",
+    var userState: Boolean = false,
     var dafulState: Boolean = false
 ): Parcelable

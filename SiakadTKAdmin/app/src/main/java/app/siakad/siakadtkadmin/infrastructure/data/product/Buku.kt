@@ -1,6 +1,7 @@
-package app.siakad.siakadtkadmin.infrastructure.data
+package app.siakad.siakadtkadmin.infrastructure.data.product
 
 import android.os.Parcelable
+import com.google.firebase.database.Exclude
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
