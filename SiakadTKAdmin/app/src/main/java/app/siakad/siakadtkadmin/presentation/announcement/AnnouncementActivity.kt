@@ -27,6 +27,7 @@ class AnnouncementActivity : AppCompatActivity() {
     private lateinit var svAnnounc: SearchView
     private lateinit var tvNumAnnounc: TextView
     private lateinit var ivAddAnnounc: ImageView
+
     private lateinit var rvAnnounc: RecyclerView
     private lateinit var rvAnnouncAdapter: AnnouncementAdater
 

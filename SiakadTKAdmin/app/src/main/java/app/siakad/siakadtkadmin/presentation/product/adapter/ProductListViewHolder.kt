@@ -2,7 +2,7 @@ package app.siakad.siakadtkadmin.presentation.product.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import app.siakad.siakadtkadmin.infrastructure.data.Produk
+import app.siakad.siakadtkadmin.infrastructure.data.product.Produk
 import kotlinx.android.synthetic.main.item_product_list.view.*
 
 class ProductListViewHolder(v: View) : RecyclerView.ViewHolder(v) {
