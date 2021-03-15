@@ -1,12 +1,11 @@
-package app.siakad.siakadtkadmin.domain.models
+package app.siakad.siakadtkadmin.domain.models.product
 
 import android.os.Parcelable
-import app.siakad.siakadtkadmin.domain.models.DetailProdukModel
 import com.google.firebase.database.Exclude
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ProdukModel (
+data class SeragamModel (
     @get:Exclude
     var produkId: String = "",
     var adminId: String = "",
@@ -14,5 +13,5 @@ data class ProdukModel (
     var jenisKelamin: String = "",
     var fotoProduk: String = "",
     var jumlah: Int = 0,
-    var detailProduk: Map<String, DetailProdukModel>? = null
+    var detailSeragam: ArrayList<DetailSeragamModel> = arrayListOf()
 ): Parcelable

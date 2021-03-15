@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.infrastructure.data.Produk
+import app.siakad.siakadtkadmin.infrastructure.data.product.Produk
+import app.siakad.siakadtkadmin.presentation.product.utils.ProductType
 
-class ProductListAdapter() : RecyclerView.Adapter<ProductListViewHolder>() {
+class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<ProductListViewHolder>() {
 
     private val produk: ArrayList<Any> = arrayListOf()
 
@@ -22,4 +23,7 @@ class ProductListAdapter() : RecyclerView.Adapter<ProductListViewHolder>() {
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
     }
 
+    fun changeDataList(data: ArrayList<Any>) {
+
+    }
 }

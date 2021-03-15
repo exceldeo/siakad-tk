@@ -21,7 +21,7 @@ class ProductListActivity : AppCompatActivity() {
     private lateinit var ivAddProduct: ImageView
 
     private lateinit var rvProduct: RecyclerView
-    private lateinit var rvAdapterProduct: ProductListAdapter
+    private lateinit var rvProductAdapter: ProductListAdapter
 
     companion object {
         const val PAGE_TYPE = "page type"
@@ -44,6 +44,9 @@ class ProductListActivity : AppCompatActivity() {
         tvNumProduct = findViewById(R.id.tv_product_list_jumlah_produk)
         ivAddProduct = findViewById(R.id.iv_product_list_tambah_produk)
         rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
+
+        rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
+        rvProductAdapter = ProductListAdapter()
     }
 
     private fun setupView() {
