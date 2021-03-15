@@ -6,6 +6,7 @@ import app.siakad.siakadtk.domain.ModelContainer
 import app.siakad.siakadtk.domain.ModelState
 import app.siakad.siakadtk.domain.models.UserModel
 import app.siakad.siakadtk.domain.models.UserRoleModel
+import app.siakad.siakadtk.infrastructure.data.User
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -45,7 +46,7 @@ class UserRepository() {
         })
     }
 
-    fun insertData(user: UserModel) {
+    fun insertData(user: User) {
         val newKey = userDB.push().key.toString()
         val newData = UserModel(
             userId = newKey,
@@ -58,6 +59,24 @@ class UserRepository() {
         )
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
+            insertState.postValue(ModelContainer.getSuccesModel("Sukses"))
+        }.addOnFailureListener {
+            insertState.postValue(ModelContainer.getFailModel())
+        }
+    }
+
+    fun updateData(user: User) {
+        val currentKey = userDB.key.toString()
+        val updateData = UserModel(
+            userId = currentKey,
+            alamat = user.alamat,
+            email = user.email,
+            nama = user.nama,
+            noHP = user.noHP,
+            passwd = user.passwd,
+            role = UserRoleModel.SISWA.str
+        )
+        userDB.child(currentKey).setValue(updateData).addOnSuccessListener {
             insertState.postValue(ModelContainer.getSuccesModel("Sukses"))
         }.addOnFailureListener {
             insertState.postValue(ModelContainer.getFailModel())

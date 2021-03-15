@@ -1,5 +1,6 @@
 package app.siakad.siakadtk.domain.repositories
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.ModelContainer
@@ -40,10 +41,25 @@ class AuthenticationRepository {
                 authState.postValue(ModelContainer.getFailModel())
             }
         }
+        sendEmailVerification()
     }
 
     fun logout() {
         fbAuth.signOut()
+    }
+
+    private fun sendEmailVerification() {
+        fbAuth.currentUser!!.sendEmailVerification().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                authState.postValue(ModelContainer.getSuccesModel("Verification email sent to ${fbAuth.currentUser!!.email} "))
+            } else {
+                authState.postValue(ModelContainer.getFailModel())
+            }
+        }
+    }
+
+    fun isEmailVerified(): Boolean {
+        return fbAuth.currentUser!!.isEmailVerified
     }
 
     fun getAuthState() : LiveData<ModelContainer<String>> {

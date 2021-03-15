@@ -10,7 +10,9 @@ import app.siakad.siakadtk.domain.ModelContainer
 import app.siakad.siakadtk.domain.ModelState
 import app.siakad.siakadtk.domain.models.UserModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.MainRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
+import app.siakad.siakadtk.infrastructure.data.User
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,12 +20,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel() {
-    private val regRepository = AuthenticationRepository()
+    private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
     private var email: String = ""
     private var passwd: String = ""
+    private var name: String = ""
 
     private lateinit var regObserver: Observer<ModelContainer<String>>
     private lateinit var userObserver: Observer<ModelContainer<String>>
@@ -32,21 +35,23 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
         setupObserver()
     }
 
-    fun registerSiswa(email: String, passwd: String) {
+    fun registerSiswa(email: String, passwd: String, name: String) {
         this.email = email
         this.passwd = passwd
+        this.name = name
 
         vmCoroutineScope.launch {
-            regRepository.register(email, passwd)
+            authRepository.register(email, passwd)
         }
     }
 
     private fun setupObserver() {
         regObserver = Observer { data ->
             if (data.status == ModelState.SUCCESS) {
-                userRepository.insertData(UserModel(
+                userRepository.insertData(User(
                     email = email,
                     passwd = passwd,
+                    nama = name
                 ))
             } else {
                 showToast(context.getString(R.string.fail_regis))
@@ -62,7 +67,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
             }
         }
 
-        regRepository.getAuthState().observe(lcOwner, regObserver)
+        authRepository.getAuthState().observe(lcOwner, regObserver)
         userRepository.getInsertState().observe(lcOwner, userObserver)
     }
 

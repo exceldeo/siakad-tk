@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.repositories.MainRepository
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileActivity : AppCompatActivity() {
@@ -23,8 +25,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var etPhoneNumber: EditText
     private lateinit var etParentName: EditText
     private lateinit var etSchoolBefore: EditText
-    private lateinit var btnCancel: TextView
-    private lateinit var btnSimpan: TextView
+    private lateinit var btnCancel: CardView
+    private lateinit var btnSimpan: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +37,14 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
+
+        btnSimpan.setOnClickListener {
+
+        }
     }
 
     private fun setupItemView() {
+        toolbar = findViewById(R.id.toolbar_main)
         civProfileImg = findViewById(R.id.civ_aprofile_user_img)
         btnChangeProfileImg = findViewById(R.id.btn_aprofile_ubah_foto)
         etName = findViewById(R.id.et_aprofile_nama)
@@ -51,6 +58,8 @@ class ProfileActivity : AppCompatActivity() {
         etSchoolBefore = findViewById(R.id.et_aprofile_asal_sekolah)
         btnCancel = findViewById(R.id.btn_aprofile_batal)
         btnSimpan = findViewById(R.id.btn_aprofile_simpan)
+
+        etName.setText(MainRepository.currentUser.nama)
     }
 
     private fun setupAppBar() {

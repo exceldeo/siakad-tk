@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.*
 import app.siakad.siakadtk.infrastructure.viewmodels.announcement.AnnouncementViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.login.LoginViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.register.RegisterViewModel
 
 class ViewModelFactory(
     private val owner: LifecycleOwner,
@@ -15,7 +16,10 @@ class ViewModelFactory(
                 AnnouncementViewModel(ctx, owner) as T
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-                AnnouncementViewModel(ctx, owner) as T
+                LoginViewModel(ctx, owner) as T
+            }
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                RegisterViewModel(ctx, owner) as T
             }
             else -> throw IllegalArgumentException("Unknown View Model Class")
         }
