@@ -5,7 +5,7 @@ import com.google.firebase.database.Exclude
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Siswa (
+data class User (
     var userId: String = "",
     var nama: String = "",
     var alamat: String = "",

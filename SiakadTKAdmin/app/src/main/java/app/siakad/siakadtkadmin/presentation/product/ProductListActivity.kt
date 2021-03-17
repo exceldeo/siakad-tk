@@ -1,5 +1,6 @@
 package app.siakad.siakadtkadmin.presentation.product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.presentation.login.LoginActivity
 import app.siakad.siakadtkadmin.presentation.product.adapter.ProductListAdapter
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -51,6 +53,12 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
+
+        ivAddProduct.setOnClickListener {
+            val intent = Intent(this@ProductListActivity, ProductAddActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun setupAppBar() {

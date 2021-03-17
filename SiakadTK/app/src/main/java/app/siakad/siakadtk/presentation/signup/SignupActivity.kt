@@ -6,13 +6,18 @@ import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.main.MainActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.infrastructure.viewmodels.factory.ViewModelFactory
+import app.siakad.siakadtk.infrastructure.viewmodels.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.login.LoginActivity
+import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 import com.google.firebase.auth.FirebaseAuth
 
 
-class SignupActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -21,20 +26,21 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var tvLogin: TextView
     private lateinit var pbLoading: ProgressBar
     private lateinit var btnUploadBukti: Button
-    private var auth = FirebaseAuth.getInstance()
+
+    private lateinit var vmRegister: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        supportActionBar?.hide()
 
+        supportActionBar?.hide()
         setupItemView()
         setupView()
     }
 
     override fun onStart() {
         super.onStart()
-        if (auth.currentUser != null) {
+        if (AuthenticationRepository.fbAuth.currentUser != null) {
             navigateToMain()
         }
     }
@@ -48,6 +54,9 @@ class SignupActivity : AppCompatActivity() {
         btnSignup = findViewById(R.id.btn_signup_daftar)
         tvLogin = findViewById(R.id.btn_signup_masuk)
         pbLoading = findViewById(R.id.loading)
+
+        vmRegister =
+            ViewModelProvider(this, ViewModelFactory(this, this)).get(RegisterViewModel::class.java)
     }
 
     private fun setupView() {
@@ -55,7 +64,7 @@ class SignupActivity : AppCompatActivity() {
         }
         btnSignup.setOnClickListener {
             if (validateForm()) {
-                createAccount()
+                vmRegister.registerSiswa(etEmail.text.toString(), etPassword.text.toString(), etName.text.toString())
             } else {
                 showToast("Ulangi pendaftaran")
             }
@@ -68,36 +77,6 @@ class SignupActivity : AppCompatActivity() {
 
         etPassword.transformationMethod = PasswordTransformationMethod()
         etRepeatPassword.transformationMethod = PasswordTransformationMethod()
-    }
-    
-    private fun createAccount() {
-        auth.createUserWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    showToast(getString(R.string.scs_regis))
-                    sendEmailVerification()
-                    navigateToMain()
-                } else {
-                    showToast(getString(R.string.fail_regis))
-                }
-            }
-    }
-
-    private fun sendEmailVerification() {
-        val user = auth.currentUser!!
-        user.sendEmailVerification()
-            .addOnCompleteListener(this) { task ->
-
-                if (task.isSuccessful) {
-                    Toast.makeText(baseContext,
-                        "Verification email sent to ${user.email} ",
-                        Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(baseContext,
-                        "Failed to send verification email.",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }
     }
 
     private fun validateForm(): Boolean {
@@ -135,13 +114,13 @@ class SignupActivity : AppCompatActivity() {
         return valid
     }
 
-    private fun navigateToMain() {
+    override fun navigateToMain() {
         val intent = Intent(this@SignupActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
 
-    private fun showToast(msg: String) {
+    override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

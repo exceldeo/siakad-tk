@@ -20,7 +20,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class LoginViewModel (private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel() {
-    private val loginRepository = AuthenticationRepository()
+    private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
@@ -51,8 +51,12 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
 
                 if (item != null) {
                     if (item.role == UserRoleModel.SISWA.str) {
-                        loginRepository.login(email, passwd)
-                        userId = item.userId
+                        if(authRepository.isEmailVerified()){
+                            authRepository.login(email, passwd)
+                            userId = item.userId
+                        } else {
+                            showToast(context.getString(R.string.email_is_not_verified))
+                        }
                     } else {
                         showToast(context.getString(R.string.fail_login_not_siswa))
                     }
@@ -76,7 +80,7 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
             }
 
             userRepository.getUser().observe(lcOwner, userObserver)
-            loginRepository.getAuthState().observe(lcOwner, loginObserver)
+            authRepository.getAuthState().observe(lcOwner, loginObserver)
         }
     }
 
