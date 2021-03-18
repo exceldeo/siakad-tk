@@ -23,6 +23,7 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
     private val pageTitle = "Tambah Notifikasi"
 
     private lateinit var toolbar: Toolbar
+    private lateinit var etUser: EditText
     private lateinit var etTitle: EditText
     private lateinit var etContent: EditText
     private lateinit var ivDate: ImageView
@@ -60,6 +61,7 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
 
     private fun setupItemView() {
         toolbar = findViewById(R.id.toolbar_main)
+        etUser = findViewById(R.id.et_notification_add_nama)
         etTitle = findViewById(R.id.et_notification_add_judul)
         etContent = findViewById(R.id.et_notification_add_isi)
         ivDate = findViewById(R.id.iv_notification_add_tanggal)
