@@ -1,14 +1,21 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorPrimaryLight</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
         <item name="colorOnSecondary">@color/colorPrimaryLight</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <!-- Theme.AppCompat.Light is not a dialog theme -->
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+<!--    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">-->
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
@@ -17,15 +24,18 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+<!--    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">-->
+    <style name="ToolbarTheme" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
         <item name="fontFamily">@font/poppins_semibold</item>
     </style>
 
+<!--    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">-->
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/header_title_text</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+<!--    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
     <style name="ListTitle">
         <item name="android:layout_marginBottom">@dimen/card_title_margin_bottom</item>

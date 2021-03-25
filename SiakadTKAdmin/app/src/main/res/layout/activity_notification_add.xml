@@ -24,25 +24,50 @@
         android:paddingVertical="@dimen/container_padding_y"
         android:orientation="vertical">
 
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="column">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_notification_add_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_flexGrow="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="@dimen/card_title_ic_size"
+                    android:layout_height="@dimen/card_title_ic_size"
+                    android:src="@drawable/ic_name"
+                    app:tint="@android:color/darker_gray"
+                    android:layout_marginEnd="@dimen/container_padding_x"/>
+
+                <TextView
+                    style="@style/CommonButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Simpan"
+                    android:textColor="@android:color/white" />
+            </androidx.cardview.widget.CardView>
+
+        </com.google.android.flexbox.FlexboxLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/sTitle"
             android:layout_marginTop="0dp"
-            android:text="Tanggal Notifikasi"/>
+            android:text="Tujuan"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="@dimen/card_title_ic_size"
-                android:layout_height="@dimen/card_title_ic_size"
-                android:src="@drawable/ic_name"
-                app:tint="@android:color/darker_gray"
-                android:layout_marginEnd="@dimen/container_padding_x"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -210,12 +235,12 @@
                 app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
+                    style="@style/CommonButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"
                     android:text="Simpan"
-                    android:textColor="@android:color/white"
-                    style="@style/CommonButton"/>
+                    android:textColor="@android:color/white" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </LinearLayout>

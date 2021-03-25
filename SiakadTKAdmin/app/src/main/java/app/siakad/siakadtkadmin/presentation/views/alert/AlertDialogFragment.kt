@@ -25,7 +25,8 @@ class AlertDialogFragment(private val title: String, private val msg: String): D
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        alertDialog = AlertDialog.Builder(context, R.style.Theme_AppCompat_DayNight_Dialog_Alert)
+//        alertDialog = AlertDialog.Builder(context, R.style.Theme_AppCompat_DayNight_Dialog_Alert)
+        alertDialog = AlertDialog.Builder(context)
         alertListener = context as AlertListener
     }
 
