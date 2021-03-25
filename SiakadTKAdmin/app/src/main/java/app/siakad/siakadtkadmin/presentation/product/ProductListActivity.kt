@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.presentation.product.adapter.ProductListAdapter
+import app.siakad.siakadtkadmin.presentation.product.utils.ProductType
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class ProductListActivity : AppCompatActivity() {
@@ -46,7 +47,12 @@ class ProductListActivity : AppCompatActivity() {
         rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
 
         rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
-        rvProductAdapter = ProductListAdapter()
+
+        if (pageTitle == BOOK_PAGE) {
+            rvProductAdapter = ProductListAdapter(ProductType.BUKU)
+        } else {
+            rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
+        }
     }
 
     private fun setupView() {

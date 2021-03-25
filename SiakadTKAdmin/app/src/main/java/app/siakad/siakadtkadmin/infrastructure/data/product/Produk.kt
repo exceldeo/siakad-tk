@@ -9,6 +9,5 @@ data class Produk (
     var namaProduk: String = "",
     var jenisKelamin: String = "",
     var fotoProduk: String = "",
-    var jumlah: Int = 0,
-    var detailProduk: Map<String, DetailSeragam> = mapOf()
+    var jumlah: Int = 0
 ): Parcelable
