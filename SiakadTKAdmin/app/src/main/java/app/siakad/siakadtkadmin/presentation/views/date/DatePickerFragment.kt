@@ -31,7 +31,7 @@ class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener {
             day = requireArguments().getInt(DAY_ARG)
         }
 
-        return DatePickerDialog(activity as Context, R.style.DialogTheme, this, year, month, day)
+        return DatePickerDialog(activity as Context,this, year, month, day)
     }
 
     override fun onAttach(context: Context) {
