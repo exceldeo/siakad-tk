@@ -45,7 +45,7 @@ class UserRepository() {
         })
     }
 
-    fun getAllUser(name: String = "") {
+    fun initUserListener(name: String = "") {
         userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str).addChildEventListener(object: ChildEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
@@ -56,14 +56,29 @@ class UserRepository() {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val dataRef = arrayListOf<UserModel>()
 
-                for (dataSS in snapshot.children) {
-                    val data: UserModel? = dataSS.getValue(UserModel::class.java)
-                    if (name.length > 0) {
-                        if (data?.nama!!.contains(name)) {
-                            dataRef.add(data)
+                forloop@ for (dataSS in snapshot.children) {
+                    when (dataSS.value) {
+                        is String -> {
+                            val data: UserModel? = snapshot.getValue(UserModel::class.java)
+                            if (name.length > 0) {
+                                if (data?.nama!!.contains(name)) {
+                                    dataRef.add(data)
+                                }
+                            } else {
+                                dataRef.add(data!!)
+                            }
+                            break@forloop
                         }
-                    } else {
-                        dataRef.add(data!!)
+                        is UserModel -> {
+                            val data: UserModel? = snapshot.getValue(UserModel::class.java)
+                            if (name.length > 0) {
+                                if (data?.nama!!.contains(name)) {
+                                    dataRef.add(data)
+                                }
+                            } else {
+                                dataRef.add(data!!)
+                            }
+                        }
                     }
                 }
 

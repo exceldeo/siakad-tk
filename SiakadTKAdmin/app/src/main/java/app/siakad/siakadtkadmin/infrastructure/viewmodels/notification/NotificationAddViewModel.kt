@@ -2,10 +2,7 @@ package app.siakad.siakadtkadmin.infrastructure.viewmodels.notification
 
 import android.content.Context
 import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.ModelContainer
 import app.siakad.siakadtkadmin.domain.ModelState
@@ -31,6 +28,7 @@ class NotificationAddViewModel(private val context: Context, private val lcOwner
 
     init {
         setupObserver()
+        userRepository.initUserListener()
     }
 
     private fun setupObserver() {
@@ -77,6 +75,10 @@ class NotificationAddViewModel(private val context: Context, private val lcOwner
                 )
             )
         }
+    }
+
+    fun getUserList(): LiveData<ArrayList<Siswa>> {
+        return userList
     }
 
     private fun showToast(msg: String) {

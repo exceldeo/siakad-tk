@@ -3,27 +3,31 @@ package app.siakad.siakadtkadmin.presentation.notification
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.SpannableStringBuilder
+import android.text.TextWatcher
 import android.view.MenuItem
-import android.widget.EditText
-import android.widget.ImageView
+import android.view.View
+import android.widget.*
+import androidx.lifecycle.Observer
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.notification.NotificationAddViewModel
 import app.siakad.siakadtkadmin.presentation.views.date.DateListener
 import app.siakad.siakadtkadmin.presentation.views.date.DatePickerFragment
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class NotificationAddActivity : AppCompatActivity(), DateListener {
 
     private val pageTitle = "Tambah Notifikasi"
 
     private lateinit var toolbar: Toolbar
-    private lateinit var etUser: EditText
     private lateinit var etTitle: EditText
     private lateinit var etContent: EditText
     private lateinit var ivDate: ImageView
@@ -31,10 +35,22 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
     private lateinit var btnCancel: CardView
     private lateinit var btnSave: CardView
 
+    private lateinit var atvSiswa: AutoCompleteTextView
+    private lateinit var atvKelas: AutoCompleteTextView
+
+    private lateinit var btnSiswa: Button
+    private lateinit var btnKelas: Button
+    private lateinit var layoutSiswa: LinearLayout
+    private lateinit var layoutKelas: LinearLayout
+
+    private lateinit var siswaListAdapter: ArrayAdapter<Siswa>
+    private lateinit var kelasListAdapter: ArrayAdapter<Siswa>
+
     private lateinit var datePicker: DatePickerFragment
     private lateinit var calendar: Calendar
 
     private lateinit var vmNotificationAdd: NotificationAddViewModel
+    private lateinit var userObserver: Observer<ArrayList<Siswa>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,20 +77,40 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
 
     private fun setupItemView() {
         toolbar = findViewById(R.id.toolbar_main)
-        etUser = findViewById(R.id.et_notification_add_nama)
         etTitle = findViewById(R.id.et_notification_add_judul)
         etContent = findViewById(R.id.et_notification_add_isi)
         ivDate = findViewById(R.id.iv_notification_add_tanggal)
         etDate = findViewById(R.id.et_notification_add_tanggal)
         btnCancel = findViewById(R.id.btn_notification_add_batal)
         btnSave = findViewById(R.id.btn_notification_add_simpan)
+
+        atvSiswa = findViewById(R.id.et_notification_add_nama_siswa)
+        atvKelas = findViewById(R.id.et_notification_add_nama_kelas)
+        btnSiswa = findViewById(R.id.btn_notification_add_siswa)
+        btnKelas = findViewById(R.id.btn_notification_add_kelas)
+        layoutSiswa = findViewById(R.id.ll_notification_add_siswa)
+        layoutKelas = findViewById(R.id.ll_notification_add_kelas)
+
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
+
+        siswaListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
+        kelasListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
+
+        vmNotificationAdd = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this
+            )
+        ).get(NotificationAddViewModel::class.java)
     }
 
     private fun setupView() {
         setupAppBar()
         setupDate()
+        setupAutoCompleteView()
+        setupObserver()
 
         ivDate.setOnClickListener {
             var arg = Bundle()
@@ -111,13 +147,15 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
             }
         }
 
-        vmNotificationAdd = ViewModelProvider(
-            this,
-            ViewModelFactory(
-                this,
-                this
-            )
-        ).get(NotificationAddViewModel::class.java)
+        btnSiswa.setOnClickListener {
+            layoutSiswa.visibility = View.VISIBLE
+            layoutKelas.visibility = View.GONE
+        }
+
+        btnKelas.setOnClickListener {
+            layoutKelas.visibility = View.VISIBLE
+            layoutSiswa.visibility = View.GONE
+        }
     }
 
     private fun setupAppBar() {
@@ -158,6 +196,49 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
             returnState = false
         }
 
+        if (layoutSiswa.visibility == View.VISIBLE) {
+            if (atvSiswa.text.isEmpty()) {
+                atvSiswa.error = getString(R.string.empty_input)
+                returnState = false
+            }
+        }
+
+        if (layoutKelas.visibility == View.VISIBLE) {
+            if (atvKelas.text.isEmpty()) {
+                atvKelas.error = getString(R.string.empty_input)
+                returnState = false
+            }
+        }
+
         return returnState
+    }
+
+    private fun setupAutoCompleteView() {
+        atvSiswa.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(str: Editable?) {}
+
+            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        atvSiswa.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(str: Editable?) {}
+
+            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        atvSiswa.setAdapter(siswaListAdapter)
+        atvKelas.setAdapter(kelasListAdapter)
+    }
+
+    private fun setupObserver() {
+        userObserver = Observer {userList ->
+            siswaListAdapter.addAll(userList)
+            atvSiswa.setAdapter(siswaListAdapter)
+        }
+
+        vmNotificationAdd.getUserList().observe(this, userObserver)
     }
 }

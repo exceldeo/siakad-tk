@@ -12,4 +12,6 @@ data class Siswa (
     var email: String = "",
     var passwd: String = "",
     var fotoBayarAwal: String = ""
-): Parcelable
+): Parcelable {
+    override fun toString(): String = nama
+}
