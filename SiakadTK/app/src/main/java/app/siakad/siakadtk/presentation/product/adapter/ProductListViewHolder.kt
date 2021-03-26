@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_row_product_detail.view.*
 
-class ProductViewHolder(v: View): RecyclerView.ViewHolder(v) {
+class ProductListViewHolder(v: View): RecyclerView.ViewHolder(v) {
     fun insertProduct(item: Produk) {
         with(itemView) {
             tv_item_product_title.text = item.namaProduk
