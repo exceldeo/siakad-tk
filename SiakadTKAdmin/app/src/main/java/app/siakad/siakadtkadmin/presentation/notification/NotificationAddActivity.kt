@@ -214,23 +214,28 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
     }
 
     private fun setupAutoCompleteView() {
-        atvSiswa.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(str: Editable?) {}
-
-            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-        atvSiswa.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(str: Editable?) {}
-
-            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
         atvSiswa.setAdapter(siswaListAdapter)
         atvKelas.setAdapter(kelasListAdapter)
+
+        atvSiswa.setOnItemClickListener { adapter, _, position, _ ->
+            val siswa: Siswa = adapter.getItemAtPosition(position) as Siswa
+            showToast(siswa.nama)
+        }
+
+        atvSiswa.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(str: Editable?) {}
+
+            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        atvSiswa.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(str: Editable?) {}
+
+            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     private fun setupObserver() {
@@ -240,5 +245,9 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         }
 
         vmNotificationAdd.getUserList().observe(this, userObserver)
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
