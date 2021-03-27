@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.notification.NotificationAddActivity">
+    tools:context=".presentation.screens.notification.NotificationAddActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:layout_marginRight="@dimen/appbar_padding_top"
                 android:textSize="@dimen/card_title_text"
                 app:icon="@drawable/ic_name"
-                style="@style/Widget.MaterialComponents.Button.Icon"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
 
             <Button
                 android:id="@+id/btn_notification_add_kelas"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".presentation.SplashScreenActivity">
+    tools:context=".presentation.screens.splash.SplashScreenActivity">
 
     <ImageView
         android:layout_width="wrap_content"

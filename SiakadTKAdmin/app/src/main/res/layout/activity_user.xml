@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.user.UserActivity">
+    tools:context=".presentation.screens.user.UserActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +21,10 @@
         android:id="@+id/tabs_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary" />
+        app:tabTextColor="@color/colorPrimary"
+        app:tabIndicatorHeight="2dp"
+        app:tabTextAppearance="@style/AppTheme.Text.Button"
+        app:tabBackground="@android:color/white"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager_user"
