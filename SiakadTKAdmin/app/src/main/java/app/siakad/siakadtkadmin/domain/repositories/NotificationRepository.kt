@@ -2,8 +2,9 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.ModelState
+import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.NotifikasiModel
 import app.siakad.siakadtkadmin.infrastructure.data.Notifikasi
 import com.google.firebase.database.DataSnapshot
@@ -14,7 +15,9 @@ class NotificationRepository() {
     private var notificationList = MutableLiveData<ModelContainer<ArrayList<NotifikasiModel>>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
-    private val notificationDB = FirebaseRef(MainRepository.NOTIFIKASI_REF).getRef()
+    private val notificationDB = FirebaseRef(
+        FirebaseRef.NOTIFIKASI_REF
+    ).getRef()
 
     fun initEventListener() {
         notificationDB.addValueEventListener(object : ValueEventListener {
@@ -25,6 +28,7 @@ class NotificationRepository() {
 
                 for (dataSS in snapshot.children) {
                     val data: NotifikasiModel? = dataSS.getValue(NotifikasiModel::class.java)
+                    data?.notifikasiId = dataSS.key.toString()
                     dataRef.add(data!!)
                 }
 

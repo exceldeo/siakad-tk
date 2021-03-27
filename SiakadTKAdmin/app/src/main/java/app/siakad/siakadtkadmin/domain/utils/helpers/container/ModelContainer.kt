@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.domain
+package app.siakad.siakadtkadmin.domain.utils.helpers.container
 
 data class ModelContainer<T>(
     var status: ModelState,

@@ -2,10 +2,10 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.ModelState
+import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PesananModel
-import app.siakad.siakadtkadmin.infrastructure.data.Pesanan
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -14,7 +14,9 @@ class OrderRepository() {
     private var orderList = MutableLiveData<ModelContainer<ArrayList<PesananModel>>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
-    private val orderDB = FirebaseRef(MainRepository.PESANAN_REF).getRef()
+    private val orderDB = FirebaseRef(
+        FirebaseRef.PESANAN_REF
+    ).getRef()
 
     fun initEventListener() {
         orderDB.addValueEventListener(object : ValueEventListener {
@@ -25,6 +27,7 @@ class OrderRepository() {
 
                 for (dataSS in snapshot.children) {
                     val data: PesananModel? = dataSS.getValue(PesananModel::class.java)
+                    data?.pesananId = dataSS.key.toString()
                     dataRef.add(data!!)
                 }
 

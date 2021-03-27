@@ -8,47 +8,59 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginVie
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 
 class ViewModelFactory(
     private val owner: LifecycleOwner,
-    private val ctx: Context
+    private val ctx: Context?
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(AnnouncementViewModel::class.java) -> {
                 AnnouncementViewModel(
-                    ctx,
+                    ctx!!,
                     owner
                 ) as T
             }
             modelClass.isAssignableFrom(AnnouncementAddViewModel::class.java) -> {
                 AnnouncementAddViewModel(
-                    ctx,
+                    ctx!!,
                     owner
                 ) as T
             }
             modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
                 NotificationViewModel(
-                    ctx,
+                    ctx!!,
                     owner
                 ) as T
             }
             modelClass.isAssignableFrom(NotificationAddViewModel::class.java) -> {
                 NotificationAddViewModel(
-                    ctx,
+                    ctx!!,
                     owner
                 ) as T
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(
-                    ctx,
+                    ctx!!,
                     owner
                 ) as T
             }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(
-                    ctx,
+                    ctx!!,
                     owner
+                ) as T
+            }
+            modelClass.isAssignableFrom(UserListViewModel::class.java) -> {
+                UserListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(UserDetailViewModel::class.java) -> {
+                UserDetailViewModel(
+                    ctx!!
                 ) as T
             }
             else -> throw IllegalArgumentException("Unknown View Model Class")

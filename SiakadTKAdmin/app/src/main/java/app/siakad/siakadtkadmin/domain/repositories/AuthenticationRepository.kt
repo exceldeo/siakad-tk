@@ -2,27 +2,22 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.models.UserModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import java.lang.Exception
 
 class AuthenticationRepository {
     private val authState = MutableLiveData<ModelContainer<String>>()
 
     companion object {
         val fbAuth = FirebaseAuth.getInstance()
-        lateinit var currentUser: UserModel
+        lateinit var currentPengguna: PenggunaModel
         var userState: Boolean = false
 
         fun setUser(userId: String, email: String, passwd: String) {
-            currentUser = UserModel(
+            currentPengguna = PenggunaModel(
                 userId = userId,
                 email = email,
                 passwd = passwd

@@ -6,10 +6,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.ModelState
-import app.siakad.siakadtkadmin.domain.models.UserModel
-import app.siakad.siakadtkadmin.domain.models.UserRoleModel
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.presentation.utils.listener.AuthenticationListener
@@ -29,7 +29,7 @@ class LoginViewModel(private val context: Context, private val lcOwner: Lifecycl
     private var userId: String = ""
 
     private lateinit var loginObserver: Observer<ModelContainer<String>>
-    private lateinit var userObserver: Observer<ModelContainer<UserModel>>
+    private lateinit var penggunaObserver: Observer<ModelContainer<PenggunaModel>>
 
     init {
         setupObserver()
@@ -45,7 +45,7 @@ class LoginViewModel(private val context: Context, private val lcOwner: Lifecycl
     }
 
     private fun setupObserver() {
-        userObserver = Observer { user -> 
+        penggunaObserver = Observer { user ->
             if (user.status == ModelState.SUCCESS) {
                 val item = user.data
 
@@ -76,7 +76,7 @@ class LoginViewModel(private val context: Context, private val lcOwner: Lifecycl
             }
         }
 
-        userRepository.getUser().observe(lcOwner, userObserver)
+        userRepository.getUser().observe(lcOwner, penggunaObserver)
         loginRepository.getAuthState().observe(lcOwner, loginObserver)
     }
 

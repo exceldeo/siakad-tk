@@ -2,6 +2,7 @@ package app.siakad.siakadtkadmin.infrastructure.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.lang.annotation.Inherited
 
 @Parcelize
 data class Siswa (
@@ -11,7 +12,7 @@ data class Siswa (
     var noHP: String = "",
     var email: String = "",
     var passwd: String = "",
-    var fotoBayarAwal: String = ""
+    var status: Boolean = false
 ): Parcelable {
     override fun toString(): String = nama
 }

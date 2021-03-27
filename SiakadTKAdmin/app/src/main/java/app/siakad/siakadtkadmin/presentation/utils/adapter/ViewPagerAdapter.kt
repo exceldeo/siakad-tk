@@ -4,25 +4,27 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import app.siakad.siakadtkadmin.R
 
 class ViewPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
-    private val TAB_TITLES = arrayOf(
-        R.string.tab_text_1,
-        R.string.tab_text_2
-    )
+    private val fragmentList: ArrayList<Fragment> = arrayListOf()
+    private val fragmentTitleList: ArrayList<String> = arrayListOf()
 
     override fun getItem(position: Int): Fragment {
-        return Fragment()
+        return fragmentList.get(position)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLES[position])
+        return fragmentTitleList.get(position)
     }
 
     override fun getCount(): Int {
-        return 2
+        return fragmentList.size
+    }
+
+    fun addFragment(title: String, fragment: Fragment) {
+        fragmentList.add(fragment)
+        fragmentTitleList.add(title)
     }
 }
