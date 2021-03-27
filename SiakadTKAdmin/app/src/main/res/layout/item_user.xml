@@ -55,10 +55,10 @@
                 android:textSize="@dimen/card_desc_text"/>
 
             <TextView
-                android:id="@+id/tv_item_user_tanggal"
+                android:id="@+id/tv_item_user_kelas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal bebas."
+                android:text="kelas"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/poppins_semibold"
                 android:textSize="@dimen/card_desc_text"/>

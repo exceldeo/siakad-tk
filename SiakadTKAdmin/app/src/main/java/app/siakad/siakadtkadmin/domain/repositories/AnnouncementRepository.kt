@@ -1,13 +1,10 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.ModelState
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -31,10 +28,12 @@ class AnnouncementRepository() {
                     dataRef.add(data!!)
                 }
 
-                announcementList.postValue(ModelContainer(
-                    status = ModelState.SUCCESS,
-                    data = dataRef
-                ))
+                announcementList.postValue(
+                    ModelContainer(
+                        status = ModelState.SUCCESS,
+                        data = dataRef
+                    )
+                )
             }
         })
     }

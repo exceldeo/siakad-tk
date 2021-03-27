@@ -12,7 +12,6 @@ class UserActivity : AppCompatActivity() {
 
     private val pageTitle = "Pengguna"
 
-    private lateinit var toolbar: Toolbar
     private lateinit var pagerAdapter: ViewPagerAdapter
     private lateinit var viewPager: ViewPager
     private lateinit var tab: TabLayout
@@ -21,31 +20,34 @@ class UserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
 
-        setupItemView()
+        setupAppBar()
         setupView()
     }
 
-    private fun setupItemView() {
-        toolbar = findViewById(R.id.toolbar_main)
-        viewPager = findViewById(R.id.view_pager_user)
-        tab = findViewById(R.id.tabs_user)
+    private fun setupView() {
+        setupTabLayout()
     }
 
-    private fun setupView() {
-        setupAppBar()
+    private fun setupAppBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
+    private fun setupTabLayout() {
         pagerAdapter =
             ViewPagerAdapter(
                 this,
                 supportFragmentManager
             )
-        viewPager.adapter = pagerAdapter
-        tab.setupWithViewPager(viewPager)
-    }
+        pagerAdapter.addFragment("Terverifikasi", UserListFragment.getUserVerifiedListFragment())
+        pagerAdapter.addFragment("Belum Diverifikasi", UserListFragment.getUserUnverifiedListFragment())
 
-    private fun setupAppBar() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = pageTitle
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        viewPager = findViewById(R.id.view_pager_user)
+        viewPager.adapter = pagerAdapter
+
+        tab = findViewById(R.id.tabs_user)
+        tab.setupWithViewPager(viewPager)
     }
 }

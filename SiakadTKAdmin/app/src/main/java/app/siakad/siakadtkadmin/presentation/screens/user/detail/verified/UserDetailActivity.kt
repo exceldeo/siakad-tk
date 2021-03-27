@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.screens.user.detail
+package app.siakad.siakadtkadmin.presentation.screens.user.detail.verified
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

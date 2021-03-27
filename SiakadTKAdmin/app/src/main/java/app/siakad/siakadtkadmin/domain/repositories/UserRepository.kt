@@ -2,28 +2,64 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.ModelState
-import app.siakad.siakadtkadmin.domain.models.PengumumanModel
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.UserModel
 import app.siakad.siakadtkadmin.domain.models.UserRoleModel
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.AuthResult
+import app.siakad.siakadtkadmin.domain.utils.listeners.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import java.lang.Exception
 
 class UserRepository() {
     private var userState = MutableLiveData<ModelContainer<UserModel>>()
-    private var userList = MutableLiveData<ModelContainer<ArrayList<UserModel>>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
     private val userDB = FirebaseRef(MainRepository.USER_REF).getRef()
+
+    fun initGetUserListListener(listener: UserListListener) {
+        userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str).addChildEventListener(object: ChildEventListener {
+            override fun onCancelled(error: DatabaseError) {}
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val dataRef = arrayListOf<UserModel>()
+
+                forloop@ for (dataSS in snapshot.children) {
+                    when (dataSS.value) {
+                        is String -> {
+                            val data: UserModel? = snapshot.getValue(UserModel::class.java)
+                            dataRef.add(data!!)
+
+                            listener.setUserList(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = dataRef
+                                )
+                            )
+                            break@forloop
+                        }
+                        is UserModel -> {
+                            val data: UserModel? = dataSS.getValue(UserModel::class.java)
+                            dataRef.add(data!!)
+
+                            listener.setUserList(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = dataRef
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {}
+        })
+    }
 
     fun getUserByEmail(email: String) {
         userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
@@ -39,53 +75,6 @@ class UserRepository() {
                 if (user != null) {
                     userState.postValue(ModelContainer.getSuccesModel(user))
                 }
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
-        })
-    }
-
-    fun initUserListener(name: String = "") {
-        userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str).addChildEventListener(object: ChildEventListener {
-            override fun onCancelled(error: DatabaseError) {}
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val dataRef = arrayListOf<UserModel>()
-
-                forloop@ for (dataSS in snapshot.children) {
-                    when (dataSS.value) {
-                        is String -> {
-                            val data: UserModel? = snapshot.getValue(UserModel::class.java)
-                            if (name.length > 0) {
-                                if (data?.nama!!.contains(name)) {
-                                    dataRef.add(data)
-                                }
-                            } else {
-                                dataRef.add(data!!)
-                            }
-                            break@forloop
-                        }
-                        is UserModel -> {
-                            val data: UserModel? = snapshot.getValue(UserModel::class.java)
-                            if (name.length > 0) {
-                                if (data?.nama!!.contains(name)) {
-                                    dataRef.add(data)
-                                }
-                            } else {
-                                dataRef.add(data!!)
-                            }
-                        }
-                    }
-                }
-
-                userList.postValue(ModelContainer(
-                    status = ModelState.SUCCESS,
-                    data = dataRef
-                ))
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {}
@@ -113,10 +102,6 @@ class UserRepository() {
 
     fun getUser(): LiveData<ModelContainer<UserModel>> {
         return userState
-    }
-
-    fun getAllUser(): LiveData<ModelContainer<ArrayList<UserModel>>> {
-        return userList
     }
 
     fun getInsertState(): LiveData<ModelContainer<String>> {

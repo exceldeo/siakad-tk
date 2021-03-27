@@ -6,8 +6,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.domain.ModelContainer
-import app.siakad.siakadtkadmin.domain.ModelState
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.UserModel
 import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository

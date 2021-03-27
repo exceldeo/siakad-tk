@@ -2,7 +2,7 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtkadmin.domain.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.models.FiturModel
 
 class FeatureRepository() {

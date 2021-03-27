@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.screens.user.detail.adapter
+package app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

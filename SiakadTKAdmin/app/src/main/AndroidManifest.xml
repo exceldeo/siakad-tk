@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar" >
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.register.RegisterActivity" />
-        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.UserDetailActivity" />
-        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.UserDetailUnverActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.UserDetailActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.UserActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductEditActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductAddActivity" />
