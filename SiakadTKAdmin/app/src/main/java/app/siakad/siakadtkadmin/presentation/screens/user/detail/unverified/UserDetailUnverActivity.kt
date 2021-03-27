@@ -17,6 +17,7 @@ import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
+import app.siakad.siakadtkadmin.presentation.screens.user.UserActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.UserListFragment
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.UserDetailActivity
 
@@ -50,7 +51,7 @@ class UserDetailUnverActivity : AppCompatActivity() {
                 startActivity(
                     Intent(
                         this@UserDetailUnverActivity,
-                        UserDetailActivity::class.java
+                        UserActivity::class.java
                     ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
                 true
