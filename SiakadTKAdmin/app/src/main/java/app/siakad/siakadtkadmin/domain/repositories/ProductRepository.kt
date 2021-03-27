@@ -2,6 +2,7 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.product.BukuModel
@@ -17,8 +18,12 @@ class ProductRepository() {
     private var bookList = MutableLiveData<ModelContainer<ArrayList<BukuModel>>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
-    private val uniformDB = FirebaseRef(MainRepository.SERAGAM_REF).getRef()
-    private val bookDB = FirebaseRef(MainRepository.BUKU_REF).getRef()
+    private val uniformDB = FirebaseRef(
+        FirebaseRef.SERAGAM_REF
+    ).getRef()
+    private val bookDB = FirebaseRef(
+        FirebaseRef.BUKU_REF
+    ).getRef()
 
     fun initUniformEventListener() {
         uniformDB.addValueEventListener(object : ValueEventListener {
@@ -30,6 +35,7 @@ class ProductRepository() {
                 for (dataSS in snapshot.children) {
                     val data: SeragamModel? = dataSS.getValue(
                         SeragamModel::class.java)
+                    data?.produkId = dataSS.key.toString()
                     dataRef.add(data!!)
                 }
 

@@ -7,9 +7,14 @@ import android.text.method.PasswordTransformationMethod
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.DetailPenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.user.UserListFragment
 
 class UserDetailActivity : AppCompatActivity() {
@@ -21,6 +26,7 @@ class UserDetailActivity : AppCompatActivity() {
     private lateinit var tvPasswd: TextView
 
     private lateinit var rvUserList: RecyclerView
+    private lateinit var vmUserDetail: UserDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +35,8 @@ class UserDetailActivity : AppCompatActivity() {
         setupAppBar()
 
         setupView()
+
+        setupViewModel()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -67,5 +75,19 @@ class UserDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupViewModel() {
+        val siswa = intent.getParcelableExtra<Siswa>(UserListFragment.UNVERIFIED_USER)
+
+        vmUserDetail = ViewModelProvider(
+            this,
+            ViewModelFactory(this, this)
+        ).get(UserDetailViewModel::class.java)
+        vmUserDetail.setUserId(siswa.userId)
+
+        val obsUserDetail = Observer<DetailPenggunaModel> { detail ->
+        }
+        vmUserDetail.getUserDetail().observe(this, obsUserDetail)
     }
 }

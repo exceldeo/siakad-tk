@@ -6,10 +6,10 @@ import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.models.UserModel
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
-import app.siakad.siakadtkadmin.domain.utils.listeners.UserListListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -28,11 +28,11 @@ class UserListViewModel(private val context: Context) :
         }
     }
 
-    override fun setUserList(userList: ModelContainer<ArrayList<UserModel>>) {
-        if (userList.status == ModelState.SUCCESS) {
+    override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
+        if (penggunaList.status == ModelState.SUCCESS) {
             val siswaList = arrayListOf<Siswa>()
-            if (userList.data?.isNotEmpty()!!) {
-                userList.data?.forEach { user ->
+            if (penggunaList.data?.isNotEmpty()!!) {
+                penggunaList.data?.forEach { user ->
                     siswaList.add(
                         Siswa(
                             nama = user.nama,
@@ -48,7 +48,7 @@ class UserListViewModel(private val context: Context) :
                 }
                 showToast(context.getString(R.string.scs_get_data))
             }
-        } else if (userList.status == ModelState.ERROR) {
+        } else if (penggunaList.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
         }
     }

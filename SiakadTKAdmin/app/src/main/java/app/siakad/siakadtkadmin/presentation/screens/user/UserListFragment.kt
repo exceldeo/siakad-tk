@@ -20,6 +20,7 @@ class UserListFragment(private val type: String) : Fragment() {
     private lateinit var tvUserCount: TextView
     private lateinit var rvUserList: RecyclerView
 
+    private lateinit var vmUserList: UserListViewModel
     private lateinit var userListAdapter: UserListAdapter
 
     companion object {
@@ -56,7 +57,7 @@ class UserListFragment(private val type: String) : Fragment() {
     }
 
     private fun setupViewModel() {
-        val vmUserList = ViewModelProvider(
+        vmUserList = ViewModelProvider(
             this, ViewModelFactory(this.viewLifecycleOwner, this.context)
         ).get(UserListViewModel::class.java)
         if (type == VERIFIED_USER) {

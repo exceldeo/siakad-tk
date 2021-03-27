@@ -2,6 +2,7 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
@@ -14,7 +15,9 @@ class AnnouncementRepository() {
     private var announcementList = MutableLiveData<ModelContainer<ArrayList<PengumumanModel>>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
-    private val announcementDB = FirebaseRef(MainRepository.PENGUMUMAN_REF).getRef()
+    private val announcementDB = FirebaseRef(
+        FirebaseRef.PENGUMUMAN_REF
+    ).getRef()
 
     fun initEventListener() {
         announcementDB.addValueEventListener(object : ValueEventListener{
@@ -25,6 +28,7 @@ class AnnouncementRepository() {
 
                 for (dataSS in snapshot.children) {
                     val data: PengumumanModel? = dataSS.getValue(PengumumanModel::class.java)
+                    data?.pengumumanId = dataSS.key.toString()
                     dataRef.add(data!!)
                 }
 

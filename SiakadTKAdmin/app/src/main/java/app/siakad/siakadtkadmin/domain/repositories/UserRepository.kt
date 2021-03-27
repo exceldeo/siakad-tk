@@ -2,20 +2,23 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.models.UserModel
-import app.siakad.siakadtkadmin.domain.models.UserRoleModel
-import app.siakad.siakadtkadmin.domain.utils.listeners.UserListListener
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
 class UserRepository() {
-    private var userState = MutableLiveData<ModelContainer<UserModel>>()
+    private var userState = MutableLiveData<ModelContainer<PenggunaModel>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
-    private val userDB = FirebaseRef(MainRepository.USER_REF).getRef()
+    private val userDB = FirebaseRef(
+        FirebaseRef.USER_REF
+    ).getRef()
 
     fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
         userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str)
@@ -27,14 +30,15 @@ class UserRepository() {
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val dataRef = arrayListOf<UserModel>()
+                val dataRef = arrayListOf<PenggunaModel>()
 
                 forloop@ for (dataSS in snapshot.children) {
                     when (dataSS.value) {
                         is String -> {
-                            val data: UserModel? = snapshot.getValue(UserModel::class.java)
+                            val data: PenggunaModel? = snapshot.getValue(PenggunaModel::class.java)
                             if (data != null) {
                                 if (data.status == verified) {
+                                    data.userId = snapshot.key.toString()
                                     dataRef.add(data)
 
                                     listener.setUserList(
@@ -47,10 +51,11 @@ class UserRepository() {
                                 }
                             }
                         }
-                        is UserModel -> {
-                            val data: UserModel? = dataSS.getValue(UserModel::class.java)
+                        is PenggunaModel -> {
+                            val data: PenggunaModel? = dataSS.getValue(PenggunaModel::class.java)
                             if (data != null) {
                                 if (data.status == verified) {
+                                    data.userId = dataSS.key.toString()
                                     dataRef.add(data)
 
                                     listener.setUserList(
@@ -79,9 +84,10 @@ class UserRepository() {
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val user = snapshot.getValue(UserModel::class.java)
+                val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
+                    user.userId = snapshot.key.toString()
                     userState.postValue(ModelContainer.getSuccesModel(user))
                 }
             }
@@ -90,15 +96,15 @@ class UserRepository() {
         })
     }
 
-    fun insertData(user: UserModel) {
+    fun insertData(pengguna: PenggunaModel) {
         val newKey = userDB.push().key.toString()
-        val newData = UserModel(
+        val newData = PenggunaModel(
             userId = newKey,
-            alamat = user.alamat,
-            email = user.email,
-            nama = user.nama,
-            noHP = user.noHP,
-            passwd = user.passwd,
+            alamat = pengguna.alamat,
+            email = pengguna.email,
+            nama = pengguna.nama,
+            noHP = pengguna.noHP,
+            passwd = pengguna.passwd,
             role = UserRoleModel.ADMIN.str
         )
 
@@ -109,7 +115,7 @@ class UserRepository() {
         }
     }
 
-    fun getUser(): LiveData<ModelContainer<UserModel>> {
+    fun getUser(): LiveData<ModelContainer<PenggunaModel>> {
         return userState
     }
 

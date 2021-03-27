@@ -9,6 +9,7 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.N
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 
 class ViewModelFactory(
     private val owner: LifecycleOwner,
@@ -54,6 +55,11 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(UserListViewModel::class.java) -> {
                 UserListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(UserDetailViewModel::class.java) -> {
+                UserDetailViewModel(
                     ctx!!
                 ) as T
             }

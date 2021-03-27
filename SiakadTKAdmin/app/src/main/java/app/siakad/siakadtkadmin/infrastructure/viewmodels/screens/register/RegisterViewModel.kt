@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.models.UserModel
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.presentation.utils.listener.AuthenticationListener
@@ -45,7 +45,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
     private fun setupObserver() {
         regObserver = Observer { data ->
             if (data.status == ModelState.SUCCESS) {
-                userRepository.insertData(UserModel(
+                userRepository.insertData(PenggunaModel(
                     email = email,
                     passwd = passwd,
                 ))

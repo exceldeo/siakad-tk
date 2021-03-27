@@ -1,6 +1,9 @@
-package app.siakad.siakadtkadmin.domain.repositories
+package app.siakad.siakadtkadmin.domain.db.ref
 
-class MainRepository {
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
+class FirebaseRef(private val refName: String) {
     companion object {
         const val USER_REF = "User"
         const val USER_DETAIL_REF = "UserDetail"
@@ -13,5 +16,10 @@ class MainRepository {
         const val BUKU_REF = "Buku"
         const val FITUR_REF = "Fitur"
         const val DETAIL_PESANAN_PRODUK_REF = "DetailPesananProduk"
+    }
+
+    fun getRef(): DatabaseReference {
+        val fireabaseDB = FirebaseDatabase.getInstance()
+        return fireabaseDB.getReference(refName)
     }
 }
