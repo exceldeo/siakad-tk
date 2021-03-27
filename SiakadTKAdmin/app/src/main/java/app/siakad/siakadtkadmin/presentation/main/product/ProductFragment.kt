@@ -48,7 +48,7 @@ class ProductFragment : Fragment() {
             intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
             startActivity(intent)
         }
-        btnUniform.setOnClickListener {
+        btnBook.setOnClickListener {
             val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
             intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
             startActivity(intent)
