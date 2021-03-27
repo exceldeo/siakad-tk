@@ -15,17 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.presentation.announcement.AnnouncementsData
 import app.siakad.siakadtk.presentation.announcement.adapter.AnnouncementAdapter
-import app.siakad.siakadtk.presentation.nota.NotaAdapter
-import app.siakad.siakadtk.domain.models.PengumumanModel
-import app.siakad.siakadtk.domain.models.PesananModel
-import app.siakad.siakadtk.presentation.announcement.AnnouncementViewModel
-import app.siakad.siakadtk.presentation.announcement.inside.adapter.AnnouncementInsideAdapter
-import app.siakad.siakadtk.presentation.nota.NotasData
+import app.siakad.siakadtk.presentation.order.adapter.OrderAdapter
+import app.siakad.siakadtk.infrastructure.data.Pengumuman
+import app.siakad.siakadtk.infrastructure.data.Pesanan
+import app.siakad.siakadtk.infrastructure.viewmodels.announcement.AnnouncementViewModel
+import app.siakad.siakadtk.presentation.order.NotasData
 import app.siakad.siakadtk.presentation.order.OrderListActivity
 import app.siakad.siakadtk.presentation.registration.RegistrationActivity
-import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.infrastructure.viewmodels.factory.ViewModelFactory
+import app.siakad.siakadtk.infrastructure.viewmodels.main.home.HomeViewModel
 
 class HomeFragment : Fragment() {
 
@@ -38,10 +37,10 @@ class HomeFragment : Fragment() {
     private lateinit var tvSeeAllOrderStatus: TextView
     private lateinit var rvOrderStatus: RecyclerView
     private lateinit var rvAnnouncementAdapter: AnnouncementAdapter
-    private var listNota: ArrayList<PesananModel> = arrayListOf()
+    private var listNota: ArrayList<Pesanan> = arrayListOf()
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
-    private lateinit var announcementListObserver: Observer<ArrayList<PengumumanModel>>
+    private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -83,7 +82,7 @@ class HomeFragment : Fragment() {
 
     private fun showNotaRecyclerList() {
         rvOrderStatus.layoutManager = LinearLayoutManager(this.context)
-        val notaAdapter = NotaAdapter(listNota)
+        val notaAdapter = OrderAdapter(listNota)
         rvOrderStatus.adapter = notaAdapter
     }
 

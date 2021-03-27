@@ -9,8 +9,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceFragmentCompat
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.SplashActivity
-import app.siakad.siakadtk.data.repositories.MainRepository
-import app.siakad.siakadtk.presentation.history.HistoryActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.order.OrderDetailActivity">
+    tools:context=".presentation.order.detail.OrderDetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ab_toolbar_main"
@@ -186,7 +186,7 @@
                     android:id="@+id/rv_aorder_product_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/item_row_product_item" />
+                    tools:listitem="@layout/item_row_orderdetail_product" />
 
                 <View
                     android:layout_width="match_parent"

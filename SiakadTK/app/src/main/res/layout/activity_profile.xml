@@ -250,6 +250,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btn_aprofile_simpan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
@@ -257,7 +258,6 @@
                 app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
-                    android:id="@+id/btn_aprofile_simpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"

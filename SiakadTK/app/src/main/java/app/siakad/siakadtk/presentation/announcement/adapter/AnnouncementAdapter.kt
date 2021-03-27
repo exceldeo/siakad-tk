@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.domain.models.PengumumanModel
+import app.siakad.siakadtk.infrastructure.data.Pengumuman
 
 class AnnouncementAdapter() : RecyclerView.Adapter<AnnouncementViewHolder>(){
 
-    private val announcementList: ArrayList<PengumumanModel> = arrayListOf()
+    private val announcementList: ArrayList<Pengumuman> = arrayListOf()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AnnouncementViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_pengumuman, viewGroup, false)
@@ -25,7 +25,7 @@ class AnnouncementAdapter() : RecyclerView.Adapter<AnnouncementViewHolder>(){
         return announcementList.size
     }
 
-    fun changeDataList(data: ArrayList<PengumumanModel>) {
+    fun changeDataList(data: ArrayList<Pengumuman>) {
         if (announcementList.size > 0)
             announcementList.clear()
 

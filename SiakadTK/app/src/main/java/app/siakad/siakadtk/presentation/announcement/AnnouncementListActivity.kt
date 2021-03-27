@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.main.MainActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.domain.models.PengumumanModel
+import app.siakad.siakadtk.infrastructure.data.Pengumuman
+import app.siakad.siakadtk.infrastructure.viewmodels.announcement.AnnouncementViewModel
 import app.siakad.siakadtk.presentation.announcement.inside.adapter.AnnouncementInsideAdapter
-import app.siakad.siakadtkadmin.presentation.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.infrastructure.viewmodels.factory.ViewModelFactory
 
 class AnnouncementListActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class AnnouncementListActivity : AppCompatActivity() {
     private lateinit var rvAnnouncementAdapter: AnnouncementInsideAdapter
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
-    private lateinit var announcementListObserver: Observer<ArrayList<PengumumanModel>>
+    private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

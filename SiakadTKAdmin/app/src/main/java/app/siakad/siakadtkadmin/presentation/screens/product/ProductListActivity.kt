@@ -1,5 +1,6 @@
 package app.siakad.siakadtkadmin.presentation.screens.product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -57,6 +58,12 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
+
+        ivAddProduct.setOnClickListener {
+            val intent = Intent(this@ProductListActivity, ProductAddActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun setupAppBar() {

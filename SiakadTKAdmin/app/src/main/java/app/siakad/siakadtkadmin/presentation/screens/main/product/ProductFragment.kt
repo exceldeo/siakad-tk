@@ -39,14 +39,14 @@ class ProductFragment : Fragment() {
     }
 
     private fun setupView() {
-        btnUniform.setOnClickListener {
+        btnBook.setOnClickListener {
             val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
-            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
+            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
             startActivity(intent)
         }
         btnBook.setOnClickListener {
             val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
-            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
+            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
             startActivity(intent)
         }
     }
