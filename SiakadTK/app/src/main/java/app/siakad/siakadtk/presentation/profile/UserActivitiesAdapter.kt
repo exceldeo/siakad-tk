@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.presentation.main.profile
+package app.siakad.siakadtk.presentation.profile
 
 import android.view.LayoutInflater
 import android.view.View

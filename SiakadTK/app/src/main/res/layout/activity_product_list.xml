@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.product.detail.uniform.ProductUniformListActivity">
+    tools:context=".presentation.product.ProductListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ab_toolbar_main"
@@ -17,7 +17,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_product_unilist_search_bar"
+        android:id="@+id/cv_product_list_search_bar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="@dimen/container_padding_x"
@@ -30,16 +30,16 @@
         tools:targetApi="lollipop">
 
         <SearchView
-            android:id="@+id/sv_product_unilist_search_bar"
+            android:id="@+id/sv_product_list_search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_product_unilist_searched_product_list"
+        android:id="@+id/rv_product_list_product_list"
         android:paddingStart="@dimen/container_padding_x"
         android:paddingEnd="@dimen/container_padding_x"
-        android:layout_below="@id/cv_product_unilist_search_bar"
+        android:layout_below="@id/cv_product_list_search_bar"
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

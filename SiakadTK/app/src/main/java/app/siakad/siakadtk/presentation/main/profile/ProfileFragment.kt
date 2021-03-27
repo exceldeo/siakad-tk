@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.history.HistoryActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.domain.repositories.MainRepository
 import app.siakad.siakadtk.infrastructure.data.Aktivitas
 import app.siakad.siakadtk.infrastructure.viewmodels.main.profile.ProfileViewModel
+import app.siakad.siakadtk.presentation.profile.SettingsActivity
+import app.siakad.siakadtk.presentation.profile.UserActivitiesAdapter
+import app.siakad.siakadtk.presentation.profile.UserActivitiesData
 import app.siakad.siakadtk.presentation.registration.RegistrationActivity
 
 class ProfileFragment : Fragment() {

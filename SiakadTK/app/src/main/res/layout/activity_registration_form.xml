@@ -87,32 +87,6 @@
                     android:background="@android:color/transparent"/>
             </RelativeLayout>
 
-            <TextView
-                style="@style/LabelText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/asal_sekolah" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/inner_padding"
-                android:layout_height="@dimen/input_height">
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/vc_bg_input_unfilled"
-                    android:scaleType="fitXY"
-                    app:riv_corner_radius="10dip"/>
-                <EditText
-                    android:id="@+id/et_registrationform_asal_sekolah"
-                    android:padding="@dimen/input_text_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/asal_sekolah"
-                    style="@style/InputText"
-                    android:background="@android:color/transparent"/>
-            </RelativeLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

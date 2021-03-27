@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtk.presentation.main.product.basket.BasketActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.infrastructure.viewmodels.main.product.ProductViewModel
-import app.siakad.siakadtk.presentation.main.product.detail.book.ProductBookListActivity
-import app.siakad.siakadtk.presentation.main.product.detail.uniform.ProductUniformListActivity
+import app.siakad.siakadtk.presentation.product.ProductListActivity
 
 class ProductFragment : Fragment() {
 
@@ -51,12 +49,14 @@ class ProductFragment : Fragment() {
             val intent = Intent(this@ProductFragment.context, BasketActivity::class.java)
             startActivity(intent)
         }
-        btnBookProduct.setOnClickListener{
-            val intent = Intent(this@ProductFragment.context, ProductBookListActivity::class.java)
+        btnUniformProduct.setOnClickListener {
+            val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
+            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
             startActivity(intent)
         }
-        btnUniformProduct.setOnClickListener{
-            val intent = Intent(this@ProductFragment.context, ProductUniformListActivity::class.java)
+        btnBookProduct.setOnClickListener {
+            val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
+            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
             startActivity(intent)
         }
     }
