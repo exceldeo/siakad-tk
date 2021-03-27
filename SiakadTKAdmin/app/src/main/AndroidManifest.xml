@@ -9,30 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar" >
-        <activity android:name=".presentation.register.RegisterActivity" />
-        <activity android:name=".presentation.user.detail.UserDetailActivity" />
-        <activity android:name=".presentation.user.detail.UserDetailUnverActivity" />
-        <activity android:name=".presentation.user.UserActivity" />
-        <activity android:name=".presentation.product.ProductEditActivity" />
-        <activity android:name=".presentation.product.ProductAddActivity" />
-        <activity android:name=".presentation.product.ProductListActivity" />
-        <activity android:name=".presentation.order.detail.OrderDetailActivity" />
-        <activity android:name=".presentation.order.OrderActivity" />
-        <activity android:name=".presentation.registration.RegistrationDetailActivity" />
-        <activity android:name=".presentation.registration.RegistrationActivity" />
-        <activity android:name=".presentation.notification.NotificationAddActivity" />
-        <activity android:name=".presentation.notification.NotificationActivity" />
-        <activity android:name=".presentation.announcement.add.AnnouncementAddActivity" />
-        <activity android:name=".presentation.announcement.AnnouncementActivity" />
-        <activity android:name=".presentation.login.LoginActivity" />
-        <activity android:name=".presentation.SplashScreenActivity" >
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.register.RegisterActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.UserDetailActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.UserDetailUnverActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.UserActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductEditActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductAddActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.order.detail.OrderDetailActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.order.OrderActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationDetailActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.notification.NotificationAddActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.notification.NotificationActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementAddActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.login.LoginActivity" />
+        <activity android:name=".presentation.screens.splash.SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.main.MainActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.main.MainActivity" />
     </application>
 
 </manifest>
