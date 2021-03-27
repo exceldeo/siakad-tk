@@ -23,8 +23,8 @@ class UserListFragment(private val type: String) : Fragment() {
     private lateinit var userListAdapter: UserListAdapter
 
     companion object {
-        private const val VERIFIED_USER = "verified_user"
-        private const val UNVERIFIED_USER = "unverified_user"
+        const val VERIFIED_USER = "verified_user"
+        const val UNVERIFIED_USER = "unverified_user"
 
         fun getUserVerifiedListFragment(): UserListFragment {
             return UserListFragment(
@@ -59,12 +59,17 @@ class UserListFragment(private val type: String) : Fragment() {
         val vmUserList = ViewModelProvider(
             this, ViewModelFactory(this.viewLifecycleOwner, this.context)
         ).get(UserListViewModel::class.java)
+        if (type == VERIFIED_USER) {
+            vmUserList.setUserType(true)
+        } else {
+            vmUserList.setUserType(false)
+        }
+
         val obsUserList = Observer<ArrayList<Siswa>> { newUserList ->
             if (newUserList.size > 0) {
                 userListAdapter.changeDataList(newUserList)
             }
         }
-
         vmUserList.getUserList().observe(this.viewLifecycleOwner, obsUserList)
     }
 

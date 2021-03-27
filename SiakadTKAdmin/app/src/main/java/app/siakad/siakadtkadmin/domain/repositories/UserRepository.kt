@@ -17,8 +17,9 @@ class UserRepository() {
 
     private val userDB = FirebaseRef(MainRepository.USER_REF).getRef()
 
-    fun initGetUserListListener(listener: UserListListener) {
-        userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str).addChildEventListener(object: ChildEventListener {
+    fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
+        userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str)
+            .addChildEventListener(object: ChildEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -32,26 +33,34 @@ class UserRepository() {
                     when (dataSS.value) {
                         is String -> {
                             val data: UserModel? = snapshot.getValue(UserModel::class.java)
-                            dataRef.add(data!!)
+                            if (data != null) {
+                                if (data.status == verified) {
+                                    dataRef.add(data)
 
-                            listener.setUserList(
-                                ModelContainer(
-                                    status = ModelState.SUCCESS,
-                                    data = dataRef
-                                )
-                            )
-                            break@forloop
+                                    listener.setUserList(
+                                        ModelContainer(
+                                            status = ModelState.SUCCESS,
+                                            data = dataRef
+                                        )
+                                    )
+                                    break@forloop
+                                }
+                            }
                         }
                         is UserModel -> {
                             val data: UserModel? = dataSS.getValue(UserModel::class.java)
-                            dataRef.add(data!!)
+                            if (data != null) {
+                                if (data.status == verified) {
+                                    dataRef.add(data)
 
-                            listener.setUserList(
-                                ModelContainer(
-                                    status = ModelState.SUCCESS,
-                                    data = dataRef
-                                )
-                            )
+                                    listener.setUserList(
+                                        ModelContainer(
+                                            status = ModelState.SUCCESS,
+                                            data = dataRef
+                                        )
+                                    )
+                                }
+                            }
                         }
                     }
                 }

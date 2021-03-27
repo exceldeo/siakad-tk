@@ -9,6 +9,7 @@
     android:layout_marginVertical="@dimen/input_text_padding">
 
     <LinearLayout
+        android:id="@+id/ll_item_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/container_padding_x"

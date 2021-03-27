@@ -22,13 +22,10 @@ class UserListViewModel(private val context: Context) :
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
-    init {
-        vmCoroutineScope.launch {
-            userRepository.initGetUserListListener(this@UserListViewModel)
-        }
-    }
-
     fun setUserType(verified: Boolean) {
+        vmCoroutineScope.launch {
+            userRepository.initGetUserListListener(this@UserListViewModel, verified)
+        }
     }
 
     override fun setUserList(userList: ModelContainer<ArrayList<UserModel>>) {
@@ -43,7 +40,8 @@ class UserListViewModel(private val context: Context) :
                             email = user.email,
                             passwd = user.passwd,
                             alamat = user.alamat,
-                            userId = user.userId
+                            userId = user.userId,
+                            status = user.status
                         )
                     )
                     userListLiveData.postValue(siswaList)

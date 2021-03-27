@@ -13,5 +13,6 @@ data class UserModel (
     var noHP: String = "",
     var email: String = "",
     var passwd: String = "",
-    var role: String = ""
+    var role: String = "",
+    var status: Boolean = false
 ): Parcelable

@@ -69,7 +69,8 @@ class NotificationAddViewModel(private val context: Context, private val lcOwner
                             email = user.email,
                             passwd = user.passwd,
                             alamat = user.alamat,
-                            userId = user.userId
+                            userId = user.userId,
+                            status = user.status
                         )
                     )
                     userListLiveData.postValue(siswaList)
