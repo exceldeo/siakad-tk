@@ -12,5 +12,5 @@ data class Pesanan (
     var noHP: String = "",
     var jumlah: Int = 0,
     var total: Int = 1000,
-    var detailPesanan: Array<DetailPesanan>? = null
+    var detailPesanan: ArrayList<DetailPesanan>? = arrayListOf()
 ): Parcelable

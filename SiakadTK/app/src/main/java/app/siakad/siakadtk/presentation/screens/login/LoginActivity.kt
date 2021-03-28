@@ -4,14 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
+import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
 import app.siakad.siakadtk.presentation.screens.signup.SignupActivity
+import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -20,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
 
-    private var auth = FirebaseAuth.getInstance()
+    private lateinit var vmLogin: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (auth.currentUser != null) {
+        if (AuthenticationRepository.fbAuth.currentUser != null) {
             navigateToMain()
         }
     }
@@ -49,9 +53,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
+        etPassword.transformationMethod = PasswordTransformationMethod()
+
         btnLogin.setOnClickListener {
             if (validateForm()) {
-                login()
+                vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
             }
         }
 
@@ -62,24 +68,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun login() {
-        auth.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    showToast(getString(R.string.scs_login))
-                    val user = auth.currentUser
-                    navigateToMain()
-                } else {
-                    showToast(getString(R.string.fail_login))
-                }
-
-                if (!task.isSuccessful) {
-                    showToast(getString(R.string.fail_login))
-                }
-            }
-
-    }
-    private fun navigateToMain() {
+    override fun navigateToMain() {
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
@@ -105,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
         return valid
     }
 
-    private fun showToast(msg: String) {
+    override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

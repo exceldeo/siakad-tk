@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.presentation.view.date
+package app.siakad.siakadtk.presentation.views.date
 
 import android.app.DatePickerDialog
 import android.app.Dialog

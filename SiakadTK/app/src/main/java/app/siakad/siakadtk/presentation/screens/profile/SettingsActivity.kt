@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceFragmentCompat
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
@@ -19,6 +20,8 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnUbahProfil: Button
     private lateinit var btnUbahPassword: Button
     private lateinit var btnUbahEmail: Button
+
+    private lateinit var alertDialog: AlertDialogFragment
     var auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +47,8 @@ class SettingsActivity : AppCompatActivity() {
         btnUbahProfil = findViewById(R.id.btn_settings_lihatubahprofil)
         btnUbahEmail = findViewById(R.id.btn_settings_ubahemail)
         btnUbahPassword = findViewById(R.id.btn_settings_ubahpassword)
+
+        alertDialog = AlertDialogFragment("Keluar", "Apakah Anda yakin ingin keluar?")
     }
 
     private fun setupView() {
@@ -72,7 +77,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun logout() {
         auth.signOut()
-        showToast("Berhasiil logout")
+        showToast("Berhasil logout")
     }
 
     private fun setupAppBar() {

@@ -12,8 +12,8 @@ import app.siakad.siakadtk.R
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
-import app.siakad.siakadtk.presentation.view.date.DateListener
-import app.siakad.siakadtk.presentation.view.date.DatePickerFragment
+import app.siakad.siakadtk.presentation.views.date.DateListener
+import app.siakad.siakadtk.presentation.views.date.DatePickerFragment
 import com.androidbuffer.kotlinfilepicker.KotConstants
 import com.androidbuffer.kotlinfilepicker.KotRequest
 import java.text.SimpleDateFormat
