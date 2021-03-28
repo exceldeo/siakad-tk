@@ -2,20 +2,20 @@ package app.siakad.siakadtk.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtk.domain.ModelContainer
-import app.siakad.siakadtk.domain.ModelState
+import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.models.DaftarUlangModel
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import java.text.SimpleDateFormat
 import java.util.*
 
 class RegistrationRepository() {
     private var daftarUlangList = MutableLiveData<ModelContainer<ArrayList<DaftarUlangModel>>>()
     private val insertState = MutableLiveData<ModelContainer<String>>()
-    private val registrationDB = FirebaseRef(MainRepository.DAFTAR_ULANG_REF).getRef()
+    private val registrationDB = FirebaseRef(FirebaseRef.DAFTAR_ULANG_REF).getRef()
 
     fun initEventListener() {
         registrationDB.addValueEventListener(object : ValueEventListener {

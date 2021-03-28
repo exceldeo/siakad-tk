@@ -9,5 +9,5 @@ import kotlinx.android.parcel.Parcelize
 data class Keranjang(
     @get:Exclude
     var keranjangId: String = "",
-    var detailBasket: Array<DetailKeranjangProdukModel>? = null
+    var basketDetailId: ArrayList<DetailKeranjangProdukModel>? = arrayListOf()
 ): Parcelable
