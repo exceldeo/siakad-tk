@@ -16,4 +16,6 @@ data class DaftarUlang (
     var noHP: String = "",
     var nominalbayar: Int = 1000000,
     var fotoBayar: String = ""
-): Parcelable
+): Parcelable {
+    val tanggalLahir: String = ""
+}

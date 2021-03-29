@@ -11,9 +11,8 @@ import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
-import app.siakad.siakadtk.presentation.screens.signup.SignupActivity
+import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
-import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
@@ -62,7 +61,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         }
 
         tvSignUp.setOnClickListener {
-            val intent = Intent(this@LoginActivity, SignupActivity::class.java)
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }

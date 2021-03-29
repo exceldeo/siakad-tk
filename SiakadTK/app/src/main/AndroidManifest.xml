@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name="app.siakad.siakadtk.presentation.screens.product.ProductListActivity"></activity>
         <activity android:name="app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.signup.SignupActivity" />
+        <activity android:name="app.siakad.siakadtk.presentation.screens.register.RegisterActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.order.detail.OrderDetailActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.history.detail.HistoryDetailActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.profile.PasswordActivity" />

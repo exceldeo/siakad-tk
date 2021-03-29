@@ -58,8 +58,6 @@ class ProfileActivity : AppCompatActivity() {
         etSchoolBefore = findViewById(R.id.et_aprofile_asal_sekolah)
         btnCancel = findViewById(R.id.btn_aprofile_batal)
         btnSimpan = findViewById(R.id.btn_aprofile_simpan)
-
-        etName.setText(FirebaseRef.currentUser.nama)
     }
 
     private fun setupAppBar() {

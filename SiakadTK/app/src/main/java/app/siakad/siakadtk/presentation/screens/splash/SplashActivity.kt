@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.presentation.screens.signup.SignupActivity
+import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         mainScope.launch {
             delay(2000)
 
-            val intent = Intent(this@SplashActivity, SignupActivity::class.java)
+            val intent = Intent(this@SplashActivity, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }

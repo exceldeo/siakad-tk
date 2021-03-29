@@ -25,6 +25,7 @@ class AnnouncementRepository() {
 
                 for (dataSS in snapshot.children) {
                     val data: PengumumanModel? = dataSS.getValue(PengumumanModel::class.java)
+                    data?.pengumumanId = dataSS.key.toString()
                     dataRef.add(data!!)
                 }
 

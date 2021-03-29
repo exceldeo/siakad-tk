@@ -1,4 +1,4 @@
-package app.siakad.siakadtk.presentation.screens.signup
+package app.siakad.siakadtk.presentation.screens.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,7 +16,7 @@ import app.siakad.siakadtk.presentation.screens.login.LoginActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 
 
-class SignupActivity : AppCompatActivity(), AuthenticationListener {
+class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -69,7 +69,7 @@ class SignupActivity : AppCompatActivity(), AuthenticationListener {
             }
         }
         tvLogin.setOnClickListener {
-            val intent = Intent(this@SignupActivity, LoginActivity::class.java)
+            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -114,7 +114,7 @@ class SignupActivity : AppCompatActivity(), AuthenticationListener {
     }
 
     override fun navigateToMain() {
-        val intent = Intent(this@SignupActivity, MainActivity::class.java)
+        val intent = Intent(this@RegisterActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

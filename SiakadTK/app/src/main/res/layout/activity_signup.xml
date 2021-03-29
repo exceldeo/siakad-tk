@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/container_padding_x"
     android:orientation="vertical"
-    tools:context=".presentation.screens.signup.SignupActivity">
+    tools:context=".presentation.screens.register.RegisterActivity">
 
     <ScrollView
         android:layout_width="match_parent"

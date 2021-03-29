@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceFragmentCompat
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -21,8 +22,8 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnUbahPassword: Button
     private lateinit var btnUbahEmail: Button
 
+    private val authRepository = AuthenticationRepository()
     private lateinit var alertDialog: AlertDialogFragment
-    var auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,7 @@ class SettingsActivity : AppCompatActivity() {
         setupAppBar()
 
         btnLogout.setOnClickListener {
-            logout()
+            AuthenticationRepository
             val intent = Intent(this@SettingsActivity, SplashActivity::class.java)
             startActivity(intent)
         }
@@ -76,7 +77,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        auth.signOut()
+        authRepository.logout()
         showToast("Berhasil logout")
     }
 

@@ -12,8 +12,10 @@ class FirebaseRef(private val refName: String) {
         const val NOTIFIKASI_REF = "Notifikasi"
         const val PESANAN_REF = "Pesanan"
         const val PRODUK_REF = "Produk"
+        const val FITUR_REF = "Fitur"
         const val SERAGAM_REF = "Seragam"
         const val BUKU_REF = "Buku"
+        const val AKTIVITAS_REF = "Aktivitas"
         const val KERANJANG_REF = "Keranjang"
         const val DETAIL_PESANAN_PRODUK_REF = "DetailPesananProduk"
     }
