@@ -10,6 +10,6 @@ data class DaftarUlangModel (
     var dafulId: String = "",
     var userId: String = "",
     var tanggal: String = "",
-    var status: String = "",
-    var fotoBayar: String = ""
+    var fotoBayar: String = "",
+    var statusDaful: Boolean = false
 ): Parcelable

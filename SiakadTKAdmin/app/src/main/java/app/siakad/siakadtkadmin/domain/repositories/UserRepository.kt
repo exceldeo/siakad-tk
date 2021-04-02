@@ -7,6 +7,7 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -75,8 +76,29 @@ class UserRepository() {
         })
     }
 
+    fun getUserById(listener: RegistrationListListener, id: String) {
+        userDB.orderByChild("email").equalTo(id).addChildEventListener(object : ChildEventListener {
+            override fun onCancelled(error: DatabaseError) {}
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val user = snapshot.getValue(PenggunaModel::class.java)
+
+                if (user != null) {
+                    user.userId = snapshot.key.toString()
+                    listener.addUser(ModelContainer.getSuccesModel(user))
+                }
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {}
+        })
+    }
+
     fun getUserByEmail(email: String) {
-        userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
+        userDB.orderByKey().equalTo(email).addChildEventListener(object : ChildEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
