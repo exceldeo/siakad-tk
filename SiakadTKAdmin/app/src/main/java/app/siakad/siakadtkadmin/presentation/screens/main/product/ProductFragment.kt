@@ -34,7 +34,7 @@ class ProductFragment : Fragment() {
     private fun setupButtons(v: View?) {
         if (v != null) {
             btnUniform = v.findViewById(R.id.btn_product_uniform)
-            btnBook.setOnClickListener {
+            btnUniform.setOnClickListener {
                 val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
                 intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
                 startActivity(intent)
