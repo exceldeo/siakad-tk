@@ -2,25 +2,82 @@ package app.siakad.siakadtk.domain.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtk.domain.ModelContainer
-import app.siakad.siakadtk.domain.ModelState
-import app.siakad.siakadtk.domain.models.UserModel
-import app.siakad.siakadtk.domain.models.UserRoleModel
-import app.siakad.siakadtk.infrastructure.data.User
+import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtk.domain.db.ref.FirebaseRef
+import app.siakad.siakadtk.domain.models.PenggunaModel
+import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtk.infrastructure.data.Pengguna
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
 class UserRepository() {
-    private var userState = MutableLiveData<ModelContainer<UserModel>>()
+    private var userState = MutableLiveData<ModelContainer<PenggunaModel>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
-    private val userDB = FirebaseRef(MainRepository.USER_REF).getRef()
+    private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
+
+    fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
+        userDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
+            .addChildEventListener(object: ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val dataRef = arrayListOf<PenggunaModel>()
+
+                    forloop@ for (dataSS in snapshot.children) {
+                        when (dataSS.value) {
+                            is String -> {
+                                val data: PenggunaModel? = snapshot.getValue(PenggunaModel::class.java)
+                                if (data != null) {
+                                    if (data.status == verified) {
+                                        data.userId = snapshot.key.toString()
+                                        dataRef.add(data)
+
+                                        listener.setUserList(
+                                            ModelContainer(
+                                                status = ModelState.SUCCESS,
+                                                data = dataRef
+                                            )
+                                        )
+                                        break@forloop
+                                    }
+                                }
+                            }
+                            is PenggunaModel -> {
+                                val data: PenggunaModel? = dataSS.getValue(PenggunaModel::class.java)
+                                if (data != null) {
+                                    if (data.status == verified) {
+                                        data.userId = dataSS.key.toString()
+                                        dataRef.add(data)
+
+                                        listener.setUserList(
+                                            ModelContainer(
+                                                status = ModelState.SUCCESS,
+                                                data = dataRef
+                                            )
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {}
+            })
+    }
 
     fun getUserByEmail(email: String) {
         userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val user = snapshot.getValue(UserModel::class.java)
+                val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
                     userState.postValue(ModelContainer.getSuccesModel(user))
@@ -46,15 +103,15 @@ class UserRepository() {
         })
     }
 
-    fun insertData(user: User) {
+    fun insertData(pengguna: Pengguna) {
         val newKey = userDB.push().key.toString()
-        val newData = UserModel(
+        val newData = PenggunaModel(
             userId = newKey,
-            alamat = user.alamat,
-            email = user.email,
-            nama = user.nama,
-            noHP = user.noHP,
-            passwd = user.passwd,
+            alamat = pengguna.alamat,
+            email = pengguna.email,
+            nama = pengguna.nama,
+            noHP = pengguna.noHP,
+            passwd = pengguna.passwd,
             role = UserRoleModel.SISWA.str
         )
 
@@ -65,15 +122,15 @@ class UserRepository() {
         }
     }
 
-    fun updateData(user: User) {
+    fun updateData(pengguna: Pengguna) {
         val currentKey = userDB.key.toString()
-        val updateData = UserModel(
+        val updateData = PenggunaModel(
             userId = currentKey,
-            alamat = user.alamat,
-            email = user.email,
-            nama = user.nama,
-            noHP = user.noHP,
-            passwd = user.passwd,
+            alamat = pengguna.alamat,
+            email = pengguna.email,
+            nama = pengguna.nama,
+            noHP = pengguna.noHP,
+            passwd = pengguna.passwd,
             role = UserRoleModel.SISWA.str
         )
         userDB.child(currentKey).setValue(updateData).addOnSuccessListener {
@@ -83,7 +140,7 @@ class UserRepository() {
         }
     }
 
-    fun getUser(): LiveData<ModelContainer<UserModel>> {
+    fun getUser(): LiveData<ModelContainer<PenggunaModel>> {
         return userState
     }
 

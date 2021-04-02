@@ -1,10 +1,9 @@
 package app.siakad.siakadtk.domain.repositories
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.siakad.siakadtk.domain.ModelContainer
-import app.siakad.siakadtk.domain.models.UserModel
+import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtk.domain.models.PenggunaModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -14,11 +13,11 @@ class AuthenticationRepository {
 
     companion object {
         val fbAuth = FirebaseAuth.getInstance()
-        lateinit var currentUser: UserModel
+        lateinit var currentPengguna: PenggunaModel
         var userState: Boolean = false
 
         fun setUser(userId: String, email: String, passwd: String) {
-            currentUser = UserModel(
+            currentPengguna = PenggunaModel(
                 userId = userId,
                 email = email,
                 passwd = passwd
