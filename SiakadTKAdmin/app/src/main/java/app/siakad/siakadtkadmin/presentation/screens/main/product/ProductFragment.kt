@@ -24,30 +24,28 @@ class ProductFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product, container, false)
 
-        setupItemView(view)
-        setupView()
+        svProduct = view.findViewById(R.id.sv_product_cari_produk)
+
+        setupButtons(view)
 
         return view
     }
 
-    private fun setupItemView(v: View?) {
+    private fun setupButtons(v: View?) {
         if (v != null) {
-            svProduct = v.findViewById(R.id.sv_product_cari_produk)
             btnUniform = v.findViewById(R.id.btn_product_uniform)
-            btnBook = v.findViewById(R.id.btn_product_buku)
-        }
-    }
+            btnBook.setOnClickListener {
+                val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
+                intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
+                startActivity(intent)
+            }
 
-    private fun setupView() {
-        btnBook.setOnClickListener {
-            val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
-            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
-            startActivity(intent)
-        }
-        btnBook.setOnClickListener {
-            val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
-            intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
-            startActivity(intent)
+            btnBook = v.findViewById(R.id.btn_product_buku)
+            btnBook.setOnClickListener {
+                val intent = Intent(this@ProductFragment.activity, ProductListActivity::class.java)
+                intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.BOOK_PAGE)
+                startActivity(intent)
+            }
         }
     }
 }

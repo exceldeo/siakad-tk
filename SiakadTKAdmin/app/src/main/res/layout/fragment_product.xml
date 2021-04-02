@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:justifyContent="space_between">
+                app:justifyContent="space_around">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btn_product_buku"

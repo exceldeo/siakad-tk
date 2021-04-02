@@ -1,11 +1,14 @@
 package app.siakad.siakadtkadmin.presentation.screens.registration
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.UserListFragment
 import app.siakad.siakadtkadmin.presentation.utils.adapter.ViewPagerAdapter
 
@@ -24,6 +27,21 @@ class RegistrationActivity : AppCompatActivity() {
         setupAppBar()
 
         setupTabLayout()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(
+                    Intent(
+                        this@RegistrationActivity,
+                        MainActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupAppBar() {
