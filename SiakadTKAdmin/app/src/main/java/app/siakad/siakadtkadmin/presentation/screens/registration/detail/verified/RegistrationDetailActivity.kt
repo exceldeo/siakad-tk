@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.screens.registration
+package app.siakad.siakadtkadmin.presentation.screens.registration.detail.verified
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

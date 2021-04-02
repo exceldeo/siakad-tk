@@ -8,6 +8,7 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginVie
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.RegistrationListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 
@@ -60,6 +61,11 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(UserDetailViewModel::class.java) -> {
                 UserDetailViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(RegistrationListViewModel::class.java) -> {
+                RegistrationListViewModel(
                     ctx!!
                 ) as T
             }

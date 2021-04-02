@@ -17,7 +17,6 @@ class ProductListActivity : AppCompatActivity() {
 
     private var pageTitle = ""
 
-    private lateinit var toolbar: Toolbar
     private lateinit var svProduct: SearchView
     private lateinit var tvNumProduct: TextView
     private lateinit var ivAddProduct: ImageView
@@ -26,7 +25,7 @@ class ProductListActivity : AppCompatActivity() {
     private lateinit var rvProductAdapter: ProductListAdapter
 
     companion object {
-        const val PAGE_TYPE = "page type"
+        const val PAGE_TYPE = "page_type"
         const val BOOK_PAGE = "Buku"
         const val UNIFORM_PAGE = "Seragam"
     }
@@ -35,30 +34,26 @@ class ProductListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_list)
 
-        setupItemView()
-        setupView()
-    }
-
-    private fun setupItemView() {
         pageTitle = intent.getStringExtra(PAGE_TYPE)
-        toolbar = findViewById(R.id.toolbar_main)
         svProduct = findViewById(R.id.sv_product_list_cari)
         tvNumProduct = findViewById(R.id.tv_product_list_jumlah_produk)
-        ivAddProduct = findViewById(R.id.iv_product_list_tambah_produk)
-        rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
 
-        rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
-
-        if (pageTitle == BOOK_PAGE) {
-            rvProductAdapter = ProductListAdapter(ProductType.BUKU)
-        } else {
-            rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
-        }
-    }
-
-    private fun setupView() {
         setupAppBar()
 
+        setupButtons()
+
+        setupListAdapter()
+    }
+
+    private fun setupAppBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupButtons() {
+        ivAddProduct = findViewById(R.id.iv_product_list_tambah_produk)
         ivAddProduct.setOnClickListener {
             val intent = Intent(this@ProductListActivity, ProductAddActivity::class.java)
             startActivity(intent)
@@ -66,9 +61,12 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupAppBar() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = pageTitle
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    private fun setupListAdapter() {
+        rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
+        if (pageTitle == BOOK_PAGE) {
+            rvProductAdapter = ProductListAdapter(ProductType.BUKU)
+        } else {
+            rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
+        }
     }
 }
