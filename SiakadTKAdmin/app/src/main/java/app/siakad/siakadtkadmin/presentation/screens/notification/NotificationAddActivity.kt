@@ -19,6 +19,8 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewMode
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationAddViewModel
 import app.siakad.siakadtkadmin.presentation.views.date.DateListener
 import app.siakad.siakadtkadmin.presentation.views.date.DatePickerFragment
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,13 +29,13 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
 
     private val pageTitle = "Tambah Notifikasi"
 
-    private lateinit var toolbar: Toolbar
     private lateinit var etTitle: EditText
     private lateinit var etContent: EditText
     private lateinit var ivDate: ImageView
     private lateinit var etDate: EditText
     private lateinit var btnCancel: CardView
     private lateinit var btnSave: CardView
+    private lateinit var ddReceiver: TextInputLayout
 
     private lateinit var atvSiswa: AutoCompleteTextView
     private lateinit var atvKelas: AutoCompleteTextView
@@ -56,8 +58,13 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification_add)
 
-        setupItemView()
-        setupView()
+        setupAppBar()
+        setupViews()
+        setupViewModel()
+        setupAutoCompleteView()
+        setupButtons()
+
+        setupDate()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -75,43 +82,19 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         setupDate()
     }
 
-    private fun setupItemView() {
-        toolbar = findViewById(R.id.toolbar_main)
+    private fun setupViews() {
         etTitle = findViewById(R.id.et_notification_add_judul)
         etContent = findViewById(R.id.et_notification_add_isi)
-        ivDate = findViewById(R.id.iv_notification_add_tanggal)
-        etDate = findViewById(R.id.et_notification_add_tanggal)
-        btnCancel = findViewById(R.id.btn_notification_add_batal)
-        btnSave = findViewById(R.id.btn_notification_add_simpan)
 
-        atvSiswa = findViewById(R.id.et_notification_add_nama_siswa)
-        atvKelas = findViewById(R.id.et_notification_add_nama_kelas)
-        btnSiswa = findViewById(R.id.btn_notification_add_siswa)
-        btnKelas = findViewById(R.id.btn_notification_add_kelas)
         layoutSiswa = findViewById(R.id.ll_notification_add_siswa)
         layoutKelas = findViewById(R.id.ll_notification_add_kelas)
 
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
-
-        siswaListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
-        kelasListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
-
-        vmNotificationAdd = ViewModelProvider(
-            this,
-            ViewModelFactory(
-                this,
-                this
-            )
-        ).get(NotificationAddViewModel::class.java)
     }
 
-    private fun setupView() {
-        setupAppBar()
-        setupDate()
-        setupAutoCompleteView()
-        setupObserver()
-
+    private fun setupButtons() {
+        ivDate = findViewById(R.id.iv_notification_add_tanggal)
         ivDate.setOnClickListener {
             var arg = Bundle()
 
@@ -122,6 +105,8 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
 
             datePicker.show(supportFragmentManager, null)
         }
+
+        etDate = findViewById(R.id.et_notification_add_tanggal)
         etDate.setOnClickListener {
             var arg = Bundle()
 
@@ -133,10 +118,12 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
             datePicker.show(supportFragmentManager, null)
         }
 
+        btnCancel = findViewById(R.id.btn_notification_add_batal)
         btnCancel.setOnClickListener {
             navigateBack()
         }
 
+        btnSave = findViewById(R.id.btn_notification_add_simpan)
         btnSave.setOnClickListener {
             if (validateInput()) {
                 vmNotificationAdd.setData(
@@ -147,11 +134,13 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
             }
         }
 
+        btnSiswa = findViewById(R.id.btn_notification_add_siswa)
         btnSiswa.setOnClickListener {
             layoutSiswa.visibility = View.VISIBLE
             layoutKelas.visibility = View.GONE
         }
 
+        btnKelas = findViewById(R.id.btn_notification_add_kelas)
         btnKelas.setOnClickListener {
             layoutKelas.visibility = View.VISIBLE
             layoutSiswa.visibility = View.GONE
@@ -159,6 +148,7 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
     }
 
     private fun setupAppBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -214,14 +204,13 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
     }
 
     private fun setupAutoCompleteView() {
+        atvSiswa = findViewById(R.id.et_notification_add_nama_siswa)
+        siswaListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
         atvSiswa.setAdapter(siswaListAdapter)
-        atvKelas.setAdapter(kelasListAdapter)
-
         atvSiswa.setOnItemClickListener { adapter, _, position, _ ->
             val siswa: Siswa = adapter.getItemAtPosition(position) as Siswa
             showToast(siswa.nama)
         }
-
         atvSiswa.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {}
 
@@ -229,7 +218,11 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
-        atvSiswa.addTextChangedListener(object : TextWatcher {
+
+        atvKelas = findViewById(R.id.et_notification_add_nama_kelas)
+        kelasListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
+        atvKelas.setAdapter(kelasListAdapter)
+        atvKelas.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {}
 
             override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -238,13 +231,32 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         })
     }
 
-    private fun setupObserver() {
+    private fun setupViewModel() {
+        vmNotificationAdd = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this
+            )
+        ).get(NotificationAddViewModel::class.java)
+
         userObserver = Observer {userList ->
             siswaListAdapter.addAll(userList)
             atvSiswa.setAdapter(siswaListAdapter)
         }
 
         vmNotificationAdd.getUserList().observe(this, userObserver)
+    }
+
+    private fun setupDropDown() {
+        val menus = arrayListOf<String>(
+            "Semua",
+            "Siswa",
+            "Kelas"
+        )
+        ddReceiver = findViewById(R.id.dd_notification_add)
+
+        (ddReceiver.editText as MaterialAutoCompleteTextView)?.setAdapter(null)
     }
 
     private fun showToast(msg: String) {
