@@ -40,8 +40,6 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
     private lateinit var atvSiswa: AutoCompleteTextView
     private lateinit var atvKelas: AutoCompleteTextView
 
-    private lateinit var btnSiswa: Button
-    private lateinit var btnKelas: Button
     private lateinit var layoutSiswa: LinearLayout
     private lateinit var layoutKelas: LinearLayout
 
@@ -62,6 +60,7 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         setupViews()
         setupViewModel()
         setupAutoCompleteView()
+        setupDropDown()
         setupButtons()
 
         setupDate()
@@ -132,18 +131,6 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
                     etDate.text.toString()
                 )
             }
-        }
-
-        btnSiswa = findViewById(R.id.btn_notification_add_siswa)
-        btnSiswa.setOnClickListener {
-            layoutSiswa.visibility = View.VISIBLE
-            layoutKelas.visibility = View.GONE
-        }
-
-        btnKelas = findViewById(R.id.btn_notification_add_kelas)
-        btnKelas.setOnClickListener {
-            layoutKelas.visibility = View.VISIBLE
-            layoutSiswa.visibility = View.GONE
         }
     }
 
@@ -254,9 +241,19 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
             "Siswa",
             "Kelas"
         )
+        val adapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, menus)
         ddReceiver = findViewById(R.id.dd_notification_add)
+        (ddReceiver.editText as MaterialAutoCompleteTextView).setText(menus[0])
+        (ddReceiver.editText as MaterialAutoCompleteTextView).setAdapter(adapter)
+        (ddReceiver.editText as MaterialAutoCompleteTextView).addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(str: Editable?) {
+                showToast(str.toString() + "2")
+            }
 
-        (ddReceiver.editText as MaterialAutoCompleteTextView)?.setAdapter(null)
+            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     private fun showToast(msg: String) {

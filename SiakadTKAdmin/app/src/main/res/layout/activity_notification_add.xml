@@ -28,40 +28,18 @@
             android:id="@+id/dd_notification_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxCornerRadiusBottomEnd="@dimen/cardview_default_radius"
+            app:boxCornerRadiusBottomStart="@dimen/cardview_default_radius"
+            app:boxCornerRadiusTopEnd="@dimen/cardview_default_radius"
+            app:boxCornerRadiusTopStart="@dimen/cardview_default_radius"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:hint="Untuk Semua">
+            android:hint="Tujuan">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:flexDirection="row">
-
-            <Button
-                android:id="@+id/btn_notification_add_siswa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Siswa"
-                android:layout_marginRight="@dimen/appbar_padding_top"
-                android:textSize="@dimen/card_title_text"
-                app:icon="@drawable/ic_name"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
-
-            <Button
-                android:id="@+id/btn_notification_add_kelas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/card_title_text"
-                android:text="Kelas"
-                app:icon="@drawable/ic_class_presentation"
-                style="@style/Widget.MaterialComponents.Button.Icon"/>
-
-        </com.google.android.flexbox.FlexboxLayout>
 
         <LinearLayout
             android:id="@+id/ll_notification_add_siswa"
