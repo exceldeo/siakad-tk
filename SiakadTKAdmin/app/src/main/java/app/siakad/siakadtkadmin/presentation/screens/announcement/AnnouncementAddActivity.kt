@@ -22,7 +22,6 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
 
     private val pageTitle = "Tambah Pengumuman"
 
-    private lateinit var toolbar: Toolbar
     private lateinit var etTitle: EditText
     private lateinit var etContent: EditText
     private lateinit var ivDate: ImageView
@@ -39,8 +38,15 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_announcement_add)
 
-        setupItemView()
-        setupView()
+        etTitle = findViewById(R.id.et_announcement_add_judul)
+        etContent = findViewById(R.id.et_announcement_add_isi)
+        datePicker = DatePickerFragment()
+        calendar = Calendar.getInstance()
+
+        setupAppBar()
+        setupViewModel()
+        setupButtons()
+        setupDate()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,57 +64,14 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         setupDate()
     }
 
-    private fun setupItemView() {
-        toolbar = findViewById(R.id.toolbar_main)
-        etTitle = findViewById(R.id.et_announcement_add_judul)
-        etContent = findViewById(R.id.et_announcement_add_isi)
-        ivDate = findViewById(R.id.iv_announcement_add_tanggal)
-        etDate = findViewById(R.id.et_announcement_add_tanggal)
-        btnCancel = findViewById(R.id.btn_announcement_add_batal)
-        btnSave = findViewById(R.id.btn_announcement_add_simpan)
-        datePicker = DatePickerFragment()
-        calendar = Calendar.getInstance()
+    private fun setupAppBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = pageTitle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun setupView() {
-        setupAppBar()
-        setupDate()
-
-        ivDate.setOnClickListener {
-            var arg = Bundle()
-
-            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
-            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
-            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
-            datePicker.arguments = arg
-
-            datePicker.show(supportFragmentManager, null)
-        }
-        etDate.setOnClickListener {
-            var arg = Bundle()
-
-            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
-            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
-            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
-            datePicker.arguments = arg
-
-            datePicker.show(supportFragmentManager, null)
-        }
-
-        btnCancel.setOnClickListener {
-            navigateBack()
-        }
-
-        btnSave.setOnClickListener {
-            if (validateInput()) {
-                vmAnnouncementAdd.setData(
-                    etTitle.text.toString(),
-                    etContent.text.toString(),
-                    etDate.text.toString()
-                )
-            }
-        }
-
+    private fun setupViewModel() {
         vmAnnouncementAdd = ViewModelProvider(
             this,
             ViewModelFactory(
@@ -118,10 +81,46 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         ).get(AnnouncementAddViewModel::class.java)
     }
 
-    private fun setupAppBar() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = pageTitle
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    private fun setupButtons() {
+        ivDate = findViewById(R.id.iv_announcement_add_tanggal)
+        ivDate.setOnClickListener {
+            val arg = Bundle()
+
+            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
+            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
+            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
+            datePicker.arguments = arg
+
+            datePicker.show(supportFragmentManager, null)
+        }
+
+        etDate = findViewById(R.id.et_announcement_add_tanggal)
+        etDate.setOnClickListener {
+            val arg = Bundle()
+
+            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
+            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
+            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
+            datePicker.arguments = arg
+
+            datePicker.show(supportFragmentManager, null)
+        }
+
+        btnCancel = findViewById(R.id.btn_announcement_add_batal)
+        btnCancel.setOnClickListener {
+            navigateBack()
+        }
+
+        btnSave = findViewById(R.id.btn_announcement_add_simpan)
+        btnSave.setOnClickListener {
+            if (validateInput()) {
+                vmAnnouncementAdd.setData(
+                    etTitle.text.toString(),
+                    etContent.text.toString(),
+                    etDate.text.toString()
+                )
+            }
+        }
     }
 
     private fun setupDate() {

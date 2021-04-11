@@ -2,7 +2,7 @@ package app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory
 
 import android.content.Context
 import androidx.lifecycle.*
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationAddViewModel
@@ -18,8 +18,8 @@ class ViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(AnnouncementViewModel::class.java) -> {
-                AnnouncementViewModel(
+            modelClass.isAssignableFrom(AnnouncementListViewModel::class.java) -> {
+                AnnouncementListViewModel(
                     ctx!!,
                     owner
                 ) as T

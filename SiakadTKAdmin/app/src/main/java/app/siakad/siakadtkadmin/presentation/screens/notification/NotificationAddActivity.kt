@@ -56,8 +56,13 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification_add)
 
+        etTitle = findViewById(R.id.et_notification_add_judul)
+        etContent = findViewById(R.id.et_notification_add_isi)
+
+        datePicker = DatePickerFragment()
+        calendar = Calendar.getInstance()
+
         setupAppBar()
-        setupViews()
         setupViewModel()
         setupAutoCompleteView()
         setupDropDown()
@@ -81,113 +86,11 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
         setupDate()
     }
 
-    private fun setupViews() {
-        etTitle = findViewById(R.id.et_notification_add_judul)
-        etContent = findViewById(R.id.et_notification_add_isi)
-
-        layoutSiswa = findViewById(R.id.ll_notification_add_siswa)
-        layoutKelas = findViewById(R.id.ll_notification_add_kelas)
-
-        datePicker = DatePickerFragment()
-        calendar = Calendar.getInstance()
-    }
-
-    private fun setupButtons() {
-        ivDate = findViewById(R.id.iv_notification_add_tanggal)
-        ivDate.setOnClickListener {
-            var arg = Bundle()
-
-            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
-            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
-            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
-            datePicker.arguments = arg
-
-            datePicker.show(supportFragmentManager, null)
-        }
-
-        etDate = findViewById(R.id.et_notification_add_tanggal)
-        etDate.setOnClickListener {
-            var arg = Bundle()
-
-            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
-            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
-            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
-            datePicker.arguments = arg
-
-            datePicker.show(supportFragmentManager, null)
-        }
-
-        btnCancel = findViewById(R.id.btn_notification_add_batal)
-        btnCancel.setOnClickListener {
-            navigateBack()
-        }
-
-        btnSave = findViewById(R.id.btn_notification_add_simpan)
-        btnSave.setOnClickListener {
-            if (validateInput()) {
-                vmNotificationAdd.setData(
-                    etTitle.text.toString(),
-                    etContent.text.toString(),
-                    etDate.text.toString()
-                )
-            }
-        }
-    }
-
     private fun setupAppBar() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    private fun setupDate() {
-        val date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(calendar.time)
-        etDate.text = SpannableStringBuilder(date)
-    }
-
-    private fun navigateBack() {
-        startActivity(
-            Intent(
-                this@NotificationAddActivity,
-                NotificationActivity::class.java
-            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        )
-    }
-
-    private fun validateInput(): Boolean {
-        var returnState = true
-
-        if (etTitle.text.isEmpty()) {
-            etTitle.error = getString(R.string.empty_input)
-            returnState = false
-        }
-
-        if (etContent.text.isEmpty()) {
-            etContent.error = getString(R.string.empty_input)
-            returnState = false
-        }
-
-        if (etDate.text.isEmpty()) {
-            etDate.error = getString(R.string.empty_input)
-            returnState = false
-        }
-
-        if (layoutSiswa.visibility == View.VISIBLE) {
-            if (atvSiswa.text.isEmpty()) {
-                atvSiswa.error = getString(R.string.empty_input)
-                returnState = false
-            }
-        }
-
-        if (layoutKelas.visibility == View.VISIBLE) {
-            if (atvKelas.text.isEmpty()) {
-                atvKelas.error = getString(R.string.empty_input)
-                returnState = false
-            }
-        }
-
-        return returnState
     }
 
     private fun setupAutoCompleteView() {
@@ -242,18 +145,124 @@ class NotificationAddActivity : AppCompatActivity(), DateListener {
             "Kelas"
         )
         val adapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, menus)
+
+        layoutSiswa = findViewById(R.id.ll_notification_add_siswa)
+        layoutSiswa.visibility = View.GONE
+        layoutKelas = findViewById(R.id.ll_notification_add_kelas)
+        layoutKelas.visibility = View.GONE
+
         ddReceiver = findViewById(R.id.dd_notification_add)
         (ddReceiver.editText as MaterialAutoCompleteTextView).setText(menus[0])
         (ddReceiver.editText as MaterialAutoCompleteTextView).setAdapter(adapter)
         (ddReceiver.editText as MaterialAutoCompleteTextView).addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {
-                showToast(str.toString() + "2")
+                if (str.toString().equals(menus[0])) {
+                    layoutKelas.visibility = View.GONE
+                    layoutSiswa.visibility = View.GONE
+                } else if (str.toString().equals(menus[1])) {
+                    layoutKelas.visibility = View.GONE
+                    layoutSiswa.visibility = View.VISIBLE
+                } else {
+                    layoutKelas.visibility = View.VISIBLE
+                    layoutSiswa.visibility = View.GONE
+                }
             }
 
             override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+    }
+
+    private fun setupButtons() {
+        ivDate = findViewById(R.id.iv_notification_add_tanggal)
+        ivDate.setOnClickListener {
+            val arg = Bundle()
+
+            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
+            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
+            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
+            datePicker.arguments = arg
+
+            datePicker.show(supportFragmentManager, null)
+        }
+
+        etDate = findViewById(R.id.et_notification_add_tanggal)
+        etDate.setOnClickListener {
+            val arg = Bundle()
+
+            arg.putInt(DatePickerFragment.YEAR_ARG, calendar.get(Calendar.YEAR))
+            arg.putInt(DatePickerFragment.MONTH_ARG, calendar.get(Calendar.MONTH))
+            arg.putInt(DatePickerFragment.DAY_ARG, calendar.get(Calendar.DATE))
+            datePicker.arguments = arg
+
+            datePicker.show(supportFragmentManager, null)
+        }
+
+        btnCancel = findViewById(R.id.btn_notification_add_batal)
+        btnCancel.setOnClickListener {
+            navigateBack()
+        }
+
+        btnSave = findViewById(R.id.btn_notification_add_simpan)
+        btnSave.setOnClickListener {
+            if (validateInput()) {
+                vmNotificationAdd.setData(
+                    etTitle.text.toString(),
+                    etContent.text.toString(),
+                    etDate.text.toString()
+                )
+            }
+        }
+    }
+
+    private fun setupDate() {
+        val date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(calendar.time)
+        etDate.text = SpannableStringBuilder(date)
+    }
+
+    private fun navigateBack() {
+        startActivity(
+            Intent(
+                this@NotificationAddActivity,
+                NotificationActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        )
+    }
+
+    private fun validateInput(): Boolean {
+        var returnState = true
+
+        if (etTitle.text.isEmpty()) {
+            etTitle.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
+        if (etContent.text.isEmpty()) {
+            etContent.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
+        if (etDate.text.isEmpty()) {
+            etDate.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
+        if (layoutSiswa.visibility == View.VISIBLE) {
+            if (atvSiswa.text.isEmpty()) {
+                atvSiswa.error = getString(R.string.empty_input)
+                returnState = false
+            }
+        }
+
+        if (layoutKelas.visibility == View.VISIBLE) {
+            if (atvKelas.text.isEmpty()) {
+                atvKelas.error = getString(R.string.empty_input)
+                returnState = false
+            }
+        }
+
+        return returnState
     }
 
     private fun showToast(msg: String) {

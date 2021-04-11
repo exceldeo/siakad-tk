@@ -12,35 +12,31 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
-import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementAdater
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
+import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.screens.user.UserListFragment
+import app.siakad.siakadtkadmin.presentation.utils.adapter.ViewPagerAdapter
+import com.google.android.material.tabs.TabLayout
 
 class AnnouncementActivity : AppCompatActivity() {
 
     private val pageTitle = "Pengumuman"
 
-    private lateinit var toolbar: Toolbar
-    private lateinit var svAnnounc: SearchView
-    private lateinit var tvNumAnnounc: TextView
-    private lateinit var ivAddAnnounc: ImageView
-
-    private lateinit var rvAnnounc: RecyclerView
-    private lateinit var rvAnnouncAdapter: AnnouncementAdater
-
-    private lateinit var vmAnnouncement: AnnouncementViewModel
-    private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
+    private lateinit var pagerAdapter: ViewPagerAdapter
+    private lateinit var viewPager: ViewPager
+    private lateinit var tab: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_announcement)
 
-        setupItemView()
-        setupView()
-        setupObserver()
+        setupAppBar()
+        setupTabLayout()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,51 +54,27 @@ class AnnouncementActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupItemView() {
-        toolbar = findViewById(R.id.toolbar_main)
-        svAnnounc = findViewById(R.id.sv_announcement_cari)
-        tvNumAnnounc = findViewById(R.id.tv_announcement_jumlah_pengumuman)
-        ivAddAnnounc = findViewById(R.id.iv_announcement_tambah_announ)
-        rvAnnounc = findViewById(R.id.rv_announcement_daftar_pengumuman)
-        rvAnnouncAdapter = AnnouncementAdater()
-    }
-
-    private fun setupView() {
-        setupAppBar()
-
-        ivAddAnnounc.setOnClickListener {
-            val intent = Intent(this@AnnouncementActivity, AnnouncementAddActivity::class.java)
-            startActivity(intent)
-        }
-
-        rvAnnounc.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@AnnouncementActivity)
-            adapter = rvAnnouncAdapter
-        }
-
-        vmAnnouncement = ViewModelProvider(
-            this,
-            ViewModelFactory(
-                this,
-                this
-            )
-        ).get(AnnouncementViewModel::class.java)
-    }
-
     private fun setupAppBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun setupObserver() {
-        announcementListObserver = Observer { list ->
-            if (list.size > 0) {
-                rvAnnouncAdapter.changeDataList(list)
-            }
-        }
+    private fun setupTabLayout() {
+        pagerAdapter =
+            ViewPagerAdapter(
+                this,
+                supportFragmentManager
+            )
+        pagerAdapter.addFragment("Semua", AnnouncementListFragment.getAllAnnouncementListFragment())
+        pagerAdapter.addFragment("Siswa", AnnouncementListFragment.getUserAnnouncementListFragment())
+        pagerAdapter.addFragment("Kelas", AnnouncementListFragment.getClassAnnouncementListFragment())
 
-        vmAnnouncement.getAnnouncementList().observe(this, announcementListObserver)
+        viewPager = findViewById(R.id.view_pager_announcement)
+        viewPager.adapter = pagerAdapter
+
+        tab = findViewById(R.id.tabs_announcement)
+        tab.setupWithViewPager(viewPager)
     }
 }

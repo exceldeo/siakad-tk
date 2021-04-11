@@ -24,16 +24,22 @@
         android:paddingVertical="@dimen/container_padding_y"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/sTitle"
+            android:layout_marginTop="0dp"
+            android:text="Tujuan"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dd_notification_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="@dimen/cardview_default_radius"
-            app:boxCornerRadiusBottomStart="@dimen/cardview_default_radius"
-            app:boxCornerRadiusTopEnd="@dimen/cardview_default_radius"
-            app:boxCornerRadiusTopStart="@dimen/cardview_default_radius"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:hint="Tujuan">
+            app:boxCornerRadiusBottomEnd="@dimen/list_corner"
+            app:boxCornerRadiusBottomStart="@dimen/list_corner"
+            app:boxCornerRadiusTopEnd="@dimen/list_corner"
+            app:boxCornerRadiusTopStart="@dimen/list_corner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
@@ -51,7 +57,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/sTitle"
-                android:layout_marginTop="@dimen/appbar_padding_top"
                 android:text="Nama Siswa"/>
 
             <LinearLayout
@@ -97,7 +102,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/sTitle"
-                android:layout_marginTop="@dimen/appbar_padding_top"
                 android:text="Kelas"/>
 
             <LinearLayout

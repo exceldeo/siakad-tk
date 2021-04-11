@@ -6,21 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 
-class AnnouncementAdater : RecyclerView.Adapter<AnnouncementViewHolder>() {
+class AnnouncementListAdater : RecyclerView.Adapter<AnnouncementListViewHolder>() {
 
     private val announcementList: ArrayList<Pengumuman> = arrayListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnouncementViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnouncementListViewHolder {
         val viewHolder =
             LayoutInflater.from(parent.context).inflate(R.layout.item_announcement, parent, false)
-        return AnnouncementViewHolder(viewHolder)
+        return AnnouncementListViewHolder(viewHolder)
     }
 
     override fun getItemCount(): Int {
         return announcementList.size
     }
 
-    override fun onBindViewHolder(holder: AnnouncementViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AnnouncementListViewHolder, position: Int) {
         holder.insertAnnouncement(announcementList[position])
     }
 

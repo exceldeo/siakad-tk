@@ -8,50 +8,49 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.repositories.AnnouncementRepository
+import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
+import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class AnnouncementViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel() {
+class AnnouncementListViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
+    ViewModel(), AnnouncementListListener {
     private val announcementList = MutableLiveData<ArrayList<Pengumuman>>()
     private val announcementRepository = AnnouncementRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
-    private lateinit var announcementRepoObserver: Observer<ModelContainer<ArrayList<PengumumanModel>>>
-
-    init {
+    fun setAnnouncementType(type: String) {
         vmCoroutineScope.launch {
-            announcementRepository.initEventListener()
+            announcementRepository.initGetAnnouncementListListener(
+                this@AnnouncementListViewModel,
+                type
+            )
         }
-        setupObserver()
     }
 
-    private fun setupObserver() {
-        announcementRepoObserver = Observer { data ->
-            if (data.status == ModelState.SUCCESS) {
-                val dataRepo = arrayListOf<Pengumuman>()
-                val list = data.data
-
-                list?.forEach { item ->
-                    dataRepo.add(
+    override fun setAnnouncementList(pengumumanList: ModelContainer<ArrayList<PengumumanModel>>) {
+        if (pengumumanList.status == ModelState.SUCCESS) {
+            val dataPengumumanList = arrayListOf<Pengumuman>()
+            if (pengumumanList.data?.isNotEmpty()!!) {
+                pengumumanList.data?.forEach { item ->
+                    dataPengumumanList.add(
                         Pengumuman(
                             pengumumanId = item.pengumumanId,
                             judul = item.judul,
                             keterangan = item.keterangan,
                             tanggal = item.tanggal
-                        ))
+                        )
+                    )
+                    announcementList.postValue(dataPengumumanList)
                 }
-                announcementList.postValue(dataRepo)
                 showToast(context.getString(R.string.scs_get_data))
-            } else if (data.status == ModelState.ERROR) {
-                showToast(context.getString(R.string.fail_get_data))
             }
+        } else if (pengumumanList.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_get_user))
         }
-
-        announcementRepository.getAnnouncementList().observe(lcOwner, announcementRepoObserver)
     }
 
     fun getAnnouncementList(): LiveData<ArrayList<Pengumuman>> {

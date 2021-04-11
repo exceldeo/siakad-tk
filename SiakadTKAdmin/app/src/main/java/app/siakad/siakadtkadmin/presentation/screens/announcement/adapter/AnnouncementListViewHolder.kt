@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import kotlinx.android.synthetic.main.item_announcement.view.*
 
-class AnnouncementViewHolder(v: View): RecyclerView.ViewHolder(v) {
+class AnnouncementListViewHolder(v: View): RecyclerView.ViewHolder(v) {
     fun insertAnnouncement(item: Pengumuman) {
         with(itemView) {
             tv_item_announcement_judul.text = item.judul

@@ -17,96 +17,18 @@
         <include layout="@layout/item_toolbar"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_announcement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/colorPrimary"
+        app:tabIndicatorHeight="2dp"
+        app:tabTextAppearance="@style/AppTheme.Text.Button"
+        app:tabBackground="@android:color/white"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_announcement"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/container_padding_y"
-        android:paddingHorizontal="@dimen/container_padding_x">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/list_corner"
-            android:elevation="0dp"
-
-            app:cardBackgroundColor="@color/colorPrimary">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/colorPrimaryLight"
-                android:layout_margin="1dp"
-                app:cardCornerRadius="@dimen/list_corner">
-
-                <SearchView
-                    android:id="@+id/sv_announcement_cari"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/input_text_padding"/>
-            </androidx.cardview.widget.CardView>
-        </androidx.cardview.widget.CardView>
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:flexDirection="row"
-            app:justifyContent="space_between"
-            android:layout_marginTop="@dimen/list_space"
-            android:layout_marginBottom="@dimen/card_title_margin_bottom">
-
-            <TextView
-                android:id="@+id/tv_announcement_jumlah_pengumuman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pengumuman"
-                android:textSize="@dimen/card_title_text"
-                android:fontFamily="@font/poppins_extrabold"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tambah"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="@dimen/list_status_text"
-                    android:textColor="@color/colorPrimary"/>
-
-                <ImageView
-                    android:id="@+id/iv_announcement_tambah_announ"
-                    android:layout_width="@dimen/card_title_ic_size"
-                    android:layout_height="@dimen/card_title_ic_size"
-                    android:src="@drawable/ic_baseline_add_24"
-                    app:tint="@color/colorPrimary" />
-            </LinearLayout>
-        </com.google.android.flexbox.FlexboxLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_announcement_daftar_pengumuman"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_announcement"/>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </LinearLayout>
