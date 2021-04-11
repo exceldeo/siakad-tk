@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -68,8 +69,14 @@ class AnnouncementActivity : AppCompatActivity() {
                 supportFragmentManager
             )
         pagerAdapter.addFragment("Semua", AnnouncementListFragment.getAllAnnouncementListFragment())
-        pagerAdapter.addFragment("Siswa", AnnouncementListFragment.getUserAnnouncementListFragment())
-        pagerAdapter.addFragment("Kelas", AnnouncementListFragment.getClassAnnouncementListFragment())
+        pagerAdapter.addFragment(
+            "Siswa",
+            AnnouncementListFragment.getUserAnnouncementListFragment()
+        )
+        pagerAdapter.addFragment(
+            "Kelas",
+            AnnouncementListFragment.getClassAnnouncementListFragment()
+        )
 
         viewPager = findViewById(R.id.view_pager_announcement)
         viewPager.adapter = pagerAdapter

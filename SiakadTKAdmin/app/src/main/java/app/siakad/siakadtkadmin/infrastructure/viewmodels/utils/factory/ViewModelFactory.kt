@@ -5,8 +5,6 @@ import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationAddViewModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.RegistrationListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
@@ -26,18 +24,6 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(AnnouncementAddViewModel::class.java) -> {
                 AnnouncementAddViewModel(
-                    ctx!!,
-                    owner
-                ) as T
-            }
-            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
-                NotificationViewModel(
-                    ctx!!,
-                    owner
-                ) as T
-            }
-            modelClass.isAssignableFrom(NotificationAddViewModel::class.java) -> {
-                NotificationAddViewModel(
                     ctx!!,
                     owner
                 ) as T

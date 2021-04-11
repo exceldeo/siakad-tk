@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.main.dashboard.DashboardViewModel
 import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementActivity
-import app.siakad.siakadtkadmin.presentation.screens.notification.NotificationActivity
 import app.siakad.siakadtkadmin.presentation.screens.order.OrderActivity
 import app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.UserActivity
@@ -36,51 +35,49 @@ class DashboardFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        setupItemView(view)
-        setupView()
+
+        tvNumUser = view.findViewById(R.id.tv_dashboard_jumlah_pengguna)
+        tvNumUserUnver = view.findViewById(R.id.tv_dashboard_jumlah_pengguna_menunggu_verifikasi)
+        rvActivity = view.findViewById(R.id.rv_dashboard_aktivitas)
+
+        setupButtons(view)
+        setupViewModel()
+
         return view
     }
 
-    private fun setupItemView(v: View?) {
+    private fun setupButtons(v: View?) {
         if (v != null) {
             btnSeeAllAnnounce = v.findViewById(R.id.btn_dashboard_lihat_semua_pengumuman)
-            btnSeeAllNotification = v.findViewById(R.id.btn_dashboard_lihat_semua_notifikasi)
-            tvNumUser = v.findViewById(R.id.tv_dashboard_jumlah_pengguna)
-            tvNumUserUnver = v.findViewById(R.id.tv_dashboard_jumlah_pengguna_menunggu_verifikasi)
-            btnSeeAllUser = v.findViewById(R.id.btn_dashboard_lihat_semua_pengguna)
-            btnOrder = v.findViewById(R.id.btn_dashboard_data_pesanan)
-            btnRegistration = v.findViewById(R.id.btn_dashboard_data_daful)
-            rvActivity = v.findViewById(R.id.rv_dashboard_aktivitas)
-        }
+            btnSeeAllAnnounce.setOnClickListener{
+                val intent = Intent(this@DashboardFragment.context, AnnouncementActivity::class.java)
+                startActivity(intent)
+            }
 
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
+            btnSeeAllNotification = v.findViewById(R.id.btn_dashboard_lihat_semua_notifikasi)
+
+            btnSeeAllUser = v.findViewById(R.id.btn_dashboard_lihat_semua_pengguna)
+            btnSeeAllUser.setOnClickListener{
+                val intent = Intent(this@DashboardFragment.context, UserActivity::class.java)
+                startActivity(intent)
+            }
+
+            btnOrder = v.findViewById(R.id.btn_dashboard_data_pesanan)
+            btnOrder.setOnClickListener{
+                val intent = Intent(this@DashboardFragment.context, OrderActivity::class.java)
+                startActivity(intent)
+            }
+
+            btnRegistration = v.findViewById(R.id.btn_dashboard_data_daful)
+            btnRegistration.setOnClickListener{
+                val intent = Intent(this@DashboardFragment.context, RegistrationActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
-    private fun setupView() {
-        btnSeeAllAnnounce.setOnClickListener{
-            val intent = Intent(this@DashboardFragment.context, AnnouncementActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnSeeAllNotification.setOnClickListener{
-            val intent = Intent(this@DashboardFragment.context, NotificationActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnSeeAllUser.setOnClickListener{
-            val intent = Intent(this@DashboardFragment.context, UserActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnOrder.setOnClickListener{
-            val intent = Intent(this@DashboardFragment.context, OrderActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnRegistration.setOnClickListener{
-            val intent = Intent(this@DashboardFragment.context, RegistrationActivity::class.java)
-            startActivity(intent)
-        }
+    private fun setupViewModel() {
+        dashboardViewModel =
+            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
     }
 }

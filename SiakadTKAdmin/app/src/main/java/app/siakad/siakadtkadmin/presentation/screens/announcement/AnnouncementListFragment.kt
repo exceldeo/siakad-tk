@@ -30,9 +30,9 @@ class AnnouncementListFragment(private val type: String) : Fragment() {
     private lateinit var ivAddAnnouncement: ImageView
 
     companion object {
-        const val TO_ALL = "to_all"
-        const val TO_SISWA = "to_announcement"
-        const val TO_KELAS = "to_class"
+        const val TO_ALL = "Semua"
+        const val TO_SISWA = "Siswa"
+        const val TO_KELAS = "Kelas"
 
         fun getAllAnnouncementListFragment(): AnnouncementListFragment {
             return AnnouncementListFragment(

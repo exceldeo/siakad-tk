@@ -20,8 +20,6 @@
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.order.OrderActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.registration.detail.verified.RegistrationDetailActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationActivity" />
-        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.notification.NotificationAddActivity" />
-        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.notification.NotificationActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementAddActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.login.LoginActivity" />

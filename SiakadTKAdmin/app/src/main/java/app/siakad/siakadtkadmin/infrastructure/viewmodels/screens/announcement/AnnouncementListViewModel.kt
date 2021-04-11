@@ -21,19 +21,21 @@ class AnnouncementListViewModel(private val context: Context, private val lcOwne
     private val announcementList = MutableLiveData<ArrayList<Pengumuman>>()
     private val announcementRepository = AnnouncementRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+    private val dataPengumumanList = arrayListOf<Pengumuman>()
 
     fun setAnnouncementType(type: String) {
-        vmCoroutineScope.launch {
-            announcementRepository.initGetAnnouncementListListener(
-                this@AnnouncementListViewModel,
-                type
-            )
+        if (dataPengumumanList.isEmpty()) {
+            vmCoroutineScope.launch {
+                announcementRepository.initGetAnnouncementListListener(
+                    this@AnnouncementListViewModel,
+                    type
+                )
+            }
         }
     }
 
     override fun setAnnouncementList(pengumumanList: ModelContainer<ArrayList<PengumumanModel>>) {
         if (pengumumanList.status == ModelState.SUCCESS) {
-            val dataPengumumanList = arrayListOf<Pengumuman>()
             if (pengumumanList.data?.isNotEmpty()!!) {
                 pengumumanList.data?.forEach { item ->
                     dataPengumumanList.add(
@@ -46,7 +48,6 @@ class AnnouncementListViewModel(private val context: Context, private val lcOwne
                     )
                     announcementList.postValue(dataPengumumanList)
                 }
-                showToast(context.getString(R.string.scs_get_data))
             }
         } else if (pengumumanList.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))

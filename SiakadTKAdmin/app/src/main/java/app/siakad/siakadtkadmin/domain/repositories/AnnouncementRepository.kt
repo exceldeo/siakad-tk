@@ -46,33 +46,26 @@ class AnnouncementRepository() {
                                 if (data != null) {
                                     data.pengumumanId = snapshot.key.toString()
                                     dataRef.add(data)
-
-                                    listener.setAnnouncementList(
-                                        ModelContainer(
-                                            status = ModelState.SUCCESS,
-                                            data = dataRef
-                                        )
-                                    )
-                                    break@forloop
                                 }
+                                break@forloop
                             }
-                            is PenggunaModel -> {
+                            else -> {
                                 val data: PengumumanModel? =
                                     dataSS.getValue(PengumumanModel::class.java)
                                 if (data != null) {
                                     data.pengumumanId = dataSS.key.toString()
                                     dataRef.add(data)
-
-                                    listener.setAnnouncementList(
-                                        ModelContainer(
-                                            status = ModelState.SUCCESS,
-                                            data = dataRef
-                                        )
-                                    )
                                 }
                             }
                         }
                     }
+
+                    listener.setAnnouncementList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = dataRef
+                        )
+                    )
                 }
 
                 override fun onChildRemoved(snapshot: DataSnapshot) {}
@@ -83,10 +76,12 @@ class AnnouncementRepository() {
         val newKey = announcementDB.push().key.toString()
         val newData = PengumumanModel(
             pengumumanId = newKey,
+            tipe = data.tipe,
             adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
             judul = data.judul,
             keterangan = data.keterangan,
-            tanggal = data.tanggal
+            tanggal = data.tanggal,
+            tujuanId = data.tujuanId
         )
 
         announcementDB.child(newKey).setValue(newData).addOnSuccessListener {
