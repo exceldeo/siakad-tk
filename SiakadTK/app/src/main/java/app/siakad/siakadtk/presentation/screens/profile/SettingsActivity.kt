@@ -56,7 +56,7 @@ class SettingsActivity : AppCompatActivity() {
         setupAppBar()
 
         btnLogout.setOnClickListener {
-            AuthenticationRepository
+            logout()
             val intent = Intent(this@SettingsActivity, SplashActivity::class.java)
             startActivity(intent)
         }

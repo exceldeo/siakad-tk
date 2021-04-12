@@ -49,6 +49,7 @@ class RegistrationRepository() {
             dafulId = newKey,
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
             tanggal = todayDate,
+            thnAjaran = data.thnAjaran,
             fotoBayar = data.fotoBayar
         )
 

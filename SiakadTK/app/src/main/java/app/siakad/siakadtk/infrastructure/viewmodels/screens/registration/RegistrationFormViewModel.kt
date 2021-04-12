@@ -38,7 +38,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
         registrationRepository.getInsertState().observe(lcOwner, insertObserver)
     }
 
-    fun setData(namaSiswa: String, kelas: String, namaWali: String, gender: String, address: String, noHP: String, nominal: Int, fotoBayar: String) {
+    fun setData(namaSiswa: String, kelas: String, namaWali: String, gender: String, address: String, noHP: String, thnAjaran: String, nominal: Int, fotoBayar: String) {
         vmCoroutineScope.launch {
             registrationRepository.insertData(
                 DaftarUlang(
@@ -48,6 +48,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
                     jenisKelamin = gender,
                     alamat = address,
                     noHP = noHP,
+                    thnAjaran = thnAjaran,
                     nominalbayar = nominal,
                     fotoBayar = fotoBayar
                 )

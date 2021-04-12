@@ -184,5 +184,7 @@
     <string name="fail_get_user">Gagal mendapatkan Akun</string>
     <string name="fail_set_user">Gagal menambahkan Pengguna</string>
     <string name="email_is_not_verified">Email belum terverifikasi, cek kotak masuk emailmu.</string>
+    <string name="nominal_bayar">Nominal Bayar (Rp)</string>
+    <string name="example_nominal">225000</string>
 
 </resources>
