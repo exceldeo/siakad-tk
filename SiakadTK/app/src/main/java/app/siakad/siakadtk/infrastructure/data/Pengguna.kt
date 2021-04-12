@@ -8,8 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class Pengguna (
     var userId: String = "",
     var nama: String = "",
-    var alamat: String = "",
-    var noHP: String = "",
     var email: String = "",
     var passwd: String = "",
     var status: Boolean = false

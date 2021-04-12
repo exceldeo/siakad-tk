@@ -84,6 +84,13 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
 
+        setupAdapterListener()
+        spGender.onItemSelectedListener = this
+        spClass.onItemSelectedListener = this
+        spTahunAjaran.onItemSelectedListener = this
+    }
+
+    private fun setupAdapterListener() {
         ArrayAdapter.createFromResource(
             this, R.array.list_jenis_kelamin,
             android.R.layout.simple_spinner_item
@@ -107,9 +114,6 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spTahunAjaran.adapter = adapter
         }
-        spGender.onItemSelectedListener = this
-        spClass.onItemSelectedListener = this
-        spTahunAjaran.onItemSelectedListener = this
     }
 
     private fun setupView() {
@@ -221,9 +225,5 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
-    }
-
-    private fun showToast(msg: String) {
-        Toast.makeText(this.applicationContext, msg, Toast.LENGTH_LONG).show()
     }
 }

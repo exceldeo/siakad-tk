@@ -1,11 +1,11 @@
-package app.siakad.siakadtk.domain.models
+package app.siakad.siakadtk.infrastructure.data
 
 import android.os.Parcelable
 import com.google.firebase.database.Exclude
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class DetailPenggunaModel (
+data class DetailPengguna (
     @get:Exclude
     var userDetailId: String = "",
     var userId: String = "",

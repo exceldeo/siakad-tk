@@ -2,10 +2,8 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.models.DetailPenggunaModel
-import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
