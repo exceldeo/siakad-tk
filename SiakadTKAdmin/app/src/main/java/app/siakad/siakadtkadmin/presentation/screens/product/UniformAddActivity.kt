@@ -69,7 +69,7 @@ class UniformAddActivity : AppCompatActivity() {
                 ) {
                     pickImageFromGallery()
                 } else {
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Akses ditolak", Toast.LENGTH_SHORT).show()
                 }
             }
         }
