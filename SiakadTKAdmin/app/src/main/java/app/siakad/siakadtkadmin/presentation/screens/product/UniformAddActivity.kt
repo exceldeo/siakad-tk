@@ -1,28 +1,30 @@
 package app.siakad.siakadtkadmin.presentation.screens.product
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.presentation.screens.product.dialog.UniformProductDialog
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 
-class UniformAddActivity : AppCompatActivity() {
+class UniformAddActivity : AppCompatActivity(), AlertListener {
 
     private val pageTitle = "Tambah Produk"
 
@@ -64,7 +66,7 @@ class UniformAddActivity : AppCompatActivity() {
     ) {
         when (requestCode) {
             PERMISSION_REQUEST -> {
-                if (grantResults.size > 0 && grantResults[0] ==
+                if (grantResults.isNotEmpty() && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED
                 ) {
                     pickImageFromGallery()
@@ -83,6 +85,25 @@ class UniformAddActivity : AppCompatActivity() {
             ivPhotoPreview.setImageURI(imageUri)
             imgBtnAddPhoto.visibility = View.GONE
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                navigateBack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun navigateBack() {
+        startActivity(
+            Intent(
+                this@UniformAddActivity,
+                ProductListActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        )
     }
 
     private fun setupAppBar() {
@@ -110,7 +131,16 @@ class UniformAddActivity : AppCompatActivity() {
         }
 
         btnCancel = findViewById(R.id.btn_uniform_add_batal)
+        btnCancel.setOnClickListener {
+            navigateBack()
+        }
+
         btnSave = findViewById(R.id.btn_uniform_add_simpan)
+        btnSave.setOnClickListener {
+            if (validateInptu()) {
+                insertUniform()
+            }
+        }
 
         dialogUniform = UniformProductDialog()
         btnAddData = findViewById(R.id.btn_uniform_add_tambah_ukuran)
@@ -149,5 +179,40 @@ class UniformAddActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, PICK_PHOTO_REQUEST)
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun validateInptu(): Boolean {
+        var returnState = true
+
+        if (etName.text.isEmpty()) {
+            etName.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
+        val srcIv = (ivPhotoPreview.drawable as BitmapDrawable).bitmap
+        val currIv = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            (this.getDrawable(R.drawable.ic_photo_upload_place) as BitmapDrawable).bitmap
+        } else {
+            (resources.getDrawable(R.drawable.ic_photo_upload_place) as BitmapDrawable).bitmap
+        }
+        if (srcIv.sameAs(currIv)) {
+            val alertDialog = AlertDialogFragment(
+                "Foto belum ditambahkan!",
+                "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
+            )
+            alertDialog.show(supportFragmentManager, null)
+            returnState = false
+        }
+
+        return returnState
+    }
+
+    override fun alertAction() {
+        insertUniform()
+    }
+
+    private fun insertUniform() {
+
     }
 }
