@@ -47,25 +47,32 @@ class AnnouncementRepository() {
                                     data.pengumumanId = snapshot.key.toString()
                                     dataRef.add(data)
                                 }
+
+                                listener.setAnnouncementList(
+                                    ModelContainer(
+                                        status = ModelState.SUCCESS,
+                                        data = dataRef
+                                    )
+                                )
                                 break@forloop
                             }
-                            else -> {
+                            is PengumumanModel -> {
                                 val data: PengumumanModel? =
                                     dataSS.getValue(PengumumanModel::class.java)
                                 if (data != null) {
                                     data.pengumumanId = dataSS.key.toString()
                                     dataRef.add(data)
                                 }
+
+                                listener.setAnnouncementList(
+                                    ModelContainer(
+                                        status = ModelState.SUCCESS,
+                                        data = dataRef
+                                    )
+                                )
                             }
                         }
                     }
-
-                    listener.setAnnouncementList(
-                        ModelContainer(
-                            status = ModelState.SUCCESS,
-                            data = dataRef
-                        )
-                    )
                 }
 
                 override fun onChildRemoved(snapshot: DataSnapshot) {}

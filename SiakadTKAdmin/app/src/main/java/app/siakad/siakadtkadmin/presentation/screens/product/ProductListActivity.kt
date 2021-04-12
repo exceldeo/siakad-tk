@@ -39,9 +39,7 @@ class ProductListActivity : AppCompatActivity() {
         tvNumProduct = findViewById(R.id.tv_product_list_jumlah_produk)
 
         setupAppBar()
-
         setupButtons()
-
         setupListAdapter()
     }
 
@@ -55,9 +53,13 @@ class ProductListActivity : AppCompatActivity() {
     private fun setupButtons() {
         ivAddProduct = findViewById(R.id.iv_product_list_tambah_produk)
         ivAddProduct.setOnClickListener {
-            val intent = Intent(this@ProductListActivity, ProductAddActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (pageTitle == UNIFORM_PAGE) {
+                val intent = Intent(this@ProductListActivity, UniformAddActivity::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this@ProductListActivity, BookAddActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

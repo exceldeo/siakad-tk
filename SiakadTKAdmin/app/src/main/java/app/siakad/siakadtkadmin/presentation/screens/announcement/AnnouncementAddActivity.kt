@@ -64,6 +64,8 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
 
+        announcementType = intent.getStringExtra(AnnouncementListFragment.ANNOUNCEMENT_TYPE)!!
+
         setupAppBar()
         setupViewModel()
         setupAutoCompleteView()
@@ -97,7 +99,8 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
 
     private fun setupAutoCompleteView() {
         atvSiswa = findViewById(R.id.et_announcement_add_nama_siswa)
-        siswaListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
+        siswaListAdapter =
+            ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
         atvSiswa.setAdapter(siswaListAdapter)
         atvSiswa.setOnItemClickListener { adapter, _, position, _ ->
             val siswa: Siswa = adapter.getItemAtPosition(position) as Siswa
@@ -106,18 +109,31 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         atvSiswa.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {}
 
-            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(
+                str: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
         atvKelas = findViewById(R.id.et_announcement_add_nama_kelas)
-        kelasListAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
+        kelasListAdapter =
+            ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
         atvKelas.setAdapter(kelasListAdapter)
         atvKelas.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {}
 
-            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(
+                str: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -132,7 +148,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
             )
         ).get(AnnouncementAddViewModel::class.java)
 
-        userObserver = Observer {userList ->
+        userObserver = Observer { userList ->
             siswaListAdapter.addAll(userList)
             atvSiswa.setAdapter(siswaListAdapter)
         }
@@ -149,31 +165,24 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         val adapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, menus)
 
         layoutSiswa = findViewById(R.id.ll_announcement_add_siswa)
-        layoutSiswa.visibility = View.GONE
         layoutKelas = findViewById(R.id.ll_announcement_add_kelas)
-        layoutKelas.visibility = View.GONE
+        checkMenu(announcementType)
 
         ddReceiver = findViewById(R.id.dd_announcement_add)
-        (ddReceiver.editText as MaterialAutoCompleteTextView).setText(menus[0])
+        (ddReceiver.editText as MaterialAutoCompleteTextView).setText(announcementType)
         (ddReceiver.editText as MaterialAutoCompleteTextView).setAdapter(adapter)
-        (ddReceiver.editText as MaterialAutoCompleteTextView).addTextChangedListener(object : TextWatcher {
+        (ddReceiver.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
+            TextWatcher {
             override fun afterTextChanged(str: Editable?) {
-                if (str.toString().equals(menus[0])) {
-                    layoutKelas.visibility = View.GONE
-                    layoutSiswa.visibility = View.GONE
-                    announcementType = AnnouncementListFragment.TO_ALL
-                } else if (str.toString().equals(menus[1])) {
-                    layoutKelas.visibility = View.GONE
-                    layoutSiswa.visibility = View.VISIBLE
-                    announcementType = AnnouncementListFragment.TO_SISWA
-                } else {
-                    layoutKelas.visibility = View.VISIBLE
-                    layoutSiswa.visibility = View.GONE
-                    announcementType = AnnouncementListFragment.TO_KELAS
-                }
+                checkMenu(str.toString())
             }
 
-            override fun beforeTextChanged(str: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(
+                str: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {}
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -269,6 +278,22 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         }
 
         return returnState
+    }
+
+    private fun checkMenu(menu: String) {
+        if (menu.equals(AnnouncementListFragment.TO_ALL)) {
+            layoutKelas.visibility = View.GONE
+            layoutSiswa.visibility = View.GONE
+            announcementType = AnnouncementListFragment.TO_ALL
+        } else if (menu.equals(AnnouncementListFragment.TO_SISWA)) {
+            layoutKelas.visibility = View.GONE
+            layoutSiswa.visibility = View.VISIBLE
+            announcementType = AnnouncementListFragment.TO_SISWA
+        } else {
+            layoutKelas.visibility = View.VISIBLE
+            layoutSiswa.visibility = View.GONE
+            announcementType = AnnouncementListFragment.TO_KELAS
+        }
     }
 
     private fun showToast(msg: String) {

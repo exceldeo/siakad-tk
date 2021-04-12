@@ -30,6 +30,7 @@ class AnnouncementListFragment(private val type: String) : Fragment() {
     private lateinit var ivAddAnnouncement: ImageView
 
     companion object {
+        const val ANNOUNCEMENT_TYPE = "Announcement_Type"
         const val TO_ALL = "Semua"
         const val TO_SISWA = "Siswa"
         const val TO_KELAS = "Kelas"
@@ -75,6 +76,7 @@ class AnnouncementListFragment(private val type: String) : Fragment() {
             ivAddAnnouncement = v.findViewById(R.id.iv_announcement_list_tambah_announ)
             ivAddAnnouncement.setOnClickListener {
                 val intent = Intent(this.context, AnnouncementAddActivity::class.java)
+                intent.putExtra(ANNOUNCEMENT_TYPE, type)
                 startActivity(intent)
             }
         }

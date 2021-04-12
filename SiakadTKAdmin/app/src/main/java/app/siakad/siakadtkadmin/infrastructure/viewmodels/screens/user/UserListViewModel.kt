@@ -21,19 +21,21 @@ class UserListViewModel(private val context: Context) :
     private val userListLiveData = MutableLiveData<ArrayList<Siswa>>()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+    private val dataPenggunaList = arrayListOf<Siswa>()
 
     fun setUserType(verified: Boolean) {
-        vmCoroutineScope.launch {
-            userRepository.initGetUserListListener(this@UserListViewModel, verified)
+        if (dataPenggunaList.isEmpty()) {
+            vmCoroutineScope.launch {
+                userRepository.initGetUserListListener(this@UserListViewModel, verified)
+            }
         }
     }
 
     override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
         if (penggunaList.status == ModelState.SUCCESS) {
-            val siswaList = arrayListOf<Siswa>()
             if (penggunaList.data?.isNotEmpty()!!) {
                 penggunaList.data?.forEach { user ->
-                    siswaList.add(
+                    dataPenggunaList.add(
                         Siswa(
                             nama = user.nama,
                             noHP = user.noHP,
@@ -44,7 +46,7 @@ class UserListViewModel(private val context: Context) :
                             status = user.status
                         )
                     )
-                    userListLiveData.postValue(siswaList)
+                    userListLiveData.postValue(dataPenggunaList)
                 }
                 showToast(context.getString(R.string.scs_get_data))
             }
