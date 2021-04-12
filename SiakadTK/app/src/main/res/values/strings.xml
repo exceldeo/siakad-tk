@@ -186,5 +186,6 @@
     <string name="email_is_not_verified">Email belum terverifikasi, cek kotak masuk emailmu.</string>
     <string name="nominal_bayar">Nominal Bayar (Rp)</string>
     <string name="example_nominal">225000</string>
+    <string name="data_pendaftaran">Data Pendaftaran</string>
 
 </resources>
