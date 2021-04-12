@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.siakad.siakadtkadmin" >
+    package="app.siakad.siakadtkadmin">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -8,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar" >
+        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.register.RegisterActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.UserDetailActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity" />
@@ -25,7 +27,7 @@
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementAddActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.login.LoginActivity" />
-        <activity android:name=".presentation.screens.splash.SplashScreenActivity" >
+        <activity android:name=".presentation.screens.splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

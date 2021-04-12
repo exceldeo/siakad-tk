@@ -40,11 +40,15 @@
                     android:paddingHorizontal="@dimen/container_padding_x">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/iv_uniform_add_foto_preview"
+                        android:layout_width="294dp"
+                        android:layout_height="294dp"
+                        android:scaleType="centerCrop"
+                        android:layout_centerInParent="true"
                         android:src="@drawable/ic_photo_upload_place"/>
 
                     <LinearLayout
+                        android:id="@+id/btn_uniform_add_add_foto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
