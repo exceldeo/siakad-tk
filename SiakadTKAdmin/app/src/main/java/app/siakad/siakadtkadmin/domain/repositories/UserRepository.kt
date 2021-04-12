@@ -7,6 +7,8 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
@@ -23,57 +25,59 @@ class UserRepository() {
 
     fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
         userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str)
-            .addChildEventListener(object: ChildEventListener {
-            override fun onCancelled(error: DatabaseError) {}
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
 
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
 
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val dataRef = arrayListOf<PenggunaModel>()
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val dataRef = arrayListOf<PenggunaModel>()
 
-                forloop@ for (dataSS in snapshot.children) {
-                    when (dataSS.value) {
-                        is String -> {
-                            val data: PenggunaModel? = snapshot.getValue(PenggunaModel::class.java)
-                            if (data != null) {
-                                if (data.status == verified) {
-                                    data.userId = snapshot.key.toString()
-                                    dataRef.add(data)
+                    forloop@ for (dataSS in snapshot.children) {
+                        when (dataSS.value) {
+                            is String -> {
+                                val data: PenggunaModel? =
+                                    snapshot.getValue(PenggunaModel::class.java)
+                                if (data != null) {
+                                    if (data.status == verified) {
+                                        data.userId = snapshot.key.toString()
+                                        dataRef.add(data)
 
-                                    listener.setUserList(
-                                        ModelContainer(
-                                            status = ModelState.SUCCESS,
-                                            data = dataRef
+                                        listener.setUserList(
+                                            ModelContainer(
+                                                status = ModelState.SUCCESS,
+                                                data = dataRef
+                                            )
                                         )
-                                    )
-                                    break@forloop
+                                        break@forloop
+                                    }
                                 }
                             }
-                        }
-                        is PenggunaModel -> {
-                            val data: PenggunaModel? = dataSS.getValue(PenggunaModel::class.java)
-                            if (data != null) {
-                                if (data.status == verified) {
-                                    data.userId = dataSS.key.toString()
-                                    dataRef.add(data)
+                            is PenggunaModel -> {
+                                val data: PenggunaModel? =
+                                    dataSS.getValue(PenggunaModel::class.java)
+                                if (data != null) {
+                                    if (data.status == verified) {
+                                        data.userId = dataSS.key.toString()
+                                        dataRef.add(data)
 
-                                    listener.setUserList(
-                                        ModelContainer(
-                                            status = ModelState.SUCCESS,
-                                            data = dataRef
+                                        listener.setUserList(
+                                            ModelContainer(
+                                                status = ModelState.SUCCESS,
+                                                data = dataRef
+                                            )
                                         )
-                                    )
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
 
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
-        })
+                override fun onChildRemoved(snapshot: DataSnapshot) {}
+            })
     }
 
     fun getUserById(listener: RegistrationListListener, id: String) {
@@ -97,29 +101,30 @@ class UserRepository() {
         })
     }
 
-    fun getUserByEmail(email: String) {
-        userDB.orderByKey().equalTo(email).addChildEventListener(object : ChildEventListener {
-            override fun onCancelled(error: DatabaseError) {}
+    fun getUserByEmail(listener: LoginListener, email: String) {
+        userDB.orderByChild("email").equalTo(email)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
 
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
 
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val user = snapshot.getValue(PenggunaModel::class.java)
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val user = snapshot.getValue(PenggunaModel::class.java)
 
-                if (user != null) {
-                    user.userId = snapshot.key.toString()
-                    userState.postValue(ModelContainer.getSuccesModel(user))
+                    if (user != null) {
+                        user.userId = snapshot.key.toString()
+                        listener.setUer(ModelContainer.getSuccesModel(user))
+                    }
                 }
-            }
 
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
-        })
+                override fun onChildRemoved(snapshot: DataSnapshot) {}
+            })
     }
 
-    fun insertData(pengguna: PenggunaModel) {
-        val newKey = userDB.push().key.toString()
+    fun insertData(listener: RegisterListener, pengguna: PenggunaModel) {
+        val newKey = pengguna.userId
         val newData = PenggunaModel(
             userId = newKey,
             alamat = pengguna.alamat,
@@ -131,17 +136,9 @@ class UserRepository() {
         )
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+            listener.notifyDataInsertStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyDataInsertStatus(ModelContainer.getFailModel())
         }
-    }
-
-    fun getUser(): LiveData<ModelContainer<PenggunaModel>> {
-        return userState
-    }
-
-    fun getInsertState(): LiveData<ModelContainer<String>> {
-        return insertState
     }
 }

@@ -204,7 +204,8 @@
                     style="@style/CommonButton"
                     android:textAllCaps="false"
                     app:cornerRadius="@dimen/list_corner"
-                    android:paddingHorizontal="@dimen/container_padding_x"/>
+                    android:paddingEnd="@dimen/container_padding_x"
+                    android:paddingStart="@dimen/container_padding_x"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

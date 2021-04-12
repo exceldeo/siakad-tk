@@ -1,16 +1,14 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
 class AuthenticationRepository {
-    private val authState = MutableLiveData<ModelContainer<String>>()
-
     companion object {
         val fbAuth = FirebaseAuth.getInstance()
         lateinit var currentPengguna: PenggunaModel
@@ -26,27 +24,23 @@ class AuthenticationRepository {
         }
     }
 
-    fun login(email: String, passwd: String) {
+    fun login(listener: LoginListener, email: String, passwd: String) {
         fbAuth.signInWithEmailAndPassword(email, passwd).addOnSuccessListener {
-            authState.postValue(ModelContainer.getSuccesModel("Berhasil masuk!"))
-        }.addOnFailureListener { e -> authState.postValue(ModelContainer.getFailModel()) }
+            listener.notifyLoginStatus(ModelContainer.getSuccesModel("Berhasil masuk!"))
+        }.addOnFailureListener { e -> listener.notifyLoginStatus(ModelContainer.getFailModel()) }
     }
 
-    fun register(email: String, passwd: String) {
+    fun register(listener: RegisterListener, email: String, passwd: String) {
         fbAuth.createUserWithEmailAndPassword(email, passwd).addOnCompleteListener { task: Task<AuthResult> ->
             if (task.isSuccessful) {
-                authState.postValue(ModelContainer.getSuccesModel("Berhasil daftar"))
+                listener.notifyRegisterStatus(ModelContainer.getSuccesModel("Berhasil daftar"))
             } else {
-                authState.postValue(ModelContainer.getFailModel())
+                listener.notifyRegisterStatus(ModelContainer.getFailModel())
             }
         }
     }
 
     fun logout() {
         fbAuth.signOut()
-    }
-
-    fun getAuthState() : LiveData<ModelContainer<String>> {
-        return authState
     }
 }
