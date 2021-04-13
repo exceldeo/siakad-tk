@@ -7,6 +7,7 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.product.BukuModel
 import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.product.ProductListener
 import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
 import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
 import com.google.firebase.database.DataSnapshot
@@ -21,6 +22,7 @@ class ProductRepository() {
     private val uniformDB = FirebaseRef(
         FirebaseRef.SERAGAM_REF
     ).getRef()
+
     private val bookDB = FirebaseRef(
         FirebaseRef.BUKU_REF
     ).getRef()
@@ -34,7 +36,8 @@ class ProductRepository() {
 
                 for (dataSS in snapshot.children) {
                     val data: SeragamModel? = dataSS.getValue(
-                        SeragamModel::class.java)
+                        SeragamModel::class.java
+                    )
                     data?.produkId = dataSS.key.toString()
                     dataRef.add(data!!)
                 }
@@ -58,7 +61,8 @@ class ProductRepository() {
 
                 for (dataSS in snapshot.children) {
                     val data: BukuModel? = dataSS.getValue(
-                        BukuModel::class.java)
+                        BukuModel::class.java
+                    )
                     dataRef.add(data!!)
                 }
 
@@ -72,7 +76,7 @@ class ProductRepository() {
         })
     }
 
-    fun insertDataSeragam(data: Seragam) {
+    fun insertDataSeragam(listener: ProductListener, data: Seragam) {
         val newKey = uniformDB.push().key.toString()
         val newData =
             SeragamModel(
@@ -86,9 +90,9 @@ class ProductRepository() {
             )
 
         uniformDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
         }
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:flexDirection="row"
-        android:padding="@dimen/container_padding_x"
+        android:padding="@dimen/appbar_padding_top"
         app:alignItems="center">
 
         <LinearLayout
@@ -22,42 +22,37 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_item_announcement_judul"
+                android:id="@+id/tv_item_uniform_size_ukuran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pendaftaran Ulang Dibuka"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/poppins_extrabold"
-                android:textSize="@dimen/card_title_text"/>
-
-            <TextView
-                android:id="@+id/tv_item_announcement_isi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Monggo mendaftarkan ulang putra putri Anda wkwk."
-                android:fontFamily="@font/poppins_regular"
-                android:maxLines="3"
-                android:ellipsize="end"
+                android:text="Ukuran: "
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/poppins_bold"
                 android:textSize="@dimen/card_desc_text"/>
 
             <TextView
-                android:id="@+id/tv_item_announcement_tanggal"
+                android:id="@+id/tv_item_uniform_size_jumlah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal bebas."
-                android:textColor="@android:color/black"
+                android:text="Jumlah: "
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="@dimen/card_desc_text"/>
+
+            <TextView
+                android:id="@+id/tv_item_uniform_size_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga: "
                 android:fontFamily="@font/poppins_semibold"
                 android:textSize="@dimen/card_desc_text"/>
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/iv_item_announcement_delete"
+            android:id="@+id/iv_item_uniform_size_edit"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:src="@drawable/ic_mode_edit"
             android:foregroundGravity="center"
             android:layout_marginStart="@dimen/list_corner"/>
     </com.google.android.flexbox.FlexboxLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

@@ -17,8 +17,8 @@
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.user.UserActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductEditActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductAddActivity" />
-        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.UniformAddActivity" />
-        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.BookAddActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.uniform.UniformAddActivity" />
+        <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.order.detail.OrderDetailActivity" />
         <activity android:name="app.siakad.siakadtkadmin.presentation.screens.order.OrderActivity" />

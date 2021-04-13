@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.UniformAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.RegistrationListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
@@ -52,6 +53,11 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(RegistrationListViewModel::class.java) -> {
                 RegistrationListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(UniformAddViewModel::class.java) -> {
+                UniformAddViewModel(
                     ctx!!
                 ) as T
             }

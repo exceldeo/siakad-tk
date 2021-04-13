@@ -201,4 +201,5 @@
     <string name="fail_login_not_admin">Akun ini bukan Admin</string>
     <string name="fail_get_user">Gagal mendapatkan Akun</string>
     <string name="fail_set_user">Gagal menambahkan Pengguna</string>
+    <string name="fail_upoad_img">Gagal upload gambar, coba lagi!</string>
 </resources>

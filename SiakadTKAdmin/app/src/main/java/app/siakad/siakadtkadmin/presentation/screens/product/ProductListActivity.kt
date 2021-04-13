@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.presentation.screens.product.adapter.ProductListAdapter
+import app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.UniformAddActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.utils.ProductType
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")

@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.presentation.screens.product
+package app.siakad.siakadtkadmin.presentation.screens.product.uniform
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -16,27 +16,48 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.presentation.screens.product.dialog.UniformProductDialog
+import app.siakad.siakadtkadmin.domain.models.product.DetailSeragamModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.UniformAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.adapter.UniformSizeListAdapter
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductDialog
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductListener
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 
-class UniformAddActivity : AppCompatActivity(), AlertListener {
+class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductListener {
 
     private val pageTitle = "Tambah Produk"
 
     private lateinit var etName: EditText
     private lateinit var ddGender: TextInputLayout
     private lateinit var ivPhotoPreview: ImageView
+
     private lateinit var btnAddPhoto: RelativeLayout
     private lateinit var btnAddData: RelativeLayout
     private lateinit var btnCancel: MaterialButton
     private lateinit var btnSave: MaterialButton
+
     private lateinit var imgBtnAddPhoto: LinearLayout
     private lateinit var dialogUniform: UniformProductDialog
+    private lateinit var rvUniformSize: RecyclerView
+
+    private lateinit var vmUniformAdd: UniformAddViewModel
+    private lateinit var uniformSizeAdapter: UniformSizeListAdapter
+
+    private val uniformSizeList = arrayListOf<DetailSeragamModel>()
+    private var uniformGender = ""
+    private var uniformCount = 0
+    private var uniformImage: Uri? = null
 
     companion object {
         const val GENDER_MAN = "Laki-laki"
@@ -55,8 +76,10 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
         imgBtnAddPhoto = findViewById(R.id.btn_uniform_add_add_foto)
 
         setupAppBar()
+        setupViewModel()
         setupButtons()
         setupDropDown()
+        setupListAdapter()
     }
 
     override fun onRequestPermissionsResult(
@@ -84,6 +107,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
             val imageUri: Uri = data?.data!!
             ivPhotoPreview.setImageURI(imageUri)
             imgBtnAddPhoto.visibility = View.GONE
+            uniformImage = imageUri
         }
     }
 
@@ -113,6 +137,16 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    private fun setupViewModel() {
+        vmUniformAdd = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this
+            )
+        ).get(UniformAddViewModel::class.java)
+    }
+
     private fun setupButtons() {
         btnAddPhoto = findViewById(R.id.iv_uniform_add_foto)
         btnAddPhoto.setOnClickListener {
@@ -121,7 +155,10 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
                     PackageManager.PERMISSION_DENIED
                 ) {
                     val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(permissions, PERMISSION_REQUEST);
+                    requestPermissions(
+                        permissions,
+                        PERMISSION_REQUEST
+                    );
                 } else {
                     pickImageFromGallery();
                 }
@@ -161,15 +198,16 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
         (ddGender.editText as MaterialAutoCompleteTextView).setAdapter(adapter)
         (ddGender.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
             TextWatcher {
-            override fun afterTextChanged(str: Editable?) {}
+            override fun afterTextChanged(str: Editable?) {
+                uniformGender = str.toString()
+            }
 
             override fun beforeTextChanged(
                 str: CharSequence?,
                 start: Int,
                 count: Int,
                 after: Int
-            ) {
-            }
+            ) {}
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -178,7 +216,10 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, PICK_PHOTO_REQUEST)
+        startActivityForResult(
+            intent,
+            PICK_PHOTO_REQUEST
+        )
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -190,13 +231,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
             returnState = false
         }
 
-        val srcIv = (ivPhotoPreview.drawable as BitmapDrawable).bitmap
-        val currIv = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            (this.getDrawable(R.drawable.ic_photo_upload_place) as BitmapDrawable).bitmap
-        } else {
-            (resources.getDrawable(R.drawable.ic_photo_upload_place) as BitmapDrawable).bitmap
-        }
-        if (srcIv.sameAs(currIv)) {
+        if (uniformImage == null) {
             val alertDialog = AlertDialogFragment(
                 "Foto belum ditambahkan!",
                 "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
@@ -213,6 +248,30 @@ class UniformAddActivity : AppCompatActivity(), AlertListener {
     }
 
     private fun insertUniform() {
+        vmUniformAdd.insertUniform(
+            uniformGender,
+            etName.text.toString(),
+            uniformImage,
+            uniformCount,
+            uniformSizeList
+        )
+    }
 
+    override fun insertData(ukuran: String, jumlah: Int, harga: Int) {
+        uniformCount += jumlah
+        uniformSizeList.add(DetailSeragamModel(ukuran = ukuran, jumlah = jumlah, harga = harga))
+        uniformSizeAdapter.addData(
+            DetailSeragamModel(ukuran = ukuran, jumlah = jumlah, harga = harga)
+        )
+    }
+
+    private fun setupListAdapter() {
+        rvUniformSize = findViewById(R.id.rv_uniform_add_daftar_ukuran)
+        uniformSizeAdapter = UniformSizeListAdapter()
+        rvUniformSize.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = uniformSizeAdapter
+        }
     }
 }

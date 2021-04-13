@@ -221,7 +221,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         btnSave = findViewById(R.id.btn_announcement_add_simpan)
         btnSave.setOnClickListener {
             if (validateInput()) {
-                vmAnnouncementAdd.setData(
+                vmAnnouncementAdd.insertAnnouncement(
                     etTitle.text.toString(),
                     etContent.text.toString(),
                     etDate.text.toString(),

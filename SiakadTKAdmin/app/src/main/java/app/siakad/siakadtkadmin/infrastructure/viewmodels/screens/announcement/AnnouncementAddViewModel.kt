@@ -18,8 +18,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AnnouncementAddViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel(), AnnouncementAddListener,
-    UserListListener {
+    ViewModel(), AnnouncementAddListener, UserListListener {
     private val userListLiveData = MutableLiveData<ArrayList<Siswa>>()
     private val announcementRepository = AnnouncementRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -57,7 +56,7 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
         }
     }
 
-    fun setData(title: String, content: String, date: String, type: String) {
+    fun insertAnnouncement(title: String, content: String, date: String, type: String) {
         vmCoroutineScope.launch {
             announcementRepository.insertData(
                 this@AnnouncementAddViewModel,
