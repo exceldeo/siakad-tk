@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -21,8 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.product.DetailSeragamModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.UniformAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.uniform.UniformAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.adapter.UniformSizeListAdapter
@@ -55,7 +53,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     private lateinit var uniformSizeAdapter: UniformSizeListAdapter
 
     private val uniformSizeList = arrayListOf<DetailSeragamModel>()
-    private var uniformGender = ""
+    private var uniformGender = GENDER_MAN
     private var uniformCount = 0
     private var uniformImage: Uri? = null
 

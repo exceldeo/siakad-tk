@@ -1,4 +1,4 @@
-package app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product
+package app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.uniform
 
 import android.content.Context
 import android.net.Uri

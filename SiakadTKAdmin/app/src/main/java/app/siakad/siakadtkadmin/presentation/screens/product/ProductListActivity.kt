@@ -7,8 +7,16 @@ import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
+import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.adapter.ProductListAdapter
 import app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.UniformAddActivity
@@ -25,6 +33,7 @@ class ProductListActivity : AppCompatActivity() {
 
     private lateinit var rvProduct: RecyclerView
     private lateinit var rvProductAdapter: ProductListAdapter
+    private lateinit var vmProductList: ProductListViewModel
 
     companion object {
         const val PAGE_TYPE = "page_type"
@@ -41,6 +50,7 @@ class ProductListActivity : AppCompatActivity() {
         tvNumProduct = findViewById(R.id.tv_product_list_jumlah_produk)
 
         setupAppBar()
+        setupViewModel()
         setupButtons()
         setupListAdapter()
     }
@@ -50,6 +60,30 @@ class ProductListActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupViewModel() {
+        vmProductList = ViewModelProvider(
+            this,
+            ViewModelFactory(this, this)
+        ).get(ProductListViewModel::class.java)
+        vmProductList.setProductType(pageTitle)
+
+        if (pageTitle == UNIFORM_PAGE) {
+            val observer = Observer<ArrayList<Seragam>> { list ->
+                if (list.size > 0) {
+                    rvProductAdapter.changeUniformList(list)
+                }
+            }
+            vmProductList.getUniformList().observe(this, observer)
+        } else {
+            val observer = Observer<ArrayList<Buku>> { list ->
+                if (list.size > 0) {
+                    rvProductAdapter.changeBookList(list)
+                }
+            }
+            vmProductList.getBookList().observe(this, observer)
+        }
     }
 
     private fun setupButtons() {
@@ -71,6 +105,12 @@ class ProductListActivity : AppCompatActivity() {
             rvProductAdapter = ProductListAdapter(ProductType.BUKU)
         } else {
             rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
+        }
+
+        rvProduct.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@ProductListActivity)
+            adapter = rvProductAdapter
         }
     }
 }

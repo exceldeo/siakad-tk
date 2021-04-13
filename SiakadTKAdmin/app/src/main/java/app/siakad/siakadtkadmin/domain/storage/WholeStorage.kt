@@ -13,14 +13,15 @@ class WholeStorage(private val refName: String) {
 
     fun uploadImage(listener: StorageListener, imageUri: Uri, fileName: String) {
         val filePath = storage.child(fileName)
-        filePath.putFile(imageUri).continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
-            if (!task.isSuccessful) {
-                task.exception?.let { exception ->
-                    throw exception
+        filePath.putFile(imageUri)
+            .continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let { exception ->
+                        throw exception
+                    }
                 }
-            }
-            return@Continuation filePath.downloadUrl
-        }).addOnCompleteListener { task ->
+                return@Continuation filePath.downloadUrl
+            }).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val imageUrl = task.result.toString()
                 listener.notifyUploadStatus(ModelContainer.getSuccesModel(imageUrl))
