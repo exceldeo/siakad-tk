@@ -120,12 +120,12 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     }
 
     private fun navigateBack() {
-        startActivity(
-            Intent(
-                this@UniformAddActivity,
-                ProductListActivity::class.java
-            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        )
+        val intent = Intent(
+            this@UniformAddActivity,
+            ProductListActivity::class.java
+        ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.putExtra(ProductListActivity.PAGE_TYPE, ProductListActivity.UNIFORM_PAGE)
+        startActivity(intent)
     }
 
     private fun setupAppBar() {
