@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.main.dashboard.DashboardViewModel
@@ -21,7 +21,7 @@ class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
     private lateinit var btnSeeAllAnnounce: ImageButton
-    private lateinit var btnSeeAllNotification: ImageButton
+    private lateinit var btnSeeAllClass: ImageButton
     private lateinit var tvNumUser: TextView
     private lateinit var tvNumUserUnver: TextView
     private lateinit var btnSeeAllUser: TextView
@@ -54,7 +54,7 @@ class DashboardFragment : Fragment() {
                 startActivity(intent)
             }
 
-            btnSeeAllNotification = v.findViewById(R.id.btn_dashboard_lihat_semua_notifikasi)
+            btnSeeAllClass = v.findViewById(R.id.btn_dashboard_lihat_semua_kelas)
 
             btnSeeAllUser = v.findViewById(R.id.btn_dashboard_lihat_semua_pengguna)
             btnSeeAllUser.setOnClickListener{
@@ -78,6 +78,6 @@ class DashboardFragment : Fragment() {
 
     private fun setupViewModel() {
         dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(DashboardViewModel::class.java)
     }
 }
