@@ -50,7 +50,7 @@ class OrderRepository() {
         val newData =
             PesananModel(
                 pesananId = newKey,
-                detailPesananId = data.detailPesanan,
+                detailPesananProdukId = data.detailPesananProduk,
                 userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
                 tanggalPesan = todayDate,
                 statusPesan = OrderStateModel.WAITPAYMENT.toString()

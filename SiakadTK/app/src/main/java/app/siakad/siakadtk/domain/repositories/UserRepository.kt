@@ -107,12 +107,11 @@ class UserRepository() {
         val newKey = userDB.push().key.toString()
         val newData = PenggunaModel(
             userId = newKey,
-            alamat = pengguna.alamat,
             email = pengguna.email,
             nama = pengguna.nama,
-            noHP = pengguna.noHP,
             passwd = pengguna.passwd,
-            role = UserRoleModel.SISWA.str
+            role = UserRoleModel.SISWA.str,
+            detailPenggunaModel = pengguna.detail
         )
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
@@ -126,10 +125,8 @@ class UserRepository() {
         val currentKey = userDB.key.toString()
         val updateData = PenggunaModel(
             userId = currentKey,
-            alamat = pengguna.alamat,
             email = pengguna.email,
             nama = pengguna.nama,
-            noHP = pengguna.noHP,
             passwd = pengguna.passwd,
             role = UserRoleModel.SISWA.str
         )

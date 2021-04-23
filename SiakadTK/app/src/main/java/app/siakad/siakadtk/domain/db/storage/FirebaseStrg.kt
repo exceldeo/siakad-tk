@@ -1,9 +1,9 @@
-package app.siakad.siakadtk.domain.db.ref
+package app.siakad.siakadtk.domain.db.storage
 
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
-class FirebaseRef(private val refName: String) {
+class FirebaseStrg(private val strName: String) {
     companion object {
         const val USER_REF = "User"
         const val USER_DETAIL_REF = "UserDetail"
@@ -19,8 +19,8 @@ class FirebaseRef(private val refName: String) {
         const val DETAIL_PESANAN_PRODUK_REF = "DetailPesananProduk"
     }
 
-    fun getRef(): DatabaseReference {
-        val fireabaseDB = FirebaseDatabase.getInstance()
-        return fireabaseDB.getReference(refName)
+    fun getRef(): StorageReference {
+        val firebaseStorage = FirebaseStorage.getInstance()
+        return firebaseStorage.getReference(strName)
     }
 }

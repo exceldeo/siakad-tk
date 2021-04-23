@@ -1,6 +1,7 @@
 package app.siakad.siakadtk.presentation.screens.register
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
@@ -27,6 +29,13 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var btnUploadBukti: Button
 
     private lateinit var vmRegister: RegisterViewModel
+
+    private var FirstPaymentImage: Uri? = null
+
+    companion object {
+        const val PICK_PHOTO_REQUEST = 1000
+        const val PERMISSION_REQUEST = 1001
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +72,12 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         }
         btnSignup.setOnClickListener {
             if (validateForm()) {
-                vmRegister.registerSiswa(etEmail.text.toString(), etPassword.text.toString(), etName.text.toString())
+                vmRegister.registerSiswa(
+                    etEmail.text.toString(),
+                    etPassword.text.toString(),
+                    etName.text.toString(),
+                    DetailPenggunaModel(fotoBayarAwal = )
+                )
             } else {
                 showToast("Ulangi pendaftaran")
             }

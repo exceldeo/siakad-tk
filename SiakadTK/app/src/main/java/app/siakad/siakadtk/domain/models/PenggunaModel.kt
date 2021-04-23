@@ -17,5 +17,6 @@ data class PenggunaModel(
     var email: String = "",
     var passwd: String = "",
     var role: String = "",
-    var status: Boolean = false
+    var status: Boolean = false,
+    var detailPenggunaModel: DetailPenggunaModel = DetailPenggunaModel()
 ): Parcelable

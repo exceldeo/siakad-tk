@@ -39,23 +39,6 @@ class AnnouncementRepository() {
         })
     }
 
-    fun insertData(data: Pengumuman) {
-        val newKey = announcementDB.push().key.toString()
-        val newData = PengumumanModel(
-            pengumumanId = newKey,
-            adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            judul = data.judul,
-            keterangan = data.keterangan,
-            tanggal = data.tanggal
-        )
-
-        announcementDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Sukses"))
-        }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
-        }
-    }
-
     fun getAnnouncementList(): LiveData<ModelContainer<ArrayList<PengumumanModel>>> {
         return announcementList
     }

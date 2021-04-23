@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
@@ -25,6 +26,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
     private var email: String = ""
     private var passwd: String = ""
     private var name: String = ""
+    private var detail: DetailPenggunaModel = DetailPenggunaModel()
 
     private lateinit var regObserver: Observer<ModelContainer<String>>
     private lateinit var userObserver: Observer<ModelContainer<String>>
@@ -33,10 +35,11 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
         setupObserver()
     }
 
-    fun registerSiswa(email: String, passwd: String, name: String) {
+    fun registerSiswa(email: String, passwd: String, name: String, detail: DetailPenggunaModel) {
         this.email = email
         this.passwd = passwd
         this.name = name
+        this.detail = detail
 
         vmCoroutineScope.launch {
             authRepository.register(email, passwd)
@@ -49,7 +52,8 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
                 userRepository.insertData(Pengguna(
                     email = email,
                     passwd = passwd,
-                    nama = name
+                    nama = name,
+                    detail = detail
                 ))
             } else {
                 showToast(context.getString(R.string.fail_regis))

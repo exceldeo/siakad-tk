@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtk.domain.models.NotifikasiModel
 import app.siakad.siakadtk.infrastructure.data.Notifikasi
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

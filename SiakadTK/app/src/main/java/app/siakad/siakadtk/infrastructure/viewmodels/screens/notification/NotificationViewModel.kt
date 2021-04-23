@@ -3,7 +3,6 @@ package app.siakad.siakadtk.infrastructure.viewmodels.screens.notification
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.*
-import app.siakad.siakadtk.domain.models.NotifikasiModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.infrastructure.data.Notifikasi

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.siakad.siakadtk">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_icon_logo"
@@ -20,8 +22,6 @@
         <activity android:name="app.siakad.siakadtk.presentation.screens.history.HistoryActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.basket.BasketActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.book.ProductBookDetailActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.book.ProductBookListActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.uniform.ProductUniformListActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.uniform.ProductUniformDetailActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.order.OrderListActivity" />
         <activity android:name="app.siakad.siakadtk.presentation.screens.registration.form.RegistrationFormActivity" />

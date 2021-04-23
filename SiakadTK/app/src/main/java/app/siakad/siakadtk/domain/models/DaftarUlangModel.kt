@@ -10,9 +10,6 @@ data class DaftarUlangModel (
     var dafulId: String = "",
     var userId: String = "",
     var tanggal: String = "",
-    var status: String = "",
-    var nominalbayar: Int = 1000000,
-    var fotoBayar: String = ""
-): Parcelable {
-    val tanggalLahir: String = ""
-}
+    var fotoBayar: String = "",
+    var statusDaful: Boolean = false
+): Parcelable
