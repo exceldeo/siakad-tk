@@ -82,7 +82,7 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
 
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_PHOTO_REQUEST) {
             val imageUri: Uri = data?.data!!
-            btnUploadBukti.text = File(imageUri.path).name
+            btnUploadBukti.text = imageUri.toString()
             firstPaymentImage = imageUri
         }
     }
@@ -131,8 +131,6 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
         btnSignup.setOnClickListener {
             if (validateForm()) {
                 registerUser()
-                showToast("Sudah pendaftaran")
-//                navigateToMain()
             } else {
                 showToast("Ulangi pendaftaran")
             }
@@ -148,16 +146,14 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
     }
 
     private fun registerUser(){
-        vmRegister.registerSiswa(
-            etEmail.text.toString(),
-            etPassword.text.toString()
-        )
-        vmRegister.insertPengguna(
-            etEmail.text.toString(),
-            etPassword.text.toString(),
-            etName.text.toString(),
-            firstPaymentImage
-        )
+        firstPaymentImage?.let {
+            vmRegister.registerSiswa(
+                etEmail.text.toString(),
+                etPassword.text.toString(),
+                etName.text.toString(),
+                it
+            )
+        }
     }
     private fun validateForm(): Boolean {
         var valid = true
