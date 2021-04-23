@@ -7,6 +7,8 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.product.BukuModel
 import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.product.ProductListListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.product.ProductListener
 import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
 import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
 import com.google.firebase.database.DataSnapshot
@@ -14,18 +16,17 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
 class ProductRepository() {
-    private var uniformList = MutableLiveData<ModelContainer<ArrayList<SeragamModel>>>()
-    private var bookList = MutableLiveData<ModelContainer<ArrayList<BukuModel>>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
     private val uniformDB = FirebaseRef(
         FirebaseRef.SERAGAM_REF
     ).getRef()
+
     private val bookDB = FirebaseRef(
         FirebaseRef.BUKU_REF
     ).getRef()
 
-    fun initUniformEventListener() {
+    fun initGetUniformEventListener(listener: ProductListListener) {
         uniformDB.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
@@ -33,23 +34,22 @@ class ProductRepository() {
                 val dataRef = arrayListOf<SeragamModel>()
 
                 for (dataSS in snapshot.children) {
-                    val data: SeragamModel? = dataSS.getValue(
-                        SeragamModel::class.java)
+                    val data: SeragamModel? = dataSS.getValue(SeragamModel::class.java)
                     data?.produkId = dataSS.key.toString()
                     dataRef.add(data!!)
-                }
 
-                uniformList.postValue(
-                    ModelContainer(
-                        status = ModelState.SUCCESS,
-                        data = dataRef
+                    listener.setUniformList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = dataRef
+                        )
                     )
-                )
+                }
             }
         })
     }
 
-    fun initBookEventListener() {
+    fun initGetBookEventListener(listener: ProductListListener) {
         bookDB.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
@@ -57,22 +57,21 @@ class ProductRepository() {
                 val dataRef = arrayListOf<BukuModel>()
 
                 for (dataSS in snapshot.children) {
-                    val data: BukuModel? = dataSS.getValue(
-                        BukuModel::class.java)
+                    val data: BukuModel? = dataSS.getValue(BukuModel::class.java)
                     dataRef.add(data!!)
-                }
 
-                bookList.postValue(
-                    ModelContainer(
-                        status = ModelState.SUCCESS,
-                        data = dataRef
+                    listener.setBookList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = dataRef
+                        )
                     )
-                )
+                }
             }
         })
     }
 
-    fun insertDataSeragam(data: Seragam) {
+    fun insertDataSeragam(listener: ProductListener, data: Seragam) {
         val newKey = uniformDB.push().key.toString()
         val newData =
             SeragamModel(
@@ -86,13 +85,13 @@ class ProductRepository() {
             )
 
         uniformDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
         }
     }
 
-    fun insertDataBuku(data: Buku) {
+    fun insertDataBuku(listener: ProductListener, data: Buku) {
         val newKey = bookDB.push().key.toString()
         val newData = BukuModel(
             produkId = newKey,
@@ -104,21 +103,9 @@ class ProductRepository() {
         )
 
         bookDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
         }
-    }
-
-    fun getUniformList(): LiveData<ModelContainer<ArrayList<SeragamModel>>> {
-        return uniformList
-    }
-
-    fun getBookList(): LiveData<ModelContainer<ArrayList<BukuModel>>> {
-        return bookList
-    }
-
-    fun getInsertState(): LiveData<ModelContainer<String>> {
-        return insertState
     }
 }

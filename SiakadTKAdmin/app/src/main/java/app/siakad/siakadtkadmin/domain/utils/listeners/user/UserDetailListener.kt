@@ -5,5 +5,5 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 
 interface UserDetailListener {
     fun setUserDetail(detail: ModelContainer<DetailPenggunaModel>)
-    fun notifyUserDetailChange(status: ModelContainer<String>)
+    fun notifyUserDetailChangeStatus(status: ModelContainer<String>)
 }

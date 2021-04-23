@@ -39,7 +39,7 @@ class UserDetailViewModel(private val context: Context) :
         }
     }
 
-    override fun notifyUserDetailChange(status: ModelContainer<String>) {
+    override fun notifyUserDetailChangeStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_set_data))
         } else if (status.status == ModelState.ERROR) {

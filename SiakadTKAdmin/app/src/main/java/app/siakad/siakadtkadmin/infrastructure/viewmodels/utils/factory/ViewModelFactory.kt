@@ -2,11 +2,12 @@ package app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory
 
 import android.content.Context
 import androidx.lifecycle.*
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationAddViewModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.notification.NotificationViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.book.BookAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.uniform.UniformAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.RegistrationListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
@@ -18,26 +19,14 @@ class ViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(AnnouncementViewModel::class.java) -> {
-                AnnouncementViewModel(
+            modelClass.isAssignableFrom(AnnouncementListViewModel::class.java) -> {
+                AnnouncementListViewModel(
                     ctx!!,
                     owner
                 ) as T
             }
             modelClass.isAssignableFrom(AnnouncementAddViewModel::class.java) -> {
                 AnnouncementAddViewModel(
-                    ctx!!,
-                    owner
-                ) as T
-            }
-            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
-                NotificationViewModel(
-                    ctx!!,
-                    owner
-                ) as T
-            }
-            modelClass.isAssignableFrom(NotificationAddViewModel::class.java) -> {
-                NotificationAddViewModel(
                     ctx!!,
                     owner
                 ) as T
@@ -66,6 +55,21 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(RegistrationListViewModel::class.java) -> {
                 RegistrationListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(ProductListViewModel::class.java) -> {
+                ProductListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(UniformAddViewModel::class.java) -> {
+                UniformAddViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(BookAddViewModel::class.java) -> {
+                BookAddViewModel(
                     ctx!!
                 ) as T
             }

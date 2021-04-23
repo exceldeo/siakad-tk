@@ -7,7 +7,7 @@ import android.widget.RelativeLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.presentation.screens.product.dialog.UniformProductDialog
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductDialog
 
 class ProductAddActivity : AppCompatActivity() {
 
