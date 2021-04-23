@@ -19,11 +19,12 @@ import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFact
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import java.io.File
 
 
-class RegisterActivity : AppCompatActivity(), AuthenticationListener {
+class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListener {
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -129,12 +130,7 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         }
         btnSignup.setOnClickListener {
             if (validateForm()) {
-                vmRegister.registerSiswa(
-                    etEmail.text.toString(),
-                    etPassword.text.toString(),
-                    etName.text.toString(),
-                    firstPaymentImage
-                )
+                registerUser()
                 showToast("Sudah pendaftaran")
 //                navigateToMain()
             } else {
@@ -151,6 +147,18 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         etRepeatPassword.transformationMethod = PasswordTransformationMethod()
     }
 
+    private fun registerUser(){
+        vmRegister.registerSiswa(
+            etEmail.text.toString(),
+            etPassword.text.toString()
+        )
+        vmRegister.insertPengguna(
+            etEmail.text.toString(),
+            etPassword.text.toString(),
+            etName.text.toString(),
+            firstPaymentImage
+        )
+    }
     private fun validateForm(): Boolean {
         var valid = true
 
@@ -183,14 +191,14 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
             valid = false
         }
 
-//        if (firstPaymentImage == null) {
-//            val alertDialog = AlertDialogFragment(
-//                "Foto belum ditambahkan!",
-//                "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
-//            )
-//            alertDialog.show(supportFragmentManager, null)
-//            valid = false
-//        }
+        if (firstPaymentImage == null) {
+            val alertDialog = AlertDialogFragment(
+                "Foto belum ditambahkan!",
+                "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
+            )
+            alertDialog.show(supportFragmentManager, null)
+            valid = false
+        }
 
         return valid
     }
@@ -203,5 +211,9 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun alertAction() {
+        registerUser()
     }
 }

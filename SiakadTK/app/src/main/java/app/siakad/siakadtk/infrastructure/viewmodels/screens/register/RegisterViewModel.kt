@@ -25,7 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), StorageListener, RegisterListener {
+class RegisterViewModel(private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), RegisterListener, StorageListener {
     private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -38,22 +38,19 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
     private var detail = DetailPenggunaModel()
     private var pengguna = Pengguna()
 
-    init {
-        insertPengguna()
-    }
-
-    fun registerSiswa(email: String, passwd: String, name: String, imageUri: Uri?) {
+    fun registerSiswa(email: String, passwd: String) {
         this.email = email
         this.passwd = passwd
-        this.name = name
-        this.imageUri = imageUri
 
         vmCoroutineScope.launch {
-            authRepository.register(email, passwd)
+            authRepository.register(this@RegisterViewModel, email, passwd)
         }
     }
 
-    private fun insertPengguna() {
+    fun insertPengguna(email: String, passwd: String, name: String, imageUri: Uri?) {
+        this.name = name
+        this.imageUri = imageUri
+
         pengguna = Pengguna(
             nama = name,
             email = email,
@@ -63,8 +60,8 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
         if (imageUri != null) {
             vmCoroutineScope.launch {
                 fbStorage.uploadImage(
-                    this@RegisterViewModel, imageUri!!,
-                    System.currentTimeMillis().toString() + "." + getFileExtension(imageUri!!)
+                    this@RegisterViewModel, imageUri,
+                    System.currentTimeMillis().toString() + "." + getFileExtension(imageUri)
                 )
             }
         } else {
