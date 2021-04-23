@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
+import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
+import app.siakad.siakadtk.domain.utils.listeners.user.UserListListener
+import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import app.siakad.siakadtk.infrastructure.data.Pengguna
-import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,6 +21,7 @@ class UserRepository() {
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
+    private var detailPengguna = DetailPenggunaModel()
 
     fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
         userDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
@@ -103,7 +107,7 @@ class UserRepository() {
         })
     }
 
-    fun insertData(pengguna: Pengguna) {
+    fun insertData(listener: RegisterListener, pengguna: Pengguna) {
         val newKey = userDB.push().key.toString()
         val newData = PenggunaModel(
             userId = newKey,
@@ -121,6 +125,18 @@ class UserRepository() {
         }
     }
 
+    fun updateDetailData(detail: DetailPengguna) {
+        detailPengguna = DetailPenggunaModel(
+            kelas = detail.kelas,
+            tahunAjaran = detail.thnAjaran,
+            jenisKelamin = detail.jenisKelamin,
+            tanggalLahir = detail.tanggalLahir,
+            namaOrtu = detail.namaOrtu,
+            userState = detail.userState,
+            dafulState = detail.dafulState
+        )
+    }
+
     fun updateData(pengguna: Pengguna) {
         val currentKey = userDB.key.toString()
         val updateData = PenggunaModel(
@@ -128,7 +144,8 @@ class UserRepository() {
             email = pengguna.email,
             nama = pengguna.nama,
             passwd = pengguna.passwd,
-            role = UserRoleModel.SISWA.str
+            role = UserRoleModel.SISWA.str,
+            detailPenggunaModel = detailPengguna
         )
         userDB.child(currentKey).setValue(updateData).addOnSuccessListener {
             insertState.postValue(ModelContainer.getSuccesModel("Sukses"))

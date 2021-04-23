@@ -187,5 +187,6 @@
     <string name="nominal_bayar">Nominal Bayar (Rp)</string>
     <string name="example_nominal">225000</string>
     <string name="data_pendaftaran">Data Pendaftaran</string>
+    <string name="fail_upload_img">Gagal mengunggah foto</string>
 
 </resources>

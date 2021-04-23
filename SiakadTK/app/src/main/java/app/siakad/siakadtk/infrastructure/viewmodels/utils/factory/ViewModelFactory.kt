@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.*
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
-import app.siakad.siakadtk.infrastructure.viewmodels.screens.notification.NotificationViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
@@ -29,9 +28,6 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(OrderViewModel::class.java) -> {
                 OrderViewModel(ctx, owner) as T
-            }
-            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
-                NotificationViewModel(ctx, owner) as T
             }
             else -> throw IllegalArgumentException("Unknown View Model Class")
         }

@@ -1,7 +1,11 @@
 package app.siakad.siakadtk.presentation.screens.register
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
@@ -10,12 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import java.io.File
 
 
 class RegisterActivity : AppCompatActivity(), AuthenticationListener {
@@ -30,7 +35,7 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     private lateinit var vmRegister: RegisterViewModel
 
-    private var FirstPaymentImage: Uri? = null
+    private var firstPaymentImage: Uri? = null
 
     companion object {
         const val PICK_PHOTO_REQUEST = 1000
@@ -53,6 +58,43 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         }
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSION_REQUEST -> {
+                if (grantResults.isNotEmpty() && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+                    pickImageFromGallery()
+                } else {
+                    Toast.makeText(this, "Akses ditolak", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == PICK_PHOTO_REQUEST) {
+            val imageUri: Uri = data?.data!!
+            btnUploadBukti.text = File(imageUri.path).name
+            firstPaymentImage = imageUri
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(
+            intent,
+            PICK_PHOTO_REQUEST
+        )
+    }
+
     private fun setupItemView() {
         etName = findViewById(R.id.edt_signup_name)
         etEmail = findViewById(R.id.et_signup_email)
@@ -69,6 +111,21 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     private fun setupView() {
         btnUploadBukti.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED
+                ) {
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    requestPermissions(
+                        permissions,
+                        PERMISSION_REQUEST
+                    );
+                } else {
+                    pickImageFromGallery();
+                }
+            } else {
+                pickImageFromGallery();
+            }
         }
         btnSignup.setOnClickListener {
             if (validateForm()) {
@@ -76,8 +133,10 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
                     etEmail.text.toString(),
                     etPassword.text.toString(),
                     etName.text.toString(),
-                    DetailPenggunaModel(fotoBayarAwal = )
+                    firstPaymentImage
                 )
+                showToast("Sudah pendaftaran")
+//                navigateToMain()
             } else {
                 showToast("Ulangi pendaftaran")
             }
@@ -123,6 +182,15 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
             etRepeatPassword.error = getString(R.string.err_conf_passwd)
             valid = false
         }
+
+//        if (firstPaymentImage == null) {
+//            val alertDialog = AlertDialogFragment(
+//                "Foto belum ditambahkan!",
+//                "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
+//            )
+//            alertDialog.show(supportFragmentManager, null)
+//            valid = false
+//        }
 
         return valid
     }

@@ -29,7 +29,7 @@ class UserDetailRepository() {
                     val data: DetailPenggunaModel? = snapshot.getValue(DetailPenggunaModel::class.java)
 
                     if (data != null) {
-                        data.userDetailId = snapshot.key.toString()
+//                        data.userDetailId = snapshot.key.toString()
 
                         listener.setUserDetail(
                             ModelContainer(
@@ -47,17 +47,13 @@ class UserDetailRepository() {
     fun insertData(detail: DetailPengguna) {
         val currentKey = userDetailDB.push().key.toString()
         val newData = DetailPenggunaModel(
-            userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            nama = detail.nama,
             kelas = detail.kelas,
-            thnAjaran = detail.thnAjaran,
+            tahunAjaran = detail.thnAjaran,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
-            alamat = detail.alamat,
-            noHP = detail.noHP,
             namaOrtu = detail.namaOrtu,
             userState = detail.userState,
-            dafulState = detail.dafulState,
+            dafulState = detail.dafulState
         )
 
         userDetailDB.child(currentKey).setValue(newData).addOnSuccessListener {
