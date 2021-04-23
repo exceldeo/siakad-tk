@@ -1,16 +1,18 @@
 package app.siakad.siakadtk.presentation.screens.registration.form
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.MenuItem
+import android.view.View
 import android.widget.*
+import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
 import app.siakad.siakadtk.presentation.views.date.DateListener
 import app.siakad.siakadtk.presentation.views.date.DatePickerFragment
@@ -19,7 +21,8 @@ import com.androidbuffer.kotlinfilepicker.KotRequest
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RegistrationFormActivity : AppCompatActivity(), DateListener {
+
+class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, DateListener {
     private val pageTitle = "Form Pendaftaran"
 
     private lateinit var toolbar: Toolbar
@@ -32,7 +35,6 @@ class RegistrationFormActivity : AppCompatActivity(), DateListener {
     private lateinit var spTahunAjaran: Spinner
     private lateinit var etPhoneNumber: EditText
     private lateinit var btnUploadBukti: Button
-    private lateinit var etSchoolBefore: EditText
     private lateinit var btnCancel: TextView
     private lateinit var btnSimpan: TextView
 
@@ -81,6 +83,37 @@ class RegistrationFormActivity : AppCompatActivity(), DateListener {
 
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
+
+        setupAdapterListener()
+        spGender.onItemSelectedListener = this
+        spClass.onItemSelectedListener = this
+        spTahunAjaran.onItemSelectedListener = this
+    }
+
+    private fun setupAdapterListener() {
+        ArrayAdapter.createFromResource(
+            this, R.array.list_jenis_kelamin,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spGender.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            this, R.array.list_kelas,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spClass.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            this, R.array.list_ajaran,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spTahunAjaran.adapter = adapter
+        }
     }
 
     private fun setupView() {
@@ -110,6 +143,7 @@ class RegistrationFormActivity : AppCompatActivity(), DateListener {
                     spGender.selectedItem.toString(),
                     etAddress.text.toString(),
                     etPhoneNumber.text.toString(),
+                    spTahunAjaran.selectedItem.toString(),
                     0,
                     "",
                 )
@@ -156,6 +190,8 @@ class RegistrationFormActivity : AppCompatActivity(), DateListener {
     private fun validateInput(): Boolean {
         var returnState = true
 
+//        showToast(spGender.selectedItem.toString() + " " + spClass.selectedItem.toString() + " " + spTahunAjaran.selectedItem.toString())
+
         if (etName.text.isEmpty()) {
             etName.error = getString(R.string.empty_input)
             returnState = false
@@ -182,5 +218,12 @@ class RegistrationFormActivity : AppCompatActivity(), DateListener {
         }
 
         return returnState
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }

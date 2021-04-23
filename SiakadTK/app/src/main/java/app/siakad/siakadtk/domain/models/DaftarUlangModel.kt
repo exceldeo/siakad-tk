@@ -11,5 +11,8 @@ data class DaftarUlangModel (
     var userId: String = "",
     var tanggal: String = "",
     var status: String = "",
+    var nominalbayar: Int = 1000000,
     var fotoBayar: String = ""
-): Parcelable
+): Parcelable {
+    val tanggalLahir: String = ""
+}

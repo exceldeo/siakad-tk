@@ -293,6 +293,34 @@
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/inner_padding"
+                style="@style/LabelText"
+                android:text="@string/nominal_bayar"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/inner_padding"
+                android:layout_height="@dimen/input_height">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/vc_bg_input_unfilled"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="10dip"/>
+                <EditText
+                    android:id="@+id/et_registrationform_nominal"
+                    android:padding="@dimen/input_text_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/example_nominal"
+                    style="@style/InputText"
+                    android:background="@android:color/transparent"/>
+            </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

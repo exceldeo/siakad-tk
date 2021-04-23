@@ -68,33 +68,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/kelas"
                 style="@style/LabelText"/>
-            <EditText
-                android:id="@+id/et_aprofile_kelas"
+            <Spinner
+                android:id="@+id/sp_aprofile_kelas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/kelas_siswa"
-                android:inputType="textPassword"
-                android:textColor="@color/colorBlack"
-                android:background="@android:color/transparent"
+                android:theme="@style/InputText"
+                android:entries="@array/list_kelas"
+                android:spinnerMode="dropdown"
                 style="@style/InputText.EdtTextNoMargin"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorUnSelect"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tahun_ajaran"
                 style="@style/LabelText"/>
-            <EditText
-                android:id="@+id/et_aprofile_tahunajaran"
+            <Spinner
+                android:id="@+id/sp_aprofile_tahunajaran"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/tahun_ajaran"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:background="@android:color/transparent"
+                android:theme="@style/InputText"
+                android:entries="@array/list_ajaran"
+                android:spinnerMode="dropdown"
                 style="@style/InputText.EdtTextNoMargin"/>
             <View
                 android:layout_width="match_parent"
@@ -106,14 +103,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/jenis_kelamin"
                 style="@style/LabelText"/>
-            <EditText
-                android:id="@+id/et_aprofile_jeniskelamin"
+            <Spinner
+                android:id="@+id/sp_aprofile_jeniskelamin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/jenis_kelamin"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:background="@android:color/transparent"
+                android:theme="@style/InputText"
+                android:entries="@array/list_jenis_kelamin"
+                android:spinnerMode="dropdown"
                 style="@style/InputText.EdtTextNoMargin"/>
             <View
                 android:layout_width="match_parent"
@@ -128,7 +124,7 @@
                 android:id="@+id/et_aprofile_ttl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/tanggal_lahir"
+                android:hint="@string/example_date"
                 android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@android:color/transparent"
@@ -147,7 +143,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/alamat"
-                android:drawableEnd="@drawable/ic_mode_edit"
                 android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@android:color/transparent"
@@ -168,7 +163,6 @@
                 android:hint="@string/no_hp_orang_tua"
                 android:inputType="text"
                 android:textColor="@color/colorBlack"
-                android:drawableEnd="@drawable/ic_mode_edit"
                 android:background="@android:color/transparent"
                 style="@style/InputText.EdtTextNoMargin"/>
             <View
@@ -185,24 +179,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nama_orang_tua"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:background="@android:color/transparent"
-                style="@style/InputText.EdtTextNoMargin"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorUnSelect"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/asal_sekolah"
-                style="@style/LabelText"/>
-            <EditText
-                android:id="@+id/et_aprofile_asal_sekolah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/asal_sekolah"
                 android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@android:color/transparent"
@@ -232,7 +208,6 @@
             android:layout_marginBottom="@dimen/container_padding_y">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_aprofile_batal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
@@ -241,6 +216,7 @@
                 app:cardBackgroundColor="@color/colorUnSelect">
 
                 <TextView
+                    android:id="@+id/btn_aprofile_batal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"
@@ -250,7 +226,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_aprofile_simpan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
@@ -258,6 +233,7 @@
                 app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
+                    android:id="@+id/btn_aprofile_simpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"

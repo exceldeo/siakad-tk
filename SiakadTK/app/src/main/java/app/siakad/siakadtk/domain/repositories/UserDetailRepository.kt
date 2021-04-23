@@ -1,18 +1,20 @@
 package app.siakad.siakadtk.domain.repositories
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
 class UserDetailRepository() {
-    private val userDetailDB = FirebaseRef(
-        FirebaseRef.USER_DETAIL_REF
-    ).getRef()
+    private val userDetailDB = FirebaseRef(FirebaseRef.USER_DETAIL_REF).getRef()
+    private val insertState = MutableLiveData<ModelContainer<String>>()
 
     fun initGetUserDetailListener(listener: UserDetailListener) {
         userDetailDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
@@ -42,24 +44,30 @@ class UserDetailRepository() {
             })
     }
 
-    fun insertData(listener: UserDetailListener, detail: DetailPenggunaModel) {
+    fun insertData(detail: DetailPengguna) {
+        val currentKey = userDetailDB.push().key.toString()
         val newData = DetailPenggunaModel(
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            fotoBayarAwal = detail.fotoBayarAwal,
-            jenisKelamin = detail.jenisKelamin,
-            dafulState = detail.dafulState,
-            fotoSiswa = detail.fotoSiswa,
+            nama = detail.nama,
             kelas = detail.kelas,
-            namaOrtu = detail.namaOrtu,
-            tahunAjaran = detail.tahunAjaran,
+            thnAjaran = detail.thnAjaran,
+            jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
-            userState = detail.userState
+            alamat = detail.alamat,
+            noHP = detail.noHP,
+            namaOrtu = detail.namaOrtu,
+            userState = detail.userState,
+            dafulState = detail.dafulState,
         )
 
-        userDetailDB.child(detail.userDetailId).setValue(newData).addOnSuccessListener {
-            listener.notifyUserDetailChange(ModelContainer.getSuccesModel("Success"))
+        userDetailDB.child(currentKey).setValue(newData).addOnSuccessListener {
+            insertState.postValue(ModelContainer.getSuccesModel("Sukses"))
         }.addOnFailureListener {
-            listener.notifyUserDetailChange(ModelContainer.getFailModel())
+            insertState.postValue(ModelContainer.getFailModel())
         }
+    }
+
+    fun getInsertState(): LiveData<ModelContainer<String>> {
+        return insertState
     }
 }
