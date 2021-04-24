@@ -48,7 +48,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
                     jenisKelamin = gender,
                     alamat = address,
                     noHP = noHP,
-                    thnAjaran = thnAjaran,
+                    tahunAjaran = thnAjaran,
                     nominalbayar = nominal,
                     fotoBayar = fotoBayar
                 )

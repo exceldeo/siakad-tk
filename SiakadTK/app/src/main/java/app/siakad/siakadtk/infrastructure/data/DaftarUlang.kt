@@ -14,9 +14,9 @@ data class DaftarUlang (
     var namaWali: String = "",
     var alamat: String = "",
     var noHP: String = "",
-    var thnAjaran : String = "",
     var nominalbayar: Int = 1000000,
-    var fotoBayar: String = ""
-): Parcelable {
-    val tanggalLahir: String = ""
-}
+    var fotoBayar: String = "",
+    var tanggalDaful: String = "",
+    var statusDaful: Boolean = false,
+    var tahunAjaran: String = "",
+): Parcelable

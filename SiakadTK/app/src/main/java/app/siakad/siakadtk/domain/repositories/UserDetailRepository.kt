@@ -48,12 +48,10 @@ class UserDetailRepository() {
         val currentKey = userDetailDB.push().key.toString()
         val newData = DetailPenggunaModel(
             kelas = detail.kelas,
-            tahunAjaran = detail.thnAjaran,
+            tahunAjaran = detail.tahunAjaran,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
-            namaOrtu = detail.namaOrtu,
-            userState = detail.userState,
-            dafulState = detail.dafulState
+            namaOrtu = detail.namaOrtu
         )
 
         userDetailDB.child(currentKey).setValue(newData).addOnSuccessListener {

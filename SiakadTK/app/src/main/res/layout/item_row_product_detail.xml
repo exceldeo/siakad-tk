@@ -43,25 +43,14 @@
                     android:textSize="@dimen/list_title_text"
                     android:fontFamily="@font/poppins_medium"/>
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tv_item_product_jumlah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/jumlah_produk"
-                        android:textSize="@dimen/list_status_text"
-                        android:fontFamily="@font/poppins_regular"/>
-                    <TextView
-                        android:id="@+id/tv_item_product_jumlah"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/inner_padding"
-                        android:text="@string/example_jumlah"
-                        android:textSize="@dimen/list_status_text"
-                        android:fontFamily="@font/poppins_regular"/>
-                </LinearLayout>
+                    android:layout_marginStart="@dimen/inner_padding"
+                    android:text="@string/jumlah_produk"
+                    android:textSize="@dimen/list_status_text"
+                    android:fontFamily="@font/poppins_regular"/>
             </LinearLayout>
 
         </LinearLayout>

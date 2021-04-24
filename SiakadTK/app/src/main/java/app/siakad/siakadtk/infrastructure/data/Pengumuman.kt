@@ -8,6 +8,8 @@ import java.util.*
 @Parcelize
 data class Pengumuman (
     var pengumumanId: String = "",
+    var tipe: String = "",
+    var tujuanId: String = "",
     var judul: String = "",
     var keterangan: String = "",
     var tanggal: String = ""
