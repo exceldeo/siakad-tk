@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.infrastructure.data.Kelas
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.ClassroomListViewModel
@@ -82,7 +83,7 @@ class ClassroomListFragment(private val type: String) : Fragment() {
         ).get(ClassroomListViewModel::class.java)
         vmClassroomList.setClassroomType(type)
 
-        val obsClassroomList = Observer<ArrayList<Kelas>> { newClassroomList ->
+        val obsClassroomList = Observer<ArrayList<KelasModel>> { newClassroomList ->
             if (newClassroomList.size > 0) {
                 classroomListAdapter.changeDataList(newClassroomList)
             }

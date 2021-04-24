@@ -1,9 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presentation.screens.classroom.ClassroomAddActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_height"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/appbar_padding_top">
+
+        <include layout="@layout/item_toolbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/container_padding_x"
+            android:paddingVertical="@dimen/container_padding_y">
+
+            <TextView
+                style="@style/sTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Nama Kelas" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dd_classroom_add"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/colorPrimaryLight"
+                app:boxCornerRadiusBottomEnd="@dimen/list_corner"
+                app:boxCornerRadiusBottomStart="@dimen/list_corner"
+                app:boxCornerRadiusTopEnd="@dimen/list_corner"
+                app:boxCornerRadiusTopStart="@dimen/list_corner">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/sTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tahun Mulai" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_classroom_add_mulai"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/colorPrimaryLight"
+                app:boxCornerRadiusBottomEnd="@dimen/list_corner"
+                app:boxCornerRadiusBottomStart="@dimen/list_corner"
+                app:boxCornerRadiusTopEnd="@dimen/list_corner"
+                app:boxCornerRadiusTopStart="@dimen/list_corner"
+                app:boxStrokeColor="@color/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/sTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tahun Selesai" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_classroom_add_selesai"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/colorPrimaryLight"
+                app:boxCornerRadiusBottomEnd="@dimen/list_corner"
+                app:boxCornerRadiusBottomStart="@dimen/list_corner"
+                app:boxCornerRadiusTopEnd="@dimen/list_corner"
+                app:boxCornerRadiusTopStart="@dimen/list_corner"
+                app:boxStrokeColor="@color/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                style="@style/ListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_classroom_add_batal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batal"
+                    android:fontFamily="@font/poppins_bold"
+                    android:backgroundTint="@color/colorUnSelect"
+                    style="@style/CommonButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/list_corner"
+                    android:layout_marginEnd="@dimen/container_padding_x"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_classroom_add_simpan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpan"
+                    android:fontFamily="@font/poppins_bold"
+                    style="@style/CommonButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/list_corner"
+                    android:paddingEnd="@dimen/container_padding_x"
+                    android:paddingStart="@dimen/container_padding_x"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

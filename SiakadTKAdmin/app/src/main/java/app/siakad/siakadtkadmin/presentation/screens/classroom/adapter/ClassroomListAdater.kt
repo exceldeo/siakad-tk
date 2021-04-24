@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.infrastructure.data.Kelas
+import app.siakad.siakadtkadmin.domain.models.KelasModel
 
 class ClassroomListAdater : RecyclerView.Adapter<ClassroomListViewHolder>() {
 
-    private val classroomList: ArrayList<Kelas> = arrayListOf()
+    private val classroomList: ArrayList<KelasModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassroomListViewHolder {
         val viewHolder =
@@ -21,10 +21,10 @@ class ClassroomListAdater : RecyclerView.Adapter<ClassroomListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ClassroomListViewHolder, position: Int) {
-        holder.insertAnnouncement(classroomList[position])
+        holder.insertClassroom(classroomList[position])
     }
 
-    fun changeDataList(data: ArrayList<Kelas>) {
+    fun changeDataList(data: ArrayList<KelasModel>) {
         if (classroomList.size > 0)
             classroomList.clear()
 

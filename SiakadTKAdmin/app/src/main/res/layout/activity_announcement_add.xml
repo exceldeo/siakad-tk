@@ -39,6 +39,7 @@
             app:boxCornerRadiusBottomStart="@dimen/list_corner"
             app:boxCornerRadiusTopEnd="@dimen/list_corner"
             app:boxCornerRadiusTopStart="@dimen/list_corner"
+            app:boxBackgroundColor="@color/colorPrimaryLight"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView

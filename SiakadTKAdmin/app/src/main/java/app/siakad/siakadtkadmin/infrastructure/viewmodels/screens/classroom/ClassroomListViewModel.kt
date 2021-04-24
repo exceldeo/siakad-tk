@@ -20,37 +20,32 @@ import kotlinx.coroutines.launch
 class ClassroomListViewModel(private val context: Context) :
     ViewModel(),
     ClassroomListListener {
-    private val classroomListLiveData = MutableLiveData<ArrayList<Kelas>>()
+    private val classroomListLiveData = MutableLiveData<ArrayList<KelasModel>>()
     private val classroomRepository = ClassroomRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-    private val dataKelasList = arrayListOf<Kelas>()
+    private val dataKelasList = arrayListOf<KelasModel>()
 
     fun setClassroomType(type: String) {
         if (dataKelasList.isEmpty()) {
             vmCoroutineScope.launch {
-//                classroomRepository.initGetClassroomListListener(this@ClassroomListViewModel, verified)
+                classroomRepository.initGetClassroomListListener(this@ClassroomListViewModel, type)
             }
         }
     }
 
-//    override fun setClassroomList(penggunaList: ModelContainer<ArrayList<KelasModel>>) {
-//        if (penggunaList.status == ModelState.SUCCESS) {
-//            if (penggunaList.data?.isNotEmpty()!!) {
-//                penggunaList.data?.forEach { classroom ->
-//                    dataKelasList.add(
-//                        Kelas(
-//                        )
-//                    )
-//                    classroomListLiveData.postValue(dataKelasList)
-//                }
-//                showToast(context.getString(R.string.scs_get_data))
-//            }
-//        } else if (penggunaList.status == ModelState.ERROR) {
-//            showToast(context.getString(R.string.fail_get_data))
-//        }
-//    }
+    override fun setClassroomList(kelasList: ModelContainer<ArrayList<KelasModel>>) {
+        if (kelasList.status == ModelState.SUCCESS) {
+            if (kelasList.data?.isNotEmpty()!!) {
+                dataKelasList.addAll(kelasList.data!!)
+                classroomListLiveData.postValue(dataKelasList)
+                showToast(context.getString(R.string.scs_get_data))
+            }
+        } else if (kelasList.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_get_data))
+        }
+    }
 
-    fun getClassroomList() : LiveData<ArrayList<Kelas>> {
+    fun getClassroomList() : LiveData<ArrayList<KelasModel>> {
         return classroomListLiveData
     }
 

@@ -1,24 +1,18 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
-import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
-import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
-import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementListFragment
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 
-class AnnouncementRepository() {
+class AnnouncementRepository {
     private val announcementDB = FirebaseRef(
         FirebaseRef.PENGUMUMAN_REF
     ).getRef()
