@@ -1,11 +1,15 @@
 package app.siakad.siakadtk.presentation.screens.main.product.detail.book
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Movie
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.infrastructure.data.product.Buku
+
 
 class ProductBookDetailActivity : AppCompatActivity() {
     private val pageTitle = "Produk Buku"
@@ -23,6 +27,11 @@ class ProductBookDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_book_detail)
         setupItemView()
         setupView()
+
+        val data = intent.getParcelableExtra<Parcelable>("buku") as Buku
+        if (data != null) {
+            tvProductPrice.text = data.harga.toString()
+        }
     }
 
     private fun setupItemView() {

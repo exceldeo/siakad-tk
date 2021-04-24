@@ -11,12 +11,22 @@ import app.siakad.siakadtk.presentation.screens.product.utils.ProductType
 
 class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<ProductListViewHolder>() {
 
+    private lateinit var onItemClickCallbackBook: OnItemClickCallbackBook
+    private lateinit var onItemClickCallbackUniform: OnItemClickCallbackUniform
     private val seragam = arrayListOf<Seragam>()
     private val buku = arrayListOf<Buku>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_row_product_detail, parent, false)
         return ProductListViewHolder(viewHolder)
+    }
+
+    fun setOnItemClickCallbackBook(onItemClickCallback: OnItemClickCallbackBook) {
+        this.onItemClickCallbackBook = onItemClickCallback
+    }
+
+    fun setOnItemClickCallbackUniform(onItemClickCallback: OnItemClickCallbackUniform) {
+        this.onItemClickCallbackUniform = onItemClickCallback
     }
 
     override fun getItemCount(): Int {
@@ -30,8 +40,10 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
         if (type == ProductType.SERAGAM) {
             holder.insertUniform(seragam[position])
+            holder.itemView.setOnClickListener { onItemClickCallbackUniform.onItemClicked(seragam[holder.adapterPosition]) }
         } else {
             holder.insertBook(buku[position])
+            holder.itemView.setOnClickListener { onItemClickCallbackBook.onItemClicked(buku[holder.adapterPosition]) }
         }
     }
 
@@ -51,5 +63,13 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
 
         buku.addAll(data)
         notifyDataSetChanged()
+    }
+
+    interface OnItemClickCallbackUniform {
+        fun onItemClicked(data: Seragam)
+    }
+
+    interface OnItemClickCallbackBook {
+        fun onItemClicked(data: Buku)
     }
 }

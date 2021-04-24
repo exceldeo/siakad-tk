@@ -1,8 +1,10 @@
 package app.siakad.siakadtk.presentation.screens.product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,9 @@ import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.infrastructure.data.product.Seragam
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.product.ProductListViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.announcement.AnnouncementListActivity
+import app.siakad.siakadtk.presentation.screens.main.product.detail.book.ProductBookDetailActivity
+import app.siakad.siakadtk.presentation.screens.main.product.detail.uniform.ProductUniformDetailActivity
 import app.siakad.siakadtk.presentation.screens.product.adapter.ProductListAdapter
 import app.siakad.siakadtk.presentation.screens.product.utils.ProductType
 
@@ -52,8 +57,26 @@ class ProductListActivity : AppCompatActivity() {
 
         if (pageTitle == BOOK_PAGE) {
             rvProductAdapter = ProductListAdapter(ProductType.BUKU)
+
+            rvProductAdapter.setOnItemClickCallbackBook(object: ProductListAdapter.OnItemClickCallbackBook {
+                override fun onItemClicked(data: Buku) {
+                    showToast("Kamu memilih " + data.namaProduk)
+                    val intent = Intent(this@ProductListActivity, ProductBookDetailActivity::class.java)
+                    intent.putExtra("buku", data);
+                    startActivity(intent)
+                }
+            })
         } else {
             rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
+
+            rvProductAdapter.setOnItemClickCallbackUniform(object: ProductListAdapter.OnItemClickCallbackUniform {
+                override fun onItemClicked(data: Seragam) {
+                    showToast("Kamu memilih " + data.namaProduk)
+                    val intent = Intent(this@ProductListActivity, ProductUniformDetailActivity::class.java)
+                    intent.putExtra("seragam", data);
+                    startActivity(intent)
+                }
+            })
         }
 
         rvProduct.apply {
@@ -92,5 +115,9 @@ class ProductListActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

@@ -1,14 +1,17 @@
 package app.siakad.siakadtk.presentation.screens.main.product.detail.uniform
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.infrastructure.data.product.Seragam
+
 
 class ProductUniformDetailActivity : AppCompatActivity() {
-    private val pageTitle = "Produk Buku"
+    private val pageTitle = "Produk Seragam"
 
     private lateinit var toolbar: Toolbar
     private lateinit var tvProductKewajiban: TextView
@@ -28,6 +31,11 @@ class ProductUniformDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_uniform_detail)
         setupItemView()
         setupView()
+
+        val data = intent.getParcelableExtra<Parcelable>("seragam") as Seragam
+        if (data != null) {
+            tvProductOrderDeadline.text = data.jenisKelamin
+        }
     }
 
     private fun setupItemView() {
