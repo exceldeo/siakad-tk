@@ -78,6 +78,7 @@ class ClassroomActivity : AppCompatActivity(), ClassroomClickListener {
 
     override fun navigateToClassroomDetail(kelas: KelasModel) {
         val intent = Intent(this, ClassroomDetailActivity::class.java)
+        intent.putExtra(ClassroomDetailActivity.CLASSROOM_ID, kelas)
         startActivity(intent)
     }
 }

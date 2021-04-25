@@ -34,9 +34,7 @@ class UserDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_detail)
 
         setupAppBar()
-
         setupView()
-
         setupViewModel()
     }
 

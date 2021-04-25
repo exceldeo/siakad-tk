@@ -27,7 +27,7 @@ class ClassroomAddViewModel(private val context: Context) :
         }
     }
 
-    fun insertClassroom(classroom: String, start: Int, end: Int) {
+    fun insertClassroom(classroom: String, end: Int, start: Int) {
         vmCoroutineScope.launch {
             classroomRepository.insertData(
                 this@ClassroomAddViewModel,

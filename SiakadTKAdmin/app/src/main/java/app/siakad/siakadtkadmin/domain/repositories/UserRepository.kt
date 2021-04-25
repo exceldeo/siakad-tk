@@ -80,6 +80,59 @@ class UserRepository() {
             })
     }
 
+    fun initGetUserListByClassListener(listener: UserListListener, kelasId: String) {
+        userDB.orderByChild("kelasId").equalTo(kelasId)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val dataRef = arrayListOf<PenggunaModel>()
+
+                    forloop@ for (dataSS in snapshot.children) {
+                        when (dataSS.value) {
+                            is String -> {
+                                val data: PenggunaModel? =
+                                    snapshot.getValue(PenggunaModel::class.java)
+                                if (data != null) {
+                                    data.userId = snapshot.key.toString()
+                                    dataRef.add(data)
+
+                                    listener.setUserList(
+                                        ModelContainer(
+                                            status = ModelState.SUCCESS,
+                                            data = dataRef
+                                        )
+                                    )
+                                    break@forloop
+                                }
+                            }
+                            is PenggunaModel -> {
+                                val data: PenggunaModel? =
+                                    dataSS.getValue(PenggunaModel::class.java)
+                                if (data != null) {
+                                    data.userId = dataSS.key.toString()
+                                    dataRef.add(data)
+
+                                    listener.setUserList(
+                                        ModelContainer(
+                                            status = ModelState.SUCCESS,
+                                            data = dataRef
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {}
+            })
+    }
+
     fun getUserById(listener: RegistrationListListener, id: String) {
         userDB.orderByChild("email").equalTo(id).addChildEventListener(object : ChildEventListener {
             override fun onCancelled(error: DatabaseError) {}

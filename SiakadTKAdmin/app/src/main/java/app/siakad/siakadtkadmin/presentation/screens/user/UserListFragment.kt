@@ -50,7 +50,6 @@ class UserListFragment(private val type: String) : Fragment() {
         tvUserCount = view.findViewById(R.id.tv_user_list_jumlah)
 
         setupListAdapter(view)
-
         setupViewModel()
 
         return view

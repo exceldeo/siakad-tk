@@ -13,17 +13,19 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.ClassroomAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class ClassroomAddActivity : AppCompatActivity() {
 
     private val pageTitle = "Tambah Kelas"
 
-    private lateinit var etSelesai: EditText
-    private lateinit var etMulai: EditText
-    private lateinit var btnCancel: CardView
-    private lateinit var btnSave: CardView
+    private lateinit var etSelesai: TextInputLayout
+    private lateinit var etMulai: TextInputLayout
+    private lateinit var btnCancel: MaterialButton
+    private lateinit var btnSave: MaterialButton
     private lateinit var ddClass: TextInputLayout
     
     private lateinit var vmClassroomAdd: ClassroomAddViewModel
@@ -109,8 +111,8 @@ class ClassroomAddActivity : AppCompatActivity() {
             if (validateInput()) {
                 vmClassroomAdd.insertClassroom(
                     classroomType,
-                    etSelesai.text.toString().toInt(),
-                    etMulai.text.toString().toInt()
+                    etSelesai.editText?.text.toString().toInt(),
+                    etMulai.editText?.text.toString().toInt()
                 )
             }
         }
@@ -128,12 +130,12 @@ class ClassroomAddActivity : AppCompatActivity() {
     private fun validateInput(): Boolean {
         var returnState = true
 
-        if (etSelesai.text.isEmpty()) {
+        if (etSelesai.editText?.text.toString().isEmpty()) {
             etSelesai.error = getString(R.string.empty_input)
             returnState = false
         }
 
-        if (etMulai.text.isEmpty()) {
+        if (etMulai.editText?.text.toString().isEmpty()) {
             etMulai.error = getString(R.string.empty_input)
             returnState = false
         }
