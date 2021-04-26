@@ -28,6 +28,7 @@ import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.Unif
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductListener
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
+import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
@@ -41,6 +42,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     private lateinit var ivPhotoPreview: ImageView
 
     private lateinit var btnAddPhoto: RelativeLayout
+    private lateinit var btnChangePhoto: MaterialButton
     private lateinit var btnAddData: RelativeLayout
     private lateinit var btnCancel: MaterialButton
     private lateinit var btnSave: MaterialButton
@@ -106,6 +108,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
             ivPhotoPreview.setImageURI(imageUri)
             imgBtnAddPhoto.visibility = View.GONE
             uniformImage = imageUri
+            btnChangePhoto.visibility = View.VISIBLE
         }
     }
 
@@ -148,21 +151,19 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     private fun setupButtons() {
         btnAddPhoto = findViewById(R.id.iv_uniform_add_foto)
         btnAddPhoto.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED
-                ) {
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(
-                        permissions,
-                        PERMISSION_REQUEST
-                    );
-                } else {
-                    pickImageFromGallery();
-                }
+            if (uniformImage == null) {
+                pickImage()
             } else {
-                pickImageFromGallery();
+                val intent = Intent(this@UniformAddActivity, ImagePreviewActivity::class.java)
+                intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, uniformImage.toString())
+                startActivity(intent)
             }
+        }
+
+        btnChangePhoto = findViewById(R.id.btn_uniform_add_ganti_foto)
+        btnChangePhoto.visibility = View.GONE
+        btnChangePhoto.setOnClickListener {
+            pickImage()
         }
 
         btnCancel = findViewById(R.id.btn_uniform_add_batal)
@@ -209,6 +210,24 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
 
             override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+    }
+
+    private fun pickImage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_DENIED
+            ) {
+                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                requestPermissions(
+                    permissions,
+                    PERMISSION_REQUEST
+                );
+            } else {
+                pickImageFromGallery();
+            }
+        } else {
+            pickImageFromGallery();
+        }
     }
 
     private fun pickImageFromGallery() {

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -65,7 +66,7 @@ class UserListFragment(private val type: String) : Fragment() {
             vmUserList.setUserType(false)
         }
 
-        val obsUserList = Observer<ArrayList<Siswa>> { newUserList ->
+        val obsUserList = Observer<ArrayList<PenggunaModel>> { newUserList ->
             if (newUserList.size > 0) {
                 userListAdapter.changeDataList(newUserList)
             }

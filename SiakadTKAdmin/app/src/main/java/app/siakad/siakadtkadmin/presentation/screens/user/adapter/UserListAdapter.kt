@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.presentation.screens.user.adapter.UserListViewHolder
 
 class UserListAdapter() : RecyclerView.Adapter<UserListViewHolder>() {
 
-    private val userList: ArrayList<Siswa> = arrayListOf()
+    private val userList: ArrayList<PenggunaModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder {
         val viewHolder =
@@ -25,7 +26,7 @@ class UserListAdapter() : RecyclerView.Adapter<UserListViewHolder>() {
         holder.insertUser(userList.get(position))
     }
 
-    fun changeDataList(newUserList: ArrayList<Siswa>) {
+    fun changeDataList(newUserList: ArrayList<PenggunaModel>) {
         if (userList.size > 0) {
             userList.clear()
         }

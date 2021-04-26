@@ -3,6 +3,7 @@ package app.siakad.siakadtkadmin.presentation.screens.product
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
@@ -13,6 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.product.BukuModel
+import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
 import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
 import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
@@ -55,6 +58,16 @@ class ProductListActivity : AppCompatActivity() {
         setupListAdapter()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun setupAppBar() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -70,14 +83,14 @@ class ProductListActivity : AppCompatActivity() {
         vmProductList.setProductType(pageTitle)
 
         if (pageTitle == UNIFORM_PAGE) {
-            val observer = Observer<ArrayList<Seragam>> { list ->
+            val observer = Observer<ArrayList<SeragamModel>> { list ->
                 if (list.size > 0) {
                     rvProductAdapter.changeUniformList(list)
                 }
             }
             vmProductList.getUniformList().observe(this, observer)
         } else {
-            val observer = Observer<ArrayList<Buku>> { list ->
+            val observer = Observer<ArrayList<BukuModel>> { list ->
                 if (list.size > 0) {
                     rvProductAdapter.changeBookList(list)
                 }

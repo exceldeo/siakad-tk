@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.DetailPenggunaModel
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -54,7 +55,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        val siswa = intent.getParcelableExtra<Siswa>(UserListFragment.VERIFIED_USER)
+        val siswa = intent.getParcelableExtra<PenggunaModel>(UserListFragment.VERIFIED_USER)
 
         tvName = findViewById(R.id.tv_user_detail_nama)
         tvName.text = siswa.nama
@@ -77,7 +78,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val siswa = intent.getParcelableExtra<Siswa>(UserListFragment.UNVERIFIED_USER)
+        val siswa = intent.getParcelableExtra<PenggunaModel>(UserListFragment.UNVERIFIED_USER)
 
         vmUserDetail = ViewModelProvider(
             this,

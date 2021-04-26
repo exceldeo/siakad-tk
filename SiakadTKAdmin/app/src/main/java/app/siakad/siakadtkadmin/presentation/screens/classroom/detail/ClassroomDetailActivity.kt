@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.KelasModel
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -36,7 +37,7 @@ class ClassroomDetailActivity : AppCompatActivity() {
 
     private lateinit var userListAdapter: UserListAdapter
 
-    private val kelas = intent.getParcelableExtra<KelasModel>(CLASSROOM_ID)
+    private var kelas = KelasModel()
 
     companion object {
         const val CLASSROOM_ID = "classroom_id"
@@ -46,6 +47,7 @@ class ClassroomDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_classroom_detail)
 
+        kelas = intent.getParcelableExtra(CLASSROOM_ID)
         pageTitle = kelas.namaKelas
         tvClassroomDetailCount = findViewById(R.id.tv_classroom_detail_jumlah_siswa)
         svClassroomDetail = findViewById(R.id.sv_classroom_detail_cari)
@@ -67,6 +69,8 @@ class ClassroomDetailActivity : AppCompatActivity() {
     }
 
     private fun setupAppBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+        setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -83,7 +87,7 @@ class ClassroomDetailActivity : AppCompatActivity() {
         ).get(ClassroomDetailViewModel::class.java)
         vmClassroomDetail.setUserClassType(kelas.kelasId)
 
-        val obsClassroomDetail = Observer<ArrayList<Siswa>> { newUserList ->
+        val obsClassroomDetail = Observer<ArrayList<PenggunaModel>> { newUserList ->
             if (newUserList.size > 0) {
                 userListAdapter.changeDataList(newUserList)
             }

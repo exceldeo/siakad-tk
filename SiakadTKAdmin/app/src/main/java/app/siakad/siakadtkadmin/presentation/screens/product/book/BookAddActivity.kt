@@ -20,6 +20,7 @@ import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.UniformAddActivity
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
+import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
 import com.google.android.material.button.MaterialButton
 
 class BookAddActivity : AppCompatActivity(), AlertListener {
@@ -31,6 +32,7 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
     private lateinit var etNum: EditText
 
     private lateinit var btnAddPhoto: RelativeLayout
+    private lateinit var btnChangePhoto: MaterialButton
     private lateinit var btnCancel: MaterialButton
     private lateinit var btnSave: MaterialButton
 
@@ -82,6 +84,7 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
             ivPhotoPreview.setImageURI(imageUri)
             imgBtnAddPhoto.visibility = View.GONE
             bookImage = imageUri
+            btnChangePhoto.visibility = View.VISIBLE
         }
     }
 
@@ -92,6 +95,24 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun pickImage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_DENIED
+            ) {
+                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                requestPermissions(
+                    permissions,
+                    UniformAddActivity.PERMISSION_REQUEST
+                );
+            } else {
+                pickImageFromGallery();
+            }
+        } else {
+            pickImageFromGallery();
         }
     }
 
@@ -116,21 +137,19 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
     private fun setupButtons() {
         btnAddPhoto = findViewById(R.id.iv_book_add_foto)
         btnAddPhoto.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED
-                ) {
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(
-                        permissions,
-                        UniformAddActivity.PERMISSION_REQUEST
-                    );
-                } else {
-                    pickImageFromGallery();
-                }
+            if (bookImage == null) {
+                pickImage()
             } else {
-                pickImageFromGallery();
+                val intent = Intent(this@BookAddActivity, ImagePreviewActivity::class.java)
+                intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, bookImage.toString())
+                startActivity(intent)
             }
+        }
+
+        btnChangePhoto = findViewById(R.id.btn_book_add_ganti_foto)
+        btnChangePhoto.visibility = View.GONE
+        btnChangePhoto.setOnClickListener {
+            pickImage()
         }
 
         btnCancel = findViewById(R.id.btn_book_add_batal)

@@ -18,10 +18,10 @@ import kotlinx.coroutines.launch
 class UserListViewModel(private val context: Context) :
     ViewModel(),
     UserListListener {
-    private val userListLiveData = MutableLiveData<ArrayList<Siswa>>()
+    private val userListLiveData = MutableLiveData<ArrayList<PenggunaModel>>()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-    private val dataPenggunaList = arrayListOf<Siswa>()
+    private val dataPenggunaList = arrayListOf<PenggunaModel>()
 
     fun setUserType(verified: Boolean) {
         if (dataPenggunaList.isEmpty()) {
@@ -34,20 +34,9 @@ class UserListViewModel(private val context: Context) :
     override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
         if (penggunaList.status == ModelState.SUCCESS) {
             if (penggunaList.data?.isNotEmpty()!!) {
-                penggunaList.data?.forEach { user ->
-                    dataPenggunaList.add(
-                        Siswa(
-                            nama = user.nama,
-                            noHP = user.noHP,
-                            email = user.email,
-                            passwd = user.passwd,
-                            alamat = user.alamat,
-                            userId = user.userId,
-                            status = user.status
-                        )
-                    )
-                    userListLiveData.postValue(dataPenggunaList)
-                }
+                dataPenggunaList.clear()
+                dataPenggunaList.addAll(penggunaList.data!!)
+                userListLiveData.postValue(dataPenggunaList)
                 showToast(context.getString(R.string.scs_get_data))
             }
         } else if (penggunaList.status == ModelState.ERROR) {
@@ -55,7 +44,7 @@ class UserListViewModel(private val context: Context) :
         }
     }
 
-    fun getUserList() : LiveData<ArrayList<Siswa>> {
+    fun getUserList() : LiveData<ArrayList<PenggunaModel>> {
         return userListLiveData
     }
 
