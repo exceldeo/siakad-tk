@@ -136,12 +136,12 @@
         <item>2021 / 2022</item>
     </string-array>
 
-    <string-array name="list_jumlah">
-        <item>1 buah</item>
-        <item>2 buah</item>
-        <item>3 buah</item>
-        <item>4 buah</item>
-    </string-array>
+    <integer-array name="list_jumlah">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
 
     <string-array name="list_ukuran">
         <item>S</item>
@@ -188,5 +188,6 @@
     <string name="example_nominal">225000</string>
     <string name="data_pendaftaran">Data Pendaftaran</string>
     <string name="fail_upload_img">Gagal mengunggah foto</string>
+    <string name="example_gender">Perempuan</string>
 
 </resources>

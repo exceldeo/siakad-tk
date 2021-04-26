@@ -45,6 +45,10 @@ class BasketRepository() {
         })
     }
 
+    fun addItem(data: DetailKeranjangModel) {
+
+    }
+
     fun insertDataKeranjang(data: Keranjang, detail: ArrayList<DetailKeranjangModel>) {
         val newKey = basketDB.push().key.toString()
         val newData = KeranjangModel(

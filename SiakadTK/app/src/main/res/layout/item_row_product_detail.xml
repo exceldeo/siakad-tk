@@ -22,6 +22,7 @@
             android:padding="@dimen/container_padding_x">
 
             <com.makeramen.roundedimageview.RoundedImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/riv_item_product_img"
                 android:layout_width="@dimen/list_view_img_size"
                 android:layout_height="@dimen/list_view_img_size"
