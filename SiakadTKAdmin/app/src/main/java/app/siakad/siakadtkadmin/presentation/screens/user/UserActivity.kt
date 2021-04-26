@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity
@@ -70,7 +71,7 @@ class UserActivity : AppCompatActivity(), UserClickListener {
         tab.setupWithViewPager(viewPager)
     }
 
-    override fun navigateToUserDetail(siswa: Siswa) {
+    override fun navigateToUserDetail(siswa: PenggunaModel) {
         if (siswa.status) {
             val intent = Intent(this, UserDetailActivity::class.java)
             intent.putExtra(UserListFragment.VERIFIED_USER, siswa)

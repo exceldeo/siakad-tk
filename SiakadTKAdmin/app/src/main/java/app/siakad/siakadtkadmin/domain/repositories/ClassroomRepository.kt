@@ -1,27 +1,29 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
-import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
-import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomAddListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomListListener
 import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
-import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementListFragment
+import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomListFragment
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
-class AnnouncementRepository {
-    private val announcementDB = FirebaseRef(
-        FirebaseRef.PENGUMUMAN_REF
+class ClassroomRepository {
+    private val classroomDB = FirebaseRef(
+        FirebaseRef.KELAS_REF
     ).getRef()
 
-    fun initGetAnnouncementListListener(
-        listener: AnnouncementListListener,
-        type: String = AnnouncementListFragment.TO_ALL
+    fun initGetClassroomListListener(
+        listener: ClassroomListListener,
+        type: String = ClassroomListFragment.TK_A
     ) {
-        announcementDB.orderByChild("tipe").equalTo(type)
+        classroomDB.orderByChild("namaKelas").equalTo(type)
             .addChildEventListener(object : ChildEventListener {
                 override fun onCancelled(error: DatabaseError) {}
 
@@ -30,19 +32,19 @@ class AnnouncementRepository {
                 override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
 
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    val dataRef = arrayListOf<PengumumanModel>()
+                    val dataRef = arrayListOf<KelasModel>()
 
                     forloop@ for (dataSS in snapshot.children) {
                         when (dataSS.value) {
                             is String -> {
-                                val data: PengumumanModel? =
-                                    snapshot.getValue(PengumumanModel::class.java)
+                                val data: KelasModel? =
+                                    snapshot.getValue(KelasModel::class.java)
                                 if (data != null) {
-                                    data.pengumumanId = snapshot.key.toString()
+                                    data.kelasId = snapshot.key.toString()
                                     dataRef.add(data)
                                 }
 
-                                listener.setAnnouncementList(
+                                listener.setClassroomList(
                                     ModelContainer(
                                         status = ModelState.SUCCESS,
                                         data = dataRef
@@ -50,15 +52,15 @@ class AnnouncementRepository {
                                 )
                                 break@forloop
                             }
-                            is PengumumanModel -> {
-                                val data: PengumumanModel? =
-                                    dataSS.getValue(PengumumanModel::class.java)
+                            is KelasModel -> {
+                                val data: KelasModel? =
+                                    dataSS.getValue(KelasModel::class.java)
                                 if (data != null) {
-                                    data.pengumumanId = dataSS.key.toString()
+                                    data.kelasId = dataSS.key.toString()
                                     dataRef.add(data)
                                 }
 
-                                listener.setAnnouncementList(
+                                listener.setClassroomList(
                                     ModelContainer(
                                         status = ModelState.SUCCESS,
                                         data = dataRef
@@ -73,22 +75,14 @@ class AnnouncementRepository {
             })
     }
 
-    fun insertData(listener: AnnouncementAddListener, data: Pengumuman) {
-        val newKey = announcementDB.push().key.toString()
-        val newData = PengumumanModel(
-            pengumumanId = newKey,
-            tipe = data.tipe,
-            adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            judul = data.judul,
-            keterangan = data.keterangan,
-            tanggal = data.tanggal,
-            tujuanId = data.tujuanId
-        )
+    fun insertData(listener: ClassroomAddListener, data: KelasModel) {
+        val newKey = classroomDB.push().key.toString()
+        data.kelasId = newKey
 
-        announcementDB.child(newKey).setValue(newData).addOnSuccessListener {
-            listener.notifyAnnouncementAddStatus(ModelContainer.getSuccesModel("Success"))
+        classroomDB.child(newKey).setValue(data).addOnSuccessListener {
+            listener.notifyClassroomAddStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            listener.notifyAnnouncementAddStatus(ModelContainer.getFailModel())
+            listener.notifyClassroomAddStatus(ModelContainer.getFailModel())
         }
     }
 }

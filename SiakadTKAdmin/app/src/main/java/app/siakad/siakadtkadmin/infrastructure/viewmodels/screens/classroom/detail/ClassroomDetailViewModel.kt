@@ -1,21 +1,26 @@
-package app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user
+package app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail
 
 import android.content.Context
 import android.widget.Toast
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.KelasModel
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.repositories.ClassroomRepository
+import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.models.PenggunaModel
-import app.siakad.siakadtkadmin.domain.repositories.UserRepository
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
+import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
+import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class UserListViewModel(private val context: Context) :
+class ClassroomDetailViewModel(private val context: Context) :
     ViewModel(),
     UserListListener {
     private val userListLiveData = MutableLiveData<ArrayList<PenggunaModel>>()
@@ -23,10 +28,10 @@ class UserListViewModel(private val context: Context) :
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
     private val dataPenggunaList = arrayListOf<PenggunaModel>()
 
-    fun setUserType(verified: Boolean) {
+    fun setUserClassType(kelasId: String) {
         if (dataPenggunaList.isEmpty()) {
             vmCoroutineScope.launch {
-                userRepository.initGetUserListListener(this@UserListViewModel, verified)
+                userRepository.initGetUserListByClassListener(this@ClassroomDetailViewModel, kelasId)
             }
         }
     }

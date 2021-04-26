@@ -57,11 +57,12 @@
                 android:textSize="@dimen/card_subtitle_text"/>
         </LinearLayout>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_item_product_edit"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:src="@drawable/ic_mode_edit"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_marginStart="@dimen/list_corner"/>
     </com.google.android.flexbox.FlexboxLayout>
 </androidx.cardview.widget.CardView>
