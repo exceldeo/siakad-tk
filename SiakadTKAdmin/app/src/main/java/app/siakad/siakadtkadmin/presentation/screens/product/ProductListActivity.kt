@@ -22,11 +22,12 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.Produc
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.adapter.ProductListAdapter
 import app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity
+import app.siakad.siakadtkadmin.presentation.screens.product.listener.ProductListListener
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.UniformAddActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.utils.ProductType
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class ProductListActivity : AppCompatActivity() {
+class ProductListActivity : AppCompatActivity(), ProductListListener {
 
     private var pageTitle = ""
 
@@ -125,5 +126,16 @@ class ProductListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@ProductListActivity)
             adapter = rvProductAdapter
         }
+    }
+
+    override fun navigateToUniformEdit(uniform: SeragamModel) {
+        val intent = Intent(this@ProductListActivity, UniformAddActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun navigateToBookEdit(book: BukuModel) {
+        val intent = Intent(this@ProductListActivity, BookAddActivity::class.java)
+        intent.putExtra(BookAddActivity.BOOK_MODEL, book)
+        startActivity(intent)
     }
 }

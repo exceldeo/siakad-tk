@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.product.BukuModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.book.BookAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
@@ -22,6 +23,7 @@ import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
 import com.google.android.material.button.MaterialButton
+import com.squareup.picasso.Picasso
 
 class BookAddActivity : AppCompatActivity(), AlertListener {
 
@@ -42,16 +44,34 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
     private lateinit var vmBookAdd: BookAddViewModel
 
     private var bookImage: Uri? = null
+    private var buku: BukuModel? = null
+
+    companion object {
+        const val BOOK_MODEL = "buku_model"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_add)
+
+        if (intent.getParcelableExtra<BukuModel>(BOOK_MODEL) != null) {
+            buku = intent.getParcelableExtra(BOOK_MODEL)
+            showToast(buku?.namaProduk!!)
+        }
 
         etName = findViewById(R.id.et_book_add_nama)
         etPrice = findViewById(R.id.et_book_add_harga)
         etNum = findViewById(R.id.et_book_add_jumlah)
         ivPhotoPreview = findViewById(R.id.iv_book_add_foto_preview)
         imgBtnAddPhoto = findViewById(R.id.btn_book_add_add_foto)
+
+        if (buku != null) {
+            etName.setText(buku?.namaProduk)
+            etPrice.setText(buku?.harga.toString())
+            etNum.setText(buku?.jumlah.toString())
+            Picasso.with(this).load(buku?.fotoProduk).into(ivPhotoPreview)
+            imgBtnAddPhoto.visibility = View.GONE
+        }
 
         setupAppBar()
         setupButtons()
@@ -137,17 +157,25 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
     private fun setupButtons() {
         btnAddPhoto = findViewById(R.id.iv_book_add_foto)
         btnAddPhoto.setOnClickListener {
-            if (bookImage == null) {
+            if (bookImage == null && buku == null) {
                 pickImage()
             } else {
                 val intent = Intent(this@BookAddActivity, ImagePreviewActivity::class.java)
-                intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, bookImage.toString())
+                if (buku != null && bookImage == null) {
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URL)
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, buku?.fotoProduk)
+                } else {
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URI)
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, bookImage.toString())
+                }
                 startActivity(intent)
             }
         }
 
         btnChangePhoto = findViewById(R.id.btn_book_add_ganti_foto)
-        btnChangePhoto.visibility = View.GONE
+        if (buku == null) {
+            btnChangePhoto.visibility = View.GONE
+        }
         btnChangePhoto.setOnClickListener {
             pickImage()
         }
@@ -223,5 +251,9 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
             etNum.text.toString().toInt(),
             etPrice.text.toString().toInt()
         )
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
