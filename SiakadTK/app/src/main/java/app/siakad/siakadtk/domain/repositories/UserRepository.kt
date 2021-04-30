@@ -115,13 +115,13 @@ class UserRepository() {
             nama = pengguna.nama,
             passwd = pengguna.passwd,
             role = UserRoleModel.SISWA.str,
-            detailPenggunaModel = pengguna.detail
+            detailPengguna = pengguna.detail
         )
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Sukses"))
+            listener.notifyDataInsertStatus(ModelContainer.getSuccesModel("Sukses"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyDataInsertStatus(ModelContainer.getFailModel())
         }
     }
 
@@ -145,7 +145,7 @@ class UserRepository() {
             nama = pengguna.nama,
             passwd = pengguna.passwd,
             role = UserRoleModel.SISWA.str,
-            detailPenggunaModel = detailPengguna
+            detailPengguna = detailPengguna
         )
         userDB.child(currentKey).setValue(updateData).addOnSuccessListener {
             insertState.postValue(ModelContainer.getSuccesModel("Sukses"))

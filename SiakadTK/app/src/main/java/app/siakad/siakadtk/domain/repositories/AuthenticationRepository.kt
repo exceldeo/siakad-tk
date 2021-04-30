@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.models.PenggunaModel
+import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -32,15 +33,15 @@ class AuthenticationRepository {
         }.addOnFailureListener { e -> authState.postValue(ModelContainer.getFailModel()) }
     }
 
-    fun register(email: String, passwd: String) {
+    fun register(listener: RegisterListener, email: String, passwd: String) {
         fbAuth.createUserWithEmailAndPassword(email, passwd).addOnCompleteListener { task: Task<AuthResult> ->
             if (task.isSuccessful) {
-                authState.postValue(ModelContainer.getSuccesModel("Berhasil daftar!"))
+                listener.notifyRegisterStatus(ModelContainer.getSuccesModel("Berhasil daftar!"))
             } else {
-                authState.postValue(ModelContainer.getFailModel())
+                listener.notifyRegisterStatus(ModelContainer.getFailModel())
             }
         }
-        sendEmailVerification()
+//        sendEmailVerification()
     }
 
     fun logout() {

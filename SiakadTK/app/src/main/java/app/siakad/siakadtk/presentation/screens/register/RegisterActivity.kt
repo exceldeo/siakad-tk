@@ -19,6 +19,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFact
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import java.io.File
 
@@ -135,10 +136,6 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
                     etName.text.toString(),
                     firstPaymentImage
                 )
-                showToast("Sudah pendaftaran")
-//                navigateToMain()
-            } else {
-                showToast("Ulangi pendaftaran")
             }
         }
         tvLogin.setOnClickListener {
@@ -183,14 +180,10 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
             valid = false
         }
 
-//        if (firstPaymentImage == null) {
-//            val alertDialog = AlertDialogFragment(
-//                "Foto belum ditambahkan!",
-//                "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
-//            )
-//            alertDialog.show(supportFragmentManager, null)
-//            valid = false
-//        }
+        if (firstPaymentImage == null) {
+            showToast("Tambahkan Foto Pembayaran Awal!")
+            valid = false
+        }
 
         return valid
     }
