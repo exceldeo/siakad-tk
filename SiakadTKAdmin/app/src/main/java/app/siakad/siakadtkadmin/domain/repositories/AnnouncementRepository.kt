@@ -6,7 +6,6 @@ import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementListFragment
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -38,7 +37,7 @@ class AnnouncementRepository {
                                 val data: PengumumanModel? =
                                     snapshot.getValue(PengumumanModel::class.java)
                                 if (data != null) {
-                                    data.pengumumanId = snapshot.key.toString()
+                                    data.pengumumanId = dataSS.key.toString()
                                     dataRef.add(data)
                                 }
 
@@ -73,19 +72,12 @@ class AnnouncementRepository {
             })
     }
 
-    fun insertData(listener: AnnouncementAddListener, data: Pengumuman) {
+    fun insertData(listener: AnnouncementAddListener, data: PengumumanModel) {
         val newKey = announcementDB.push().key.toString()
-        val newData = PengumumanModel(
-            pengumumanId = newKey,
-            tipe = data.tipe,
-            adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            judul = data.judul,
-            keterangan = data.keterangan,
-            tanggal = data.tanggal,
-            tujuanId = data.tujuanId
-        )
+        data.pengumumanId = newKey
+        data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
 
-        announcementDB.child(newKey).setValue(newData).addOnSuccessListener {
+        announcementDB.child(newKey).setValue(data).addOnSuccessListener {
             listener.notifyAnnouncementAddStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
             listener.notifyAnnouncementAddStatus(ModelContainer.getFailModel())

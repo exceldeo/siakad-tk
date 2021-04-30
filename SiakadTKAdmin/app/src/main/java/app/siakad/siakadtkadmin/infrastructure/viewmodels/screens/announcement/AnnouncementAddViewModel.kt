@@ -5,12 +5,12 @@ import android.widget.Toast
 import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.repositories.AnnouncementRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -60,7 +60,7 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
         vmCoroutineScope.launch {
             announcementRepository.insertData(
                 this@AnnouncementAddViewModel,
-                Pengumuman(
+                PengumumanModel(
                     tipe = type,
                     judul = title,
                     keterangan = content,

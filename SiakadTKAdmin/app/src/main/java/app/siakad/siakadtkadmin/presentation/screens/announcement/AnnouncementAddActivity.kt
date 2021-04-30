@@ -54,6 +54,10 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
 
     var announcementType: String = AnnouncementListFragment.TO_ALL
 
+    companion object {
+        const val ANNOUNCEMENT_EDIT = "edit_pengumuman"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_announcement_add)

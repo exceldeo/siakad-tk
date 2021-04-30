@@ -10,24 +10,21 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.product.BukuModel
 import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
-import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
-import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.adapter.ProductListAdapter
 import app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity
-import app.siakad.siakadtkadmin.presentation.screens.product.listener.ProductListListener
+import app.siakad.siakadtkadmin.presentation.screens.product.listener.ProductEditListener
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.UniformAddActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.utils.ProductType
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class ProductListActivity : AppCompatActivity(), ProductListListener {
+class ProductListActivity : AppCompatActivity(), ProductEditListener {
 
     private var pageTitle = ""
 

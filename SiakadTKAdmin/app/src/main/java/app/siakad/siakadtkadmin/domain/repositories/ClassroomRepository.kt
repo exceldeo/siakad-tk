@@ -2,13 +2,10 @@ package app.siakad.siakadtkadmin.domain.repositories
 
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.models.KelasModel
-import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomListListener
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomListFragment
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -40,7 +37,7 @@ class ClassroomRepository {
                                 val data: KelasModel? =
                                     snapshot.getValue(KelasModel::class.java)
                                 if (data != null) {
-                                    data.kelasId = snapshot.key.toString()
+                                    data.kelasId = dataSS.key.toString()
                                     dataRef.add(data)
                                 }
 

@@ -4,27 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
-import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
+import app.siakad.siakadtkadmin.domain.models.PengumumanModel
+import app.siakad.siakadtkadmin.presentation.screens.announcement.listener.AnnouncementEditListener
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
-import app.siakad.siakadtkadmin.presentation.screens.user.UserListFragment
 import app.siakad.siakadtkadmin.presentation.utils.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
-class AnnouncementActivity : AppCompatActivity() {
+class AnnouncementActivity : AppCompatActivity(), AnnouncementEditListener {
 
     private val pageTitle = "Pengumuman"
 
@@ -83,5 +72,11 @@ class AnnouncementActivity : AppCompatActivity() {
 
         tab = findViewById(R.id.tabs_announcement)
         tab.setupWithViewPager(viewPager)
+    }
+
+    override fun navigateToAnnouncementEdit(announecement: PengumumanModel) {
+        val intent = Intent(this, AnnouncementAddActivity::class.java)
+        intent.putExtra(AnnouncementAddActivity.ANNOUNCEMENT_EDIT, announecement)
+        startActivity(intent)
     }
 }

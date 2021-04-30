@@ -42,7 +42,7 @@ class UserRepository() {
                                     snapshot.getValue(PenggunaModel::class.java)
                                 if (data != null) {
                                     if (data.status == verified) {
-                                        data.userId = snapshot.key.toString()
+                                        data.userId = dataSS.key.toString()
                                         dataRef.add(data)
 
                                         listener.setUserList(

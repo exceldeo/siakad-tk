@@ -4,10 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.domain.models.product.BukuModel
 import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
-import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
-import app.siakad.siakadtkadmin.infrastructure.data.product.Produk
-import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
-import app.siakad.siakadtkadmin.presentation.screens.product.listener.ProductListListener
+import app.siakad.siakadtkadmin.presentation.screens.product.listener.ProductEditListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_product_list.view.*
 
@@ -19,7 +16,7 @@ class ProductListViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
             tv_item_product_stok.text = "Stok: " + item.jumlah.toString()
 
             iv_item_product_edit.setOnClickListener {
-                (v.context as ProductListListener).navigateToUniformEdit(item)
+                (v.context as ProductEditListener).navigateToUniformEdit(item)
             }
         }
     }
@@ -31,7 +28,7 @@ class ProductListViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
             tv_item_product_stok.text = "Stok: " + item.jumlah.toString()
 
             iv_item_product_edit.setOnClickListener {
-                (v.context as ProductListListener).navigateToBookEdit(item)
+                (v.context as ProductEditListener).navigateToBookEdit(item)
             }
         }
     }
