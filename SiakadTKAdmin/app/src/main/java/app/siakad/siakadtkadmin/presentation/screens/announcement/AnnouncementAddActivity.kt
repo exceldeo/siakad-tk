@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -52,7 +53,8 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
     private lateinit var vmAnnouncementAdd: AnnouncementAddViewModel
     private lateinit var userObserver: Observer<ArrayList<Siswa>>
 
-    var announcementType: String = AnnouncementListFragment.TO_ALL
+    private var pengumuman: PengumumanModel? = null
+    private var announcementType: String = AnnouncementListFragment.TO_ALL
 
     companion object {
         const val ANNOUNCEMENT_EDIT = "edit_pengumuman"
@@ -62,13 +64,22 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_announcement_add)
 
+        if (intent.getParcelableExtra<PengumumanModel>(ANNOUNCEMENT_EDIT) != null) {
+            pengumuman = intent.getParcelableExtra(ANNOUNCEMENT_EDIT)
+        } else if (intent.getStringExtra(AnnouncementListFragment.ANNOUNCEMENT_TYPE) != null) {
+            announcementType = intent.getStringExtra(AnnouncementListFragment.ANNOUNCEMENT_TYPE)
+        }
+
         etTitle = findViewById(R.id.et_announcement_add_judul)
         etContent = findViewById(R.id.et_announcement_add_isi)
-
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
 
-        announcementType = intent.getStringExtra(AnnouncementListFragment.ANNOUNCEMENT_TYPE)!!
+        if (pengumuman != null) {
+            announcementType = pengumuman?.tipe!!
+            etTitle.setText(pengumuman?.judul)
+            etContent.setText(pengumuman?.keterangan)
+        }
 
         setupAppBar()
         setupViewModel()
@@ -110,6 +121,11 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
             val siswa: Siswa = adapter.getItemAtPosition(position) as Siswa
             showToast(siswa.nama)
         }
+        if (pengumuman?.tipe == AnnouncementListFragment.TO_SISWA) {
+            if (pengumuman?.tujuanId != "") {
+                atvSiswa.setText(pengumuman?.tujuanId!!)
+            }
+        }
         atvSiswa.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {}
 
@@ -128,6 +144,11 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         kelasListAdapter =
             ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
         atvKelas.setAdapter(kelasListAdapter)
+        if (pengumuman?.tipe == AnnouncementListFragment.TO_KELAS) {
+            if (pengumuman?.tujuanId != "") {
+                atvSiswa.setText(pengumuman?.tujuanId!!)
+            }
+        }
         atvKelas.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(str: Editable?) {}
 
@@ -206,6 +227,9 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         }
 
         etDate = findViewById(R.id.et_announcement_add_tanggal)
+        if (pengumuman != null) {
+            etDate.setText(pengumuman?.tanggal)
+        }
         etDate.setOnClickListener {
             val arg = Bundle()
 
@@ -285,18 +309,22 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
     }
 
     private fun checkMenu(menu: String) {
-        if (menu.equals(AnnouncementListFragment.TO_ALL)) {
-            layoutKelas.visibility = View.GONE
-            layoutSiswa.visibility = View.GONE
-            announcementType = AnnouncementListFragment.TO_ALL
-        } else if (menu.equals(AnnouncementListFragment.TO_SISWA)) {
-            layoutKelas.visibility = View.GONE
-            layoutSiswa.visibility = View.VISIBLE
-            announcementType = AnnouncementListFragment.TO_SISWA
-        } else {
-            layoutKelas.visibility = View.VISIBLE
-            layoutSiswa.visibility = View.GONE
-            announcementType = AnnouncementListFragment.TO_KELAS
+        when {
+            menu.equals(AnnouncementListFragment.TO_ALL) -> {
+                layoutKelas.visibility = View.GONE
+                layoutSiswa.visibility = View.GONE
+                announcementType = AnnouncementListFragment.TO_ALL
+            }
+            menu.equals(AnnouncementListFragment.TO_SISWA) -> {
+                layoutKelas.visibility = View.GONE
+                layoutSiswa.visibility = View.VISIBLE
+                announcementType = AnnouncementListFragment.TO_SISWA
+            }
+            else -> {
+                layoutKelas.visibility = View.VISIBLE
+                layoutSiswa.visibility = View.GONE
+                announcementType = AnnouncementListFragment.TO_KELAS
+            }
         }
     }
 
