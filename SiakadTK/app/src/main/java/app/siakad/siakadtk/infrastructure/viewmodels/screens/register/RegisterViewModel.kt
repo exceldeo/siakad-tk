@@ -23,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), StorageListener, RegisterListener {
+class RegisterViewModel(private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), RegisterListener, StorageListener {
     private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)

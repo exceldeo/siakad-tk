@@ -12,13 +12,14 @@ import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
+import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class LoginViewModel (private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel() {
+class LoginViewModel (private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), LoginListener {
     private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -26,13 +27,6 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
     private var email: String = ""
     private var passwd: String = ""
     private var userId: String = ""
-
-    private lateinit var loginObserver: Observer<ModelContainer<String>>
-    private lateinit var penggunaObserver: Observer<ModelContainer<PenggunaModel>>
-
-    init {
-        setupObserver()
-    }
 
     fun loginSiswa(email: String, passwd: String) {
         this.email = email
@@ -43,47 +37,37 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         }
     }
 
-    private fun setupObserver() {
-        penggunaObserver = Observer { user ->
-            if (user.status == ModelState.SUCCESS) {
-                val item = user.data
+    override fun setUser(user: ModelContainer<PenggunaModel>) {
+        if (user.status == ModelState.SUCCESS) {
+            val item = user.data
 
-                if (item != null) {
-                    if (item.role == UserRoleModel.SISWA.str) {
-                        if(authRepository.isEmailVerified()){
-                            authRepository.login(email, passwd)
-                            userId = item.userId
-                        } else {
-                            showToast(context.getString(R.string.email_is_not_verified))
-                        }
-                    } else {
-                        showToast(context.getString(R.string.fail_login_not_siswa))
-                    }
-                } else if (user.status == ModelState.ERROR) {
-                    showToast(context.getString(R.string.fail_get_user))
-                }
-            }
-
-            loginObserver = Observer { data ->
-                if (data.status == ModelState.SUCCESS) {
-                    showToast(context.getString(R.string.scs_login))
-
-                    if (!AuthenticationRepository.userState) {
-                        AuthenticationRepository.setUser(userId, email, passwd)
-                    }
-
-                    (context as AuthenticationListener).navigateToMain()
+            if (item != null) {
+                if (item.role == UserRoleModel.SISWA.str) {
+                    authRepository.login(this@LoginViewModel, email, passwd)
+                    userId = item.userId
                 } else {
-                    showToast(context.getString(R.string.fail_login))
+                    showToast(context.getString(R.string.fail_login_not_siswa))
                 }
+            } else if (user.status == ModelState.ERROR) {
+                showToast(context.getString(R.string.fail_get_user))
             }
-
-            userRepository.getUser().observe(lcOwner, penggunaObserver)
-            authRepository.getAuthState().observe(lcOwner, loginObserver)
         }
     }
 
     private fun showToast(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun notifyLoginStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_login))
+
+            if (!AuthenticationRepository.userState) {
+                AuthenticationRepository.setUser(userId, email, passwd)
+            }
+            (context as AuthenticationListener).navigateToMain()
+        } else {
+            showToast(context.getString(R.string.fail_login))
+        }
     }
 }

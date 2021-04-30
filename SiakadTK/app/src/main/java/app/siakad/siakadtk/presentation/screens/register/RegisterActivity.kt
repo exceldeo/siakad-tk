@@ -82,7 +82,7 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_PHOTO_REQUEST) {
             val imageUri: Uri = data?.data!!
-            btnUploadBukti.text = File(imageUri.path).name
+            btnUploadBukti.text = imageUri.toString()
             firstPaymentImage = imageUri
         }
     }

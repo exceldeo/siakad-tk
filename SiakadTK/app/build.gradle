@@ -66,4 +66,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'com.github.androidbuffer:kotlinfilepicker:v0.0.4-alpha'
     implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

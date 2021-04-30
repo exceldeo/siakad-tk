@@ -9,13 +9,16 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.history.HistoryActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.infrastructure.data.Aktivitas
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.profile.SettingsActivity
 import app.siakad.siakadtk.presentation.screens.profile.UserActivitiesAdapter
 import app.siakad.siakadtk.presentation.screens.profile.UserActivitiesData
@@ -23,7 +26,7 @@ import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivit
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var vmProfile: ProfileViewModel
     private lateinit var ibtnHistory: ImageButton
     private lateinit var ibtnRegistration: ImageButton
     private lateinit var tvStudentName: TextView
@@ -38,6 +41,7 @@ class ProfileFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        setupViewModel()
         setupItemView(view)
         setupView()
         return view
@@ -57,8 +61,16 @@ class ProfileFragment : Fragment() {
             list.addAll(UserActivitiesData.listData)
             showMyActivityRecyclerList()
         }
-        profileViewModel =
-            ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+    }
+
+    private fun setupViewModel() {
+        vmProfile = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this.requireContext()
+            )
+        ).get(ProfileViewModel::class.java)
     }
 
     private fun setupView() {

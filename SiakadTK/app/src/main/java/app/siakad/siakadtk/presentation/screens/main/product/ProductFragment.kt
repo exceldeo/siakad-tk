@@ -8,15 +8,18 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import app.siakad.siakadtk.presentation.screens.main.product.basket.BasketActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.product.ProductViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.product.ProductListViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.product.ProductListActivity
 
 class ProductFragment : Fragment() {
 
-    private lateinit var productViewModel: ProductViewModel
+    private lateinit var vmProductList: ProductListViewModel
 //    private lateinit var svProduct: SearchView
     private lateinit var btnMyBasket: LinearLayout
     private lateinit var btnBookProduct: ImageButton
@@ -27,12 +30,22 @@ class ProductFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        productViewModel =
-                ViewModelProviders.of(this).get(ProductViewModel::class.java)
+
+        setupViewModel()
         val view = inflater.inflate(R.layout.fragment_product, container, false)
         setupItemView(view)
         setupView()
         return view
+    }
+
+    private fun setupViewModel() {
+        vmProductList = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this.requireContext()
+            )
+        ).get(ProductListViewModel::class.java)
     }
 
     private fun setupItemView(v: View?) {

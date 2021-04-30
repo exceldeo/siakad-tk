@@ -3,11 +3,10 @@ package app.siakad.siakadtk.domain.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
-import app.siakad.siakadtk.domain.models.AktivitasModel
+import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtk.infrastructure.data.DetailKeranjang
 import app.siakad.siakadtk.infrastructure.data.Keranjang
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -46,12 +45,16 @@ class BasketRepository() {
         })
     }
 
-    fun insertDataKeranjang(data: Keranjang) {
+    fun addItem(data: DetailKeranjangModel) {
+
+    }
+
+    fun insertDataKeranjang(data: Keranjang, detail: ArrayList<DetailKeranjangModel>) {
         val newKey = basketDB.push().key.toString()
         val newData = KeranjangModel(
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
             keranjangId = newKey,
-            basketDetailId = data.basketDetailId
+            detailKeranjang = detail
         )
 
         basketDB.child(newKey).setValue(newData).addOnSuccessListener {
