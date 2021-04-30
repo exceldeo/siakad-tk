@@ -6,6 +6,7 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.listeners.storage.StorageListener
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 
 class WholeStorage(private val refName: String) {
@@ -31,5 +32,15 @@ class WholeStorage(private val refName: String) {
         }.addOnFailureListener { e ->
             listener.notifyUploadStatus(ModelContainer.getFailModel())
         }
+    }
+
+    fun deleteImage(listener: StorageListener, imageUrl: String) {
+        val filePath = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl)
+        filePath.delete()
+            .addOnCompleteListener { task ->
+                listener.notifyDeleteStatus(ModelContainer.getSuccesModel("Success"))
+            }.addOnFailureListener { e ->
+                listener.notifyDeleteStatus(ModelContainer.getFailModel())
+            }
     }
 }

@@ -115,10 +115,10 @@ class ProductListActivity : AppCompatActivity(), ProductListListener {
 
     private fun setupListAdapter() {
         rvProduct = findViewById(R.id.rv_product_list_daftar_produk)
-        if (pageTitle == BOOK_PAGE) {
-            rvProductAdapter = ProductListAdapter(ProductType.BUKU)
+        rvProductAdapter = if (pageTitle == BOOK_PAGE) {
+            ProductListAdapter(ProductType.BUKU)
         } else {
-            rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
+            ProductListAdapter(ProductType.SERAGAM)
         }
 
         rvProduct.apply {
@@ -130,6 +130,7 @@ class ProductListActivity : AppCompatActivity(), ProductListListener {
 
     override fun navigateToUniformEdit(uniform: SeragamModel) {
         val intent = Intent(this@ProductListActivity, UniformAddActivity::class.java)
+        intent.putExtra(UniformAddActivity.SERAGAM_MODEL, uniform)
         startActivity(intent)
     }
 
