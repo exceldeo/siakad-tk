@@ -9,8 +9,13 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.DetailKeranjangModel
+import app.siakad.siakadtk.domain.models.product.DetailSeragamModel
 import app.siakad.siakadtk.infrastructure.data.product.Seragam
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
@@ -34,6 +39,9 @@ class ProductUniformDetailActivity : AppCompatActivity() {
     private lateinit var tvProductTotalPayment: TextView
     private lateinit var btnProductAddToBasket: TextView
 
+    private lateinit var vmBasket: KeranjangViewModel
+    private var item = DetailKeranjangModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_uniform_detail)
@@ -42,15 +50,18 @@ class ProductUniformDetailActivity : AppCompatActivity() {
 
         val data = intent.getParcelableExtra<Parcelable>("seragam") as Seragam
         if (data != null) {
-            tvProductName.text = data.namaProduk
+            item.nama = data.namaProduk
             tvProductJenisKelamin.text = data.jenisKelamin
-            for (item in data.detailSeragam) {
-                Picasso.get().load(data.fotoProduk).into(ivProductImage);
-                sizes.add(item.ukuran)
-                prices[item.ukuran] = item.harga
-                totals[item.ukuran] = item.jumlah
+            item.gambar = data.fotoProduk
+            for (it in data.detailSeragam) {
+                sizes.add(it.ukuran)
+                prices[it.ukuran] = it.harga
+                totals[it.ukuran] = it.jumlah
             }
         }
+
+        tvProductName.text = item.nama
+        Picasso.get().load(item.gambar).into(ivProductImage)
         setupAdapterListener()
     }
 
@@ -76,8 +87,14 @@ class ProductUniformDetailActivity : AppCompatActivity() {
             TextWatcher {
             @SuppressLint("SetTextI18n")
             override fun afterTextChanged(str: Editable?) {
-                totals[str.toString()].toString().let { etProductSum.setText(it) }
-                prices[str.toString()].toString().let { tvProductPrice.text = it }
+                totals[str.toString()].toString().let {
+                    etProductSum.setText(it)
+                    item.jumlah = Integer.valueOf(it)
+                }
+                prices[str.toString()].toString().let {
+                    tvProductPrice.text = it
+                    item.harga = Integer.valueOf(it)
+                }
                 tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(tvProductPrice.text.toString()) * Integer.valueOf(etProductSum.text.toString())).toString()
             }
 
@@ -108,6 +125,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
 //        }
         etProductSum.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
+                item.jumlah = Integer.valueOf(etProductSum.text.toString())
                 tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(tvProductPrice.text.toString()) * Integer.valueOf(etProductSum.text.toString())).toString()
             }
 
@@ -118,8 +136,22 @@ class ProductUniformDetailActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
-        btnProductAddToBasket.setOnClickListener {
 
+        vmBasket = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this
+            )
+        ).get(KeranjangViewModel::class.java)
+
+        btnProductAddToBasket.setOnClickListener{
+            vmBasket.insertItemBasket(
+                name = tvProductName.text.toString(),
+                image = item.gambar,
+                jumlah = item.jumlah,
+                harga = item.jumlah * item.harga,
+            )
         }
     }
 

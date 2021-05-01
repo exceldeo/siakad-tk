@@ -3,6 +3,7 @@ package app.siakad.siakadtk.infrastructure.viewmodels.utils.factory
 import android.content.Context
 import androidx.lifecycle.*
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.product.ProductListViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
@@ -36,6 +37,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(ProductListViewModel::class.java) -> {
                 ProductListViewModel(ctx, owner) as T
+            }
+            modelClass.isAssignableFrom(KeranjangViewModel::class.java) -> {
+                KeranjangViewModel(ctx, owner) as T
             }
             else -> throw IllegalArgumentException("Unknown View Model Class")
         }

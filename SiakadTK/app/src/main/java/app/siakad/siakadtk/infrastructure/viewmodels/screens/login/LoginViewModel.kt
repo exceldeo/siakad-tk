@@ -11,6 +11,7 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.BasketRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
@@ -22,6 +23,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel (private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), LoginListener {
     private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
+    private val basketRepository = BasketRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
     private var email: String = ""
@@ -35,6 +37,7 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         vmCoroutineScope.launch {
             userRepository.getUserByEmail(email)
         }
+        userRepository.makeKeranjang()
     }
 
     override fun setUser(user: ModelContainer<PenggunaModel>) {

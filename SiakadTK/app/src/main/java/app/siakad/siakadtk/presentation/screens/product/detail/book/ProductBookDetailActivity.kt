@@ -9,13 +9,16 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.DetailKeranjangModel
+import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.infrastructure.data.product.Buku
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_row_product_detail.view.*
 
-
-//NEED TO BE FIXED
 class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private val pageTitle = "Produk Buku"
 
@@ -28,6 +31,9 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     private lateinit var tvProductTotalPayment: TextView
     private lateinit var btnProductAddToBasket: TextView
 
+    private lateinit var vmBasket: KeranjangViewModel
+    private var item = DetailKeranjangModel()
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +42,15 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         setupView()
 
         val data = intent.getParcelableExtra<Parcelable>("buku") as Buku
-        Picasso.get().load(data.fotoProduk).into(ivProductImage)
-        tvProductName.text = data.namaProduk
-        tvProductPrice.text = data.harga.toString()
-        etProductSum.setText(data.jumlah.toString())
-        tvProductTotalPayment.text = "Total : Rp " + (data.harga * Integer.valueOf(etProductSum.text.toString())).toString()
+        item.nama = data.namaProduk
+        item.gambar = data.fotoProduk
+        item.jumlah = data.jumlah
+        item.harga = data.harga
+
+        Picasso.get().load(item.gambar).into(ivProductImage)
+        tvProductName.text = item.nama
+        tvProductPrice.text = item.harga.toString()
+        etProductSum.setText(item.jumlah.toString())
     }
 
     private fun setupItemView() {
@@ -55,7 +65,8 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
         etProductSum.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(tvProductPrice.text.toString()) * Integer.valueOf(etProductSum.text.toString())).toString()
+                item.jumlah = Integer.valueOf(etProductSum.text.toString())
+                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.harga) * Integer.valueOf(item.jumlah)).toString()
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -65,6 +76,23 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
     private fun setupView() {
         setupAppBar()
+
+        vmBasket = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this
+            )
+        ).get(KeranjangViewModel::class.java)
+
+        btnProductAddToBasket.setOnClickListener{
+            vmBasket.insertItemBasket(
+                name = item.nama,
+                image = item.gambar,
+                jumlah = Integer.valueOf(item.jumlah),
+                harga = item.harga * item.jumlah
+            )
+        }
     }
 
     private fun setupAppBar() {

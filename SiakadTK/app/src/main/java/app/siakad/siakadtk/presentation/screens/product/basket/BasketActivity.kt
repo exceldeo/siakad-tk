@@ -5,12 +5,15 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 
 class BasketActivity : AppCompatActivity() {
     private val pageTitle = "Keranjang Saya"
 
     private lateinit var toolbar: Toolbar
     private lateinit var rvBasket: RecyclerView
+
+    private lateinit var vmBasket: KeranjangViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

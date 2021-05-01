@@ -11,4 +11,13 @@ data class KeranjangModel(
     var keranjangId: String = "",
     var detailKeranjang: ArrayList<DetailKeranjangModel> = arrayListOf(),
     var userId: String = ""
-): Parcelable
+): Parcelable {
+    @Exclude
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "keranjangId" to keranjangId,
+            "detailKeranjang" to detailKeranjang,
+            "userId" to userId
+        )
+    }
+}

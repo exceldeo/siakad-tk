@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
+import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
+import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
@@ -22,6 +24,23 @@ class UserRepository() {
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
     private var detailPengguna = DetailPenggunaModel()
+    private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
+    private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
+
+    fun makeKeranjang() {
+        val newKey = basketDB.push().key.toString()
+        val newData = KeranjangModel(
+            userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
+            keranjangId = newKey,
+            detailKeranjang = detailKeranjang
+        )
+
+        basketDB.child(AuthenticationRepository.fbAuth.currentUser?.uid!!).setValue(newData).addOnSuccessListener {
+            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            insertState.postValue(ModelContainer.getFailModel())
+        }
+    }
 
     fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
         userDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
