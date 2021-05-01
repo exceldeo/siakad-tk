@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.lifecycle.*
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.ClassroomAddViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.ClassroomListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.book.BookAddViewModel
@@ -70,6 +73,21 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(BookAddViewModel::class.java) -> {
                 BookAddViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(ClassroomListViewModel::class.java) -> {
+                ClassroomListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(ClassroomAddViewModel::class.java) -> {
+                ClassroomAddViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(ClassroomDetailViewModel::class.java) -> {
+                ClassroomDetailViewModel(
                     ctx!!
                 ) as T
             }

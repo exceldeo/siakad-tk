@@ -23,14 +23,14 @@ import kotlinx.coroutines.launch
 
 class ProductListViewModel(private val context: Context) :
     ViewModel(), ProductListListener {
-    private val uniformList = MutableLiveData<ArrayList<Seragam>>()
-    private val bookList = MutableLiveData<ArrayList<Buku>>()
+    private val uniformList = MutableLiveData<ArrayList<SeragamModel>>()
+    private val bookList = MutableLiveData<ArrayList<BukuModel>>()
 
     private val productRepository = ProductRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
-    private val dataSeragamList = arrayListOf<Seragam>()
-    private val dataBukuList = arrayListOf<Buku>()
+    private val dataSeragamList = arrayListOf<SeragamModel>()
+    private val dataBukuList = arrayListOf<BukuModel>()
 
     fun setProductType(type: String) {
         if (type == ProductListActivity.UNIFORM_PAGE && dataSeragamList.isEmpty()) {
@@ -51,19 +51,9 @@ class ProductListViewModel(private val context: Context) :
     override fun setUniformList(product: ModelContainer<ArrayList<SeragamModel>>) {
         if (product.status == ModelState.SUCCESS) {
             if (product.data?.isNotEmpty()!!) {
-                product.data?.forEach { item ->
-                    dataSeragamList.add(
-                        Seragam(
-                            produkId = item.produkId,
-                            namaProduk = item.namaProduk,
-                            jenisKelamin = item.jenisKelamin,
-                            jumlah = item.jumlah,
-                            detailSeragam = item.detailSeragam,
-                            fotoProduk = item.fotoProduk
-                        )
-                    )
-                    uniformList.postValue(dataSeragamList)
-                }
+                dataSeragamList.clear()
+                dataSeragamList.addAll(product.data!!)
+                uniformList.postValue(dataSeragamList)
             }
         } else if (product.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
@@ -73,28 +63,20 @@ class ProductListViewModel(private val context: Context) :
     override fun setBookList(product: ModelContainer<ArrayList<BukuModel>>) {
         if (product.status == ModelState.SUCCESS) {
             if (product.data?.isNotEmpty()!!) {
-                product.data?.forEach { item ->
-                    dataBukuList.add(
-                        Buku(
-                            produkId = item.produkId,
-                            namaProduk = item.namaProduk,
-                            jumlah = item.jumlah,
-                            fotoProduk = item.fotoProduk
-                        )
-                    )
+                dataBukuList.clear()
+                    dataBukuList.addAll(product.data!!)
                     bookList.postValue(dataBukuList)
-                }
             }
         } else if (product.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
         }
     }
 
-    fun getUniformList(): LiveData<ArrayList<Seragam>> {
+    fun getUniformList(): LiveData<ArrayList<SeragamModel>> {
         return uniformList
     }
 
-    fun getBookList(): LiveData<ArrayList<Buku>> {
+    fun getBookList(): LiveData<ArrayList<BukuModel>> {
         return bookList
     }
 
