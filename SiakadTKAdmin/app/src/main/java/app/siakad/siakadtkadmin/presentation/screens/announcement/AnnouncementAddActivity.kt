@@ -21,6 +21,7 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewMode
 import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomListFragment
 import app.siakad.siakadtkadmin.presentation.views.date.DateListener
 import app.siakad.siakadtkadmin.presentation.views.date.DatePickerFragment
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
@@ -35,8 +36,8 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
     private lateinit var etContent: EditText
     private lateinit var ivDate: ImageView
     private lateinit var etDate: EditText
-    private lateinit var btnCancel: CardView
-    private lateinit var btnSave: CardView
+    private lateinit var btnCancel: MaterialButton
+    private lateinit var btnSave: MaterialButton
 
     private lateinit var ddReceiver: TextInputLayout
     private lateinit var ddReceiverClass: TextInputLayout
@@ -86,6 +87,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
             announcementType = pengumuman?.tipe!!
             etTitle.setText(pengumuman?.judul)
             etContent.setText(pengumuman?.keterangan)
+            tujuanId = pengumuman?.tujuanId
         }
 
         setupAppBar()
@@ -297,15 +299,29 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         }
 
         btnSave = findViewById(R.id.btn_announcement_add_simpan)
+        if (pengumuman != null) {
+            btnSave.text = "Simpan"
+        }
         btnSave.setOnClickListener {
             if (validateInput()) {
-                vmAnnouncementAdd.insertAnnouncement(
-                    etTitle.text.toString(),
-                    etContent.text.toString(),
-                    etDate.text.toString(),
-                    announcementType,
-                    tujuanId
-                )
+                if (pengumuman == null) {
+                    vmAnnouncementAdd.updateAnnouncement(
+                        etTitle.text.toString(),
+                        etContent.text.toString(),
+                        etDate.text.toString(),
+                        announcementType,
+                        tujuanId,
+                        pengumuman!!
+                    )
+                } else {
+                    vmAnnouncementAdd.insertAnnouncement(
+                        etTitle.text.toString(),
+                        etContent.text.toString(),
+                        etDate.text.toString(),
+                        announcementType,
+                        tujuanId
+                    )
+                }
             }
         }
     }

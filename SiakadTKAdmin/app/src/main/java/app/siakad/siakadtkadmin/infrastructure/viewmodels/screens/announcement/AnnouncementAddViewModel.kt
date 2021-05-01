@@ -19,6 +19,7 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
+import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementListFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -71,6 +72,14 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
         }
     }
 
+    override fun notifyAnnouncementUpdateStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_update_data))
+        } else if (status.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
+        }
+    }
+
     override fun setUserById(pengguna: ModelContainer<PenggunaModel>) {
         if (pengguna.status == ModelState.SUCCESS) {
             userLiveData.postValue(pengguna.data!!)
@@ -113,7 +122,13 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
         }
     }
 
-    fun insertAnnouncement(title: String, content: String, date: String, type: String, target: String?) {
+    fun insertAnnouncement(
+        title: String,
+        content: String,
+        date: String,
+        type: String,
+        target: String?
+    ) {
         vmCoroutineScope.launch {
             var newTarget = ""
             if (target != null) {
@@ -129,6 +144,37 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
                     tanggal = date,
                     tujuanId = newTarget
                 )
+            )
+        }
+    }
+
+    fun updateAnnouncement(
+        title: String,
+        content: String,
+        date: String,
+        type: String,
+        target: String?,
+        pengumuman: PengumumanModel
+    ) {
+        var newTarget = ""
+        if (target != null) {
+            newTarget = target
+        }
+
+        pengumuman.judul = title
+        pengumuman.tanggal = date
+        pengumuman.tipe = type
+        if (type == AnnouncementListFragment.TO_ALL) {
+            pengumuman.tujuanId = ""
+        } else {
+            pengumuman.tujuanId = newTarget
+        }
+
+        vmCoroutineScope.launch {
+
+            announcementRepository.updateData(
+                this@AnnouncementAddViewModel,
+                pengumuman
             )
         }
     }

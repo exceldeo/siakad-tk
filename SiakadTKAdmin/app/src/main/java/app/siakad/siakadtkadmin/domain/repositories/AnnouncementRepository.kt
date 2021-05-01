@@ -83,4 +83,17 @@ class AnnouncementRepository {
             listener.notifyAnnouncementAddStatus(ModelContainer.getFailModel())
         }
     }
+
+    fun updateData(listener: AnnouncementAddListener, data: PengumumanModel) {
+        val newData = data.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${data.pengumumanId}" to newData
+        )
+
+        announcementDB.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyAnnouncementUpdateStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyAnnouncementUpdateStatus(ModelContainer.getFailModel())
+        }
+    }
 }
