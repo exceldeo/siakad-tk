@@ -5,12 +5,10 @@ import android.net.Uri
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.db.storage.FirebaseStrg
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
-import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
@@ -31,42 +29,21 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
     private val fbStorage = WholeStorage(FirebaseStrg.USER_DETAIL_REF)
 
-    private var email: String = ""
-    private var passwd: String = ""
-    private var name: String = ""
-    private var imageUri: Uri? = null
-    private var detail = DetailPenggunaModel()
+    private var detailPengguna = DetailPenggunaModel()
     private var pengguna = Pengguna()
 
-    fun registerSiswa(email: String, passwd: String, name: String, imageUri: Uri) {
-        this.email = email
-        this.passwd = passwd
-        this.name = name
-        this.imageUri = imageUri
-
-        vmCoroutineScope.launch {
-            authRepository.register(this@RegisterViewModel, email, passwd)
-        }
-    }
-
-    fun insertPengguna() {
+    fun registerSiswa(email: String, passwd: String, name: String, imageUri: Uri?) {
         pengguna = Pengguna(
             nama = name,
             email = email,
             passwd = passwd
         )
 
-        if (imageUri != null) {
-            vmCoroutineScope.launch {
-                fbStorage.uploadImage(
-                    this@RegisterViewModel, imageUri!!,
-                    System.currentTimeMillis().toString() + "." + getFileExtension(imageUri!!)
-                )
-            }
-        } else {
-            vmCoroutineScope.launch {
-                userRepository.insertData(this@RegisterViewModel, pengguna)
-            }
+        vmCoroutineScope.launch {
+            fbStorage.uploadImage(
+                this@RegisterViewModel, imageUri!!,
+                System.currentTimeMillis().toString() + "." + getFileExtension(imageUri!!)
+            )
         }
     }
 
@@ -75,37 +52,38 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
             .getExtensionFromMimeType(context.contentResolver.getType(uri))
     }
 
-    private fun showToast(msg: String) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-    }
-
     override fun notifyUploadStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
-            detail.fotoBayarAwal = status.data!!
-            pengguna.detail = detail
+            detailPengguna.fotoBayarAwal = status.data!!
+            pengguna.detail = detailPengguna
             vmCoroutineScope.launch {
                 userRepository.insertData(this@RegisterViewModel, pengguna)
             }
         } else if (status.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_upload_img) + imageUri.toString())
+            showToast(context.getString(R.string.fail_upload_img))
+        }
+    }
+
+    override fun notifyDataInsertStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            vmCoroutineScope.launch {
+                authRepository.register(this@RegisterViewModel, pengguna.email, pengguna.passwd)
+            }
+        } else if (status.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_set_data))
         }
     }
 
     override fun notifyRegisterStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_regis))
-            insertPengguna()
+            (context as AuthenticationListener).navigateToMain()
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_regis))
         }
     }
 
-    override fun notifyDataInsertStatus(status: ModelContainer<String>) {
-        if (status.status == ModelState.SUCCESS) {
-            showToast(context.getString(R.string.scs_set_data))
-        } else if (status.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_set_data))
-        }
+    private fun showToast(msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
-
 }

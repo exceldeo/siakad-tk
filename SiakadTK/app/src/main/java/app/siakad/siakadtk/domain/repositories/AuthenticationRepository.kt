@@ -35,7 +35,7 @@ class AuthenticationRepository {
     fun register(listener: RegisterListener, email: String, passwd: String) {
         fbAuth.createUserWithEmailAndPassword(email, passwd).addOnCompleteListener { task: Task<AuthResult> ->
             if (task.isSuccessful) {
-                listener.notifyRegisterStatus(ModelContainer.getSuccesModel("Berhasil daftar"))
+                listener.notifyRegisterStatus(ModelContainer.getSuccesModel("Berhasil daftar!"))
             } else {
                 listener.notifyRegisterStatus(ModelContainer.getFailModel())
             }

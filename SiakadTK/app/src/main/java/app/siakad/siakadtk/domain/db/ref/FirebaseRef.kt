@@ -5,7 +5,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class FirebaseRef(private val refName: String) {
     companion object {
-        const val USER_REF = "User"
+        const val USER_REF = "Pengguna"
         const val USER_DETAIL_REF = "UserDetail"
         const val PENGUMUMAN_REF = "Pengumuman"
         const val DAFTAR_ULANG_REF = "DaftarUlang"

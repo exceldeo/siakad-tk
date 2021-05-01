@@ -24,7 +24,7 @@ import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import java.io.File
 
 
-class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListener {
+class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -130,9 +130,12 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
         }
         btnSignup.setOnClickListener {
             if (validateForm()) {
-                registerUser()
-            } else {
-                showToast("Ulangi pendaftaran")
+                vmRegister.registerSiswa(
+                    etEmail.text.toString(),
+                    etPassword.text.toString(),
+                    etName.text.toString(),
+                    firstPaymentImage
+                )
             }
         }
         tvLogin.setOnClickListener {
@@ -145,16 +148,6 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
         etRepeatPassword.transformationMethod = PasswordTransformationMethod()
     }
 
-    private fun registerUser(){
-        firstPaymentImage?.let {
-            vmRegister.registerSiswa(
-                etEmail.text.toString(),
-                etPassword.text.toString(),
-                etName.text.toString(),
-                it
-            )
-        }
-    }
     private fun validateForm(): Boolean {
         var valid = true
 
@@ -188,11 +181,7 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
         }
 
         if (firstPaymentImage == null) {
-            val alertDialog = AlertDialogFragment(
-                "Foto belum ditambahkan!",
-                "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
-            )
-            alertDialog.show(supportFragmentManager, null)
+            showToast("Tambahkan Foto Pembayaran Awal!")
             valid = false
         }
 
@@ -207,9 +196,5 @@ class RegisterActivity : AppCompatActivity(), AlertListener, AuthenticationListe
 
     override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-    }
-
-    override fun alertAction() {
-        registerUser()
     }
 }

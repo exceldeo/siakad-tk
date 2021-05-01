@@ -8,7 +8,7 @@ import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.storage.UploadTask
 
-class WholeStorage(private val refName: String) {
+class WholeStorage(refName: String) {
     private val storage = FirebaseStrg(refName).getRef()
 
     fun uploadImage(listener: StorageListener, imageUri: Uri, fileName: String) {
