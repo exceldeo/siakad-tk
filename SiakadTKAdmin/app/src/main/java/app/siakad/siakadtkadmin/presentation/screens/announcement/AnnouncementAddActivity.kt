@@ -304,7 +304,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
         }
         btnSave.setOnClickListener {
             if (validateInput()) {
-                if (pengumuman == null) {
+                if (pengumuman != null) {
                     vmAnnouncementAdd.updateAnnouncement(
                         etTitle.text.toString(),
                         etContent.text.toString(),

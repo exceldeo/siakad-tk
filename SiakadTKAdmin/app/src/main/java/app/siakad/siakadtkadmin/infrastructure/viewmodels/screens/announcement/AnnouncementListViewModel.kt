@@ -32,14 +32,47 @@ class AnnouncementListViewModel(private val context: Context, private val lcOwne
         }
     }
 
-    override fun setAnnouncementList(pengumumanList: ModelContainer<ArrayList<PengumumanModel>>) {
-        if (pengumumanList.status == ModelState.SUCCESS) {
-            if (pengumumanList.data?.isNotEmpty()!!) {
-                dataPengumumanList.addAll(pengumumanList.data!!)
+    override fun addAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                dataPengumumanList.add(pengumuman.data!!)
                 announcementList.postValue(dataPengumumanList)
             }
-        } else if (pengumumanList.status == ModelState.ERROR) {
+        } else if (pengumuman.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
+        }
+    }
+
+    override fun updateAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                dataPengumumanList.forEachIndexed { index, item ->
+                    if (item.tujuanId == pengumuman.data?.tujuanId) {
+                        dataPengumumanList[index] = pengumuman.data!!
+                    }
+                }
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
+        }
+    }
+
+    override fun removeAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                var target = 0
+                dataPengumumanList.forEachIndexed feData@{ index, item ->
+                    if (item.tujuanId == pengumuman.data?.tujuanId) {
+                        target = index
+                        return@feData
+                    }
+                }
+                dataPengumumanList.removeAt(target)
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
         }
     }
 

@@ -15,109 +15,109 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class ProductRepository {
-    private val uniformDB = FirebaseRef(
-        FirebaseRef.SERAGAM_REF
-    ).getRef()
+  private val uniformDB = FirebaseRef(
+    FirebaseRef.SERAGAM_REF
+  ).getRef()
 
-    private val bookDB = FirebaseRef(
-        FirebaseRef.BUKU_REF
-    ).getRef()
+  private val bookDB = FirebaseRef(
+    FirebaseRef.BUKU_REF
+  ).getRef()
 
-    fun initGetUniformEventListener(listener: ProductListListener) {
-        uniformDB.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {}
+  fun initGetUniformEventListener(listener: ProductListListener) {
+    uniformDB.addValueEventListener(object : ValueEventListener {
+      override fun onCancelled(error: DatabaseError) {}
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val dataRef = arrayListOf<SeragamModel>()
+      override fun onDataChange(snapshot: DataSnapshot) {
+        val dataRef = arrayListOf<SeragamModel>()
 
-                for (dataSS in snapshot.children) {
-                    val data: SeragamModel? = dataSS.getValue(SeragamModel::class.java)
-                    data?.produkId = dataSS.key.toString()
-                    dataRef.add(data!!)
+        for (dataSS in snapshot.children) {
+          val data: SeragamModel? = dataSS.getValue(SeragamModel::class.java)
+          data?.produkId = dataSS.key.toString()
+          dataRef.add(data!!)
 
-                    listener.setUniformList(
-                        ModelContainer(
-                            status = ModelState.SUCCESS,
-                            data = dataRef
-                        )
-                    )
-                }
-            }
-        })
-    }
-
-    fun initGetBookEventListener(listener: ProductListListener) {
-        bookDB.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {}
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val dataRef = arrayListOf<BukuModel>()
-
-                for (dataSS in snapshot.children) {
-                    val data: BukuModel? = dataSS.getValue(BukuModel::class.java)
-                    data?.produkId = dataSS.key.toString()
-                    dataRef.add(data!!)
-
-                    listener.setBookList(
-                        ModelContainer(
-                            status = ModelState.SUCCESS,
-                            data = dataRef
-                        )
-                    )
-                }
-            }
-        })
-    }
-
-    fun insertDataSeragam(listener: ProductListener, data: SeragamModel) {
-        val newKey = uniformDB.push().key.toString()
-        data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
-        data.produkId = newKey
-
-        uniformDB.child(newKey).setValue(data).addOnSuccessListener {
-            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+          listener.setUniformList(
+            ModelContainer(
+              status = ModelState.SUCCESS,
+              data = dataRef
+            )
+          )
         }
-    }
+      }
+    })
+  }
 
-    fun updateDataSeragam(listener: ProductListener, data: SeragamModel) {
-        data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
-        val newData = data.toMap()
-        val childUpdates = hashMapOf<String, Any>(
-            "/${data.produkId}" to newData
-        )
+  fun initGetBookEventListener(listener: ProductListListener) {
+    bookDB.addValueEventListener(object : ValueEventListener {
+      override fun onCancelled(error: DatabaseError) {}
 
-        uniformDB.updateChildren(childUpdates).addOnSuccessListener {
-            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+      override fun onDataChange(snapshot: DataSnapshot) {
+        val dataRef = arrayListOf<BukuModel>()
+
+        for (dataSS in snapshot.children) {
+          val data: BukuModel? = dataSS.getValue(BukuModel::class.java)
+          data?.produkId = dataSS.key.toString()
+          dataRef.add(data!!)
+
+          listener.setBookList(
+            ModelContainer(
+              status = ModelState.SUCCESS,
+              data = dataRef
+            )
+          )
         }
+      }
+    })
+  }
+
+  fun insertDataSeragam(listener: ProductListener, data: SeragamModel) {
+    val newKey = uniformDB.push().key.toString()
+    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+    data.produkId = newKey
+
+    uniformDB.child(newKey).setValue(data).addOnSuccessListener {
+      listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener {
+      listener.notifyInsertDataStatus(ModelContainer.getFailModel())
     }
+  }
 
-    fun insertDataBuku(listener: ProductListener, data: BukuModel) {
-        val newKey = bookDB.push().key.toString()
-        data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
-        data.produkId = newKey
+  fun updateDataSeragam(listener: ProductListener, data: SeragamModel) {
+    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+    val newData = data.toMap()
+    val childUpdates = hashMapOf<String, Any>(
+      "/${data.produkId}" to newData
+    )
 
-        bookDB.child(newKey).setValue(data).addOnSuccessListener {
-            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
-        }
+    uniformDB.updateChildren(childUpdates).addOnSuccessListener {
+      listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener {
+      listener.notifyInsertDataStatus(ModelContainer.getFailModel())
     }
+  }
 
-    fun updateDataBuku(listener: ProductListener, data: BukuModel) {
-        data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
-        val newData = data.toMap()
-        val childUpdates = hashMapOf<String, Any>(
-            "/${data.produkId}" to newData
-        )
+  fun insertDataBuku(listener: ProductListener, data: BukuModel) {
+    val newKey = bookDB.push().key.toString()
+    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+    data.produkId = newKey
 
-        bookDB.updateChildren(childUpdates).addOnSuccessListener {
-            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
-        }
+    bookDB.child(newKey).setValue(data).addOnSuccessListener {
+      listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener {
+      listener.notifyInsertDataStatus(ModelContainer.getFailModel())
     }
+  }
+
+  fun updateDataBuku(listener: ProductListener, data: BukuModel) {
+    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+    val newData = data.toMap()
+    val childUpdates = hashMapOf<String, Any>(
+      "/${data.produkId}" to newData
+    )
+
+    bookDB.updateChildren(childUpdates).addOnSuccessListener {
+      listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener {
+      listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+    }
+  }
 }
