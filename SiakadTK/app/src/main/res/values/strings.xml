@@ -81,10 +81,10 @@
     <string name="ukuran">Ukuran</string>
     <string name="jumlah">Jumlah</string>
     <string name="jumlah_produk">Jumlah Tersedia : </string>
-    <string name="example_price">Rp 70.000</string>
-    <string name="example_jumlah">100</string>
+    <string name="example_price">0</string>
+    <string name="example_jumlah">0</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
-    <string name="example_sum_price">Total: Rp 140.000</string>
+    <string name="example_sum_price">Total: Rp 0</string>
     <string name="ubah_password">Ubah Password</string>
     <string name="password_baru">Password Baru</string>
     <string name="username">Username</string>
