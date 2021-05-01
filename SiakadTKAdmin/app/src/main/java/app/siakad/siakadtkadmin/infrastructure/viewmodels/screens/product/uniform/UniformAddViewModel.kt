@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.db.storage.FirebaseStrg
 import app.siakad.siakadtkadmin.domain.models.product.DetailSeragamModel
+import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
 import app.siakad.siakadtkadmin.domain.repositories.ProductRepository
 import app.siakad.siakadtkadmin.domain.storage.WholeStorage
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
@@ -26,7 +27,9 @@ class UniformAddViewModel(private val context: Context) :
     private val fbStorage = WholeStorage(FirebaseStrg.SERAGAM_REF)
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
-    private var seragam = Seragam()
+    private var seragam = SeragamModel()
+    private var updateImageUri: Uri? = null
+    private var isUpdateData: Boolean = false
 
     override fun notifyInsertDataStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
@@ -39,9 +42,26 @@ class UniformAddViewModel(private val context: Context) :
     override fun notifyUploadStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             seragam.fotoProduk = status.data!!
-            vmCoroutineScope.launch {
-                productRepository.insertDataSeragam(this@UniformAddViewModel, seragam)
+            if (isUpdateData) {
+                vmCoroutineScope.launch {
+                    productRepository.updateDataSeragam(this@UniformAddViewModel, seragam)
+                }
+            } else {
+                vmCoroutineScope.launch {
+                    productRepository.insertDataSeragam(this@UniformAddViewModel, seragam)
+                }
             }
+        } else if (status.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_upoad_img))
+        }
+    }
+
+    override fun notifyDeleteStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            fbStorage.uploadImage(
+                this@UniformAddViewModel, updateImageUri!!,
+                System.currentTimeMillis().toString() + "." + getFileExtension(updateImageUri!!)
+            )
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_upoad_img))
         }
@@ -54,7 +74,7 @@ class UniformAddViewModel(private val context: Context) :
         total: Int,
         sizeList: ArrayList<DetailSeragamModel>
     ) {
-        seragam = Seragam(
+        seragam = SeragamModel(
             namaProduk = name,
             jenisKelamin = gender,
             jumlah = total,
@@ -71,6 +91,36 @@ class UniformAddViewModel(private val context: Context) :
         } else {
             vmCoroutineScope.launch {
                 productRepository.insertDataSeragam(this@UniformAddViewModel, seragam)
+            }
+        }
+    }
+
+    fun updateUniform(
+        gender: String,
+        name: String,
+        imageUri: Uri?,
+        total: Int,
+        sizeList: ArrayList<DetailSeragamModel>,
+        data: SeragamModel
+    ) {
+        data.namaProduk = name
+        data.jenisKelamin = gender
+        data.jumlah = total
+        data.detailSeragam = sizeList
+        seragam = data
+
+        isUpdateData = true
+
+        if (imageUri != null) {
+            updateImageUri = imageUri
+            vmCoroutineScope.launch {
+                fbStorage.deleteImage(
+                    this@UniformAddViewModel, data.fotoProduk
+                )
+            }
+        } else {
+            vmCoroutineScope.launch {
+                productRepository.updateDataSeragam(this@UniformAddViewModel, seragam)
             }
         }
     }

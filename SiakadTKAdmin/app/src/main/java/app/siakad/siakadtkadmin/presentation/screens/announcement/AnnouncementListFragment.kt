@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
+import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
@@ -88,7 +88,7 @@ class AnnouncementListFragment(private val type: String) : Fragment() {
         ).get(AnnouncementListViewModel::class.java)
         vmAnnouncementList.setAnnouncementType(type)
 
-        val obsAnnouncementList = Observer<ArrayList<Pengumuman>> { newAnnouncementList ->
+        val obsAnnouncementList = Observer<ArrayList<PengumumanModel>> { newAnnouncementList ->
             if (newAnnouncementList.size > 0) {
                 announcementListAdapter.changeDataList(newAnnouncementList)
             }

@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.KelasModel
-import app.siakad.siakadtkadmin.infrastructure.data.Kelas
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.ClassroomListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.classroom.adapter.ClassroomListAdater

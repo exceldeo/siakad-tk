@@ -19,10 +19,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.product.BukuModel
 import app.siakad.siakadtkadmin.domain.models.product.DetailSeragamModel
+import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.uniform.UniformAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
+import app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.adapter.UniformSizeListAdapter
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductDialog
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductListener
@@ -32,6 +35,7 @@ import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
+import com.squareup.picasso.Picasso
 
 class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductListener {
 
@@ -58,6 +62,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     private var uniformGender = GENDER_MAN
     private var uniformCount = 0
     private var uniformImage: Uri? = null
+    private var seragam: SeragamModel? = null
 
     companion object {
         const val GENDER_MAN = "Laki-laki"
@@ -65,15 +70,30 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
 
         const val PICK_PHOTO_REQUEST = 1000
         const val PERMISSION_REQUEST = 1001
+
+        const val SERAGAM_MODEL = "seragam_model"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uniform_add)
 
+        if (intent.getParcelableExtra<BukuModel>(SERAGAM_MODEL) != null) {
+            seragam = intent.getParcelableExtra(SERAGAM_MODEL)
+        }
+
         etName = findViewById(R.id.et_uniform_add_nama)
         ivPhotoPreview = findViewById(R.id.iv_uniform_add_foto_preview)
         imgBtnAddPhoto = findViewById(R.id.btn_uniform_add_add_foto)
+
+        if (seragam != null) {
+            etName.setText(seragam?.namaProduk)
+            uniformCount = seragam?.jumlah!!
+            if (seragam?.fotoProduk != "") {
+                Picasso.with(this).load(seragam?.fotoProduk).into(ivPhotoPreview)
+                imgBtnAddPhoto.visibility = View.GONE
+            }
+        }
 
         setupAppBar()
         setupViewModel()
@@ -151,17 +171,25 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     private fun setupButtons() {
         btnAddPhoto = findViewById(R.id.iv_uniform_add_foto)
         btnAddPhoto.setOnClickListener {
-            if (uniformImage == null) {
+            if (uniformImage == null && seragam == null) {
                 pickImage()
             } else {
                 val intent = Intent(this@UniformAddActivity, ImagePreviewActivity::class.java)
-                intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, uniformImage.toString())
+                if (seragam != null && uniformImage == null) {
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URL)
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, seragam?.fotoProduk)
+                } else {
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URI)
+                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, uniformImage.toString())
+                }
                 startActivity(intent)
             }
         }
 
         btnChangePhoto = findViewById(R.id.btn_uniform_add_ganti_foto)
-        btnChangePhoto.visibility = View.GONE
+        if (seragam == null) {
+            btnChangePhoto.visibility = View.GONE
+        }
         btnChangePhoto.setOnClickListener {
             pickImage()
         }
@@ -172,13 +200,28 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
         }
 
         btnSave = findViewById(R.id.btn_uniform_add_simpan)
+        if (seragam != null) {
+            btnSave.text = "Simpan Perubahan"
+        }
         btnSave.setOnClickListener {
             if (validateInptu()) {
-                insertUniform()
+                if (seragam != null) {
+                    vmUniformAdd.updateUniform(
+                        uniformGender,
+                        etName.text.toString(),
+                        uniformImage,
+                        uniformCount,
+                        uniformSizeList,
+                        seragam!!
+                    )
+                } else {
+                    insertUniform()
+                }
             }
         }
 
         dialogUniform = UniformProductDialog()
+
         btnAddData = findViewById(R.id.btn_uniform_add_tambah_ukuran)
         btnAddData.setOnClickListener {
             dialogUniform.show(supportFragmentManager, null)
@@ -193,7 +236,11 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
         val adapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, menus)
 
         ddGender = findViewById(R.id.dd_uniform_add)
-        (ddGender.editText as MaterialAutoCompleteTextView).setText(GENDER_MAN)
+        if (seragam != null) {
+            (ddGender.editText as MaterialAutoCompleteTextView).setText(seragam?.jenisKelamin)
+        } else {
+            (ddGender.editText as MaterialAutoCompleteTextView).setText(GENDER_MAN)
+        }
         (ddGender.editText as MaterialAutoCompleteTextView).setAdapter(adapter)
         (ddGender.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
             TextWatcher {
@@ -248,7 +295,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
             returnState = false
         }
 
-        if (uniformImage == null) {
+        if (uniformImage == null && seragam == null) {
             val alertDialog = AlertDialogFragment(
                 "Foto belum ditambahkan!",
                 "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"
@@ -289,6 +336,10 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = uniformSizeAdapter
+        }
+        if (seragam != null) {
+            uniformSizeList.addAll(seragam?.detailSeragam!!)
+            uniformSizeAdapter.addAllData(seragam?.detailSeragam!!)
         }
     }
 }

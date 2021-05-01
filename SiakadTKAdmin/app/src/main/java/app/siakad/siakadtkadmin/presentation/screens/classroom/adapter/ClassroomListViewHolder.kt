@@ -3,11 +3,7 @@ package app.siakad.siakadtkadmin.presentation.screens.classroom.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.domain.models.KelasModel
-import app.siakad.siakadtkadmin.infrastructure.data.Kelas
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.presentation.screens.classroom.listener.ClassroomClickListener
-import app.siakad.siakadtkadmin.presentation.screens.user.listener.UserClickListener
-import kotlinx.android.synthetic.main.item_announcement.view.*
 import kotlinx.android.synthetic.main.item_classroom.view.*
 
 class ClassroomListViewHolder(private val v: View): RecyclerView.ViewHolder(v) {

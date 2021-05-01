@@ -28,4 +28,9 @@ class UniformSizeListAdapter() : RecyclerView.Adapter<UniformSizeListViewHolder>
         sizeList.add(data)
         notifyDataSetChanged()
     }
+
+    fun addAllData(data: ArrayList<DetailSeragamModel>) {
+        sizeList.addAll(data)
+        notifyDataSetChanged()
+    }
 }
