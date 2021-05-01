@@ -85,10 +85,10 @@ class ProductRepository {
         data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
         val newData = data.toMap()
         val childUpdates = hashMapOf<String, Any>(
-            "/${FirebaseRef.SERAGAM_REF}/${data.produkId}" to newData
+            "/${data.produkId}" to newData
         )
 
-        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+        uniformDB.updateChildren(childUpdates).addOnSuccessListener {
             listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
             listener.notifyInsertDataStatus(ModelContainer.getFailModel())
@@ -111,10 +111,10 @@ class ProductRepository {
         data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
         val newData = data.toMap()
         val childUpdates = hashMapOf<String, Any>(
-            "/${FirebaseRef.BUKU_REF}/${data.produkId}" to newData
+            "/${data.produkId}" to newData
         )
 
-        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+        bookDB.updateChildren(childUpdates).addOnSuccessListener {
             listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
             listener.notifyInsertDataStatus(ModelContainer.getFailModel())

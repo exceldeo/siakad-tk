@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.UserDetailActivity

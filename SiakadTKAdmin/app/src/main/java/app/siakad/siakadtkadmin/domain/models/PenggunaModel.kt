@@ -22,4 +22,17 @@ data class PenggunaModel (
     fun pairNameId(): Map<String, String> {
         return mapOf(nama to userId)
     }
+
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "nama" to nama,
+            "alamat" to alamat,
+            "noHP" to noHP,
+            "email" to email,
+            "passwd" to passwd,
+            "role" to role,
+            "status" to status,
+            "detailPengguna" to detailPengguna
+        )
+    }
 }

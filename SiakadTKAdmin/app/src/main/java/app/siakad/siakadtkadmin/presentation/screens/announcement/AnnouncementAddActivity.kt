@@ -1,6 +1,5 @@
 package app.siakad.siakadtkadmin.presentation.screens.announcement
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -17,7 +16,6 @@ import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomListFragment
@@ -127,7 +125,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
             ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayListOf())
         atvSiswa.setAdapter(siswaListAdapter)
         atvSiswa.setOnItemClickListener { adapter, _, position, _ ->
-            val siswa: Siswa = adapter.getItemAtPosition(position) as Siswa
+            val siswa: PenggunaModel = adapter.getItemAtPosition(position) as PenggunaModel
             showToast(siswa.nama)
         }
         atvSiswa.addTextChangedListener(object : TextWatcher {

@@ -8,7 +8,6 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

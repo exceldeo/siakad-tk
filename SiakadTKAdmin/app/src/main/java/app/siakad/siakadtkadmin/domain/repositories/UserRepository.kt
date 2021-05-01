@@ -11,10 +11,12 @@ import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.Announcement
 import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 
 class UserRepository() {
     private var userState = MutableLiveData<ModelContainer<PenggunaModel>>()
@@ -197,6 +199,19 @@ class UserRepository() {
             listener.notifyDataInsertStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
             listener.notifyDataInsertStatus(ModelContainer.getFailModel())
+        }
+    }
+
+    fun updateUserData(listener: UserDetailListener, data: PenggunaModel) {
+        val newData = data.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${data.userId}" to newData
+        )
+
+        userDB.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
         }
     }
 }
