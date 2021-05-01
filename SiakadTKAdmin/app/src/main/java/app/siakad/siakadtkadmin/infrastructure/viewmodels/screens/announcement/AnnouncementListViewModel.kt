@@ -35,7 +35,6 @@ class AnnouncementListViewModel(private val context: Context, private val lcOwne
     override fun setAnnouncementList(pengumumanList: ModelContainer<ArrayList<PengumumanModel>>) {
         if (pengumumanList.status == ModelState.SUCCESS) {
             if (pengumumanList.data?.isNotEmpty()!!) {
-                dataPengumumanList.clear()
                 dataPengumumanList.addAll(pengumumanList.data!!)
                 announcementList.postValue(dataPengumumanList)
             }

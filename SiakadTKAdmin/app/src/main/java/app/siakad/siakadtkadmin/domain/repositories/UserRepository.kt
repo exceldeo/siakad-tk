@@ -7,6 +7,7 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
@@ -42,7 +43,7 @@ class UserRepository() {
                                     snapshot.getValue(PenggunaModel::class.java)
                                 if (data != null) {
                                     if (data.status == verified) {
-                                        data.userId = dataSS.key.toString()
+                                        data.userId = snapshot.key.toString()
                                         dataRef.add(data)
 
                                         listener.setUserList(
@@ -133,8 +134,8 @@ class UserRepository() {
             })
     }
 
-    fun getUserById(listener: RegistrationListListener, id: String) {
-        userDB.orderByChild("email").equalTo(id).addChildEventListener(object : ChildEventListener {
+    fun getUserById(listener: Any, id: String) {
+        userDB.orderByKey().equalTo(id).addChildEventListener(object : ChildEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -146,7 +147,11 @@ class UserRepository() {
 
                 if (user != null) {
                     user.userId = snapshot.key.toString()
-                    listener.addUser(ModelContainer.getSuccesModel(user))
+                    if (listener is RegistrationListListener) {
+                        listener.addUser(ModelContainer.getSuccesModel(user))
+                    } else if (listener is AnnouncementAddListener) {
+                        listener.setUserById(ModelContainer.getSuccesModel(user))
+                    }
                 }
             }
 

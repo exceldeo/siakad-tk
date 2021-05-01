@@ -34,7 +34,6 @@ class UserListViewModel(private val context: Context) :
     override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
         if (penggunaList.status == ModelState.SUCCESS) {
             if (penggunaList.data?.isNotEmpty()!!) {
-                dataPenggunaList.clear()
                 dataPenggunaList.addAll(penggunaList.data!!)
                 userListLiveData.postValue(dataPenggunaList)
                 showToast(context.getString(R.string.scs_get_data))

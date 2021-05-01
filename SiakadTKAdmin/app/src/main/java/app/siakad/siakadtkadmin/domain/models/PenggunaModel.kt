@@ -16,4 +16,10 @@ data class PenggunaModel (
     var role: String = "",
     var status: Boolean = false,
     var detailPengguna: DetailPenggunaModel? = null
-): Parcelable
+): Parcelable {
+    override fun toString(): String = nama
+
+    fun pairNameId(): Map<String, String> {
+        return mapOf(nama to userId)
+    }
+}
