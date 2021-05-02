@@ -56,4 +56,5 @@
     <dimen name="banner_header_height">210dp</dimen>
 
     <dimen name="corner">10dp</dimen>
+    <dimen name="tab">100dp</dimen>
 </resources>

@@ -189,5 +189,8 @@
     <string name="data_pendaftaran">Data Pendaftaran</string>
     <string name="fail_upload_img">Gagal mengunggah foto</string>
     <string name="example_gender">Perempuan</string>
+    <string name="pesan">Pesan</string>
+    <string name="pilih_semua">Pilih Semua</string>
+    <string name="tk_a">TK A</string>
 
 </resources>

@@ -51,6 +51,7 @@ class BasketRepository() {
                         KeranjangModel::class.java
                     )
                     data?.keranjangId = snapshot.key.toString()
+                    detailKeranjang = ArrayList(data!!.detailKeranjang)
 
                     listener.removeBasketItem(
                         ModelContainer(
@@ -76,6 +77,23 @@ class BasketRepository() {
         keranjang.keranjangId = AuthenticationRepository.fbAuth.currentUser?.uid!!
         keranjang.detailKeranjang = detailKeranjang
         updateDataKeranjang(listener, keranjang)
+    }
+
+    fun resetKeranjang(listener: BasketListener){
+        val keranjang = KeranjangModel()
+        keranjang.userId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        keranjang.keranjangId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        keranjang.detailKeranjang = arrayListOf()
+        val newData = keranjang.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${FirebaseRef.KERANJANG_REF}/${keranjang.keranjangId}" to newData
+        )
+
+        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+        }
     }
 
     private fun updateDataKeranjang(listener: BasketListener, data: KeranjangModel) {

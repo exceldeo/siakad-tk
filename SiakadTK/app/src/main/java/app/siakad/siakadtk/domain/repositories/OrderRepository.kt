@@ -3,11 +3,12 @@ package app.siakad.siakadtk.domain.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
+import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.models.PesananModel
 import app.siakad.siakadtk.domain.utils.helpers.model.OrderStateModel
-import app.siakad.siakadtk.infrastructure.data.Pesanan
+import app.siakad.siakadtk.domain.utils.listeners.order.OrderListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -44,17 +45,23 @@ class OrderRepository() {
         })
     }
 
-    fun insertDataPesanan(data: Pesanan) {
+    fun insertDataPesanan(listener: OrderListener, data: ArrayList<DetailKeranjangModel>) {
         val newKey = orderDB.push().key.toString()
         val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val newData =
             PesananModel(
                 pesananId = newKey,
-                detailPesananProdukId = data.detailPesananProduk,
+                detailPesanan = data,
                 userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
                 tanggalPesan = todayDate,
-                statusPesan = OrderStateModel.WAITPAYMENT.toString()
+                statusPesan = OrderStateModel.WAITPAYMENT.str
             )
+
+        orderDB.child(newKey).setValue(newData).addOnSuccessListener {
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+        }
     }
     fun getOrderList(): LiveData<ModelContainer<ArrayList<PesananModel>>> {
         return orderList
