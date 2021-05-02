@@ -87,6 +87,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
             TextWatcher {
             @SuppressLint("SetTextI18n")
             override fun afterTextChanged(str: Editable?) {
+                item.ukuran = str.toString()
                 totals[str.toString()].toString().let {
                     etProductSum.setText(it)
                     item.jumlah = Integer.valueOf(it)
@@ -149,6 +150,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
             vmBasket.insertItemBasket(
                 name = tvProductName.text.toString(),
                 image = item.gambar,
+                ukuran = item.ukuran,
                 jumlah = item.jumlah,
                 harga = item.jumlah * item.harga,
             )

@@ -1,72 +1,75 @@
 package app.siakad.siakadtk.domain.repositories
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.utils.listeners.basket.BasketListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.CoroutineScope
+import com.google.firebase.database.*
 
 class BasketRepository() {
-    private var basketList = MutableLiveData<ModelContainer<ArrayList<KeranjangModel>>>()
-    private var insertState = MutableLiveData<ModelContainer<String>>()
-
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
     private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
-    fun makeKeranjang() {
-        val newKey = basketDB.push().key.toString()
-        val newData = KeranjangModel(
-            userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            keranjangId = newKey,
-            detailKeranjang = detailKeranjang
-        )
+    fun initEventListener(listener: BasketListener) {
+        basketDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(
+            object : ChildEventListener {
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: KeranjangModel? = snapshot.getValue(
+                        KeranjangModel::class.java
+                    )
+                    data?.keranjangId = snapshot.key.toString()
+                    detailKeranjang = ArrayList(data!!.detailKeranjang)
 
-        basketDB.child(AuthenticationRepository.fbAuth.currentUser?.uid!!).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
-        }
-    }
-
-    fun initEventListener() {
-        basketDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addValueEventListener(
-            object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val dataRef = arrayListOf<KeranjangModel>()
-
-                    for (dataSS in snapshot.children) {
-                        val data: KeranjangModel? = dataSS.getValue(
-                            KeranjangModel::class.java
-                        )
-                        data?.keranjangId = dataSS.key.toString()
-                        detailKeranjang = ArrayList(data!!.detailKeranjang)
-                        dataRef.add(data!!)
-                    }
-
-                    basketList.postValue(
+                    listener.addBasketItem(
                         ModelContainer(
                             status = ModelState.SUCCESS,
-                            data = dataRef
+                            data = ArrayList(data!!.detailKeranjang)
                         )
                     )
                 }
 
-                override fun onCancelled(error: DatabaseError) {
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: KeranjangModel? = snapshot.getValue(
+                        KeranjangModel::class.java
+                    )
+                    data?.keranjangId = snapshot.key.toString()
+                    detailKeranjang = ArrayList(data!!.detailKeranjang)
+
+                    listener.setBasketList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = ArrayList(data!!.detailKeranjang)
+                        )
+                    )
                 }
 
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    val data: KeranjangModel? = snapshot.getValue(
+                        KeranjangModel::class.java
+                    )
+                    data?.keranjangId = snapshot.key.toString()
+
+                    listener.removeBasketItem(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = ArrayList(data!!.detailKeranjang)
+                        )
+                    )
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
             })
     }
 
     fun addItem(listener: BasketListener, data: DetailKeranjangModel) {
-        initEventListener()
         detailKeranjang.add(data)
         val keranjang = KeranjangModel()
         keranjang.userId = AuthenticationRepository.fbAuth.currentUser?.uid!!
@@ -87,14 +90,4 @@ class BasketRepository() {
             listener.notifyInsertDataStatus(ModelContainer.getFailModel())
         }
     }
-
-    fun getList(): LiveData<ModelContainer<ArrayList<KeranjangModel>>> {
-        return basketList
-    }
-
-    fun getInsertState(): LiveData<ModelContainer<String>> {
-        return insertState
-    }
-
-
 }
