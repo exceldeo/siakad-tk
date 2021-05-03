@@ -6,19 +6,17 @@ import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PesananModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderListListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
 class OrderRepository() {
-    private var orderList = MutableLiveData<ModelContainer<ArrayList<PesananModel>>>()
-    private var insertState = MutableLiveData<ModelContainer<String>>()
-
     private val orderDB = FirebaseRef(
         FirebaseRef.PESANAN_REF
     ).getRef()
 
-    fun initEventListener() {
+    fun initEventListener(listener: OrderListListener) {
         orderDB.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
@@ -29,19 +27,15 @@ class OrderRepository() {
                     val data: PesananModel? = dataSS.getValue(PesananModel::class.java)
                     data?.pesananId = dataSS.key.toString()
                     dataRef.add(data!!)
-                }
 
-                orderList.postValue(
-                    ModelContainer(
-                        status = ModelState.SUCCESS,
-                        data = dataRef
+                    listener.setOrderList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = dataRef
+                        )
                     )
-                )
+                }
             }
         })
-    }
-
-    fun getOrderList(): LiveData<ModelContainer<ArrayList<PesananModel>>> {
-        return orderList
     }
 }

@@ -9,6 +9,7 @@ import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
@@ -153,6 +154,8 @@ class UserRepository() {
                         listener.addUser(ModelContainer.getSuccesModel(user))
                     } else if (listener is AnnouncementAddListener) {
                         listener.setUserById(ModelContainer.getSuccesModel(user))
+                    } else if (listener is OrderListListener) {
+                        listener.setUser(ModelContainer.getSuccesModel(user))
                     }
                 }
             }
