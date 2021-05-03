@@ -1,6 +1,11 @@
 package app.siakad.siakadtk.presentation.screens.registration.form
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.MenuItem
@@ -9,10 +14,14 @@ import android.widget.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.infrastructure.data.Pengguna
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
 import app.siakad.siakadtk.presentation.views.date.DateListener
 import app.siakad.siakadtk.presentation.views.date.DatePickerFragment
@@ -34,6 +43,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private lateinit var etAddress: EditText
     private lateinit var spTahunAjaran: Spinner
     private lateinit var etPhoneNumber: EditText
+//    private lateinit var etTotalPayment: EditText
     private lateinit var btnUploadBukti: Button
     private lateinit var btnCancel: TextView
     private lateinit var btnSimpan: TextView
@@ -43,13 +53,55 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
 
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
 
-    private val REQUEST_FILE = 1001
-    private val REQUEST_CAMERA = 1000
+    private var paymentImage: Uri? = null
+
+    companion object {
+        const val PICK_PHOTO_REQUEST = 1000
+        const val PERMISSION_REQUEST = 1001
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_form)
         setupItemView()
         setupView()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSION_REQUEST -> {
+                if (grantResults.isNotEmpty() && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+                    pickImageFromGallery()
+                } else {
+                    Toast.makeText(this, "Akses ditolak", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == RegisterActivity.PICK_PHOTO_REQUEST) {
+            val imageUri: Uri = data?.data!!
+            btnUploadBukti.text = imageUri.toString()
+            paymentImage = imageUri
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(
+            intent,
+            PICK_PHOTO_REQUEST
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -77,6 +129,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         etAddress = findViewById(R.id.et_registrationform_alamat)
         spTahunAjaran = findViewById(R.id.sp_registrationform_tahun_ajaran)
         etPhoneNumber = findViewById(R.id.et_registrationform_no_hp_ortu)
+//        etTotalPayment = findViewById(R.id.et_registrationform_nominal)
         btnUploadBukti = findViewById(R.id.btn_registrationform_upload_bukti_bayar)
         btnCancel = findViewById(R.id.btn_registrationform_batal)
         btnSimpan = findViewById(R.id.btn_registrationform_simpan)
@@ -88,6 +141,20 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         spGender.onItemSelectedListener = this
         spClass.onItemSelectedListener = this
         spTahunAjaran.onItemSelectedListener = this
+
+        vmRegistrationForm =
+            ViewModelProvider(this, ViewModelFactory(this, this)).get(RegistrationFormViewModel::class.java)
+
+        val obsRegistrationGetUser = Observer<Pengguna> {
+            etName.setText(it.nama)
+            etBornDate.setText(it.detail!!.tanggalLahir)
+            etParentName.setText(it.detail!!.namaOrtu)
+            etAddress.setText(it.alamat)
+            etPhoneNumber.setText(it.noHP)
+        }
+
+        vmRegistrationForm.getUserData()
+            .observe(this, obsRegistrationGetUser)
     }
 
     private fun setupAdapterListener() {
@@ -129,7 +196,21 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             datePicker.show(supportFragmentManager, null)
         }
         btnUploadBukti.setOnClickListener {
-            showFileChooser()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED
+                ) {
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    requestPermissions(
+                        permissions,
+                        PERMISSION_REQUEST
+                    );
+                } else {
+                    pickImageFromGallery();
+                }
+            } else {
+                pickImageFromGallery();
+            }
         }
         btnCancel.setOnClickListener{
             navigateBack()
@@ -146,19 +227,11 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
                     etPhoneNumber.text.toString(),
                     spTahunAjaran.selectedItem.toString(),
                     0,
-                    "",
+                    paymentImage,
                 )
                 navigateBack()
             }
         }
-
-        vmRegistrationForm = ViewModelProvider(
-            this,
-            ViewModelFactory(
-                this,
-                this
-            )
-        ).get(RegistrationFormViewModel::class.java)
     }
 
     private fun setupAppBar() {
@@ -168,15 +241,8 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     }
 
     private fun setupDate() {
-        val date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(calendar.time)
+        var date =  SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(calendar.time)
         etBornDate.text = SpannableStringBuilder(date)
-    }
-
-    private fun showFileChooser() {
-        KotRequest.File(this, REQUEST_FILE)
-            .setMimeType(KotConstants.FILE_TYPE_FILE_ALL)
-            .pick()
-        KotRequest.Camera(this).setRequestCode(REQUEST_CAMERA).pick()
     }
 
     private fun navigateBack() {
