@@ -1,5 +1,6 @@
 package app.siakad.siakadtk.domain.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
@@ -13,9 +14,7 @@ import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
-import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import app.siakad.siakadtk.infrastructure.data.Pengguna
-import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -27,7 +26,6 @@ class UserRepository() {
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
     private var detailPengguna = DetailPenggunaModel()
-    private var thisPengguna = PenggunaModel()
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
     private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
@@ -46,30 +44,32 @@ class UserRepository() {
         }
     }
 
-    fun getUserById(listener: LoginListener) {
+    fun getUserById(listener: RegistrationListener) {
         userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
-                    listener.setUser(ModelContainer.getSuccesModel(user))
+                    listener.addDataUser(ModelContainer.getSuccesModel(user))
                 }
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+                val user = snapshot.getValue(PenggunaModel::class.java)
+
+                if (user != null) {
+                    listener.addDataUser(ModelContainer.getSuccesModel(user))
+                }
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
 
         })
@@ -109,8 +109,8 @@ class UserRepository() {
     }
 
     fun insertData(listener: RegisterListener, pengguna: Pengguna) {
-        val newKey = userDB.push().key.toString()
-        thisPengguna = PenggunaModel(
+        val newKey = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        val newData = PenggunaModel(
             userId = newKey,
             email = pengguna.email,
             nama = pengguna.nama,
@@ -119,42 +119,46 @@ class UserRepository() {
             detailPengguna = pengguna.detail,
             status = false
         )
-        val newData = thisPengguna
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
-            listener.notifyDataInsertStatus(ModelContainer.getSuccesModel("Sukses"))
+            listener.notifyDataInsertStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
             listener.notifyDataInsertStatus(ModelContainer.getFailModel())
         }
     }
 
-    fun updateDetailData(listener: RegistrationListener, detail: DaftarUlang) {
+    fun updateDetailData(listener: RegistrationListener, detail: DaftarUlang, dataUser: Pengguna) {
         detailPengguna = DetailPenggunaModel(
             kelas = detail.kelas,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
             namaOrtu = detail.namaWali,
             tahunAjaran = detail.tahunAjaran,
-            fotoBayarAwal = detail.fotoBayar,
+            fotoBayarAwal = dataUser.detail!!.fotoBayarAwal,
         )
-        updateDataFromRegistration(listener, detail)
+        updateDataFromRegistration(listener, detail, dataUser)
     }
 
-    fun updateDataFromRegistration(listener: RegistrationListener, daful: DaftarUlang) {
-        val currentKey = userDB.key.toString()
+    private fun updateDataFromRegistration(
+        listener: RegistrationListener,
+        daful: DaftarUlang,
+        dataUser: Pengguna
+    ) {
+        val currentKey = AuthenticationRepository.fbAuth.currentUser?.uid!!
         val updateData = PenggunaModel(
             userId = currentKey,
-            email = thisPengguna.email,
-            nama = thisPengguna.nama,
-            passwd = thisPengguna.passwd,
+            email = dataUser.email,
+            nama = daful.namaSiswa,
+            passwd = dataUser.passwd,
             role = UserRoleModel.SISWA.str,
             noHP = daful.noHP,
             alamat = daful.alamat,
             detailPengguna = detailPengguna
         )
+        Log.i("UPDATE DATA", currentKey)
         val newData = updateData.toMap()
         val childUpdates = hashMapOf<String, Any>(
-            "/${FirebaseRef.USER_REF}/${updateData.userId}" to newData
+            "/${FirebaseRef.USER_REF}/${AuthenticationRepository.fbAuth.currentUser?.uid!!}" to newData
         )
 
         FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {

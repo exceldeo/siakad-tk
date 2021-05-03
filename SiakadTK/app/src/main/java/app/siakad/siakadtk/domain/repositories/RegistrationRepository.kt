@@ -23,7 +23,15 @@ class RegistrationRepository() {
         registrationDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
             .addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    TODO("Not yet implemented")
+                    val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
+                    data?.dafulId = snapshot.key.toString()
+
+                    listener.addDataDafulUser(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = data
+                        )
+                    )
                 }
 
                 override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {

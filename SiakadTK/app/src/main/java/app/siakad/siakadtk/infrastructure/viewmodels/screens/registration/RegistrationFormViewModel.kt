@@ -2,9 +2,7 @@ package app.siakad.siakadtk.infrastructure.viewmodels.screens.registration
 
 import android.content.Context
 import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DaftarUlangModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
@@ -13,10 +11,9 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.repositories.RegistrationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
-import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
-import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -29,10 +26,12 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
     private lateinit var insertObserver: Observer<ModelContainer<String>>
-    private val daftarUlangUser = DaftarUlang()
+    private var daftarUlangUser = DaftarUlang()
+    private val dataUser = MutableLiveData<Pengguna>()
     init {
         setupObserver()
         registrationRepository.initEventListener(this)
+        userRepository.getUserById(this)
     }
 
     private fun setupObserver() {
@@ -67,7 +66,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
         }
         vmCoroutineScope.launch {
             userRepository.updateDetailData(
-                this@RegistrationFormViewModel, daftarUlang
+                this@RegistrationFormViewModel, daftarUlang, dataUser.value!!
             )
         }
     }
@@ -81,25 +80,40 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
             val item = user.data
 
             if (item != null) {
-//                var daftarUlang = DaftarUlang(
-//                    namaSiswa = namaSiswa,
-//                    alamat = address,
-//                    kelas = kelas,
-//                    jenisKelamin = gender,
-//                    tanggalLahir = bornDate,
-//                    namaWali = namaWali,
-//                    noHP = noHP,
-//                    tahunAjaran = thnAjaran,
-//                    nominalbayar = nominal,
-//                    fotoBayar = fotoBayar
-//                )
-//                registrationRepository.insertData(
-//                    this@RegistrationFormViewModel,
-//                )
+                daftarUlangUser = DaftarUlang(
+                    userId = AuthenticationRepository.fbAuth.currentUser?.uid.toString(),
+                    dafulId = item.dafulId,
+                    tanggalDaful = item.tanggal,
+                    fotoBayar = item.fotoBayar,
+                    statusDaful = item.statusDaful
+                )
             } else if (user.status == ModelState.ERROR) {
                 showToast(context.getString(R.string.fail_get_user))
             }
         }
+    }
+
+    override fun addDataUser(user: ModelContainer<PenggunaModel>) {
+        if (user.status == ModelState.SUCCESS) {
+            val item = user.data
+
+            if (item != null) {
+                dataUser.postValue(Pengguna(
+                    nama = item.nama,
+                    alamat = item.alamat,
+                    noHP = item.noHP,
+                    email = item.email,
+                    passwd = item.passwd,
+                    detail = item.detailPengguna!!
+                ))
+            } else if (user.status == ModelState.ERROR) {
+                showToast(context.getString(R.string.fail_get_user))
+            }
+        }
+    }
+
+    fun getUserData(): LiveData<Pengguna> {
+        return dataUser
     }
 
     override fun notifyUserDetailChangeStatus(status: ModelContainer<String>) {

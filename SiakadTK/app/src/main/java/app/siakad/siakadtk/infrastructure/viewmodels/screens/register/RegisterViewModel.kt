@@ -31,6 +31,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
 
     private var detailPengguna = DetailPenggunaModel()
     private var pengguna = Pengguna()
+    private lateinit var thisImageUri: Uri
 
     fun registerSiswa(email: String, passwd: String, name: String, imageUri: Uri?) {
         pengguna = Pengguna(
@@ -38,12 +39,9 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
             email = email,
             passwd = passwd
         )
-
+        thisImageUri = imageUri!!
         vmCoroutineScope.launch {
-            fbStorage.uploadImage(
-                this@RegisterViewModel, imageUri!!,
-                System.currentTimeMillis().toString() + "." + getFileExtension(imageUri!!)
-            )
+            authRepository.register(this@RegisterViewModel, pengguna.email, pengguna.passwd)
         }
     }
 
@@ -66,9 +64,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
 
     override fun notifyDataInsertStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
-            vmCoroutineScope.launch {
-                authRepository.register(this@RegisterViewModel, pengguna.email, pengguna.passwd)
-            }
+            showToast(context.getString(R.string.scs_set_data))
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_set_data))
         }
@@ -77,6 +73,12 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
     override fun notifyRegisterStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_regis))
+            vmCoroutineScope.launch {
+                fbStorage.uploadImage(
+                    this@RegisterViewModel, thisImageUri,
+                    System.currentTimeMillis().toString() + "." + getFileExtension(thisImageUri)
+                )
+            }
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_regis))
         }

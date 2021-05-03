@@ -1,5 +1,6 @@
 package app.siakad.siakadtk.domain.utils.listeners.register
 
+import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 
 interface RegisterListener {
