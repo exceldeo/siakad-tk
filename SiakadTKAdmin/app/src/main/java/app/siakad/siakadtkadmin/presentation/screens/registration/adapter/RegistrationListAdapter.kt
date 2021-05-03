@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.infrastructure.data.DaftarUlang
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
-import app.siakad.siakadtkadmin.presentation.screens.user.adapter.UserListViewHolder
 
 class RegistrationListAdapter() : RecyclerView.Adapter<RegistrationListViewHolder>() {
 

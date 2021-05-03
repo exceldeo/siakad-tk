@@ -3,7 +3,6 @@ package app.siakad.siakadtkadmin.presentation.screens.user.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.presentation.screens.user.listener.UserClickListener
 import kotlinx.android.synthetic.main.item_user.view.*
 

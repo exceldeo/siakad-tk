@@ -56,7 +56,6 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
 
         if (intent.getParcelableExtra<BukuModel>(BOOK_MODEL) != null) {
             buku = intent.getParcelableExtra(BOOK_MODEL)
-            showToast(buku?.namaProduk!!)
         }
 
         etName = findViewById(R.id.et_book_add_nama)
@@ -69,8 +68,10 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
             etName.setText(buku?.namaProduk)
             etPrice.setText(buku?.harga.toString())
             etNum.setText(buku?.jumlah.toString())
-            Picasso.with(this).load(buku?.fotoProduk).into(ivPhotoPreview)
-            imgBtnAddPhoto.visibility = View.GONE
+            if (buku?.fotoProduk != "") {
+                Picasso.with(this).load(buku?.fotoProduk).into(ivPhotoPreview)
+                imgBtnAddPhoto.visibility = View.GONE
+            }
         }
 
         setupAppBar()
@@ -186,9 +187,22 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
         }
 
         btnSave = findViewById(R.id.btn_book_add_simpan)
+        if (buku != null) {
+            btnSave.text = "Simpan Perubahan"
+        }
         btnSave.setOnClickListener {
             if (validateInput()) {
-                insertBook()
+                if (buku != null) {
+                    vmBookAdd.updateBook(
+                        etName.text.toString(),
+                        bookImage,
+                        etNum.text.toString().toInt(),
+                        etPrice.text.toString().toInt(),
+                        buku!!
+                    )
+                } else {
+                    insertBook()
+                }
             }
         }
     }
@@ -228,7 +242,7 @@ class BookAddActivity : AppCompatActivity(), AlertListener {
             returnState = false
         }
 
-        if (bookImage == null) {
+        if (bookImage == null && buku == null) {
             val alertDialog = AlertDialogFragment(
                 "Foto belum ditambahkan!",
                 "Apakah Anda yakin menyimpan data tanpa menggunakan foto?"

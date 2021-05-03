@@ -9,8 +9,6 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.repositories.AnnouncementRepository
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,10 +16,10 @@ import kotlinx.coroutines.launch
 
 class AnnouncementListViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
     ViewModel(), AnnouncementListListener {
-    private val announcementList = MutableLiveData<ArrayList<Pengumuman>>()
+    private val announcementList = MutableLiveData<ArrayList<PengumumanModel>>()
     private val announcementRepository = AnnouncementRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-    private val dataPengumumanList = arrayListOf<Pengumuman>()
+    private val dataPengumumanList = arrayListOf<PengumumanModel>()
 
     fun setAnnouncementType(type: String) {
         if (dataPengumumanList.isEmpty()) {
@@ -34,27 +32,51 @@ class AnnouncementListViewModel(private val context: Context, private val lcOwne
         }
     }
 
-    override fun setAnnouncementList(pengumumanList: ModelContainer<ArrayList<PengumumanModel>>) {
-        if (pengumumanList.status == ModelState.SUCCESS) {
-            if (pengumumanList.data?.isNotEmpty()!!) {
-                pengumumanList.data?.forEach { item ->
-                    dataPengumumanList.add(
-                        Pengumuman(
-                            pengumumanId = item.pengumumanId,
-                            judul = item.judul,
-                            keterangan = item.keterangan,
-                            tanggal = item.tanggal
-                        )
-                    )
-                    announcementList.postValue(dataPengumumanList)
-                }
+    override fun addAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                dataPengumumanList.add(pengumuman.data!!)
+                announcementList.postValue(dataPengumumanList)
             }
-        } else if (pengumumanList.status == ModelState.ERROR) {
+        } else if (pengumuman.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
         }
     }
 
-    fun getAnnouncementList(): LiveData<ArrayList<Pengumuman>> {
+    override fun updateAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                dataPengumumanList.forEachIndexed { index, item ->
+                    if (item.tujuanId == pengumuman.data?.tujuanId) {
+                        dataPengumumanList[index] = pengumuman.data!!
+                    }
+                }
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
+        }
+    }
+
+    override fun removeAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                var target = 0
+                dataPengumumanList.forEachIndexed feData@{ index, item ->
+                    if (item.tujuanId == pengumuman.data?.tujuanId) {
+                        target = index
+                        return@feData
+                    }
+                }
+                dataPengumumanList.removeAt(target)
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
+        }
+    }
+
+    fun getAnnouncementList(): LiveData<ArrayList<PengumumanModel>> {
         return announcementList
     }
 

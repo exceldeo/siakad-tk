@@ -8,7 +8,6 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +33,6 @@ class UserListViewModel(private val context: Context) :
     override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
         if (penggunaList.status == ModelState.SUCCESS) {
             if (penggunaList.data?.isNotEmpty()!!) {
-                dataPenggunaList.clear()
                 dataPenggunaList.addAll(penggunaList.data!!)
                 userListLiveData.postValue(dataPenggunaList)
                 showToast(context.getString(R.string.scs_get_data))

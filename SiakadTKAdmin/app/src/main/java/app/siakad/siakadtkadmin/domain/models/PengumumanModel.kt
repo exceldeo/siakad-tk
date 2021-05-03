@@ -14,4 +14,15 @@ data class PengumumanModel (
     var judul: String = "",
     var keterangan: String = "",
     var tanggal: String = ""
-): Parcelable
+): Parcelable {
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "adminId" to adminId,
+            "tipe" to tipe,
+            "tujuanId" to tujuanId,
+            "judul" to judul,
+            "keterangan" to keterangan,
+            "tanggal" to tanggal
+        )
+    }
+}

@@ -202,4 +202,6 @@
     <string name="fail_get_user">Gagal mendapatkan Akun</string>
     <string name="fail_set_user">Gagal menambahkan Pengguna</string>
     <string name="fail_upoad_img">Gagal upload gambar, coba lagi!</string>
+    <string name="scs_update_data">Data berhasil diubah</string>
+    <string name="fail_update_data">Data gagal diubah</string>
 </resources>

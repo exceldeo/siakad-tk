@@ -12,9 +12,6 @@ import app.siakad.siakadtkadmin.domain.repositories.ProductRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.utils.listeners.product.ProductListListener
-import app.siakad.siakadtkadmin.infrastructure.data.Pengumuman
-import app.siakad.siakadtkadmin.infrastructure.data.product.Buku
-import app.siakad.siakadtkadmin.infrastructure.data.product.Seragam
 import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

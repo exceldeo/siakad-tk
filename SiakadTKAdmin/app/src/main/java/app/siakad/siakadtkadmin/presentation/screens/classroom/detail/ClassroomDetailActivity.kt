@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
@@ -16,10 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
-import app.siakad.siakadtkadmin.infrastructure.data.Siswa
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
-import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementActivity
 import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.adapter.UserListAdapter
 
