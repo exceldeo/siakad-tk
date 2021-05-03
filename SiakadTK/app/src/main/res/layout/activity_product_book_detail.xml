@@ -31,12 +31,12 @@
         android:layout_marginTop="@dimen/container_padding_x"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/tv_product_bookdetail_kewajiban"
+            android:id="@+id/tv_product_bookdetail_nama"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/wajib"
-            android:textSize="@dimen/list_subtitle_text"
-            android:textColor="@color/colorSuccess"
+            android:textSize="@dimen/list_title_text"
+            android:textColor="@color/colorPrimary"
             android:fontFamily="@font/poppins_semibold"/>
 
         <TextView
@@ -80,14 +80,14 @@
                 android:src="@drawable/vc_bg_input_unfilled"
                 android:scaleType="fitXY"
                 app:riv_corner_radius="10dip"/>
-            <Spinner
-                android:id="@+id/sp_product_bookdetail_jumlah"
+            <EditText
+                android:id="@+id/et_product_bookdetail_jumlah"
+                android:padding="@dimen/input_text_padding"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/input_height"
-                android:paddingStart="@dimen/inner_padding"
-                android:theme="@style/InputText"
-                android:entries="@array/list_jumlah"
-                android:spinnerMode="dropdown"/>
+                android:layout_height="match_parent"
+                android:hint="@string/example_jumlah"
+                style="@style/InputText"
+                android:background="@android:color/transparent"/>
         </RelativeLayout>
     </LinearLayout>
     <androidx.cardview.widget.CardView

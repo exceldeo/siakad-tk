@@ -14,5 +14,5 @@ data class SeragamModel (
     var jenisKelamin: String = "",
     var fotoProduk: String = "",
     var jumlah: Int = 0,
-    var detailSeragam: Map<String, DetailSeragamModel>? = null
+    var detailSeragam: ArrayList<DetailSeragamModel> = arrayListOf()
 ): Parcelable

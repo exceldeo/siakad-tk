@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.siakad.siakadtk">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_icon_logo"
@@ -9,25 +11,24 @@
         android:roundIcon="@mipmap/ic_icon_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="app.siakad.siakadtk.presentation.screens.product.ProductListActivity"></activity>
-        <activity android:name="app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.register.RegisterActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.order.detail.OrderDetailActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.history.detail.HistoryDetailActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.profile.PasswordActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.profile.ProfileActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.profile.SettingsActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.history.HistoryActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.basket.BasketActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.book.ProductBookDetailActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.book.ProductBookListActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.uniform.ProductUniformListActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.product.detail.uniform.ProductUniformDetailActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.order.OrderListActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.registration.form.RegistrationFormActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.announcement.AnnouncementListActivity" />
+        <activity android:name=".presentation.screens.main.PendingActivity"></activity>
+        <activity android:name=".presentation.screens.product.ProductListActivity" />
+        <activity android:name=".presentation.screens.registration.RegistrationActivity" />
+        <activity android:name=".presentation.screens.register.RegisterActivity" />
+        <activity android:name=".presentation.screens.order.detail.OrderDetailActivity" />
+        <activity android:name=".presentation.screens.history.detail.HistoryDetailActivity" />
+        <activity android:name=".presentation.screens.profile.PasswordActivity" />
+        <activity android:name=".presentation.screens.profile.ProfileActivity" />
+        <activity android:name=".presentation.screens.profile.SettingsActivity" />
+        <activity android:name=".presentation.screens.history.HistoryActivity" />
+        <activity android:name=".presentation.screens.main.product.basket.BasketActivity" />
+        <activity android:name=".presentation.screens.main.product.detail.book.ProductBookDetailActivity" />
+        <activity android:name=".presentation.screens.main.product.detail.uniform.ProductUniformDetailActivity" />
+        <activity android:name=".presentation.screens.order.OrderListActivity" />
+        <activity android:name=".presentation.screens.registration.form.RegistrationFormActivity" />
+        <activity android:name=".presentation.screens.announcement.AnnouncementListActivity" />
         <activity android:name=".presentation.screens.welcome.WelcomeScreenActivity" />
-        <activity android:name="app.siakad.siakadtk.presentation.screens.login.LoginActivity" />
+        <activity android:name=".presentation.screens.login.LoginActivity" />
         <activity
             android:name=".presentation.screens.splash.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -37,7 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="app.siakad.siakadtk.presentation.screens.main.MainActivity" />
+        <activity android:name=".presentation.screens.main.MainActivity" />
     </application>
 
 </manifest>

@@ -8,16 +8,13 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
-import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.views.date.DateListener
 import app.siakad.siakadtk.presentation.views.date.DatePickerFragment
 import de.hdodenhof.circleimageview.CircleImageView
-import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -205,7 +202,11 @@ class ProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
+        if (p0 != null) {
+            Toast.makeText(this,
+                "OnItemSelectedListener : " + p0.selectedItem.toString(),
+                Toast.LENGTH_SHORT).show()
+        };
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

@@ -7,10 +7,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class DetailKeranjang (
     @get:Exclude
-    var basketDetailId: String = "",
-    var produkId: String = "",
+    var nama: String = "",
+    var gambar: String = "",
     var ukuran: String = "",
     var jumlah: Int = 0,
     var harga: Int = 0,
-    var status: String = ""
+    var status: Boolean = true
 ): Parcelable

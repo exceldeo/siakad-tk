@@ -129,8 +129,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/unggah_bukti_pembayaran"
-                android:layout_marginBottom="@dimen/container_double_padding_y"
-                android:textColor="@color/colorPrimary" />
+                android:layout_marginBottom="@dimen/container_double_padding_y"/>
 
             <Button
                 android:id="@+id/btn_signup_daftar"

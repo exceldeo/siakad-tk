@@ -1,71 +1,111 @@
 package app.siakad.siakadtk.domain.repositories
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
-import app.siakad.siakadtk.domain.models.AktivitasModel
+import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtk.infrastructure.data.DetailKeranjang
-import app.siakad.siakadtk.infrastructure.data.Keranjang
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import app.siakad.siakadtk.domain.utils.listeners.basket.BasketListener
+import com.google.firebase.database.*
 
 class BasketRepository() {
-    private var basketList = MutableLiveData<ModelContainer<ArrayList<KeranjangModel>>>()
-    private var insertState = MutableLiveData<ModelContainer<String>>()
-
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
+    private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
-    fun initEventListener() {
-        basketDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val dataRef = arrayListOf<KeranjangModel>()
+    fun initEventListener(listener: BasketListener) {
+        basketDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(
+            object : ChildEventListener {
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: KeranjangModel? = snapshot.getValue(
+                        KeranjangModel::class.java
+                    )
+                    data?.keranjangId = snapshot.key.toString()
+                    detailKeranjang = ArrayList(data!!.detailKeranjang)
 
-                for (dataSS in snapshot.children) {
-                    val data: KeranjangModel? = dataSS.getValue(
-                        KeranjangModel::class.java)
-                    data?.keranjangId = dataSS.key.toString()
-                    dataRef.add(data!!)
+                    listener.addBasketItem(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = ArrayList(data!!.detailKeranjang)
+                        )
+                    )
                 }
 
-                basketList.postValue(
-                    ModelContainer(
-                        status = ModelState.SUCCESS,
-                        data = dataRef
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: KeranjangModel? = snapshot.getValue(
+                        KeranjangModel::class.java
                     )
-                )
-            }
+                    data?.keranjangId = snapshot.key.toString()
+                    detailKeranjang = ArrayList(data!!.detailKeranjang)
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+                    listener.setBasketList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = ArrayList(data!!.detailKeranjang)
+                        )
+                    )
+                }
 
-        })
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    val data: KeranjangModel? = snapshot.getValue(
+                        KeranjangModel::class.java
+                    )
+                    data?.keranjangId = snapshot.key.toString()
+                    detailKeranjang = ArrayList(data!!.detailKeranjang)
+
+                    listener.removeBasketItem(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = ArrayList(data!!.detailKeranjang)
+                        )
+                    )
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
     }
 
-    fun insertDataKeranjang(data: Keranjang) {
-        val newKey = basketDB.push().key.toString()
-        val newData = KeranjangModel(
-            userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-            keranjangId = newKey,
-            basketDetailId = data.basketDetailId
+    fun addItem(listener: BasketListener, data: DetailKeranjangModel) {
+        detailKeranjang.add(data)
+        val keranjang = KeranjangModel()
+        keranjang.userId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        keranjang.keranjangId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        keranjang.detailKeranjang = detailKeranjang
+        updateDataKeranjang(listener, keranjang)
+    }
+
+    fun resetKeranjang(listener: BasketListener){
+        val keranjang = KeranjangModel()
+        keranjang.userId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        keranjang.keranjangId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        keranjang.detailKeranjang = arrayListOf()
+        val newData = keranjang.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${FirebaseRef.KERANJANG_REF}/${keranjang.keranjangId}" to newData
         )
 
-        basketDB.child(newKey).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
         }
     }
 
-    fun getList(): LiveData<ModelContainer<ArrayList<KeranjangModel>>> {
-        return basketList
-    }
+    private fun updateDataKeranjang(listener: BasketListener, data: KeranjangModel) {
+        val newData = data.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${FirebaseRef.KERANJANG_REF}/${data.keranjangId}" to newData
+        )
 
-    fun getInsertState(): LiveData<ModelContainer<String>> {
-        return insertState
+        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+        }
     }
 }

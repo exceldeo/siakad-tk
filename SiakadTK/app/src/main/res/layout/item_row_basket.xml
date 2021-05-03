@@ -22,7 +22,7 @@
             android:padding="@dimen/container_padding_x">
 
             <CheckBox
-                android:id="@+id/cb_basket"
+                android:id="@+id/cb_item_basket"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -30,11 +30,13 @@
                 style="@style/DefaultMargin"/>
 
             <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/riv_item_basket_product_img"
                 android:layout_width="@dimen/list_view_img_size"
                 android:layout_height="@dimen/list_view_img_size"
+                android:scaleType="centerCrop"
                 android:src="@drawable/example_image"
                 android:layout_gravity="center_vertical"
-                app:riv_corner_radius="25dip"/>
+                app:riv_corner_radius="10dip"/>
             
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -43,6 +45,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginStart="@dimen/list_space">
                 <TextView
+                    android:id="@+id/tv_item_basket_product_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/inner_padding"
@@ -51,15 +54,16 @@
                     android:fontFamily="@font/poppins_semibold"/>
 
                 <TextView
+                    android:id="@+id/tv_item_basket_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/product_xxx"
                     android:textSize="@dimen/list_desc_text"
-                    android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/poppins_medium"/>
 
                 <TextView
+                    android:id="@+id/tv_item_basket_product_jumlah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/example_desc_basket_1"
@@ -67,9 +71,10 @@
                     android:fontFamily="@font/poppins_regular"/>
 
                 <TextView
+                    android:id="@+id/tv_item_basket_product_ukuran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/example_desc_basket_2"
+                    android:text="@string/example_price"
                     android:textSize="@dimen/list_status_text"
                     android:fontFamily="@font/poppins_regular"/>
 
