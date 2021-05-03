@@ -21,8 +21,10 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewMode
 import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.screens.order.adapter.OrderListAdapter
+import app.siakad.siakadtkadmin.presentation.screens.order.detail.OrderDetailActivity
+import app.siakad.siakadtkadmin.presentation.screens.order.helper.OrderClickHelper
 
-class OrderActivity : AppCompatActivity() {
+class OrderActivity : AppCompatActivity(), OrderClickHelper {
 
   private val pageTitle = "Pesanan"
 
@@ -86,5 +88,11 @@ class OrderActivity : AppCompatActivity() {
 
     vmOrderList.getOrderLIst()
       .observe(this, obsOrderList)
+  }
+
+  override fun navigateToOrderDetail(pesanan: Pesanan) {
+    val intent = Intent(this, OrderDetailActivity::class.java)
+    intent.putExtra(OrderDetailActivity.ORDER_DETAIL_ITEM, pesanan)
+    startActivity(intent)
   }
 }

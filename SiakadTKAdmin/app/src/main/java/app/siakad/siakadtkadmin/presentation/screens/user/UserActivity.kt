@@ -12,10 +12,10 @@ import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.UserDetailActivity
-import app.siakad.siakadtkadmin.presentation.screens.user.listener.UserClickListener
+import app.siakad.siakadtkadmin.presentation.screens.user.helper.UserClickHelper
 import app.siakad.siakadtkadmin.presentation.utils.adapter.ViewPagerAdapter
 
-class UserActivity : AppCompatActivity(), UserClickListener {
+class UserActivity : AppCompatActivity(), UserClickHelper {
 
     private val pageTitle = "Pengguna"
 

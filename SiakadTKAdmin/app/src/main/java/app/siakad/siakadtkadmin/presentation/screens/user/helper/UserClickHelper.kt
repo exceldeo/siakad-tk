@@ -1,7 +1,7 @@
-package app.siakad.siakadtkadmin.presentation.screens.user.listener
+package app.siakad.siakadtkadmin.presentation.screens.user.helper
 
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 
-interface UserClickListener {
+interface UserClickHelper {
     fun navigateToUserDetail(siswa: PenggunaModel)
 }

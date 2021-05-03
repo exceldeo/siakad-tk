@@ -51,12 +51,12 @@
                 android:textSize="@dimen/card_desc_text"/>
         </LinearLayout>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_item_classroom_detail"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:src="@drawable/ic_double_arrow"
-            android:foregroundGravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_marginStart="@dimen/list_corner"/>
     </com.google.android.flexbox.FlexboxLayout>
 </androidx.cardview.widget.CardView>
