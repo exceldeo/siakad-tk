@@ -114,11 +114,15 @@
     <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
     <string name="registration_detail_price">
-        Dengan Perincian <br></br> 1. Worksheet <br></br> 2. Field Trip Tahunan <br></br> 3. Iuran IDPP
+        <br>Dengan Perincian</br>
+        <br>1. Worksheet</br>
+        <br>2. Field Trip Tahunan</br>
+        <br>3. Iuran IDPP</br>
     </string>
 
     <string name="registration_detail_transfer">
-        Transfer ke Rekening BNI: <br></br> a.n SekolahTK  <br></br> 1234567
+        <br>Transfer ke Rekening BNI:</br>
+        <br>a.n SekolahTK 1234567</br>
     </string>
 
     <string-array name="list_jenis_kelamin">
@@ -169,7 +173,9 @@
     <string name="scs_regis">Berhasil daftar</string>
     <string name="fail_regis">Gagal daftar, pastikan masukkan data dengan benar dan coba lagi</string>
     <string name="scs_login">Berhasil masuk</string>
+    <string name="scs_basket">Berhasil membuat keranjang</string>
     <string name="fail_login">Terjadi kesalahan, pastikan data yang Anda masukkan benar dan silahkan coba lagi!</string>
+    <string name="fail_basket">Terjadi kesalahan, keranjang Anda gagal dibuat!</string>
     <string name="scs_get_data">Data berhasil diambil</string>
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
@@ -192,5 +198,8 @@
     <string name="pesan">Pesan</string>
     <string name="pilih_semua">Pilih Semua</string>
     <string name="tk_a">TK A</string>
+    <string name="detail_proses_verifikasi">Pendaftaran telah terkirim, saat ini akun Anda sedang diverifikasi oleh pihak sekolah</string>
+    <string name="proses_verifikasi">Proses Verifikasi</string>
+    <string name="cek_status">Cek Status</string>
 
 </resources>

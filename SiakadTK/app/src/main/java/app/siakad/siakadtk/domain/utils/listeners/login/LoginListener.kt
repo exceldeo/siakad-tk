@@ -6,4 +6,5 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 interface LoginListener {
     fun setUser(user: ModelContainer<PenggunaModel>)
     fun notifyLoginStatus(status: ModelContainer<String>)
+    fun notifyMakeKeranjangStatus(status: ModelContainer<String>)
 }

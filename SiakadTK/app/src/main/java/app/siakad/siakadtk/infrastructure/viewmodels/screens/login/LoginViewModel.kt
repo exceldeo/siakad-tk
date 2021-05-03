@@ -3,7 +3,6 @@ package app.siakad.siakadtk.infrastructure.viewmodels.screens.login
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
@@ -11,7 +10,6 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
-import app.siakad.siakadtk.domain.repositories.BasketRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
@@ -23,7 +21,6 @@ import kotlinx.coroutines.launch
 class LoginViewModel (private val context: Context, private val lcOwner: LifecycleOwner) : ViewModel(), LoginListener {
     private val authRepository = AuthenticationRepository()
     private val userRepository = UserRepository()
-    private val basketRepository = BasketRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
     private var email: String = ""
@@ -35,9 +32,8 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         this.passwd = passwd
 
         vmCoroutineScope.launch {
-            userRepository.getUserByEmail(email)
+            userRepository.getUserByEmail(this@LoginViewModel, email)
         }
-        userRepository.makeKeranjang()
     }
 
     override fun setUser(user: ModelContainer<PenggunaModel>) {
@@ -46,8 +42,9 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
 
             if (item != null) {
                 if (item.role == UserRoleModel.SISWA.str) {
-                    authRepository.login(this@LoginViewModel, email, passwd)
                     userId = item.userId
+                    AuthenticationRepository.setUser(userId, email, passwd, item.status)
+                    authRepository.login(this@LoginViewModel, email, passwd)
                 } else {
                     showToast(context.getString(R.string.fail_login_not_siswa))
                 }
@@ -64,13 +61,16 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
     override fun notifyLoginStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_login))
-
-            if (!AuthenticationRepository.userState) {
-                AuthenticationRepository.setUser(userId, email, passwd)
-            }
-            (context as AuthenticationListener).navigateToMain()
         } else {
             showToast(context.getString(R.string.fail_login))
+        }
+    }
+
+    override fun notifyMakeKeranjangStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_basket))
+        } else {
+            showToast(context.getString(R.string.fail_basket))
         }
     }
 }

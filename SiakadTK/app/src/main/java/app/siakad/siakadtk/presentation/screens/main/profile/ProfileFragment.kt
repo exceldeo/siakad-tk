@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.history.HistoryActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.infrastructure.data.Aktivitas
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
@@ -74,6 +75,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupView() {
+        tvStudentName.text = AuthenticationRepository.currentPengguna.nama.toString()
+        
         ivSetting.setOnClickListener{
             val intent = Intent(this@ProfileFragment.context, SettingsActivity::class.java)
             startActivity(intent)

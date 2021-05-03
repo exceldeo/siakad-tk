@@ -15,9 +15,12 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.AuthenticationRepository.Companion.userState
+import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
+import app.siakad.siakadtk.presentation.screens.main.PendingActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 import app.siakad.siakadtk.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
@@ -55,7 +58,11 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-            navigateToMain()
+//            if (userState) {
+                navigateToMain()
+//            } else {
+//                navigateToPendingMain()
+//            }
         }
     }
 
@@ -128,14 +135,18 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
                 pickImageFromGallery();
             }
         }
+        var isClickRegister = false
         btnSignup.setOnClickListener {
-            if (validateForm()) {
+            if (validateForm() && !isClickRegister) {
                 vmRegister.registerSiswa(
                     etEmail.text.toString(),
                     etPassword.text.toString(),
                     etName.text.toString(),
                     firstPaymentImage
                 )
+                isClickRegister = true
+            } else if (validateForm() && isClickRegister) {
+                showToast("Pendaftaran masih di proses")
             }
         }
         tvLogin.setOnClickListener {
@@ -190,6 +201,12 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     override fun navigateToMain() {
         val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun navigateToPendingMain() {
+        val intent = Intent(this@RegisterActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()
     }

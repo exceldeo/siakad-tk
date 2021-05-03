@@ -77,7 +77,6 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
     override fun notifyRegisterStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_regis))
-            (context as AuthenticationListener).navigateToMain()
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_regis))
         }

@@ -239,6 +239,63 @@
                             android:text="@string/nama_orang_tua"
                             android:textSize="@dimen/list_desc_text" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="@dimen/tab"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/alamat"
+                            android:textSize="@dimen/list_desc_text" />
+                        <TextView
+                            android:id="@+id/tv_registration_dp_addres"
+                            android:paddingStart="@dimen/inner_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/alamat"
+                            android:textSize="@dimen/list_desc_text" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="@dimen/tab"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/no_hp_orang_tua"
+                            android:textSize="@dimen/list_desc_text" />
+                        <TextView
+                            android:id="@+id/tv_registration_dp_no_hp"
+                            android:paddingStart="@dimen/inner_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/no_hp_orang_tua"
+                            android:textSize="@dimen/list_desc_text" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="@dimen/tab"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/tahun_ajaran"
+                            android:textSize="@dimen/list_desc_text" />
+                        <TextView
+                            android:id="@+id/tv_registration_dp_thn_ajaran"
+                            android:paddingStart="@dimen/inner_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/tahun_ajaran"
+                            android:textSize="@dimen/list_desc_text" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

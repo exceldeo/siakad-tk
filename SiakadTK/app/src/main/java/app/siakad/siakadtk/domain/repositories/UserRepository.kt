@@ -8,10 +8,9 @@ import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
-import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
-import app.siakad.siakadtk.domain.utils.listeners.user.UserListListener
 import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import com.google.firebase.database.ChildEventListener
@@ -27,88 +26,66 @@ class UserRepository() {
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
     private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
-    fun makeKeranjang() {
+    fun makeKeranjang(listener: LoginListener, userId: String) {
         val newKey = basketDB.push().key.toString()
         val newData = KeranjangModel(
-            userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
+            userId = userId,
             keranjangId = newKey,
             detailKeranjang = detailKeranjang
         )
 
-        basketDB.child(AuthenticationRepository.fbAuth.currentUser?.uid!!).setValue(newData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Success"))
+        basketDB.child(userId).setValue(newData).addOnSuccessListener {
+            listener.notifyMakeKeranjangStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyMakeKeranjangStatus(ModelContainer.getFailModel())
         }
     }
 
-    fun initGetUserListListener(listener: UserListListener, verified: Boolean = true) {
-        userDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
-            .addChildEventListener(object: ChildEventListener {
-                override fun onCancelled(error: DatabaseError) {}
-
-                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-
-                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-
-                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    val dataRef = arrayListOf<PenggunaModel>()
-
-                    forloop@ for (dataSS in snapshot.children) {
-                        when (dataSS.value) {
-                            is String -> {
-                                val data: PenggunaModel? = snapshot.getValue(PenggunaModel::class.java)
-                                if (data != null) {
-                                    if (data.status == verified) {
-                                        data.userId = snapshot.key.toString()
-                                        dataRef.add(data)
-
-                                        listener.setUserList(
-                                            ModelContainer(
-                                                status = ModelState.SUCCESS,
-                                                data = dataRef
-                                            )
-                                        )
-                                        break@forloop
-                                    }
-                                }
-                            }
-                            is PenggunaModel -> {
-                                val data: PenggunaModel? = dataSS.getValue(PenggunaModel::class.java)
-                                if (data != null) {
-                                    if (data.status == verified) {
-                                        data.userId = dataSS.key.toString()
-                                        dataRef.add(data)
-
-                                        listener.setUserList(
-                                            ModelContainer(
-                                                status = ModelState.SUCCESS,
-                                                data = dataRef
-                                            )
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                override fun onChildRemoved(snapshot: DataSnapshot) {}
-            })
-    }
-
-    fun getUserByEmail(email: String) {
-        userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
+    fun getUserById(listener: LoginListener) {
+        userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
-                    userState.postValue(ModelContainer.getSuccesModel(user))
+                    listener.setUser(ModelContainer.getSuccesModel(user))
                 }
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 TODO("Not yet implemented")
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun getUserByEmail(listener: LoginListener, email: String) {
+        userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val user = snapshot.getValue(PenggunaModel::class.java)
+
+                if (user != null) {
+                    listener.setUser(ModelContainer.getSuccesModel(user))
+                }
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                val user = snapshot.getValue(PenggunaModel::class.java)
+
+                if (user != null) {
+                    listener.setUser(ModelContainer.getSuccesModel(user))
+                }
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
@@ -134,7 +111,8 @@ class UserRepository() {
             nama = pengguna.nama,
             passwd = pengguna.passwd,
             role = UserRoleModel.SISWA.str,
-            detailPengguna = pengguna.detail
+            detailPengguna = pengguna.detail,
+            status = false
         )
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
