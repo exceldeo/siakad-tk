@@ -75,8 +75,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupView() {
-        tvStudentName.text = AuthenticationRepository.currentPengguna.nama.toString()
-        
+//        tvStudentName.text = AuthenticationRepository.fbAuth.currentUser?.displayName
+
         ivSetting.setOnClickListener{
             val intent = Intent(this@ProfileFragment.context, SettingsActivity::class.java)
             startActivity(intent)

@@ -141,6 +141,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
                     spClass.selectedItem.toString(),
                     etParentName.text.toString(),
                     spGender.selectedItem.toString(),
+                    etBornDate.text.toString(),
                     etAddress.text.toString(),
                     etPhoneNumber.text.toString(),
                     spTahunAjaran.selectedItem.toString(),

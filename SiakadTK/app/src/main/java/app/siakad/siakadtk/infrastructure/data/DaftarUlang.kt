@@ -11,6 +11,7 @@ data class DaftarUlang (
     var namaSiswa: String = "",
     var kelas: String = "",
     var jenisKelamin: String = "",
+    var tanggalLahir: String = "",
     var namaWali: String = "",
     var alamat: String = "",
     var noHP: String = "",

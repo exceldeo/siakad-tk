@@ -11,11 +11,15 @@ import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
+import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
+import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import app.siakad.siakadtk.infrastructure.data.Pengguna
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 
 class UserRepository() {
     private var userState = MutableLiveData<ModelContainer<PenggunaModel>>()
@@ -23,6 +27,7 @@ class UserRepository() {
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
     private var detailPengguna = DetailPenggunaModel()
+    private var thisPengguna = PenggunaModel()
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
     private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
@@ -105,7 +110,7 @@ class UserRepository() {
 
     fun insertData(listener: RegisterListener, pengguna: Pengguna) {
         val newKey = userDB.push().key.toString()
-        val newData = PenggunaModel(
+        thisPengguna = PenggunaModel(
             userId = newKey,
             email = pengguna.email,
             nama = pengguna.nama,
@@ -114,6 +119,7 @@ class UserRepository() {
             detailPengguna = pengguna.detail,
             status = false
         )
+        val newData = thisPengguna
 
         userDB.child(newKey).setValue(newData).addOnSuccessListener {
             listener.notifyDataInsertStatus(ModelContainer.getSuccesModel("Sukses"))
@@ -122,30 +128,39 @@ class UserRepository() {
         }
     }
 
-    fun updateDetailData(detail: DetailPengguna) {
+    fun updateDetailData(listener: RegistrationListener, detail: DaftarUlang) {
         detailPengguna = DetailPenggunaModel(
             kelas = detail.kelas,
-            tahunAjaran = detail.tahunAjaran,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
-            namaOrtu = detail.namaOrtu
+            namaOrtu = detail.namaWali,
+            tahunAjaran = detail.tahunAjaran,
+            fotoBayarAwal = detail.fotoBayar,
         )
+        updateDataFromRegistration(listener, detail)
     }
 
-    fun updateData(pengguna: Pengguna) {
+    fun updateDataFromRegistration(listener: RegistrationListener, daful: DaftarUlang) {
         val currentKey = userDB.key.toString()
         val updateData = PenggunaModel(
             userId = currentKey,
-            email = pengguna.email,
-            nama = pengguna.nama,
-            passwd = pengguna.passwd,
+            email = thisPengguna.email,
+            nama = thisPengguna.nama,
+            passwd = thisPengguna.passwd,
             role = UserRoleModel.SISWA.str,
+            noHP = daful.noHP,
+            alamat = daful.alamat,
             detailPengguna = detailPengguna
         )
-        userDB.child(currentKey).setValue(updateData).addOnSuccessListener {
-            insertState.postValue(ModelContainer.getSuccesModel("Sukses"))
+        val newData = updateData.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${FirebaseRef.USER_REF}/${updateData.userId}" to newData
+        )
+
+        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
         }.addOnFailureListener {
-            insertState.postValue(ModelContainer.getFailModel())
+            listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
         }
     }
 

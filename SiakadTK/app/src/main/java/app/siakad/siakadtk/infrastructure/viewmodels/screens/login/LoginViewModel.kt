@@ -27,6 +27,8 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
     private var passwd: String = ""
     private var userId: String = ""
 
+    private var pengguna = PenggunaModel()
+
     fun loginSiswa(email: String, passwd: String) {
         this.email = email
         this.passwd = passwd
@@ -43,6 +45,12 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
             if (item != null) {
                 if (item.role == UserRoleModel.SISWA.str) {
                     userId = item.userId
+                    pengguna = PenggunaModel(
+                        nama = item.nama,
+                        email = item.email,
+                        passwd = item.passwd,
+                        status = item.status
+                    )
                     AuthenticationRepository.setUser(userId, email, passwd, item.status)
                     authRepository.login(this@LoginViewModel, email, passwd)
                 } else {
@@ -58,6 +66,9 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
 
+    fun getPengguna(): PenggunaModel {
+        return pengguna
+    }
     override fun notifyLoginStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_login))
