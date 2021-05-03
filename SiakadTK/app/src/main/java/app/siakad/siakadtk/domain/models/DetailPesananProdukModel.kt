@@ -5,7 +5,7 @@ import com.google.firebase.database.Exclude
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class DetailPesananModel (
+data class DetailPesananProdukModel (
     @get:Exclude
     var detailPesananId: String = "",
     var pesananId: String = "",

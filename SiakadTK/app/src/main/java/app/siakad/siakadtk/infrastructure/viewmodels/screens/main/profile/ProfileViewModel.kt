@@ -3,15 +3,14 @@ package app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.domain.repositories.UserDetailRepository
+import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +20,7 @@ import kotlinx.coroutines.launch
 class ProfileViewModel (private val context: Context, private val lcOwner: LifecycleOwner) :
     ViewModel() {
     private val userDetailRepository = UserDetailRepository()
+    private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
     private lateinit var insertObserver: Observer<ModelContainer<String>>
@@ -46,16 +46,14 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
         vmCoroutineScope.launch {
             userDetailRepository.insertData(
                 DetailPengguna(
-                    nama = namaSiswa,
                     kelas = kelas,
-                    thnAjaran = thnAjaran,
+                    tahunAjaran = thnAjaran,
                     jenisKelamin = gender,
                     tanggalLahir = bornDate,
-                    alamat = address,
-                    noHP = noHP,
                     namaOrtu = namaWali
                 )
             )
+//            insert data ke UserDetail
         }
     }
 

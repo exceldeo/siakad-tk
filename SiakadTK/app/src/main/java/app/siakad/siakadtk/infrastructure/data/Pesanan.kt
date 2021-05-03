@@ -1,7 +1,7 @@
 package app.siakad.siakadtk.infrastructure.data
 
 import android.os.Parcelable
-import app.siakad.siakadtk.domain.models.DetailPesananModel
+import app.siakad.siakadtk.domain.models.DetailPesananProdukModel
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -13,5 +13,5 @@ data class Pesanan (
     var noHP: String = "",
     var jumlah: Int = 0,
     var total: Int = 1000,
-    var detailPesanan: ArrayList<DetailPesananModel>? = arrayListOf()
+    var detailPesananProduk: ArrayList<DetailPesananProdukModel>? = arrayListOf()
 ): Parcelable

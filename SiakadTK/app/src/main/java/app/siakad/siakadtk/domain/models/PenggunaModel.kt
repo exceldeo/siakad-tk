@@ -17,5 +17,20 @@ data class PenggunaModel(
     var email: String = "",
     var passwd: String = "",
     var role: String = "",
-    var status: Boolean = false
-): Parcelable
+    var status: Boolean = false,
+    var detailPengguna: DetailPenggunaModel? = null
+): Parcelable {
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "userId" to userId,
+            "nama" to nama,
+            "alamat" to alamat,
+            "noHP" to noHP,
+            "email" to email,
+            "passwd" to passwd,
+            "role" to role,
+            "status" to status,
+            "detailPengguna" to detailPengguna
+        )
+    }
+}

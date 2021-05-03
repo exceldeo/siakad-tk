@@ -1,6 +1,11 @@
 package app.siakad.siakadtk.presentation.screens.register
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
@@ -10,10 +15,16 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.AuthenticationRepository.Companion.userState
+import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
+import app.siakad.siakadtk.presentation.screens.main.PendingActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import java.io.File
 
 
 class RegisterActivity : AppCompatActivity(), AuthenticationListener {
@@ -28,6 +39,13 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     private lateinit var vmRegister: RegisterViewModel
 
+    private var firstPaymentImage: Uri? = null
+
+    companion object {
+        const val PICK_PHOTO_REQUEST = 1000
+        const val PERMISSION_REQUEST = 1001
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -40,8 +58,49 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-            navigateToMain()
+//            if (userState) {
+                navigateToMain()
+//            } else {
+//                navigateToPendingMain()
+//            }
         }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSION_REQUEST -> {
+                if (grantResults.isNotEmpty() && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+                    pickImageFromGallery()
+                } else {
+                    Toast.makeText(this, "Akses ditolak", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == PICK_PHOTO_REQUEST) {
+            val imageUri: Uri = data?.data!!
+            btnUploadBukti.text = imageUri.toString()
+            firstPaymentImage = imageUri
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(
+            intent,
+            PICK_PHOTO_REQUEST
+        )
     }
 
     private fun setupItemView() {
@@ -60,12 +119,34 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
     private fun setupView() {
         btnUploadBukti.setOnClickListener {
-        }
-        btnSignup.setOnClickListener {
-            if (validateForm()) {
-                vmRegister.registerSiswa(etEmail.text.toString(), etPassword.text.toString(), etName.text.toString())
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED
+                ) {
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    requestPermissions(
+                        permissions,
+                        PERMISSION_REQUEST
+                    );
+                } else {
+                    pickImageFromGallery();
+                }
             } else {
-                showToast("Ulangi pendaftaran")
+                pickImageFromGallery();
+            }
+        }
+        var isClickRegister = false
+        btnSignup.setOnClickListener {
+            if (validateForm() && !isClickRegister) {
+                vmRegister.registerSiswa(
+                    etEmail.text.toString(),
+                    etPassword.text.toString(),
+                    etName.text.toString(),
+                    firstPaymentImage
+                )
+                isClickRegister = true
+            } else if (validateForm() && isClickRegister) {
+                showToast("Pendaftaran masih di proses")
             }
         }
         tvLogin.setOnClickListener {
@@ -110,11 +191,22 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
             valid = false
         }
 
+        if (firstPaymentImage == null) {
+            showToast("Tambahkan Foto Pembayaran Awal!")
+            valid = false
+        }
+
         return valid
     }
 
     override fun navigateToMain() {
         val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun navigateToPendingMain() {
+        val intent = Intent(this@RegisterActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()
     }

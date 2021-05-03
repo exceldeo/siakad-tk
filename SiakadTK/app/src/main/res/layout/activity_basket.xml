@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,21 +7,87 @@
     android:orientation="vertical"
     tools:context=".presentation.screens.main.product.basket.BasketActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/appbar_height"
-        android:paddingBottom="@dimen/appbar_padding_top"
-        android:gravity="bottom">
-
-        <include layout="@layout/item_toolbar"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_basket_order_nota_list"
-        android:paddingStart="@dimen/container_padding_x"
-        android:paddingEnd="@dimen/container_padding_x"
-        android:layout_marginTop="@dimen/container_padding_x"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_row_basket" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:paddingBottom="100dp">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_height"
+            android:paddingBottom="@dimen/appbar_padding_top"
+            android:gravity="bottom">
+
+            <include layout="@layout/item_toolbar"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_basket_order_nota_list"
+            android:paddingStart="@dimen/container_padding_x"
+            android:paddingEnd="@dimen/container_padding_x"
+            android:layout_marginTop="@dimen/container_padding_x"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_row_basket" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="28dp"
+        app:cardCornerRadius="@dimen/list_corner"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ListTitle"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_marginHorizontal="@dimen/container_padding_x"
+            android:layout_marginBottom="@dimen/container_padding_y">
+
+            <CheckBox
+                android:id="@+id/cb_basket_select_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/pilih_semua"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/colorPrimaryLight"
+                style="@style/DefaultMargin"/>
+
+            <TextView
+                android:id="@+id/tv_basket_total_payment"
+                android:layout_width="wrap_content"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/list_title_text"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:text="" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/input_corner"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/btn_basket_order"
+                    style="@style/CommonButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/pesan"
+                    android:textColor="@android:color/white" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

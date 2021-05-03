@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.screens.main.PendingActivity">
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/appbar_height"-->
+<!--        android:paddingBottom="@dimen/appbar_padding_top"-->
+<!--        android:gravity="bottom">-->
+
+<!--        <include layout="@layout/item_toolbar"/>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pending_verification_register"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/proses_verifikasi"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/container_padding_x"
+            android:textSize="@dimen/card_title_text"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/inner_padding"
+            style="@style/DefaultMargin"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/detail_proses_verifikasi"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_pending_check_status"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/cek_status"-->
+<!--            style="@style/CommonButton"-->
+<!--            android:layout_marginStart="@dimen/container_padding_x"-->
+<!--            android:layout_marginEnd="@dimen/container_padding_x"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:background="@drawable/fill_danger_button"-->
+<!--            android:layout_marginTop="@dimen/container_double_padding_y" />-->
+
+        <Button
+            android:id="@+id/btn_pending_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/keluar"
+            style="@style/CommonButton"
+            android:layout_marginStart="@dimen/container_padding_x"
+            android:layout_marginEnd="@dimen/container_padding_x"
+            android:textColor="@android:color/white"
+            android:background="@drawable/fill_danger_button"
+            android:layout_marginTop="@dimen/container_double_padding_y" />
+    </LinearLayout>
+</LinearLayout>

@@ -81,10 +81,10 @@
     <string name="ukuran">Ukuran</string>
     <string name="jumlah">Jumlah</string>
     <string name="jumlah_produk">Jumlah Tersedia : </string>
-    <string name="example_price">Rp 70.000</string>
-    <string name="example_jumlah">100</string>
+    <string name="example_price">0</string>
+    <string name="example_jumlah">0</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
-    <string name="example_sum_price">Total: Rp 140.000</string>
+    <string name="example_sum_price">Total: Rp 0</string>
     <string name="ubah_password">Ubah Password</string>
     <string name="password_baru">Password Baru</string>
     <string name="username">Username</string>
@@ -114,11 +114,15 @@
     <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
     <string name="registration_detail_price">
-        Dengan Perincian <br></br> 1. Worksheet <br></br> 2. Field Trip Tahunan <br></br> 3. Iuran IDPP
+        <br>Dengan Perincian</br>
+        <br>1. Worksheet</br>
+        <br>2. Field Trip Tahunan</br>
+        <br>3. Iuran IDPP</br>
     </string>
 
     <string name="registration_detail_transfer">
-        Transfer ke Rekening BNI: <br></br> a.n SekolahTK  <br></br> 1234567
+        <br>Transfer ke Rekening BNI:</br>
+        <br>a.n SekolahTK 1234567</br>
     </string>
 
     <string-array name="list_jenis_kelamin">
@@ -136,12 +140,12 @@
         <item>2021 / 2022</item>
     </string-array>
 
-    <string-array name="list_jumlah">
-        <item>1 buah</item>
-        <item>2 buah</item>
-        <item>3 buah</item>
-        <item>4 buah</item>
-    </string-array>
+    <integer-array name="list_jumlah">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
 
     <string-array name="list_ukuran">
         <item>S</item>
@@ -169,7 +173,9 @@
     <string name="scs_regis">Berhasil daftar</string>
     <string name="fail_regis">Gagal daftar, pastikan masukkan data dengan benar dan coba lagi</string>
     <string name="scs_login">Berhasil masuk</string>
+    <string name="scs_basket">Berhasil membuat keranjang</string>
     <string name="fail_login">Terjadi kesalahan, pastikan data yang Anda masukkan benar dan silahkan coba lagi!</string>
+    <string name="fail_basket">Terjadi kesalahan, keranjang Anda gagal dibuat!</string>
     <string name="scs_get_data">Data berhasil diambil</string>
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
@@ -187,5 +193,13 @@
     <string name="nominal_bayar">Nominal Bayar (Rp)</string>
     <string name="example_nominal">225000</string>
     <string name="data_pendaftaran">Data Pendaftaran</string>
+    <string name="fail_upload_img">Gagal mengunggah foto</string>
+    <string name="example_gender">Perempuan</string>
+    <string name="pesan">Pesan</string>
+    <string name="pilih_semua">Pilih Semua</string>
+    <string name="tk_a">TK A</string>
+    <string name="detail_proses_verifikasi">Pendaftaran telah terkirim, saat ini akun Anda sedang diverifikasi oleh pihak sekolah</string>
+    <string name="proses_verifikasi">Proses Verifikasi</string>
+    <string name="cek_status">Cek Status</string>
 
 </resources>

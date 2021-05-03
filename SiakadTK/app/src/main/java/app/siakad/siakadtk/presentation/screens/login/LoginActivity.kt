@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.main.PendingActivity
 import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 
@@ -38,7 +43,11 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-            navigateToMain()
+//            if (AuthenticationRepository.userState) {
+                navigateToMain()
+//            } else {
+//                navigateToPendingMain()
+//            }
         }
     }
 
@@ -49,6 +58,9 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
         tvSignUp = findViewById(R.id.tv_login_daftar)
         pbLoading = findViewById(R.id.loading)
+
+        vmLogin =
+            ViewModelProvider(this, ViewModelFactory(this, this)).get(LoginViewModel::class.java)
     }
 
     private fun setupView() {
@@ -69,6 +81,12 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
     override fun navigateToMain() {
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun navigateToPendingMain() {
+        val intent = Intent(this@LoginActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()
     }

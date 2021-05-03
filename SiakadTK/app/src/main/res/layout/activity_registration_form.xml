@@ -327,17 +327,17 @@
                 android:layout_marginTop="@dimen/inner_padding"
                 style="@style/LabelText"
                 android:text="@string/unggah_bukti_pembayaran"/>
+
             <Button
                 android:id="@+id/btn_registrationform_upload_bukti_bayar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/container_padding_x"
+                android:layout_marginTop="@dimen/padding_text"
                 android:background="@drawable/fill_upload_img"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/unggah_bukti_pembayaran"
-                android:layout_marginBottom="@dimen/container_double_padding_y"
-                android:textColor="@color/colorPrimary" />
+                android:layout_marginBottom="@dimen/container_double_padding_y"/>
         </LinearLayout>
     </ScrollView>
 

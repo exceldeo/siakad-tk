@@ -20,6 +20,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="120dp"
         android:layout_below="@id/ab_toolbar_main">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,22 +39,38 @@
                 android:layout_marginTop="@dimen/container_padding_x"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tv_product_unidetail_kewajiban"
+                    android:id="@+id/tv_product_unidetail_nama"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/wajib"
                     android:textSize="@dimen/list_subtitle_text"
-                    android:textColor="@color/colorSuccess"
+                    android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/poppins_semibold"/>
-
                 <TextView
-                    android:id="@+id/tv_product_unidetail_batas_pesan"
+                    android:id="@+id/tv_product_unidetail_price"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/until_date"
-                    android:textSize="@dimen/list_desc_text"
+                    android:text="@string/example_price"
+                    android:textSize="@dimen/list_subtitle_text"
+                    android:textColor="@color/colorBlack"
                     android:fontFamily="@font/poppins_regular"/>
 
+                <TextView
+                    android:id="@+id/tv_product_unidetail_jenis_kelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/example_gender"
+                    android:textSize="@dimen/list_desc_text"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/poppins_regular"/>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_product_unidetail_batas_pesan"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:text="@string/until_date"-->
+<!--                    android:textSize="@dimen/list_desc_text"-->
+<!--                    android:fontFamily="@font/poppins_regular"/>-->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -64,7 +81,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/inner_padding"
-                    android:text="@string/jenis_kelamin"
+                    android:text="@string/ukuran"
+                    android:textSize="@dimen/list_desc_text"
+                    android:fontFamily="@font/poppins_regular"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dd_product_unidetail_ukuran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="@dimen/list_corner"
+                    app:boxCornerRadiusBottomStart="@dimen/list_corner"
+                    app:boxCornerRadiusTopEnd="@dimen/list_corner"
+                    app:boxCornerRadiusTopStart="@dimen/list_corner"
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_marginTop="@dimen/inner_padding"-->
+<!--                    android:layout_height="@dimen/input_height">-->
+<!--                    <com.makeramen.roundedimageview.RoundedImageView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:src="@drawable/vc_bg_input_unfilled"-->
+<!--                        android:scaleType="fitXY"-->
+<!--                        app:riv_corner_radius="10dip"/>-->
+<!--                    <Spinner-->
+<!--                        android:id="@+id/sp_product_unidetail_ukuran"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/input_height"-->
+<!--                        android:paddingStart="@dimen/inner_padding"-->
+<!--                        android:theme="@style/InputText"-->
+<!--                        android:entries="@array/list_ukuran"-->
+<!--                        android:spinnerMode="dropdown"/>-->
+<!--                </RelativeLayout>-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="@string/jumlah"
                     android:textSize="@dimen/list_desc_text"
                     android:fontFamily="@font/poppins_regular"/>
 
@@ -78,204 +140,15 @@
                         android:src="@drawable/vc_bg_input_unfilled"
                         android:scaleType="fitXY"
                         app:riv_corner_radius="10dip"/>
-                    <Spinner
-                        android:id="@+id/sp_product_unidetail_jeniskelamin"
+                    <EditText
+                        android:id="@+id/et_product_unidetail_jumlah"
+                        android:padding="@dimen/input_text_padding"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/input_height"
-                        android:paddingStart="@dimen/inner_padding"
-                        android:theme="@style/InputText"
-                        android:entries="@array/list_jenis_kelamin"
-                        android:spinnerMode="dropdown"/>
+                        android:layout_height="match_parent"
+                        android:hint="@string/example_jumlah"
+                        style="@style/InputText"
+                        android:background="@android:color/transparent"/>
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/container_padding_x"
-                    android:text="@string/atasan"
-                    android:textSize="@dimen/list_subtitle_text"
-                    android:textColor="@color/colorBlack"
-                    android:textAllCaps="true"
-                    android:fontFamily="@font/poppins_semibold"/>
-
-                <TextView
-                    android:id="@+id/tv_product_unidetail_price_atasan"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/example_price"
-                    android:textSize="@dimen/list_subtitle_text"
-                    android:textColor="@color/colorBlack"
-                    android:fontFamily="@font/poppins_regular"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/inner_padding"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:text="@string/ukuran"
-                            android:textSize="@dimen/list_desc_text"
-                            android:fontFamily="@font/poppins_regular"/>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:layout_height="@dimen/input_height">
-                            <com.makeramen.roundedimageview.RoundedImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/vc_bg_input_unfilled"
-                                android:scaleType="fitXY"
-                                app:riv_corner_radius="10dip"/>
-                            <Spinner
-                                android:id="@+id/sp_product_unidetail_ukuran_atasan"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/input_height"
-                                android:paddingStart="@dimen/inner_padding"
-                                android:theme="@style/InputText"
-                                android:entries="@array/list_ukuran"
-                                android:spinnerMode="dropdown"/>
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/inner_padding"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:text="@string/jumlah"
-                            android:textSize="@dimen/list_desc_text"
-                            android:fontFamily="@font/poppins_regular"/>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:layout_height="@dimen/input_height">
-                            <com.makeramen.roundedimageview.RoundedImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/vc_bg_input_unfilled"
-                                android:scaleType="fitXY"
-                                app:riv_corner_radius="10dip"/>
-                            <Spinner
-                                android:id="@+id/sp_product_unidetail_jumlah_atasan"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/input_height"
-                                android:paddingStart="@dimen/inner_padding"
-                                android:theme="@style/InputText"
-                                android:entries="@array/list_jumlah"
-                                android:spinnerMode="dropdown"/>
-                        </RelativeLayout>
-                    </LinearLayout>
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/container_padding_x"
-                    android:text="@string/bawahan"
-                    android:textSize="@dimen/list_subtitle_text"
-                    android:textColor="@color/colorBlack"
-                    android:textAllCaps="true"
-                    android:fontFamily="@font/poppins_semibold"/>
-
-                <TextView
-                    android:id="@+id/tv_product_unidetail_price_bawahan"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/example_price"
-                    android:textSize="@dimen/list_subtitle_text"
-                    android:textColor="@color/colorBlack"
-                    android:fontFamily="@font/poppins_regular"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/inner_padding"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:text="@string/ukuran"
-                            android:textSize="@dimen/list_desc_text"
-                            android:fontFamily="@font/poppins_regular"/>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:layout_height="@dimen/input_height">
-                            <com.makeramen.roundedimageview.RoundedImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/vc_bg_input_unfilled"
-                                android:scaleType="fitXY"
-                                app:riv_corner_radius="10dip"/>
-                            <Spinner
-                                android:id="@+id/sp_product_unidetail_ukuran_bawahan"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/input_height"
-                                android:paddingStart="@dimen/inner_padding"
-                                android:theme="@style/InputText"
-                                android:entries="@array/list_ukuran"
-                                android:spinnerMode="dropdown"/>
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/inner_padding"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:text="@string/jumlah"
-                            android:textSize="@dimen/list_desc_text"
-                            android:fontFamily="@font/poppins_regular"/>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_marginTop="@dimen/inner_padding"
-                            android:layout_height="@dimen/input_height">
-                            <com.makeramen.roundedimageview.RoundedImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/vc_bg_input_unfilled"
-                                android:scaleType="fitXY"
-                                app:riv_corner_radius="10dip"/>
-                            <Spinner
-                                android:id="@+id/sp_product_unidetail_jumlah_bawahan"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/input_height"
-                                android:paddingStart="@dimen/inner_padding"
-                                android:theme="@style/InputText"
-                                android:entries="@array/list_jumlah"
-                                android:spinnerMode="dropdown"/>
-                        </RelativeLayout>
-                    </LinearLayout>
-                </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
@@ -283,45 +156,46 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
         android:elevation="28dp"
-        app:cardCornerRadius="@dimen/list_corner"
-        android:layout_alignParentBottom="true">
+        app:cardCornerRadius="@dimen/list_corner">
 
         <LinearLayout
+            style="@style/ListTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ListTitle"
             android:layout_gravity="end"
-            android:gravity="end"
-            android:orientation="vertical"
             android:layout_marginHorizontal="@dimen/container_padding_x"
-            android:layout_marginBottom="@dimen/container_padding_y">
+            android:layout_marginBottom="@dimen/container_padding_y"
+            android:gravity="end"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_product_unidetail_total_harga"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_regular"
                 android:text="@string/example_sum_price"
-                android:textSize="@dimen/list_subtitle_text"
                 android:textColor="@color/colorBlack"
-                android:fontFamily="@font/poppins_regular"/>
+                android:textSize="@dimen/list_subtitle_text" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
-                app:cardCornerRadius="@dimen/input_corner"
-                app:cardBackgroundColor="@color/colorPrimary">
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/input_corner">
 
                 <TextView
                     android:id="@+id/btn_product_unidetail_tambah_ke_basket"
+                    style="@style/CommonButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/container_padding_x"
-                    android:text="@string/add_to_basket"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
-                    style="@style/CommonButton"/>
+                    android:text="@string/add_to_basket"
+                    android:textColor="@android:color/white" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
