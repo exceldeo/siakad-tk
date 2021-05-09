@@ -1,68 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="@dimen/cardview_default_elevation"
+    android:layout_marginVertical="@dimen/input_text_padding"
     app:cardCornerRadius="@dimen/list_corner"
-    android:layout_marginVertical="@dimen/input_text_padding">
+    app:cardElevation="@dimen/cardview_default_elevation">
 
-    <LinearLayout
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/container_padding_x"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardElevation="0dp"
-            app:cardCornerRadius="8dp">
-
-            <ImageView
-                android:id="@+id/iv_item_registration"
-                android:layout_width="@dimen/list_image"
-                android:layout_height="@dimen/list_image"
-                android:src="@drawable/vc_bg_pengumuman"
-                android:scaleType="centerCrop"/>
-        </androidx.cardview.widget.CardView>
+        app:alignItems="center"
+        app:flexDirection="row">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="@dimen/list_corner">
+            android:orientation="horizontal"
+            app:layout_flexGrow="1">
 
-            <TextView
-                android:id="@+id/tv_item_registration_nama"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Siswa A"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/poppins_extrabold"
-                android:textSize="@dimen/card_title_text"/>
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/tv_item_registration_kelas"
+                <ImageView
+                    android:id="@+id/iv_item_registration"
+                    android:layout_width="@dimen/list_image"
+                    android:layout_height="@dimen/list_image"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vc_bg_pengumuman" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kelase: TK-B"
-                android:fontFamily="@font/poppins_regular"
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:textSize="@dimen/card_desc_text"/>
+                android:layout_marginStart="@dimen/list_corner"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_item_registration_alamat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alamat: Jalan terserah."
-                android:fontFamily="@font/poppins_regular"
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:textSize="@dimen/card_desc_text"/>
+                <TextView
+                    android:id="@+id/tv_item_registration_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:text="Siswa A"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/card_title_text" />
+
+                <TextView
+                    android:id="@+id/tv_item_registration_kelas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_regular"
+                    android:maxLines="3"
+                    android:text="Kelase: TK-B"
+                    android:textSize="@dimen/card_desc_text" />
+
+                <TextView
+                    android:id="@+id/tv_item_registration_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_regular"
+                    android:maxLines="3"
+                    android:text="Alamat: Jalan terserah."
+                    android:textSize="@dimen/card_desc_text" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ib_item_registration_detail"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="@dimen/list_corner"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_double_arrow" />
+    </com.google.android.flexbox.FlexboxLayout>
 </androidx.cardview.widget.CardView>

@@ -50,7 +50,6 @@ class RegistrationListFragment(private val type: String) : Fragment() {
         tvRegistrationCount = view.findViewById(R.id.tv_registration_jumlah)
 
         setupListAdapter(view)
-
         setupViewModel()
 
         return view

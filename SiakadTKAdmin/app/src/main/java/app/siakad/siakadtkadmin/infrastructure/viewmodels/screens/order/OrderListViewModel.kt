@@ -54,7 +54,6 @@ class OrderListViewModel(private val context: Context) :
     }
 
     override fun setUser(user: ModelContainer<PenggunaModel>) {
-        showToast("ss")
         if (user.status == ModelState.SUCCESS) {
             if (user.data != null) {
                 dataPesananModelList.forEach forE@{

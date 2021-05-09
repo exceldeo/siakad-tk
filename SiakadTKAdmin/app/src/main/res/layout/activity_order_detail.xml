@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/container_padding_x"
+            android:layout_alignParentTop="true"
             android:paddingTop="@dimen/container_padding_y"
             android:layout_above="@id/v_gudieline">
 
@@ -174,6 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:flexDirection="row"
+                app:alignItems="center"
                 app:justifyContent="space_between"
                 android:layout_marginTop="@dimen/list_space"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom">
@@ -187,26 +189,10 @@
                     android:layout_marginBottom="0dp"
                     android:textColor="@color/colorPrimary"/>
 
-                <LinearLayout
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_order_detail_acc_all"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/iv_order_detail_acc_all"
-                        android:layout_width="@dimen/card_title_ic_size"
-                        android:layout_height="@dimen/card_title_ic_size"
-                        android:src="@drawable/ic_checkbox_check_inact"
-                        android:layout_marginEnd="@dimen/container_padding_x"/>
-
-                    <ImageView
-                        android:id="@+id/iv_order_detail_reject_all"
-                        android:layout_width="@dimen/card_title_ic_size"
-                        android:layout_height="@dimen/card_title_ic_size"
-                        android:src="@drawable/ic_checkbox_cross_inact"
-                        android:layout_marginEnd="@dimen/container_padding_x"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
             </com.google.android.flexbox.FlexboxLayout>
 
             <View

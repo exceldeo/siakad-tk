@@ -22,7 +22,7 @@ class OrderDetailAdapter() : RecyclerView.Adapter<OrderDetailViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: OrderDetailViewHolder, position: Int) {
-        holder.insertOrderDetail(orderDetailList[position])
+        holder.insertOrderDetail(orderDetailList[position], position)
     }
 
     fun changeDataList(data: ArrayList<DetailKeranjangModel>) {

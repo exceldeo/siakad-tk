@@ -3,10 +3,13 @@ package app.siakad.siakadtkadmin.domain.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PesananModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderListListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -37,5 +40,18 @@ class OrderRepository() {
                 }
             }
         })
+    }
+
+    fun updateOrderData(listener: OrderDetailListener, data: PesananModel) {
+        val newData = data.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${data.pesananId}" to newData
+        )
+
+        orderDB.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyOrderChangeStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyOrderChangeStatus(ModelContainer.getFailModel())
+        }
     }
 }

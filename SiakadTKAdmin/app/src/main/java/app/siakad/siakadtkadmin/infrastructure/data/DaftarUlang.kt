@@ -1,20 +1,13 @@
 package app.siakad.siakadtkadmin.infrastructure.data
 
 import android.os.Parcelable
+import app.siakad.siakadtkadmin.domain.models.DaftarUlangModel
+import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.models.PesananModel
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DaftarUlang (
-    var dafulId: String = "",
-    var userId: String = "",
-    var namaSiswa: String = "",
-    var kelas: String = "",
-    var jenisKelamin: String = "",
-    var namaWali: String = "",
-    var alamat: String = "",
-    var noHP: String = "",
-    var nominalbayar: Int = 1000000,
-    var fotoBayar: String = "",
-    var tanggalDaful: String = "",
-    var statusDaful: Boolean = false
+    var pengguna: PenggunaModel,
+    var daful: DaftarUlangModel
 ): Parcelable
