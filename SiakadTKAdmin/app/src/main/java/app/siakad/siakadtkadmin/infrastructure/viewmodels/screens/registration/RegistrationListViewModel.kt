@@ -21,65 +21,65 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class RegistrationListViewModel(private val context: Context) :
-    ViewModel(),
-    RegistrationListListener {
-    private val registrationListLiveData = MutableLiveData<ArrayList<DaftarUlang>>()
+  ViewModel(),
+  RegistrationListListener {
+  private val registrationListLiveData = MutableLiveData<ArrayList<DaftarUlang>>()
 
-    private val registrationRepository = RegistrationRepository()
-    private val userRepository = UserRepository()
+  private val registrationRepository = RegistrationRepository()
+  private val userRepository = UserRepository()
 
-    private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+  private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
-    private val resgistrationModelList = arrayListOf<DaftarUlangModel>()
-    private val resgistrationList = arrayListOf<DaftarUlang>()
+  private val resgistrationModelList = arrayListOf<DaftarUlangModel>()
+  private val resgistrationList = arrayListOf<DaftarUlang>()
 
-    fun setRegistrationType(verified: Boolean) {
+  fun setRegistrationType(verified: Boolean) {
+    if (resgistrationModelList.isEmpty()) {
+      vmCoroutineScope.launch {
+        registrationRepository.initGetRegistrationListListener(
+          this@RegistrationListViewModel,
+          verified
+        )
+      }
+    }
+  }
+
+  override fun addRegistrationItem(daful: ModelContainer<DaftarUlangModel>) {
+    if (daful.status == ModelState.SUCCESS) {
+      if (daful.data != null) {
+        resgistrationModelList.add(daful.data!!)
         vmCoroutineScope.launch {
-            registrationRepository.initGetRegistrationListListener(
-                this@RegistrationListViewModel,
-                verified
+          userRepository.getUserById(this@RegistrationListViewModel, daful.data?.userId!!)
+        }
+      }
+    } else if (daful.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_get_user))
+    }
+  }
+
+  override fun setUser(user: ModelContainer<PenggunaModel>) {
+    if (user.status == ModelState.SUCCESS) {
+      if (user.data != null) {
+        resgistrationModelList.forEach forE@{
+          if (it.userId == user.data?.userId) {
+            resgistrationList.add(
+              DaftarUlang(user.data!!, it)
             )
+            registrationListLiveData.postValue(resgistrationList)
+            return@forE
+          }
         }
+      }
+    } else if (user.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_get_data))
     }
+  }
 
-    override fun setRegistrationList(dafulList: ModelContainer<ArrayList<DaftarUlangModel>>) {
-        if (dafulList.status == ModelState.SUCCESS) {
-            if (dafulList.data?.isNotEmpty()!!) {
-                resgistrationModelList.addAll(dafulList.data!!)
-                resgistrationModelList.forEach {
-                    vmCoroutineScope.launch {
-                        userRepository.getUserById(this@RegistrationListViewModel, it.userId)
-                    }
-                }
-            }
-        } else if (dafulList.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_get_data))
-        }
-    }
+  fun getRegistrationList(): LiveData<ArrayList<DaftarUlang>> {
+    return registrationListLiveData
+  }
 
-    override fun setUser(user: ModelContainer<PenggunaModel>) {
-        if (user.status == ModelState.SUCCESS) {
-            if (user.data != null) {
-                resgistrationModelList.forEach forE@{
-                    if (it.userId == user.data?.userId) {
-                        resgistrationList.add(
-                            DaftarUlang(user.data!!, it)
-                        )
-                        registrationListLiveData.postValue(resgistrationList)
-                        return@forE
-                    }
-                }
-            }
-        } else if (user.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_get_data))
-        }
-    }
-
-    fun getRegistrationList(): LiveData<ArrayList<DaftarUlang>> {
-        return registrationListLiveData
-    }
-
-    private fun showToast(msg: String) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-    }
+  private fun showToast(msg: String) {
+    Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+  }
 }

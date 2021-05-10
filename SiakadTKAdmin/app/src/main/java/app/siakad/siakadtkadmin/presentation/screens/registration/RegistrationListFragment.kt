@@ -17,73 +17,73 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewMode
 import app.siakad.siakadtkadmin.presentation.screens.registration.adapter.RegistrationListAdapter
 
 class RegistrationListFragment(private val type: String) : Fragment() {
-    private lateinit var tvRegistrationCount: TextView
-    private lateinit var rvRegistrationList: RecyclerView
+  private lateinit var tvRegistrationCount: TextView
+  private lateinit var rvRegistrationList: RecyclerView
 
-    private lateinit var vmRegistrationList: RegistrationListViewModel
-    private lateinit var registrationListAdapter: RegistrationListAdapter
+  private lateinit var vmRegistrationList: RegistrationListViewModel
+  private lateinit var registrationListAdapter: RegistrationListAdapter
 
-    companion object {
-        const val VERIFIED_REGISTRATIOIN = "verified_registration"
-        const val UNVERIFIED_REGISTRATIOIN = "unverified_registration"
+  companion object {
+    const val VERIFIED_REGISTRATION = "verified_registration"
+    const val UNVERIFIED_REGISTRATION = "unverified_registration"
 
-        fun getRegistrationVerifiedListFragment(): RegistrationListFragment {
-            return RegistrationListFragment(
-                VERIFIED_REGISTRATIOIN
-            )
-        }
-
-        fun getRegistrationUnverifiedListFragment(): RegistrationListFragment {
-            return RegistrationListFragment(
-                UNVERIFIED_REGISTRATIOIN
-            )
-        }
+    fun getRegistrationVerifiedListFragment(): RegistrationListFragment {
+      return RegistrationListFragment(
+        VERIFIED_REGISTRATION
+      )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_registration_list, container, false)
+    fun getRegistrationUnverifiedListFragment(): RegistrationListFragment {
+      return RegistrationListFragment(
+        UNVERIFIED_REGISTRATION
+      )
+    }
+  }
 
-        tvRegistrationCount = view.findViewById(R.id.tv_registration_jumlah)
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
+    val view = inflater.inflate(R.layout.fragment_registration_list, container, false)
 
-        setupListAdapter(view)
-        setupViewModel()
+    tvRegistrationCount = view.findViewById(R.id.tv_registration_jumlah)
 
-        return view
+    setupListAdapter(view)
+    setupViewModel()
+
+    return view
+  }
+
+  private fun setupViewModel() {
+    vmRegistrationList = ViewModelProvider(
+      this, ViewModelFactory(this.viewLifecycleOwner, this.context)
+    ).get(RegistrationListViewModel::class.java)
+    if (type == VERIFIED_REGISTRATION) {
+      vmRegistrationList.setRegistrationType(true)
+    } else {
+      vmRegistrationList.setRegistrationType(false)
     }
 
-    private fun setupViewModel() {
-        vmRegistrationList = ViewModelProvider(
-            this, ViewModelFactory(this.viewLifecycleOwner, this.context)
-        ).get(RegistrationListViewModel::class.java)
-        if (type == VERIFIED_REGISTRATIOIN) {
-            vmRegistrationList.setRegistrationType(true)
-        } else {
-            vmRegistrationList.setRegistrationType(false)
-        }
-
-        val obsRegistrationList = Observer<ArrayList<DaftarUlang>> { newRegistrationList ->
-            if (newRegistrationList.size > 0) {
-                registrationListAdapter.changeDataList(newRegistrationList)
-            }
-        }
-        vmRegistrationList.getRegistrationList()
-            .observe(this.viewLifecycleOwner, obsRegistrationList)
+    val obsRegistrationList = Observer<ArrayList<DaftarUlang>> { newRegistrationList ->
+      if (newRegistrationList.size > 0) {
+        registrationListAdapter.changeDataList(newRegistrationList)
+      }
     }
+    vmRegistrationList.getRegistrationList()
+      .observe(this.viewLifecycleOwner, obsRegistrationList)
+  }
 
-    private fun setupListAdapter(v: View?) {
-        if (v != null) {
-            registrationListAdapter = RegistrationListAdapter()
+  private fun setupListAdapter(v: View?) {
+    if (v != null) {
+      registrationListAdapter = RegistrationListAdapter()
 
-            rvRegistrationList = v.findViewById(R.id.rv_registration_daftar_siswa)
-            rvRegistrationList.apply {
-                setHasFixedSize(true)
-                adapter = registrationListAdapter
-                layoutManager = LinearLayoutManager(this.context)
-            }
-        }
+      rvRegistrationList = v.findViewById(R.id.rv_registration_daftar_siswa)
+      rvRegistrationList.apply {
+        setHasFixedSize(true)
+        adapter = registrationListAdapter
+        layoutManager = LinearLayoutManager(this.context)
+      }
     }
+  }
 }

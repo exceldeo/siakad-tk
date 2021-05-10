@@ -9,11 +9,13 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.Clas
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.OrderListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.detail.OrderDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.book.BookAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.uniform.UniformAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.RegistrationListViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.detail.RegistrationDetailUnverViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.UserListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 
@@ -94,6 +96,16 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(OrderListViewModel::class.java) -> {
                 OrderListViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(OrderDetailViewModel::class.java) -> {
+                OrderDetailViewModel(
+                    ctx!!
+                ) as T
+            }
+            modelClass.isAssignableFrom(RegistrationDetailUnverViewModel::class.java) -> {
+                RegistrationDetailUnverViewModel(
                     ctx!!
                 ) as T
             }

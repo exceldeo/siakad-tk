@@ -13,7 +13,7 @@ class OrderDetailAdapter() : RecyclerView.Adapter<OrderDetailViewHolder>() {
     private val orderDetailList: ArrayList<DetailKeranjangModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderDetailViewHolder {
-        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
+        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_order_detail, parent, false)
         return OrderDetailViewHolder(viewHolder)
     }
 

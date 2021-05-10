@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
@@ -83,6 +84,8 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     setupButtons()
     setupViewModel()
     setupListAdapter()
+
+    orderListAdapter.changeDataList(pesanan?.pesanan?.detailPesanan!!)
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -123,7 +126,6 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
   private fun setupListAdapter() {
     rvOrderList = findViewById(R.id.rv_order_detail_daftar_pesanan)
     orderListAdapter = OrderDetailAdapter()
-    orderListAdapter.changeDataList(pesanan?.pesanan?.detailPesanan!!)
     rvOrderList.apply {
       setHasFixedSize(true)
       adapter = orderListAdapter
