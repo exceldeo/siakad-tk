@@ -12,4 +12,13 @@ data class PesananModel (
     var userId: String = "",
     var tanggalPesan: String = "",
     var statusPesan: String = ""
-): Parcelable
+): Parcelable {
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "detailPesanan" to detailPesanan,
+            "userId" to userId,
+            "tanggalPesan" to tanggalPesan,
+            "statusPesan" to statusPesan
+        )
+    }
+}

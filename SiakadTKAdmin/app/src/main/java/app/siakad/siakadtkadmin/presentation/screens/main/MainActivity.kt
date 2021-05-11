@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), AlertListener {
         botnavMain.setupWithNavController(navconMain)
     }
 
-    override fun alertAction() {
+    override fun alertAction(tag: String?) {
         vmMain.logout()
         val intent = Intent(this@MainActivity, SplashScreenActivity::class.java)
         startActivity(intent)

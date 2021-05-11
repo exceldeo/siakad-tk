@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/container_padding_x"
+            android:layout_alignParentTop="true"
             android:paddingTop="@dimen/container_padding_y"
             android:layout_above="@id/v_gudieline">
 
@@ -174,6 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:flexDirection="row"
+                app:alignItems="center"
                 app:justifyContent="space_between"
                 android:layout_marginTop="@dimen/list_space"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom">
@@ -187,26 +189,10 @@
                     android:layout_marginBottom="0dp"
                     android:textColor="@color/colorPrimary"/>
 
-                <LinearLayout
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_order_detail_acc_all"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/iv_order_detail_acc_all"
-                        android:layout_width="@dimen/card_title_ic_size"
-                        android:layout_height="@dimen/card_title_ic_size"
-                        android:src="@drawable/ic_checkbox_check_inact"
-                        android:layout_marginEnd="@dimen/container_padding_x"/>
-
-                    <ImageView
-                        android:id="@+id/iv_order_detail_reject_all"
-                        android:layout_width="@dimen/card_title_ic_size"
-                        android:layout_height="@dimen/card_title_ic_size"
-                        android:src="@drawable/ic_checkbox_cross_inact"
-                        android:layout_marginEnd="@dimen/container_padding_x"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
             </com.google.android.flexbox.FlexboxLayout>
 
             <View
@@ -237,6 +223,13 @@
             android:id="@+id/v_gudieline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_above="@id/v2_gudieline"
+            android:background="@android:color/transparent" />
+
+        <View
+            android:id="@+id/v2_gudieline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_above="@id/cv_order_detail"
             android:background="@android:color/darker_gray" />
 
@@ -258,40 +251,29 @@
                 android:layout_marginHorizontal="@dimen/container_padding_x"
                 android:layout_marginBottom="@dimen/container_padding_y">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_order_detail_batal"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_order_detail_tolak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:elevation="0dp"
-                    android:layout_marginEnd="@dimen/container_padding_x"
-                    app:cardCornerRadius="@dimen/list_corner"
-                    app:cardBackgroundColor="@color/colorUnSelect">
+                    android:text="Tolak"
+                    android:fontFamily="@font/poppins_bold"
+                    android:backgroundTint="@color/colorDanger"
+                    style="@style/CommonButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/list_corner"
+                    android:layout_marginEnd="@dimen/container_padding_x"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/container_padding_x"
-                        android:text="Balat"
-                        android:textColor="@android:color/white"
-                        style="@style/CommonButton"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_order_detail_simpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:elevation="0dp"
-                    app:cardCornerRadius="@dimen/list_corner"
-                    app:cardBackgroundColor="@color/colorPrimary">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/container_padding_x"
-                        android:text="Konfirmasi"
-                        android:textColor="@android:color/white"
-                        style="@style/CommonButton"/>
-                </androidx.cardview.widget.CardView>
+                    android:text="Terima Pesanan"
+                    android:fontFamily="@font/poppins_bold"
+                    style="@style/CommonButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/list_corner"
+                    android:paddingEnd="@dimen/container_padding_x"
+                    android:paddingStart="@dimen/container_padding_x"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

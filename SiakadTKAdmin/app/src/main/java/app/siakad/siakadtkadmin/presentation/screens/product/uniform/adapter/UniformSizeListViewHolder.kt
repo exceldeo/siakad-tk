@@ -7,7 +7,7 @@ import app.siakad.siakadtkadmin.infrastructure.data.product.Produk
 import kotlinx.android.synthetic.main.item_product_list.view.*
 import kotlinx.android.synthetic.main.item_uniform_size.view.*
 
-class UniformDetailViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+class UniformSizeListViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     fun insertSize(item: DetailSeragamModel) {
         with(itemView) {
             tv_item_uniform_size_ukuran.text = "Ukuran: " + item.ukuran

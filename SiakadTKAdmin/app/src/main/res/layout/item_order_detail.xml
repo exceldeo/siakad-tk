@@ -62,18 +62,10 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/iv_item_order_detail_acc"
-                android:layout_width="@dimen/card_title_ic_size"
-                android:layout_height="@dimen/card_title_ic_size"
-                android:src="@drawable/ic_checkbox_check_inact"
-                android:layout_marginEnd="@dimen/container_padding_x"/>
-
-            <ImageView
-                android:id="@+id/iv_item_order_detail_reject"
-                android:layout_width="@dimen/card_title_ic_size"
-                android:layout_height="@dimen/card_title_ic_size"
-                android:src="@drawable/ic_checkbox_cross_inact"/>
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_item_order_detail_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </com.google.android.flexbox.FlexboxLayout>
 </androidx.cardview.widget.CardView>

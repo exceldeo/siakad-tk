@@ -7,7 +7,9 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.DaftarUlangModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -15,39 +17,75 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
 class RegistrationRepository() {
-    private var registrationList = MutableLiveData<ModelContainer<ArrayList<DaftarUlangModel>>>()
 
-    private val registrationDB = FirebaseRef(
-        FirebaseRef.DAFTAR_ULANG_REF
-    ).getRef()
+  private val registrationDB = FirebaseRef(
+    FirebaseRef.DAFTAR_ULANG_REF
+  ).getRef()
 
-    fun initGetRegistrationListListener(listener: RegistrationListListener, verified: Boolean = true) {
-        registrationDB.orderByChild("status").equalTo(verified)
-            .addChildEventListener(object : ChildEventListener {
-                override fun onCancelled(error: DatabaseError) {}
+  fun initGetRegistrationListListener(
+    listener: RegistrationListListener,
+    verified: Boolean = true
+  ) {
+    registrationDB.orderByChild("statusDaful").equalTo(verified)
+      .addChildEventListener(object : ChildEventListener {
+        override fun onCancelled(error: DatabaseError) {}
 
-                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+        override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
-                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+          val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
+          if (data != null) {
+            data?.dafulId = snapshot.key.toString()
 
-                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    val dataRef = arrayListOf<DaftarUlangModel>()
+            listener.addRegistrationItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data!!
+              )
+            )
+          }
+        }
 
-                    for (dataSS in snapshot.children) {
-                        val data: DaftarUlangModel? = dataSS.getValue(DaftarUlangModel::class.java)
-                        data?.dafulId = dataSS.key.toString()
-                        dataRef.add(data!!)
+        override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+          val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
+          if (data != null) {
+            data?.dafulId = snapshot.key.toString()
 
-                        listener.setRegistrationList(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = dataRef
-                            )
-                        )
-                    }
-                }
+            listener.addRegistrationItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data!!
+              )
+            )
+          }
+        }
 
-                override fun onChildRemoved(snapshot: DataSnapshot) {}
-        })
+        override fun onChildRemoved(snapshot: DataSnapshot) {
+          val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
+          if (data != null) {
+            data?.dafulId = snapshot.key.toString()
+
+            listener.addRegistrationItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data!!
+              )
+            )
+          }
+        }
+      })
+  }
+
+  fun updateRegisData(listener: RegistrationDetailListener, data: DaftarUlangModel) {
+    val newData = data.toMap()
+    val childUpdates = hashMapOf<String, Any>(
+      "/${data.dafulId}" to newData
+    )
+
+    registrationDB.updateChildren(childUpdates).addOnSuccessListener {
+      listener.notifyRegistrationDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener {
+      listener.notifyRegistrationDetailChangeStatus(ModelContainer.getFailModel())
     }
+  }
 }

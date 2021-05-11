@@ -8,12 +8,12 @@ import app.siakad.siakadtkadmin.domain.models.DetailKeranjangModel
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.infrastructure.data.DetailPesanan
 
-class OrderDetailAdapter() : RecyclerView.Adapter<OrderDetailViewHolder>() {
+class OrderDetailAdapter(private val type: String) : RecyclerView.Adapter<OrderDetailViewHolder>() {
 
     private val orderDetailList: ArrayList<DetailKeranjangModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderDetailViewHolder {
-        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
+        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_order_detail, parent, false)
         return OrderDetailViewHolder(viewHolder)
     }
 
@@ -22,7 +22,7 @@ class OrderDetailAdapter() : RecyclerView.Adapter<OrderDetailViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: OrderDetailViewHolder, position: Int) {
-        holder.insertOrderDetail(orderDetailList[position])
+        holder.insertOrderDetail(orderDetailList[position], position, type)
     }
 
     fun changeDataList(data: ArrayList<DetailKeranjangModel>) {

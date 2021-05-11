@@ -16,7 +16,11 @@ class AlertDialogFragment(private val title: String, private val msg: String): D
             .setTitle(title)
             .setMessage(msg)
             .setPositiveButton("Ya") { _, _ ->
-                alertListener?.alertAction()
+                if (tag != null) {
+                    alertListener?.alertAction(tag)
+                } else {
+                    alertListener?.alertAction("")
+                }
             }
             .setNegativeButton("Tidak") { dialogInterface, _ -> dialogInterface.dismiss() }
 

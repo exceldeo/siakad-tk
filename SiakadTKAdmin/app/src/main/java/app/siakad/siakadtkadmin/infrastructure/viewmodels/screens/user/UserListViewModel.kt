@@ -30,14 +30,46 @@ class UserListViewModel(private val context: Context) :
         }
     }
 
-    override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
-        if (penggunaList.status == ModelState.SUCCESS) {
-            if (penggunaList.data?.isNotEmpty()!!) {
-                dataPenggunaList.addAll(penggunaList.data!!)
+    override fun addUserItem(pengguna: ModelContainer<PenggunaModel>) {
+        if (pengguna.status == ModelState.SUCCESS) {
+            if (pengguna.data != null) {
+                dataPenggunaList.add(pengguna.data!!)
                 userListLiveData.postValue(dataPenggunaList)
-                showToast(context.getString(R.string.scs_get_data))
             }
-        } else if (penggunaList.status == ModelState.ERROR) {
+        } else if (pengguna.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_get_user))
+        }
+    }
+
+    override fun updateUserItem(pengguna: ModelContainer<PenggunaModel>) {
+        if (pengguna.status == ModelState.SUCCESS) {
+            if (pengguna.data != null) {
+                dataPenggunaList.forEachIndexed { index, item ->
+                    if (item.userId == pengguna.data?.userId) {
+                        dataPenggunaList[index] = pengguna.data!!
+                    }
+                }
+                userListLiveData.postValue(dataPenggunaList)
+            }
+        } else if (pengguna.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_get_user))
+        }
+    }
+
+    override fun removeUserItem(pengguna: ModelContainer<PenggunaModel>) {
+        if (pengguna.status == ModelState.SUCCESS) {
+            if (pengguna.data != null) {
+                var target = 0
+                dataPenggunaList.forEachIndexed forE@{ index, item ->
+                    if (item.userId == pengguna.data?.userId) {
+                        target = index
+                        return@forE
+                    }
+                }
+                dataPenggunaList.removeAt(target)
+                userListLiveData.postValue(dataPenggunaList)
+            }
+        } else if (pengguna.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
         }
     }
@@ -48,5 +80,10 @@ class UserListViewModel(private val context: Context) :
 
     private fun showToast(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        userRepository.removeEventListener()
     }
 }
