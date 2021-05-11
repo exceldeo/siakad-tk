@@ -134,7 +134,7 @@ class UserRepository() {
             tanggalLahir = detail.tanggalLahir,
             namaOrtu = detail.namaWali,
             tahunAjaran = detail.tahunAjaran,
-            fotoBayarAwal = dataUser.detail!!.fotoBayarAwal,
+            fotoBayarAwal = detail.fotoBayar,
         )
         updateDataFromRegistration(listener, detail, dataUser)
     }

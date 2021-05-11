@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.presentation.screens.announcement.adapter.AnnouncementAdapter
 import app.siakad.siakadtk.presentation.screens.order.adapter.OrderAdapter
 import app.siakad.siakadtk.infrastructure.data.Pengumuman
@@ -25,6 +26,7 @@ import app.siakad.siakadtk.presentation.screens.order.OrderListActivity
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 
 class HomeFragment : Fragment() {
 
@@ -38,6 +40,9 @@ class HomeFragment : Fragment() {
     private lateinit var rvOrderStatus: RecyclerView
     private lateinit var rvAnnouncementAdapter: AnnouncementAdapter
     private var listNota: ArrayList<Pesanan> = arrayListOf()
+
+    private var dataUser = Pengguna()
+    private lateinit var vmRegistrationForm: RegistrationFormViewModel
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
     private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
@@ -113,6 +118,39 @@ class HomeFragment : Fragment() {
             val intent = Intent(this@HomeFragment.context, OrderListActivity::class.java)
             startActivity(intent)
         }
+
+        vmRegistrationForm = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this.requireContext()
+            )
+        ).get(RegistrationFormViewModel::class.java)
+
+        val obsRegistrationGetUser = Observer<Pengguna> {
+            dataUser = it
+
+            if (it.detail!!.kelas == "") {
+                tvStatusRegistrationTitle.text = "Anda belum melakukan daftar ulang"
+                tvStatusRegistrationDesc.text = "Silahkan melakukan daftar ulang, sebelum\n" + "tanggal 31 Januari."
+                ibtnStatusRegistration.setImageResource(R.drawable.ic_daftar_ulang)
+            }
+            else
+            {
+                if(it.detail!!.dafulState)
+                {
+                    tvStatusRegistrationTitle.text = "Daftar ulang telah dilakukan, terimaksih!"
+                    tvStatusRegistrationDesc.text = "Daftar ulang selesai dan kami terima."
+                    ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_selesai)
+                } else {
+                    tvStatusRegistrationTitle.text = "Terimakasih telah melakukan daftar ulang"
+                    tvStatusRegistrationDesc.text = "Lihat secara berkala status daftar ulang anda."
+                    ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_proses)
+                }
+            }
+        }
+        vmRegistrationForm.getUserData()
+            .observe(this.viewLifecycleOwner, obsRegistrationGetUser)
     }
 
     private fun setupObserver() {

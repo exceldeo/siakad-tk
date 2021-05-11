@@ -3,8 +3,10 @@ package app.siakad.siakadtk.presentation.screens.registration
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -25,7 +27,6 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var tvRegistrationStatus: TextView
     private lateinit var ivRegistrationStatus: ImageView
     private lateinit var btnRegistrationForm: Button
-
     private lateinit var tvName: TextView
     private lateinit var tvBornDate: TextView
     private lateinit var tvGender: TextView
@@ -34,7 +35,8 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var tvAddress: TextView
     private lateinit var tvPhone: TextView
     private lateinit var tvClassYear: TextView
-
+    private lateinit var llViewData: LinearLayout
+    private var dataUser = Pengguna()
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +52,7 @@ class RegistrationActivity : AppCompatActivity() {
         tvRegistrationStatus = findViewById(R.id.tv_registration_desc_status)
         ivRegistrationStatus = findViewById(R.id.iv_registration_status)
         btnRegistrationForm = findViewById(R.id.btn_registration_go_to_form)
+        llViewData = findViewById(R.id.ll_data_pendaftaran)
 
         tvName = findViewById(R.id.tv_registration_dp_nama)
         tvBornDate = findViewById(R.id.tv_registration_dp_ttl)
@@ -77,6 +80,7 @@ class RegistrationActivity : AppCompatActivity() {
         ).get(RegistrationFormViewModel::class.java)
 
         val obsRegistrationGetUser = Observer<Pengguna> {
+            dataUser = it
             tvName.text = it.nama
             tvBornDate.text = it.detail!!.tanggalLahir
             tvGender.text = it.detail!!.jenisKelamin
@@ -85,6 +89,24 @@ class RegistrationActivity : AppCompatActivity() {
             tvAddress.text = it.alamat
             tvPhone.text = it.noHP
             tvClassYear.text = it.detail!!.tahunAjaran
+
+            if (it.detail!!.kelas == "") {
+                llViewData.visibility = View.INVISIBLE
+                tvRegistrationStatus.text = this.getString(R.string.status_daful_0)
+                ivRegistrationStatus.setImageResource(R.drawable.ic_belum_isi)
+            }
+            else
+            {
+                if(it.detail!!.dafulState)
+                {
+                    tvRegistrationStatus.text = this.getString(R.string.status_daful_2)
+                    ivRegistrationStatus.setImageResource(R.drawable.ic_status_selesai)
+                } else {
+                    tvRegistrationStatus.text = this.getString(R.string.status_daful_1)
+                    ivRegistrationStatus.setImageResource(R.drawable.ic_status_proses)
+                }
+                llViewData.visibility = View.VISIBLE
+            }
         }
         vmRegistrationForm.getUserData()
             .observe(this, obsRegistrationGetUser)

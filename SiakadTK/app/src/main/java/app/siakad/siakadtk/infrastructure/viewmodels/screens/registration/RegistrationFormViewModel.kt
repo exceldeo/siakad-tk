@@ -33,7 +33,8 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
 
     private lateinit var insertObserver: Observer<ModelContainer<String>>
     private var daftarUlangUser = DaftarUlang()
-    private val dataUser = MutableLiveData<Pengguna>()
+    private val liveDataUser = MutableLiveData<Pengguna>()
+    private var dataUser = Pengguna()
     init {
         setupObserver()
         registrationRepository.initEventListener(this)
@@ -101,14 +102,15 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
             val item = user.data
 
             if (item != null) {
-                dataUser.postValue(Pengguna(
+                dataUser = Pengguna(
                     nama = item.nama,
                     alamat = item.alamat,
                     noHP = item.noHP,
                     email = item.email,
                     passwd = item.passwd,
                     detail = item.detailPengguna!!
-                ))
+                )
+                liveDataUser.postValue(dataUser)
             } else if (user.status == ModelState.ERROR) {
                 showToast(context.getString(R.string.fail_get_user))
             }
@@ -116,7 +118,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     }
 
     fun getUserData(): LiveData<Pengguna> {
-        return dataUser
+        return liveDataUser
     }
 
     override fun notifyUserDetailChangeStatus(status: ModelContainer<String>) {
@@ -137,7 +139,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
             }
             vmCoroutineScope.launch {
                 userRepository.updateDetailData(
-                    this@RegistrationFormViewModel, daftarUlangUser, dataUser.value!!
+                    this@RegistrationFormViewModel, daftarUlangUser, dataUser
                 )
             }
         } else if (status.status == ModelState.ERROR) {

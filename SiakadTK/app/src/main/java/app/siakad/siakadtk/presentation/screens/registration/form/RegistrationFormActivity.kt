@@ -43,7 +43,6 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private lateinit var etAddress: EditText
     private lateinit var spTahunAjaran: Spinner
     private lateinit var etPhoneNumber: EditText
-//    private lateinit var etTotalPayment: EditText
     private lateinit var btnUploadBukti: Button
     private lateinit var btnCancel: TextView
     private lateinit var btnSimpan: TextView

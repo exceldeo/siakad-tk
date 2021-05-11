@@ -110,7 +110,9 @@
     <string name="tanggal_pesan">Tanggal Pesan</string>
     <string name="tanggal_pesananan_disetujui">Tanggal Pesananan Disetujui</string>
     <string name="detail_nota">Detail Nota</string>
-    <string name="terverivikasi_dan_menunggu_pembayaran">Terverivikasi dan menunggu pembayaran.</string>
+    <string name="status_daful_0">Belum daftar.</string>
+    <string name="status_daful_1">Proses verifikasi.</string>
+    <string name="status_daful_2">Terverifikasi.</string>
     <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
     <string name="registration_detail_price">
