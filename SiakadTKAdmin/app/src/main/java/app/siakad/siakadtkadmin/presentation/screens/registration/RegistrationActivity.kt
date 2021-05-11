@@ -28,7 +28,6 @@ class RegistrationActivity : AppCompatActivity(), RegistrationClickHelper {
     setContentView(R.layout.activity_registration)
 
     setupAppBar()
-
     setupTabLayout()
   }
 

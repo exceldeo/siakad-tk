@@ -109,7 +109,7 @@ class UserDetailUnverActivity : AppCompatActivity(), AlertListener {
     ).get(UserDetailViewModel::class.java)
   }
 
-  override fun alertAction() {
+  override fun alertAction(tag: String?) {
     vmUserDetail.updateDataToVerified(siswa!!)
   }
 }

@@ -3,9 +3,8 @@ package app.siakad.siakadtkadmin.presentation.screens.order.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
+import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
@@ -15,14 +14,13 @@ import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.DetailKeranjangModel
 import app.siakad.siakadtkadmin.infrastructure.data.Pesanan
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.detail.OrderDetailViewModel
-import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
-import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
+import app.siakad.siakadtkadmin.presentation.screens.order.OrderListFragment
 import app.siakad.siakadtkadmin.presentation.screens.order.detail.adapter.OrderDetailAdapter
-import app.siakad.siakadtkadmin.presentation.screens.order.detail.adapter.OrderDetailViewHolder
 import app.siakad.siakadtkadmin.presentation.screens.order.detail.helper.OrderDetailHelper
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
 
 class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListener {
@@ -37,18 +35,21 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
   private lateinit var tvOrderTotal: TextView
   private lateinit var cbAccAll: MaterialCheckBox
   private lateinit var rvOrderList: RecyclerView
-  private lateinit var btnCancel: CardView
-  private lateinit var btnSave: CardView
+  private lateinit var btnCancel: MaterialButton
+  private lateinit var btnSave: MaterialButton
 
   private lateinit var orderListAdapter: OrderDetailAdapter
   private lateinit var vmOrderDetail: OrderDetailViewModel
 
   private var pesanan: Pesanan? = null
+  private var orderType: String? = null
   private var detailPesananList: ArrayList<DetailKeranjangModel> = arrayListOf()
   private var detailPesananListIndex: ArrayList<Int> = arrayListOf()
 
   companion object {
     const val ORDER_DETAIL_ITEM = "order_detail_item"
+    const val TAG_CONFIRM = "Terima Pesan"
+    const val TAG_REJECT = "Tolak Pesan"
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,9 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
 
     if (intent.getParcelableExtra<Pesanan>(ORDER_DETAIL_ITEM) != null) {
       pesanan = intent.getParcelableExtra(ORDER_DETAIL_ITEM)
+    }
+    if (intent.getStringExtra(OrderListFragment.ORDER_TYPE) != null) {
+      orderType = intent.getStringExtra(OrderListFragment.ORDER_TYPE)
     }
 
     tvName = findViewById(R.id.tv_registration_detail_nama)
@@ -101,18 +105,44 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
   private fun setupButtons() {
     cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
 
-    btnCancel = findViewById(R.id.btn_order_detail_batal)
+    btnCancel = findViewById(R.id.btn_order_detail_tolak)
     btnCancel.setOnClickListener {
-      onBackPressed()
-    }
-
-    btnSave = findViewById(R.id.btn_order_detail_simpan)
-    btnSave.setOnClickListener {
       val alertDialog = AlertDialogFragment(
         "Terima pesanan",
         "Apakah Anda yakin menerima pesanan ini?"
       )
-      alertDialog.show(supportFragmentManager, null)
+      alertDialog.show(supportFragmentManager, TAG_REJECT)
+    }
+
+    btnSave = findViewById(R.id.btn_order_detail_simpan)
+    btnSave.setOnClickListener {
+      var alertDialog: AlertDialogFragment? = null
+
+      if (orderType == OrderListFragment.ORDER_PENDING) {
+        alertDialog = AlertDialogFragment(
+          "Terima pesanan",
+          "Apakah Anda yakin menerima pesanan ini?"
+        )
+      } else {
+        alertDialog = AlertDialogFragment(
+          "Selesaikan pesanan",
+          "Apakah benar pesanan ini telah selesai?"
+        )
+      }
+
+      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
+    }
+
+    if (orderType != OrderListFragment.ORDER_PENDING) {
+      cbAccAll.visibility = View.GONE
+      btnCancel.visibility = View.GONE
+
+      if (orderType == OrderListFragment.ORDER_PROCESS) {
+        btnSave.text = "Pesanan Selesai"
+      } else if (orderType == OrderListFragment.ORDER_DONE) {
+        val cvBottomBtns = findViewById<CardView>(R.id.cv_order_detail)
+        cvBottomBtns.visibility = View.INVISIBLE
+      }
     }
   }
 
@@ -148,11 +178,20 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     ).get(OrderDetailViewModel::class.java)
   }
 
-  override fun alertAction() {
-    detailPesananListIndex.forEach {
-      detailPesananList.add(pesanan?.pesanan?.detailPesanan!![it])
+  override fun alertAction(tag: String?) {
+    if (tag == TAG_CONFIRM) {
+      if (orderType == OrderListFragment.ORDER_PENDING) {
+        detailPesananListIndex.forEach {
+          detailPesananList.add(pesanan?.pesanan?.detailPesanan!![it])
+        }
+        pesanan?.pesanan?.detailPesanan = detailPesananList
+        vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_PROCESS)
+      } else {
+        vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_DONE)
+      }
+    } else if (tag == TAG_REJECT) {
+      vmOrderDetail.removeData(pesanan?.pesanan!!)
+      onBackPressed()
     }
-    pesanan?.pesanan?.detailPesanan = detailPesananList
-    vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!)
   }
 }

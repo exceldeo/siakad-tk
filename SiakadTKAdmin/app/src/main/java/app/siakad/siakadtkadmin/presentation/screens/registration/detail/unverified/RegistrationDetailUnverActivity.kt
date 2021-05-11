@@ -106,7 +106,7 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
     ).get(RegistrationDetailUnverViewModel::class.java)
   }
 
-  override fun alertAction() {
+  override fun alertAction(tag: String?) {
     vmRegisDetail.updateDataToVerified(daful?.daful!!)
   }
 }

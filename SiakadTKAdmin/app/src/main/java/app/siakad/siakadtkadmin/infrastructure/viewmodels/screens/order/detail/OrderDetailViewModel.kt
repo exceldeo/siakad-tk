@@ -30,14 +30,28 @@ class OrderDetailViewModel(private val context: Context) :
     }
   }
 
-  private fun showToast(msg: String) {
-    Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+  override fun notifyOrderDeleteStatus(status: ModelContainer<String>) {
+    if (status.status == ModelState.SUCCESS) {
+      showToast(context.getString(R.string.scs_del_data))
+    } else if (status.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_del_data))
+    }
   }
 
-  fun updateDataToAccepted(pesanan: PesananModel) {
-    pesanan.statusPesan = "Diproses"
+  fun updateDataToAccepted(pesanan: PesananModel, status: String) {
+    pesanan.statusPesan = status
     vmCoroutineScope.launch {
       orderRepository.updateOrderData(this@OrderDetailViewModel, pesanan)
     }
+  }
+
+  fun removeData(pesanan: PesananModel) {
+    vmCoroutineScope.launch {
+      orderRepository.removeOrderData(this@OrderDetailViewModel, pesanan)
+    }
+  }
+
+  private fun showToast(msg: String) {
+    Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
   }
 }

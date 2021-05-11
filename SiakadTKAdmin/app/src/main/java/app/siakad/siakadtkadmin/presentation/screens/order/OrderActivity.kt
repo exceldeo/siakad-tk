@@ -12,40 +12,36 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.infrastructure.data.Pesanan
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.OrderListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementListFragment
 import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
 import app.siakad.siakadtkadmin.presentation.screens.main.MainActivity
 import app.siakad.siakadtkadmin.presentation.screens.order.adapter.OrderListAdapter
 import app.siakad.siakadtkadmin.presentation.screens.order.detail.OrderDetailActivity
 import app.siakad.siakadtkadmin.presentation.screens.order.helper.OrderClickHelper
+import app.siakad.siakadtkadmin.presentation.utils.adapter.ViewPagerAdapter
+import com.google.android.material.tabs.TabLayout
 
 class OrderActivity : AppCompatActivity(), OrderClickHelper {
 
   private val pageTitle = "Pesanan"
 
-  private lateinit var svOrder: SearchView
-  private lateinit var tvNumOrder: TextView
-
-  private lateinit var rvOrder: RecyclerView
-
-  private lateinit var vmOrderList: OrderListViewModel
-  private lateinit var orderListAdpater: OrderListAdapter
+  private lateinit var pagerAdapter: ViewPagerAdapter
+  private lateinit var viewPager: ViewPager
+  private lateinit var tab: TabLayout
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_order)
 
-    svOrder = findViewById(R.id.sv_order_cari)
-    tvNumOrder = findViewById(R.id.tv_order_jumlah_pesananan)
-
     setupAppBar()
-    setupListAdapter()
-    setupViewModel()
+    setupTabLayout()
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -65,33 +61,26 @@ class OrderActivity : AppCompatActivity(), OrderClickHelper {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 
-  private fun setupListAdapter() {
-    rvOrder = findViewById(R.id.rv_order_daftar_pesananan)
-    orderListAdpater = OrderListAdapter()
-    rvOrder.apply {
-      setHasFixedSize(true)
-      adapter = orderListAdpater
-      layoutManager = LinearLayoutManager(this.context)
-    }
-  }
+  private fun setupTabLayout() {
+    pagerAdapter =
+      ViewPagerAdapter(
+        this,
+        supportFragmentManager
+      )
+    pagerAdapter.addFragment(OrderListFragment.ORDER_PENDING, OrderListFragment.getPendingOrderListFragment())
+    pagerAdapter.addFragment(OrderListFragment.ORDER_PROCESS, OrderListFragment.getProcessOrderListFragment())
+    pagerAdapter.addFragment(OrderListFragment.ORDER_DONE, OrderListFragment.getDoneOrderListFragment())
 
-  private fun setupViewModel() {
-    vmOrderList = ViewModelProvider(
-      this, ViewModelFactory(this, this)
-    ).get(OrderListViewModel::class.java)
+    viewPager = findViewById(R.id.view_pager_order)
+    viewPager.adapter = pagerAdapter
 
-    val obsOrderList = Observer<ArrayList<Pesanan>> { list ->
-      if (list.size > 0) {
-        orderListAdpater.changeDataList(list)
-      }
-    }
-
-    vmOrderList.getOrderLIst()
-      .observe(this, obsOrderList)
+    tab = findViewById(R.id.tabs_order)
+    tab.setupWithViewPager(viewPager)
   }
 
   override fun navigateToOrderDetail(pesanan: Pesanan) {
     val intent = Intent(this, OrderDetailActivity::class.java)
+    intent.putExtra(OrderListFragment.ORDER_TYPE, pesanan.pesanan.statusPesan)
     intent.putExtra(OrderDetailActivity.ORDER_DETAIL_ITEM, pesanan)
     startActivity(intent)
   }

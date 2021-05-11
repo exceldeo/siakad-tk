@@ -83,4 +83,9 @@ class AnnouncementListViewModel(private val context: Context, private val lcOwne
   private fun showToast(msg: String) {
     Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
   }
+
+  override fun onCleared() {
+    super.onCleared()
+    announcementRepository.removeEventListener()
+  }
 }

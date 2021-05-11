@@ -32,7 +32,19 @@ class RegistrationRepository() {
 
         override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
-        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
+        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+          val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
+          if (data != null) {
+            data?.dafulId = snapshot.key.toString()
+
+            listener.addRegistrationItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data!!
+              )
+            )
+          }
+        }
 
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
           val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
@@ -48,14 +60,26 @@ class RegistrationRepository() {
           }
         }
 
-        override fun onChildRemoved(snapshot: DataSnapshot) {}
+        override fun onChildRemoved(snapshot: DataSnapshot) {
+          val data: DaftarUlangModel? = snapshot.getValue(DaftarUlangModel::class.java)
+          if (data != null) {
+            data?.dafulId = snapshot.key.toString()
+
+            listener.addRegistrationItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data!!
+              )
+            )
+          }
+        }
       })
   }
 
   fun updateRegisData(listener: RegistrationDetailListener, data: DaftarUlangModel) {
     val newData = data.toMap()
     val childUpdates = hashMapOf<String, Any>(
-      "/${data.userId}" to newData
+      "/${data.dafulId}" to newData
     )
 
     registrationDB.updateChildren(childUpdates).addOnSuccessListener {

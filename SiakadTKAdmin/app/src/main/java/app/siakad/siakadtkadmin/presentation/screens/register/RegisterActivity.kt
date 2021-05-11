@@ -1,9 +1,11 @@
 package app.siakad.siakadtkadmin.presentation.screens.register
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -20,92 +22,94 @@ import app.siakad.siakadtkadmin.presentation.utils.listener.AuthenticationListen
 
 class RegisterActivity : AppCompatActivity(), AuthenticationListener {
 
-    private lateinit var etEmail: EditText
-    private lateinit var etPasswd: EditText
-    private lateinit var etConfirmPasswd: EditText
-    private lateinit var btnSignup: CardView
-    private lateinit var tvLogin: TextView
-    private lateinit var pbLoading: ProgressBar
+  private lateinit var etEmail: EditText
+  private lateinit var etPasswd: EditText
+  private lateinit var etConfirmPasswd: EditText
+  private lateinit var btnSignup: CardView
+  private lateinit var tvLogin: TextView
+  private lateinit var pbLoading: ProgressBar
 
-    private lateinit var vmRegister: RegisterViewModel
+  private lateinit var vmRegister: RegisterViewModel
 
-    override fun onStart() {
-        super.onStart()
-        if (AuthenticationRepository.fbAuth.currentUser != null) {
-            navigateToMain()
-        }
+  override fun onStart() {
+    super.onStart()
+    if (AuthenticationRepository.fbAuth.currentUser != null) {
+      navigateToMain()
+    }
+  }
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_register)
+
+    supportActionBar?.hide()
+    setupItemView()
+    setupView()
+  }
+
+  private fun setupItemView() {
+    etEmail = findViewById(R.id.et_register_email)
+    etPasswd = findViewById(R.id.et_register_password)
+    etConfirmPasswd = findViewById(R.id.et_register_password_konfirmasi)
+    btnSignup = findViewById(R.id.btn_register_daftar)
+    tvLogin = findViewById(R.id.tv_register_masuk)
+    pbLoading = findViewById(R.id.loading)
+
+    vmRegister =
+      ViewModelProvider(this, ViewModelFactory(this, this)).get(RegisterViewModel::class.java)
+  }
+
+  private fun setupView() {
+    btnSignup.setOnClickListener {
+      if (validateInput()) {
+        pbLoading.visibility = View.VISIBLE
+        vmRegister.registerAdmin(etEmail.text.toString(), etPasswd.text.toString())
+      }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
-        supportActionBar?.hide()
-        setupItemView()
-        setupView()
+    tvLogin.setOnClickListener {
+      val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+      startActivity(intent)
+      finish()
     }
 
-    private fun setupItemView() {
-        etEmail = findViewById(R.id.et_register_email)
-        etPasswd = findViewById(R.id.et_register_password)
-        etConfirmPasswd = findViewById(R.id.et_register_password_konfirmasi)
-        btnSignup = findViewById(R.id.btn_register_daftar)
-        tvLogin = findViewById(R.id.tv_register_masuk)
-        pbLoading = findViewById(R.id.loading)
+    etPasswd.transformationMethod = PasswordTransformationMethod()
+    etConfirmPasswd.transformationMethod = PasswordTransformationMethod()
+  }
 
-        vmRegister =
-            ViewModelProvider(this, ViewModelFactory(this, this)).get(RegisterViewModel::class.java)
+  private fun validateInput(): Boolean {
+    var returnState = true
+
+    if (etEmail.text.isEmpty()) {
+      etEmail.error = getString(R.string.empty_input)
+      returnState = false
     }
 
-    private fun setupView() {
-        btnSignup.setOnClickListener {
-            if (validateInput()) {
-                vmRegister.registerAdmin(etEmail.text.toString(), etPasswd.text.toString())
-            }
-        }
-
-        tvLogin.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        etPasswd.transformationMethod = PasswordTransformationMethod()
-        etConfirmPasswd.transformationMethod = PasswordTransformationMethod()
+    if (etPasswd.text.isEmpty()) {
+      etPasswd.error = getString(R.string.empty_input)
+      returnState = false
+    } else if (etPasswd.text.length < 6) {
+      etPasswd.error = getString(R.string.weak_passwd)
+      returnState = false
     }
 
-    private fun validateInput(): Boolean {
-        var returnState = true
-
-        if (etEmail.text.isEmpty()) {
-            etEmail.error = getString(R.string.empty_input)
-            returnState = false
-        }
-
-        if (etPasswd.text.isEmpty()) {
-            etPasswd.error = getString(R.string.empty_input)
-            returnState = false
-        } else if (etPasswd.text.length < 6) {
-            etPasswd.error = getString(R.string.weak_passwd)
-            returnState = false
-        }
-
-        if (etConfirmPasswd.text.toString() != etPasswd.text.toString()) {
-            etConfirmPasswd.error = getString(R.string.err_conf_passwd)
-            returnState = false
-        }
-
-        return returnState
+    if (etConfirmPasswd.text.toString() != etPasswd.text.toString()) {
+      etConfirmPasswd.error = getString(R.string.err_conf_passwd)
+      returnState = false
     }
 
-    override fun navigateToMain() {
-        val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+    return returnState
+  }
 
-        startActivity(intent)
-        finish()
-    }
+  override fun navigateToMain() {
+    pbLoading.visibility = View.GONE
 
-    override fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-    }
+    val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+    startActivity(intent)
+    finish()
+  }
+
+  override fun showToast(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+  }
 }

@@ -188,6 +188,8 @@
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
+    <string name="scs_del_data">Data berhasil dihapus</string>
+    <string name="fail_del_data">Data gagal dihapus</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -204,4 +206,6 @@
     <string name="fail_upoad_img">Gagal upload gambar, coba lagi!</string>
     <string name="scs_update_data">Data berhasil diubah</string>
     <string name="fail_update_data">Data gagal diubah</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

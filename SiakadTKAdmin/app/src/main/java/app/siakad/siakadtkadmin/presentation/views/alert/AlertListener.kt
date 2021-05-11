@@ -1,5 +1,5 @@
 package app.siakad.siakadtkadmin.presentation.views.alert
 
 interface AlertListener {
-    fun alertAction()
+    fun alertAction(tag: String?)
 }

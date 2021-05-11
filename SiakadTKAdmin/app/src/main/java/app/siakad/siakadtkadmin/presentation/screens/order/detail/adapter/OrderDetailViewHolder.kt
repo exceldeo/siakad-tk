@@ -20,11 +20,9 @@ class OrderDetailViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
 
       cb_item_order_detail_acc.setOnClickListener {
         if (!(cb_item_order_detail_acc as MaterialCheckBox).isChecked) {
-          (cb_item_order_detail_acc as MaterialCheckBox).isChecked = true
-          (v.context as OrderDetailHelper).checkTheItem(index)
-        } else {
-          (cb_item_order_detail_acc as MaterialCheckBox).isChecked = false
           (v.context as OrderDetailHelper).uncheckTheItem(index)
+        } else {
+          (v.context as OrderDetailHelper).checkTheItem(index)
         }
       }
     }

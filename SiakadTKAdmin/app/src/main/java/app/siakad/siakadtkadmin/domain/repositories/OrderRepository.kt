@@ -1,57 +1,93 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
-import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.models.PesananModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtkadmin.domain.models.PesananModel
 import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderListListener
-import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
+import app.siakad.siakadtkadmin.presentation.screens.order.OrderListFragment
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 
-class OrderRepository() {
-    private val orderDB = FirebaseRef(
-        FirebaseRef.PESANAN_REF
-    ).getRef()
+class OrderRepository {
+  private val orderDB = FirebaseRef(
+    FirebaseRef.PESANAN_REF
+  ).getRef()
 
-    fun initEventListener(listener: OrderListListener) {
-        orderDB.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {}
+  fun initGetOrderEventListener(
+    listener: OrderListListener,
+    type: String = OrderListFragment.ORDER_PENDING
+  ) {
+    orderDB.orderByChild("statusPesan").equalTo(type)
+      .addChildEventListener(object : ChildEventListener {
+        override fun onCancelled(error: DatabaseError) {}
+        override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val dataRef = arrayListOf<PesananModel>()
+        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+          val data: PesananModel? =
+            snapshot.getValue(PesananModel::class.java)
 
-                for (dataSS in snapshot.children) {
-                    val data: PesananModel? = dataSS.getValue(PesananModel::class.java)
-                    data?.pesananId = dataSS.key.toString()
-                    dataRef.add(data!!)
-
-                    listener.setOrderList(
-                        ModelContainer(
-                            status = ModelState.SUCCESS,
-                            data = dataRef
-                        )
-                    )
-                }
-            }
-        })
-    }
-
-    fun updateOrderData(listener: OrderDetailListener, data: PesananModel) {
-        val newData = data.toMap()
-        val childUpdates = hashMapOf<String, Any>(
-            "/${data.pesananId}" to newData
-        )
-
-        orderDB.updateChildren(childUpdates).addOnSuccessListener {
-            listener.notifyOrderChangeStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyOrderChangeStatus(ModelContainer.getFailModel())
+          if (data != null) {
+            data.pesananId = snapshot.key.toString()
+            listener.updateOrderItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data
+              )
+            )
+          }
         }
+
+        override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+          val data: PesananModel? =
+            snapshot.getValue(PesananModel::class.java)
+
+          if (data != null) {
+            data.pesananId = snapshot.key.toString()
+            listener.addOrderItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data
+              )
+            )
+          }
+        }
+
+        override fun onChildRemoved(snapshot: DataSnapshot) {
+          val data: PesananModel? =
+            snapshot.getValue(PesananModel::class.java)
+
+          if (data != null) {
+            data.pesananId = snapshot.key.toString()
+            listener.removeOrderItem(
+              ModelContainer(
+                status = ModelState.SUCCESS,
+                data = data
+              )
+            )
+          }
+        }
+      })
+  }
+
+  fun updateOrderData(listener: OrderDetailListener, data: PesananModel) {
+    val newData = data.toMap()
+    val childUpdates = hashMapOf<String, Any>(
+      "/${data.pesananId}" to newData
+    )
+
+    orderDB.updateChildren(childUpdates).addOnSuccessListener {
+      listener.notifyOrderChangeStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener {
+      listener.notifyOrderChangeStatus(ModelContainer.getFailModel())
     }
+  }
+
+  fun removeOrderData(listener: OrderDetailListener, data: PesananModel) {
+    orderDB.child(data.pesananId).removeValue().addOnSuccessListener {
+      listener.notifyOrderDeleteStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener { listener.notifyOrderDeleteStatus(ModelContainer.getFailModel()) }
+  }
 }

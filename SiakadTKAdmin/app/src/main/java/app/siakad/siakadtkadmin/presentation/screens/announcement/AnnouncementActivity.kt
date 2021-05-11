@@ -15,68 +15,63 @@ import com.google.android.material.tabs.TabLayout
 
 class AnnouncementActivity : AppCompatActivity(), AnnouncementEditListener {
 
-    private val pageTitle = "Pengumuman"
+  private val pageTitle = "Pengumuman"
 
-    private lateinit var pagerAdapter: ViewPagerAdapter
-    private lateinit var viewPager: ViewPager
-    private lateinit var tab: TabLayout
+  private lateinit var pagerAdapter: ViewPagerAdapter
+  private lateinit var viewPager: ViewPager
+  private lateinit var tab: TabLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_announcement)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_announcement)
 
-        setupAppBar()
-        setupTabLayout()
+    setupAppBar()
+    setupTabLayout()
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+        true
+      }
+      else -> super.onOptionsItemSelected(item)
     }
+  }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                startActivity(
-                    Intent(
-                        this@AnnouncementActivity,
-                        MainActivity::class.java
-                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                )
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+  private fun setupAppBar() {
+    val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+    setSupportActionBar(toolbar)
+    supportActionBar?.title = pageTitle
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+  }
 
-    private fun setupAppBar() {
-        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = pageTitle
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
+  private fun setupTabLayout() {
+    pagerAdapter =
+      ViewPagerAdapter(
+        this,
+        supportFragmentManager
+      )
+    pagerAdapter.addFragment("Semua", AnnouncementListFragment.getAllAnnouncementListFragment())
+    pagerAdapter.addFragment(
+      "Siswa",
+      AnnouncementListFragment.getUserAnnouncementListFragment()
+    )
+    pagerAdapter.addFragment(
+      "Kelas",
+      AnnouncementListFragment.getClassAnnouncementListFragment()
+    )
 
-    private fun setupTabLayout() {
-        pagerAdapter =
-            ViewPagerAdapter(
-                this,
-                supportFragmentManager
-            )
-        pagerAdapter.addFragment("Semua", AnnouncementListFragment.getAllAnnouncementListFragment())
-        pagerAdapter.addFragment(
-            "Siswa",
-            AnnouncementListFragment.getUserAnnouncementListFragment()
-        )
-        pagerAdapter.addFragment(
-            "Kelas",
-            AnnouncementListFragment.getClassAnnouncementListFragment()
-        )
+    viewPager = findViewById(R.id.view_pager_announcement)
+    viewPager.adapter = pagerAdapter
 
-        viewPager = findViewById(R.id.view_pager_announcement)
-        viewPager.adapter = pagerAdapter
+    tab = findViewById(R.id.tabs_announcement)
+    tab.setupWithViewPager(viewPager)
+  }
 
-        tab = findViewById(R.id.tabs_announcement)
-        tab.setupWithViewPager(viewPager)
-    }
-
-    override fun navigateToAnnouncementEdit(announecement: PengumumanModel) {
-        val intent = Intent(this, AnnouncementAddActivity::class.java)
-        intent.putExtra(AnnouncementAddActivity.ANNOUNCEMENT_EDIT, announecement)
-        startActivity(intent)
-    }
+  override fun navigateToAnnouncementEdit(announecement: PengumumanModel) {
+    val intent = Intent(this, AnnouncementAddActivity::class.java)
+    intent.putExtra(AnnouncementAddActivity.ANNOUNCEMENT_EDIT, announecement)
+    startActivity(intent)
+  }
 }
