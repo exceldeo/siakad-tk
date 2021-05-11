@@ -3,18 +3,27 @@ package app.siakad.siakadtkadmin.presentation.screens.order.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.DetailKeranjangModel
 import app.siakad.siakadtkadmin.infrastructure.data.Pesanan
-import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.detail.OrderDetailViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.screens.order.OrderListFragment
 import app.siakad.siakadtkadmin.presentation.screens.order.detail.adapter.OrderDetailAdapter
+import app.siakad.siakadtkadmin.presentation.screens.order.detail.helper.OrderDetailHelper
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.checkbox.MaterialCheckBox
 
-class OrderDetailActivity : AppCompatActivity() {
+class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListener {
 
   private val pageTitle = "Detail Pesanan"
 
@@ -24,18 +33,23 @@ class OrderDetailActivity : AppCompatActivity() {
   private lateinit var tvHP: TextView
   private lateinit var tvOrderNum: TextView
   private lateinit var tvOrderTotal: TextView
-  private lateinit var ivAccAll: ImageView
-  private lateinit var ivRejectAll: ImageView
+  private lateinit var cbAccAll: MaterialCheckBox
   private lateinit var rvOrderList: RecyclerView
-  private lateinit var btnCancel: CardView
-  private lateinit var btnSave: CardView
+  private lateinit var btnCancel: MaterialButton
+  private lateinit var btnSave: MaterialButton
 
   private lateinit var orderListAdapter: OrderDetailAdapter
+  private lateinit var vmOrderDetail: OrderDetailViewModel
 
   private var pesanan: Pesanan? = null
+  private var orderType: String? = null
+  private var detailPesananList: ArrayList<DetailKeranjangModel> = arrayListOf()
+  private var detailPesananListIndex: ArrayList<Int> = arrayListOf()
 
   companion object {
     const val ORDER_DETAIL_ITEM = "order_detail_item"
+    const val TAG_CONFIRM = "Terima Pesan"
+    const val TAG_REJECT = "Tolak Pesan"
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +57,13 @@ class OrderDetailActivity : AppCompatActivity() {
     setContentView(R.layout.activity_order_detail)
 
     if (intent.getParcelableExtra<Pesanan>(ORDER_DETAIL_ITEM) != null) {
-      pesanan = intent.getParcelableExtra<Pesanan>(ORDER_DETAIL_ITEM)
+      pesanan = intent.getParcelableExtra(ORDER_DETAIL_ITEM)
+    }
+    if (intent.getStringExtra(OrderListFragment.ORDER_TYPE) != null) {
+      orderType = intent.getStringExtra(OrderListFragment.ORDER_TYPE)
+      if (orderType == OrderListFragment.ORDER_DONE) {
+        setContentView(R.layout.activity_order_detail_finish)
+      }
     }
 
     tvName = findViewById(R.id.tv_registration_detail_nama)
@@ -68,8 +88,16 @@ class OrderDetailActivity : AppCompatActivity() {
     }
 
     setupAppBar()
-    setupButtons()
+    if (orderType != OrderListFragment.ORDER_DONE) {
+      setupButtons()
+    } else {
+      cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
+      cbAccAll.visibility = View.GONE
+    }
+    setupViewModel()
     setupListAdapter()
+
+    orderListAdapter.changeDataList(pesanan?.pesanan?.detailPesanan!!)
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -83,10 +111,44 @@ class OrderDetailActivity : AppCompatActivity() {
   }
 
   private fun setupButtons() {
-    ivAccAll = findViewById(R.id.iv_order_detail_acc_all)
-    ivRejectAll = findViewById(R.id.iv_order_detail_reject_all)
-    btnCancel = findViewById(R.id.btn_order_detail_batal)
+    cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
+
+    btnCancel = findViewById(R.id.btn_order_detail_tolak)
+    btnCancel.setOnClickListener {
+      val alertDialog = AlertDialogFragment(
+        "Terima pesanan",
+        "Apakah Anda yakin menerima pesanan ini?"
+      )
+      alertDialog.show(supportFragmentManager, TAG_REJECT)
+    }
+
     btnSave = findViewById(R.id.btn_order_detail_simpan)
+    btnSave.setOnClickListener {
+      var alertDialog: AlertDialogFragment? = null
+
+      if (orderType == OrderListFragment.ORDER_PENDING) {
+        alertDialog = AlertDialogFragment(
+          "Terima pesanan",
+          "Apakah Anda yakin menerima pesanan ini?"
+        )
+      } else {
+        alertDialog = AlertDialogFragment(
+          "Selesaikan pesanan",
+          "Apakah benar pesanan ini telah selesai?"
+        )
+      }
+
+      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
+    }
+
+    if (orderType != OrderListFragment.ORDER_PENDING) {
+      cbAccAll.visibility = View.GONE
+      btnCancel.visibility = View.GONE
+
+      if (orderType == OrderListFragment.ORDER_PROCESS) {
+        btnSave.text = "Pesanan Selesai"
+      }
+    }
   }
 
   private fun setupAppBar() {
@@ -98,11 +160,43 @@ class OrderDetailActivity : AppCompatActivity() {
 
   private fun setupListAdapter() {
     rvOrderList = findViewById(R.id.rv_order_detail_daftar_pesanan)
-    orderListAdapter = OrderDetailAdapter()
+    orderListAdapter = OrderDetailAdapter(orderType!!)
     rvOrderList.apply {
       setHasFixedSize(true)
       adapter = orderListAdapter
       layoutManager = LinearLayoutManager(this.context)
+    }
+  }
+
+  override fun checkTheItem(pos: Int) {
+    detailPesananListIndex.add(pos)
+  }
+
+  override fun uncheckTheItem(pos: Int) {
+    detailPesananListIndex.remove(pos)
+  }
+
+  private fun setupViewModel() {
+    vmOrderDetail = ViewModelProvider(
+      this,
+      ViewModelFactory(this, this)
+    ).get(OrderDetailViewModel::class.java)
+  }
+
+  override fun alertAction(tag: String?) {
+    if (tag == TAG_CONFIRM) {
+      if (orderType == OrderListFragment.ORDER_PENDING) {
+        detailPesananListIndex.forEach {
+          detailPesananList.add(pesanan?.pesanan?.detailPesanan!![it])
+        }
+        pesanan?.pesanan?.detailPesanan = detailPesananList
+        vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_PROCESS)
+      } else {
+        vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_DONE)
+      }
+    } else if (tag == TAG_REJECT) {
+      vmOrderDetail.removeData(pesanan?.pesanan!!)
+      onBackPressed()
     }
   }
 }

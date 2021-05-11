@@ -10,8 +10,13 @@ import app.siakad.siakadtkadmin.presentation.screens.announcement.AnnouncementLi
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AnnouncementRepository {
+  private val eventListeners: ArrayList<Any> = arrayListOf()
+
   private val announcementDB = FirebaseRef(
     FirebaseRef.PENGUMUMAN_REF
   ).getRef()
@@ -20,7 +25,7 @@ class AnnouncementRepository {
     listener: AnnouncementListListener,
     type: String = AnnouncementListFragment.TO_ALL
   ) {
-    announcementDB.orderByChild("tipe").equalTo(type)
+    val eventListener = announcementDB.orderByChild("tipe").equalTo(type)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -71,6 +76,8 @@ class AnnouncementRepository {
           }
         }
       })
+
+    eventListeners.add(eventListener)
   }
 
   fun insertData(listener: AnnouncementAddListener, data: PengumumanModel) {
@@ -95,6 +102,16 @@ class AnnouncementRepository {
       listener.notifyAnnouncementUpdateStatus(ModelContainer.getSuccesModel("Success"))
     }.addOnFailureListener {
       listener.notifyAnnouncementUpdateStatus(ModelContainer.getFailModel())
+    }
+  }
+
+  fun removeEventListener() {
+    eventListeners.forEach {
+      if (it is ChildEventListener) {
+        announcementDB.removeEventListener(it)
+      } else if (it is ValueEventListener) {
+        announcementDB.removeEventListener(it)
+      }
     }
   }
 }

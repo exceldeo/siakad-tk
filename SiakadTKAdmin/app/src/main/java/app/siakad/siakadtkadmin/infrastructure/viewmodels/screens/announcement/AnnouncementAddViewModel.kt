@@ -1,7 +1,6 @@
 package app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -28,7 +27,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class AnnouncementAddViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
-  ViewModel(), AnnouncementAddListener, UserListListener, ClassroomListListener {
+  ViewModel(), AnnouncementAddListener, ClassroomListListener {
   private val userListLiveData = MutableLiveData<ArrayList<PenggunaModel>>()
   private val classListLiveData = MutableLiveData<ArrayList<KelasModel>>()
 
@@ -98,14 +97,14 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
     }
   }
 
-  override fun setUserList(penggunaList: ModelContainer<ArrayList<PenggunaModel>>) {
-    if (penggunaList.status == ModelState.SUCCESS) {
-      if (penggunaList.data?.isNotEmpty()!!) {
-        dataPenggunaList.addAll(penggunaList.data!!)
+  override fun addUserItem(pengguna: ModelContainer<PenggunaModel>) {
+    if (pengguna.status == ModelState.SUCCESS) {
+      if (pengguna.data != null) {
+        dataPenggunaList.add(pengguna.data!!)
         userListLiveData.postValue(dataPenggunaList)
         showToast(context.getString(R.string.scs_get_data))
       }
-    } else if (penggunaList.status == ModelState.ERROR) {
+    } else if (pengguna.status == ModelState.ERROR) {
       showToast(context.getString(R.string.fail_get_user))
     }
   }

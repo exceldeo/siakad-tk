@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".presentation.views.preview.ImagePreviewActivity"></activity>
+        <activity android:name=".presentation.screens.registration.detail.unverified.RegistrationDetailUnverActivity"></activity>
+        <activity android:name=".presentation.views.preview.ImagePreviewActivity" />
         <activity android:name=".presentation.screens.classroom.detail.ClassroomDetailActivity" />
         <activity android:name=".presentation.screens.classroom.ClassroomAddActivity" />
         <activity android:name=".presentation.screens.classroom.ClassroomActivity" />
