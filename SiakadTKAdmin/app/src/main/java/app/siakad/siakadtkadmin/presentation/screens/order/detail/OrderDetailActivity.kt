@@ -61,6 +61,9 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     }
     if (intent.getStringExtra(OrderListFragment.ORDER_TYPE) != null) {
       orderType = intent.getStringExtra(OrderListFragment.ORDER_TYPE)
+      if (orderType == OrderListFragment.ORDER_DONE) {
+        setContentView(R.layout.activity_order_detail_finish)
+      }
     }
 
     tvName = findViewById(R.id.tv_registration_detail_nama)
@@ -85,7 +88,12 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     }
 
     setupAppBar()
-    setupButtons()
+    if (orderType != OrderListFragment.ORDER_DONE) {
+      setupButtons()
+    } else {
+      cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
+      cbAccAll.visibility = View.GONE
+    }
     setupViewModel()
     setupListAdapter()
 
@@ -139,9 +147,6 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
 
       if (orderType == OrderListFragment.ORDER_PROCESS) {
         btnSave.text = "Pesanan Selesai"
-      } else if (orderType == OrderListFragment.ORDER_DONE) {
-        val cvBottomBtns = findViewById<CardView>(R.id.cv_order_detail)
-        cvBottomBtns.visibility = View.INVISIBLE
       }
     }
   }
@@ -155,7 +160,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
 
   private fun setupListAdapter() {
     rvOrderList = findViewById(R.id.rv_order_detail_daftar_pesanan)
-    orderListAdapter = OrderDetailAdapter()
+    orderListAdapter = OrderDetailAdapter(orderType!!)
     rvOrderList.apply {
       setHasFixedSize(true)
       adapter = orderListAdapter

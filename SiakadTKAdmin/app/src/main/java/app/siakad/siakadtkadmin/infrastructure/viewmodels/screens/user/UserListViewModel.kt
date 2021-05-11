@@ -81,4 +81,9 @@ class UserListViewModel(private val context: Context) :
     private fun showToast(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        userRepository.removeEventListener()
+    }
 }

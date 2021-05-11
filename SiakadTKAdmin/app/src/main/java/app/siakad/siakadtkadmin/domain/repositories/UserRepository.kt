@@ -20,13 +20,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
 class UserRepository {
+  private val eventListeners: ArrayList<Any> = arrayListOf()
 
   private val userDB = FirebaseRef(
     FirebaseRef.USER_REF
   ).getRef()
 
   fun initGetUserListListener(listener: Any, verified: Boolean = true) {
-    userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str)
+    val eventListener = userDB.orderByChild("role").equalTo(UserRoleModel.SISWA.str)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -90,10 +91,12 @@ class UserRepository {
           }
         }
       })
+
+    eventListeners.add(eventListener)
   }
 
   fun initGetUserListByClassListener(listener: UserListListener, kelasId: String) {
-    userDB.orderByChild("kelasId").equalTo(kelasId)
+    val eventListener = userDB.orderByChild("kelasId").equalTo(kelasId)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -144,10 +147,12 @@ class UserRepository {
           }
         }
       })
+
+    eventListeners.add(eventListener)
   }
 
   fun getUserById(listener: Any, id: String) {
-    userDB.orderByKey().equalTo(id).addChildEventListener(object : ChildEventListener {
+    val eventListener = userDB.orderByKey().equalTo(id).addChildEventListener(object : ChildEventListener {
       override fun onCancelled(error: DatabaseError) {}
 
       override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -173,10 +178,12 @@ class UserRepository {
 
       override fun onChildRemoved(snapshot: DataSnapshot) {}
     })
+
+    eventListeners.add(eventListener)
   }
 
   fun getUserByEmail(listener: LoginListener, email: String) {
-    userDB.orderByChild("email").equalTo(email)
+    val eventListener = userDB.orderByChild("email").equalTo(email)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -195,6 +202,8 @@ class UserRepository {
 
         override fun onChildRemoved(snapshot: DataSnapshot) {}
       })
+
+    eventListeners.add(eventListener)
   }
 
   fun insertData(listener: RegisterListener, pengguna: PenggunaModel) {
@@ -226,6 +235,16 @@ class UserRepository {
       listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
     }.addOnFailureListener {
       listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+    }
+  }
+
+  fun removeEventListener() {
+    eventListeners.forEach {
+      if (it is ChildEventListener) {
+        userDB.removeEventListener(it)
+      } else if (it is ValueEventListener) {
+        userDB.removeEventListener(it)
+      }
     }
   }
 }

@@ -10,8 +10,11 @@ import app.siakad.siakadtkadmin.presentation.screens.order.OrderListFragment
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 class OrderRepository {
+  private val eventListeners: ArrayList<Any> = arrayListOf()
+
   private val orderDB = FirebaseRef(
     FirebaseRef.PESANAN_REF
   ).getRef()
@@ -20,7 +23,7 @@ class OrderRepository {
     listener: OrderListListener,
     type: String = OrderListFragment.ORDER_PENDING
   ) {
-    orderDB.orderByChild("statusPesan").equalTo(type)
+    val eventListener = orderDB.orderByChild("statusPesan").equalTo(type)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
         override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -70,6 +73,8 @@ class OrderRepository {
           }
         }
       })
+
+    eventListeners.add(eventListener)
   }
 
   fun updateOrderData(listener: OrderDetailListener, data: PesananModel) {
@@ -89,5 +94,15 @@ class OrderRepository {
     orderDB.child(data.pesananId).removeValue().addOnSuccessListener {
       listener.notifyOrderDeleteStatus(ModelContainer.getSuccesModel("Success"))
     }.addOnFailureListener { listener.notifyOrderDeleteStatus(ModelContainer.getFailModel()) }
+  }
+
+  fun removeEventListener() {
+    eventListeners.forEach {
+      if (it is ChildEventListener) {
+        orderDB.removeEventListener(it)
+      } else if (it is ValueEventListener) {
+        orderDB.removeEventListener(it)
+      }
+    }
   }
 }
