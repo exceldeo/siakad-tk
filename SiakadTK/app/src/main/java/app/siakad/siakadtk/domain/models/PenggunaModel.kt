@@ -20,6 +20,12 @@ data class PenggunaModel(
     var status: Boolean = false,
     var detailPengguna: DetailPenggunaModel? = null
 ): Parcelable {
+    override fun toString(): String = nama
+
+    fun pairNameId(): Map<String, String> {
+        return mapOf(nama to userId)
+    }
+
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "userId" to userId,

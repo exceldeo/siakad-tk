@@ -7,19 +7,26 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.infrastructure.data.Pesanan
 
-class OrderAdapter (val listOrder: ArrayList<Pesanan>): RecyclerView.Adapter<OrderViewHolder>(){
-
+class OrderAdapter(): RecyclerView.Adapter<OrderViewHolder>() {
+    private  val orderList: ArrayList<Pesanan> = arrayListOf()
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): OrderViewHolder {
-        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_grid_order, viewGroup, false)
+        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_order, viewGroup, false)
         return OrderViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        val nota = listOrder[position]
-        holder.insertNota(nota)
+        holder.insertNota(orderList[position], position)
     }
 
     override fun getItemCount(): Int {
-        return listOrder.size
+        return orderList.size
+    }
+
+    fun changeDataList(data: ArrayList<Pesanan>) {
+        if (orderList.size > 0)
+            orderList.clear()
+
+        orderList.addAll(data)
+        this.notifyDataSetChanged()
     }
 }

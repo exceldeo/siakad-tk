@@ -29,21 +29,6 @@ class UserRepository() {
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
     private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
-    fun makeKeranjang(listener: LoginListener, userId: String) {
-        val newKey = basketDB.push().key.toString()
-        val newData = KeranjangModel(
-            userId = userId,
-            keranjangId = newKey,
-            detailKeranjang = detailKeranjang
-        )
-
-        basketDB.child(userId).setValue(newData).addOnSuccessListener {
-            listener.notifyMakeKeranjangStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyMakeKeranjangStatus(ModelContainer.getFailModel())
-        }
-    }
-
     fun getUserById(listener: RegistrationListener) {
         userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {

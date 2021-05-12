@@ -21,11 +21,11 @@ import app.siakad.siakadtk.presentation.screens.order.adapter.OrderAdapter
 import app.siakad.siakadtk.infrastructure.data.Pengumuman
 import app.siakad.siakadtk.infrastructure.data.Pesanan
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
-import app.siakad.siakadtk.presentation.screens.order.NotasData
 import app.siakad.siakadtk.presentation.screens.order.OrderListActivity
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 
 class HomeFragment : Fragment() {
@@ -37,12 +37,15 @@ class HomeFragment : Fragment() {
     private lateinit var tvStatusRegistrationDesc: TextView
     private lateinit var ibtnStatusRegistration: ImageButton
     private lateinit var tvSeeAllOrderStatus: TextView
-    private lateinit var rvOrderStatus: RecyclerView
+    private lateinit var rvOrder: RecyclerView
     private lateinit var rvAnnouncementAdapter: AnnouncementAdapter
-    private var listNota: ArrayList<Pesanan> = arrayListOf()
+    private lateinit var rvOrderAdapter: OrderAdapter
 
     private var dataUser = Pengguna()
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
+
+    private lateinit var vmOrderList: OrderViewModel
+    private lateinit var orderListObserver: Observer<ArrayList<Pesanan>>
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
     private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
@@ -67,28 +70,17 @@ class HomeFragment : Fragment() {
             tvStatusRegistrationDesc = v.findViewById(R.id.tv_home_item_daful_desc)
             ibtnStatusRegistration = v.findViewById(R.id.ibtn_home_item_daful)
             tvSeeAllOrderStatus = v.findViewById(R.id.tv_home_statuspesan_lihat_semua)
-            rvOrderStatus = v.findViewById(R.id.rv_home_statuspesan_list)
+            rvOrder = v.findViewById(R.id.rv_home_statuspesan_list)
 
             rvAnnouncement.setHasFixedSize(true)
             rvAnnouncementAdapter = AnnouncementAdapter()
 
-            rvOrderStatus.setHasFixedSize(true)
-            listNota.addAll(NotasData.listData)
-            showNotaRecyclerList()
+            rvOrder.setHasFixedSize(true)
+            rvOrderAdapter = OrderAdapter()
         }
 
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
-
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-    }
-
-    private fun showNotaRecyclerList() {
-        rvOrderStatus.layoutManager = LinearLayoutManager(this.context)
-        val notaAdapter = OrderAdapter(listNota)
-        rvOrderStatus.adapter = notaAdapter
     }
 
     private fun setupView() {
@@ -103,6 +95,17 @@ class HomeFragment : Fragment() {
             this,
             ViewModelFactory(this.viewLifecycleOwner, this.requireContext())
         ).get(AnnouncementViewModel::class.java)
+
+        rvOrder.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@HomeFragment.context, LinearLayoutManager.VERTICAL, false)
+            adapter = rvOrderAdapter
+        }
+
+        vmOrderList = ViewModelProvider(
+            this,
+            ViewModelFactory(this.viewLifecycleOwner, this.requireContext())
+        ).get(OrderViewModel::class.java)
 
         tvSeeAllAnnouncement.setOnClickListener{
             val intent = Intent(this@HomeFragment.context, AnnouncementListActivity::class.java)
@@ -161,5 +164,14 @@ class HomeFragment : Fragment() {
         }
 
         vmAnnouncement.getAnnouncementList().observe(this.viewLifecycleOwner, announcementListObserver)
+
+
+        orderListObserver = Observer { list ->
+            if (list.size > 0) {
+                rvOrderAdapter.changeDataList(list)
+            }
+        }
+
+        vmOrderList.getOrderList().observe(this.viewLifecycleOwner, orderListObserver)
     }
 }
