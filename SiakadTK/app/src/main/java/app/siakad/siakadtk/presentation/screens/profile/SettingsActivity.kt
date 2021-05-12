@@ -64,7 +64,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         btnUbahEmail.setOnClickListener {
-            
+
         }
     }
 

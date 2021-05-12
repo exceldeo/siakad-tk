@@ -34,6 +34,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     private lateinit var insertObserver: Observer<ModelContainer<String>>
     private var daftarUlangUser = DaftarUlang()
     private val liveDataUser = MutableLiveData<Pengguna>()
+    private val liveDataDaful = MutableLiveData<DaftarUlang>()
     private var dataUser = Pengguna()
     init {
         setupObserver()
@@ -91,6 +92,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
                     fotoBayar = item.fotoBayar,
                     statusDaful = item.statusDaful
                 )
+                liveDataDaful.postValue(daftarUlangUser)
             } else if (user.status == ModelState.ERROR) {
                 showToast(context.getString(R.string.fail_get_user))
             }
@@ -121,6 +123,9 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
         return liveDataUser
     }
 
+    fun getDaftarUlangData(): LiveData<DaftarUlang> {
+        return liveDataDaful
+    }
     override fun notifyUserDetailChangeStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_set_data))

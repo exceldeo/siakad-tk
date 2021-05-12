@@ -15,10 +15,12 @@ import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.models.PesananModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
+import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.registration.form.RegistrationFormActivity
+import app.siakad.siakadtk.presentation.views.preview.ImagePreviewActivity
 
 class RegistrationActivity : AppCompatActivity() {
     private val pageTitle = "Daftar Ulang"
@@ -36,7 +38,9 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var tvPhone: TextView
     private lateinit var tvClassYear: TextView
     private lateinit var llViewData: LinearLayout
+    private lateinit var btnLihatBukti: Button
     private var dataUser = Pengguna()
+    private var dataDaful = DaftarUlang()
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +66,7 @@ class RegistrationActivity : AppCompatActivity() {
         tvAddress = findViewById(R.id.tv_registration_dp_addres)
         tvPhone = findViewById(R.id.tv_registration_dp_no_hp)
         tvClassYear = findViewById(R.id.tv_registration_dp_thn_ajaran)
+        btnLihatBukti = findViewById(R.id.btn_registration_lihat_bukti)
     }
 
     private fun setupView() {
@@ -110,6 +115,19 @@ class RegistrationActivity : AppCompatActivity() {
         }
         vmRegistrationForm.getUserData()
             .observe(this, obsRegistrationGetUser)
+
+        val obsRegistrationGetDaful = Observer<DaftarUlang> {
+            dataDaful = it
+        }
+        vmRegistrationForm.getDaftarUlangData()
+            .observe(this, obsRegistrationGetDaful)
+
+        btnLihatBukti.setOnClickListener {
+            val intent = Intent(this@RegistrationActivity, ImagePreviewActivity::class.java)
+            intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URL)
+            intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, dataDaful.fotoBayar) //harusnya foto daful artintinya perlu get dafulnya
+            startActivity(intent)
+        }
     }
 
     private fun setupAppBar() {

@@ -297,6 +297,16 @@
                             android:text="@string/tahun_ajaran"
                             android:textSize="@dimen/list_desc_text" />
                     </LinearLayout>
+                    <Button
+                        android:id="@+id/btn_registration_lihat_bukti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/container_padding_x"
+                        android:layout_marginBottom="@dimen/container_double_padding_y"
+                        android:background="@drawable/fill_upload_img"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/lihat_bukti_pembayaran" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
