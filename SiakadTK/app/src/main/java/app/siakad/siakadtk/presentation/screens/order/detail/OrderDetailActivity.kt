@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
@@ -22,6 +23,8 @@ import app.siakad.siakadtk.domain.models.PesananModel
 import app.siakad.siakadtk.domain.utils.helpers.model.OrderStateModel
 import app.siakad.siakadtk.domain.utils.listeners.order.OrderListListener
 import app.siakad.siakadtk.infrastructure.data.Pesanan
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.order.OrderListActivity
 import app.siakad.siakadtk.presentation.screens.order.detail.adapter.OrderDetailAdapter
 import app.siakad.siakadtk.presentation.views.preview.ImagePreviewActivity
@@ -50,6 +53,7 @@ class OrderDetailActivity : AppCompatActivity() {
     private lateinit var btnCancel: TextView
     private lateinit var btnPay: TextView
 
+    private lateinit var vmOrderList: OrderViewModel
 
     private var paymentImage: Uri? = null
 
@@ -106,6 +110,11 @@ class OrderDetailActivity : AppCompatActivity() {
             adapter = rvOrderDetailAdapter
         }
 
+        vmOrderList = ViewModelProvider(
+            this,
+            ViewModelFactory(this, this)
+        ).get(OrderViewModel::class.java)
+
         var totalPayment = 0
         for (item in items)
             totalPayment += item.jumlah * item.harga
@@ -118,31 +127,19 @@ class OrderDetailActivity : AppCompatActivity() {
         {
             cvOrderPay.visibility = View.VISIBLE
             btnUploadBukti.setOnClickListener {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                        PackageManager.PERMISSION_DENIED
-                    ) {
-                        val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                        requestPermissions(
-                            permissions,
-                            PERMISSION_REQUEST
-                        );
-                    } else {
-                        pickImageFromGallery();
-                    }
+                if(pesanan.pesanan.fotoBayar != "") {
+                    previewImage()
                 } else {
-                    pickImageFromGallery();
+                    pickImage()
                 }
             }
+
         } else {
             cvOrderPay.visibility = View.INVISIBLE
             btnUploadBukti.text = "Lihat Bukti Pembayaran"
             btnUploadBukti.setOnClickListener {
-                if (pesanan != null) {
-                    val intent = Intent(this@OrderDetailActivity, ImagePreviewActivity::class.java)
-                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URL)
-                    intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, pesanan.pesanan.fotoBayar)
-                    startActivity(intent)
+                if (pesanan.pesanan.fotoBayar != "") {
+                    previewImage()
                 }
             }
         }
@@ -153,6 +150,32 @@ class OrderDetailActivity : AppCompatActivity() {
         }
 
         btnPay.setOnClickListener {
+            vmOrderList.setPaymentImage(pesanan.pesanan, paymentImage)
+        }
+    }
+
+    private fun previewImage() {
+        val intent = Intent(this@OrderDetailActivity, ImagePreviewActivity::class.java)
+        intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URL)
+        intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE, pesanan.pesanan.fotoBayar)
+        startActivity(intent)
+    }
+
+    private fun pickImage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_DENIED
+            ) {
+                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                requestPermissions(
+                    permissions,
+                    PERMISSION_REQUEST
+                );
+            } else {
+                pickImageFromGallery();
+            }
+        } else {
+            pickImageFromGallery();
         }
     }
 
