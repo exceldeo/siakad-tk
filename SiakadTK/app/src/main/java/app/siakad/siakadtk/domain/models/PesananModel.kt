@@ -11,14 +11,16 @@ data class PesananModel(
     var detailPesanan: ArrayList<DetailKeranjangModel>? = arrayListOf(),
     var userId: String = "",
     var tanggalPesan: String = "",
-    var statusPesan: String = ""
+    var statusPesan: String = "",
+    var fotoBayar: String = "",
 ): Parcelable {
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "detailPesanan" to detailPesanan,
             "userId" to userId,
             "tanggalPesan" to tanggalPesan,
-            "statusPesan" to statusPesan
+            "statusPesan" to statusPesan,
+            "fotoBayar" to fotoBayar
         )
     }
 }

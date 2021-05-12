@@ -15,11 +15,15 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.infrastructure.data.Pesanan
+import app.siakad.siakadtk.infrastructure.data.product.Seragam
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
+import app.siakad.siakadtk.presentation.screens.main.product.detail.uniform.ProductUniformDetailActivity
 import app.siakad.siakadtk.presentation.screens.order.adapter.OrderAdapter
+import app.siakad.siakadtk.presentation.screens.order.detail.OrderDetailActivity
+import app.siakad.siakadtk.presentation.screens.product.adapter.ProductListAdapter
 
 class OrderListActivity : AppCompatActivity() {
     private val pageTitle = "Pemesanan"
@@ -66,6 +70,14 @@ class OrderListActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupAppBar()
+
+        rvOrderAdapter.setOnItemClickCallback(object: OrderAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Pesanan) {
+                val intent = Intent(this@OrderListActivity, OrderDetailActivity::class.java)
+                intent.putExtra("pesanan", data);
+                startActivity(intent)
+            }
+        })
 
         rvOrderList.apply {
             setHasFixedSize(true)

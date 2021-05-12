@@ -74,7 +74,8 @@ class OrderRepository() {
                 detailPesanan = data,
                 userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
                 tanggalPesan = todayDate,
-                statusPesan = OrderStateModel.ORDER_PENDING.str
+                statusPesan = OrderStateModel.ORDER_PENDING.str,
+                fotoBayar = ""
             )
 
         orderDB.child(newKey).setValue(newData).addOnSuccessListener {

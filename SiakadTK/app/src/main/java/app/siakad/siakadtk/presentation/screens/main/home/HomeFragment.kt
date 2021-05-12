@@ -27,6 +27,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFact
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
+import app.siakad.siakadtk.presentation.screens.order.detail.OrderDetailActivity
 
 class HomeFragment : Fragment() {
 
@@ -95,6 +96,14 @@ class HomeFragment : Fragment() {
             this,
             ViewModelFactory(this.viewLifecycleOwner, this.requireContext())
         ).get(AnnouncementViewModel::class.java)
+
+        rvOrderAdapter.setOnItemClickCallback(object: OrderAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Pesanan) {
+                val intent = Intent(this@HomeFragment.context, OrderDetailActivity::class.java)
+                intent.putExtra("pesanan", data);
+                startActivity(intent)
+            }
+        })
 
         rvOrder.apply {
             setHasFixedSize(true)

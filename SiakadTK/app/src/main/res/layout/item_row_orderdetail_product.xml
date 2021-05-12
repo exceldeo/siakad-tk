@@ -2,14 +2,13 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/detail_list_tower"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginBottom="@dimen/list_space">
 
     <TextView
-        android:id="@+id/tv_item_title"
+        android:id="@+id/tv_item_orderdetail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/list_title_text"
@@ -19,7 +18,7 @@
         tools:text="Buku"/>
 
     <TextView
-        android:id="@+id/tv_item_kategori"
+        android:id="@+id/tv_item_orderdetail_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/list_desc_text"
@@ -27,7 +26,7 @@
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
         android:lines="1"
-        tools:text="@string/nama_pesanan" />
+        tools:text="@string/example_price" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,17 +35,17 @@
         android:weightSum="3">
 
         <TextView
-            android:id="@+id/tv_subitem_name"
+            android:id="@+id/tv_item_orderdetail_jumlah_ukuran"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/list_desc_text"
             android:lines="1"
             android:fontFamily="@font/poppins_regular"
             android:layout_weight="1"
-            tools:text="@string/hem_putih"/>
+            tools:text="@string/no_content"/>
 
         <TextView
-            android:id="@+id/tv_subitem_price"
+            android:id="@+id/tv_item_orderdetail_total_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/list_desc_text"

@@ -203,5 +203,9 @@
     <string name="detail_proses_verifikasi">Pendaftaran telah terkirim, saat ini akun Anda sedang diverifikasi oleh pihak sekolah</string>
     <string name="proses_verifikasi">Proses Verifikasi</string>
     <string name="cek_status">Cek Status</string>
+    <string name="belum_bayar">Belum bayar.</string>
+    <string name="tanggal_pesanan_selesai">Tanggal Pesanan Selesai</string>
+    <string name="no_content">-</string>
+    <string name="lihat_bukti_pembayaran">Lihat Bukti Pembayaran</string>
 
 </resources>
