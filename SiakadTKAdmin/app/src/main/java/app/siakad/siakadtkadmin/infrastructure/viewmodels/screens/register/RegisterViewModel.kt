@@ -42,7 +42,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
             userRepository.insertData(this@RegisterViewModel, PenggunaModel(
                 userId = AuthenticationRepository.fbAuth.currentUser.uid,
                 email = email,
-                passwd = passwd,
+                passwd = passwd
             ))
         } else {
             showToast(context.getString(R.string.fail_regis))

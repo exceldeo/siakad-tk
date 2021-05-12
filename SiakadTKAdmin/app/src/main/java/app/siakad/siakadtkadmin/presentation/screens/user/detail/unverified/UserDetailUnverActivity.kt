@@ -14,6 +14,8 @@ import app.siakad.siakadtkadmin.domain.models.DetailPenggunaModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.user.detail.UserDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.screens.order.OrderListFragment
+import app.siakad.siakadtkadmin.presentation.screens.order.detail.OrderDetailActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.UserListFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
@@ -34,6 +36,11 @@ class UserDetailUnverActivity : AppCompatActivity(), AlertListener {
   private lateinit var vmUserDetail: UserDetailViewModel
 
   private var siswa: PenggunaModel? = null
+
+  companion object {
+    const val TAG_CONFIRM = "Terima Siswa"
+    const val TAG_REJECT = "Tolak Siswa"
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -82,7 +89,11 @@ class UserDetailUnverActivity : AppCompatActivity(), AlertListener {
 
     btnCancel = findViewById(R.id.btn_user_detail_unver_batal)
     btnCancel.setOnClickListener {
-      onBackPressed()
+      val alertDialog = AlertDialogFragment(
+        "Tolak verifikasi",
+        "Apakah Anda yakin menolak pendaftaran ini?"
+      )
+      alertDialog.show(supportFragmentManager, TAG_REJECT)
     }
 
     btnSave = findViewById(R.id.btn_user_detail_unver_simpan)
@@ -91,7 +102,7 @@ class UserDetailUnverActivity : AppCompatActivity(), AlertListener {
         "Konfirmasi verifikasi",
         "Apakah Anda yakin melanjutkan verifikasi?"
       )
-      alertDialog.show(supportFragmentManager, null)
+      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
     }
   }
 
@@ -110,6 +121,11 @@ class UserDetailUnverActivity : AppCompatActivity(), AlertListener {
   }
 
   override fun alertAction(tag: String?) {
-    vmUserDetail.updateDataToVerified(siswa!!)
+    if (tag == TAG_CONFIRM) {
+      vmUserDetail.updateDataToVerified(siswa!!)
+    } else if (tag == TAG_REJECT) {
+      vmUserDetail.removeData(siswa!!)
+      onBackPressed()
+    }
   }
 }

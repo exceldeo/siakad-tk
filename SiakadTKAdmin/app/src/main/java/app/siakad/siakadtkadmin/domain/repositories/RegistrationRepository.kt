@@ -83,9 +83,15 @@ class RegistrationRepository() {
     )
 
     registrationDB.updateChildren(childUpdates).addOnSuccessListener {
-      listener.notifyRegistrationDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+      listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getSuccesModel("Success"))
     }.addOnFailureListener {
-      listener.notifyRegistrationDetailChangeStatus(ModelContainer.getFailModel())
+      listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getFailModel())
     }
+  }
+
+  fun removeRegisData(listener: RegistrationDetailListener, data: DaftarUlangModel) {
+    registrationDB.child(data.dafulId).removeValue().addOnSuccessListener {
+      listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener { listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getFailModel()) }
   }
 }

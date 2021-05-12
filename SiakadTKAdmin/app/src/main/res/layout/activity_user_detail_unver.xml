@@ -130,14 +130,14 @@
                     android:id="@+id/btn_user_detail_unver_batal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tutup"
+                    android:text="Tolak"
                     android:fontFamily="@font/poppins_bold"
                     style="@style/CommonButton"
                     android:textAllCaps="false"
                     app:cornerRadius="@dimen/list_corner"
                     android:paddingEnd="@dimen/container_padding_x"
                     android:paddingStart="@dimen/container_padding_x"
-                    android:backgroundTint="@color/colorUnSelect"
+                    android:backgroundTint="@color/colorDanger"
                     android:layout_marginEnd="@dimen/container_padding_x"/>
 
                 <com.google.android.material.button.MaterialButton

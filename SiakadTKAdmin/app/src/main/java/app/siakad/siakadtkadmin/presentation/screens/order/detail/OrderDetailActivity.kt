@@ -116,8 +116,8 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     btnCancel = findViewById(R.id.btn_order_detail_tolak)
     btnCancel.setOnClickListener {
       val alertDialog = AlertDialogFragment(
-        "Terima pesanan",
-        "Apakah Anda yakin menerima pesanan ini?"
+        "Tolak pesanan",
+        "Apakah Anda yakin menolak pesanan ini?"
       )
       alertDialog.show(supportFragmentManager, TAG_REJECT)
     }

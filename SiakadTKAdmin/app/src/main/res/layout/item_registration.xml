@@ -18,7 +18,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_flexGrow="1">
+            app:layout_flexGrow="1"
+            android:gravity="center_vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"

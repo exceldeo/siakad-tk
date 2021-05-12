@@ -17,70 +17,70 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ClassroomDetailViewModel(private val context: Context) :
-    ViewModel(),
-    UserListListener {
-    private val userListLiveData = MutableLiveData<ArrayList<PenggunaModel>>()
-    private val userRepository = UserRepository()
-    private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-    private val dataPenggunaList = arrayListOf<PenggunaModel>()
+  ViewModel(),
+  UserListListener {
+  private val userListLiveData = MutableLiveData<ArrayList<PenggunaModel>>()
+  private val userRepository = UserRepository()
+  private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+  private val dataPenggunaList = arrayListOf<PenggunaModel>()
 
-    fun setUserClassType(kelasId: String) {
-        if (dataPenggunaList.isEmpty()) {
-            vmCoroutineScope.launch {
-                userRepository.initGetUserListByClassListener(this@ClassroomDetailViewModel, kelasId)
-            }
+  fun setUserClassType(kelasId: String) {
+    if (dataPenggunaList.isEmpty()) {
+      vmCoroutineScope.launch {
+        userRepository.initGetUserListByClassListener(this@ClassroomDetailViewModel, kelasId)
+      }
+    }
+  }
+
+  override fun addUserItem(pengguna: ModelContainer<PenggunaModel>) {
+    if (pengguna.status == ModelState.SUCCESS) {
+      if (pengguna.data != null) {
+        dataPenggunaList.add(pengguna.data!!)
+        userListLiveData.postValue(dataPenggunaList)
+      }
+    } else if (pengguna.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_get_user))
+    }
+  }
+
+  override fun updateUserItem(pengguna: ModelContainer<PenggunaModel>) {
+    if (pengguna.status == ModelState.SUCCESS) {
+      if (pengguna.data != null) {
+        dataPenggunaList.forEachIndexed { index, item ->
+          if (item.userId == pengguna.data?.userId) {
+            dataPenggunaList[index] = pengguna.data!!
+          }
         }
+        userListLiveData.postValue(dataPenggunaList)
+      }
+    } else if (pengguna.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_get_user))
     }
+  }
 
-    override fun addUserItem(pengguna: ModelContainer<PenggunaModel>) {
-        if (pengguna.status == ModelState.SUCCESS) {
-            if (pengguna.data != null) {
-                dataPenggunaList.add(pengguna.data!!)
-                userListLiveData.postValue(dataPenggunaList)
-            }
-        } else if (pengguna.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_get_user))
+  override fun removeUserItem(pengguna: ModelContainer<PenggunaModel>) {
+    if (pengguna.status == ModelState.SUCCESS) {
+      if (pengguna.data != null) {
+        var target = 0
+        dataPenggunaList.forEachIndexed forE@{ index, item ->
+          if (item.userId == pengguna.data?.userId) {
+            target = index
+            return@forE
+          }
         }
+        dataPenggunaList.removeAt(target)
+        userListLiveData.postValue(dataPenggunaList)
+      }
+    } else if (pengguna.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_get_user))
     }
+  }
 
-    override fun updateUserItem(pengguna: ModelContainer<PenggunaModel>) {
-        if (pengguna.status == ModelState.SUCCESS) {
-            if (pengguna.data != null) {
-                dataPenggunaList.forEachIndexed { index, item ->
-                    if (item.userId == pengguna.data?.userId) {
-                        dataPenggunaList[index] = pengguna.data!!
-                    }
-                }
-                userListLiveData.postValue(dataPenggunaList)
-            }
-        } else if (pengguna.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_get_user))
-        }
-    }
+  fun getUserList(): LiveData<ArrayList<PenggunaModel>> {
+    return userListLiveData
+  }
 
-    override fun removeUserItem(pengguna: ModelContainer<PenggunaModel>) {
-        if (pengguna.status == ModelState.SUCCESS) {
-            if (pengguna.data != null) {
-                var target = 0
-                dataPenggunaList.forEachIndexed forE@{ index, item ->
-                    if (item.userId == pengguna.data?.userId) {
-                        target = index
-                        return@forE
-                    }
-                }
-                dataPenggunaList.removeAt(target)
-                userListLiveData.postValue(dataPenggunaList)
-            }
-        } else if (pengguna.status == ModelState.ERROR) {
-            showToast(context.getString(R.string.fail_get_user))
-        }
-    }
-
-    fun getUserList() : LiveData<ArrayList<PenggunaModel>> {
-        return userListLiveData
-    }
-
-    private fun showToast(msg: String) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-    }
+  private fun showToast(msg: String) {
+    Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+  }
 }
