@@ -12,6 +12,7 @@ import app.siakad.siakadtkadmin.infrastructure.data.DaftarUlang
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.detail.RegistrationDetailUnverViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationListFragment
+import app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
@@ -34,6 +35,11 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
   private lateinit var vmRegisDetail: RegistrationDetailUnverViewModel
 
   private var daful: DaftarUlang? = null
+
+  companion object {
+    const val TAG_CONFIRM = "Terima Daful"
+    const val TAG_REJECT = "Tolak Daful"
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -79,7 +85,11 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
 
     btnCancel = findViewById(R.id.btn_registration_detail_unver_batal)
     btnCancel.setOnClickListener {
-      onBackPressed()
+      val alertDialog = AlertDialogFragment(
+        "Tolak daftar ulang",
+        "Apakah Anda yakin menolak daftar ulang ini?"
+      )
+      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
     }
 
     btnSave = findViewById(R.id.btn_registration_detail_unver_simpan)
@@ -88,7 +98,7 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
         "Konfirmasi daftar ulang",
         "Apakah Anda yakin melanjutkan konfirmasi?"
       )
-      alertDialog.show(supportFragmentManager, null)
+      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
     }
   }
 
@@ -107,6 +117,11 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
   }
 
   override fun alertAction(tag: String?) {
-    vmRegisDetail.updateDataToVerified(daful?.daful!!)
+    if (tag == UserDetailUnverActivity.TAG_CONFIRM) {
+      vmRegisDetail.updateDataToVerified(daful?.daful!!)
+    } else if (tag == UserDetailUnverActivity.TAG_REJECT) {
+      vmRegisDetail.removeData(daful?.daful!!)
+      onBackPressed()
+    }
   }
 }

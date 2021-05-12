@@ -11,7 +11,6 @@ class UserListViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
         with(itemView) {
             tv_item_user_judul.text = item.nama
             tv_item_user_email.text = item.email
-            tv_item_user_kelas.text
 
             ll_item_user.setOnClickListener {
                 (v.context as UserClickHelper).navigateToUserDetail(item)

@@ -25,10 +25,9 @@ import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.uniform.UniformAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.product.ProductListActivity
-import app.siakad.siakadtkadmin.presentation.screens.product.book.BookAddActivity
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.adapter.UniformSizeListAdapter
 import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductDialog
-import app.siakad.siakadtkadmin.presentation.screens.product.uniform.dialog.UniformProductListener
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.helper.UniformAddHelper
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
@@ -37,7 +36,8 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
 
-class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductListener {
+class UniformAddActivity : AppCompatActivity(), AlertListener,
+  UniformAddHelper {
 
   private val pageTitle = "Tambah Produk"
 
@@ -330,6 +330,11 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     )
   }
 
+  override fun deleteData(pos: Int) {
+    uniformSizeList.removeAt(pos)
+    uniformSizeAdapter.changeDataList(uniformSizeList)
+  }
+
   private fun setupListAdapter() {
     rvUniformSize = findViewById(R.id.rv_uniform_add_daftar_ukuran)
     uniformSizeAdapter = UniformSizeListAdapter()
@@ -340,7 +345,7 @@ class UniformAddActivity : AppCompatActivity(), AlertListener, UniformProductLis
     }
     if (seragam != null) {
       uniformSizeList.addAll(seragam?.detailSeragam!!)
-      uniformSizeAdapter.addAllData(seragam?.detailSeragam!!)
+      uniformSizeAdapter.addAllData(uniformSizeList)
     }
   }
 }

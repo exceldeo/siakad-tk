@@ -48,10 +48,10 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/iv_item_uniform_size_edit"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/ic_mode_edit"
+            android:id="@+id/iv_item_uniform_size_hapus"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_delete"
             android:foregroundGravity="center"
             android:layout_marginStart="@dimen/list_corner"/>
     </com.google.android.flexbox.FlexboxLayout>

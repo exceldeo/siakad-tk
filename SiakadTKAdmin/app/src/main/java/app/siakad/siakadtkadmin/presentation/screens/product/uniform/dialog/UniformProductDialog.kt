@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.presentation.screens.product.uniform.helper.UniformAddHelper
 
 class UniformProductDialog : DialogFragment() {
 
@@ -18,12 +19,12 @@ class UniformProductDialog : DialogFragment() {
     private lateinit var btnBatal: CardView
 
     private var customDialog: Dialog? = null
-    private var uniformDialogListener: UniformProductListener? = null
+    private var uniformDialogListener: UniformAddHelper? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         customDialog = Dialog(context)
-        uniformDialogListener = context as UniformProductListener
+        uniformDialogListener = context as UniformAddHelper
     }
 
     override fun onDetach() {
