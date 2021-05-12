@@ -249,14 +249,16 @@
                 android:textSize="@dimen/card_title_text"
                 android:fontFamily="@font/poppins_extrabold"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom"
-                android:layout_marginTop="@dimen/list_space"/>
+                android:layout_marginTop="@dimen/list_space"
+                android:visibility="gone"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/list_corner"
                 app:cardElevation="4dp"
-                android:layout_marginBottom="@dimen/container_padding_y">
+                android:layout_marginBottom="@dimen/container_padding_y"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
