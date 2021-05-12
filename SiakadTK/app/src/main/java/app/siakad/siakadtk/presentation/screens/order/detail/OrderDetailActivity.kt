@@ -27,9 +27,11 @@ import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewMode
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.order.OrderListActivity
 import app.siakad.siakadtk.presentation.screens.order.detail.adapter.OrderDetailAdapter
+import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
 import app.siakad.siakadtk.presentation.views.preview.ImagePreviewActivity
 
-class OrderDetailActivity : AppCompatActivity() {
+class OrderDetailActivity : AppCompatActivity(), AlertListener {
     private val pageTitle = "Detail Pemesanan"
 
     private lateinit var rvOrderDetailAdapter: OrderDetailAdapter
@@ -123,24 +125,17 @@ class OrderDetailActivity : AppCompatActivity() {
         tvOrderDate.text = pesanan.pesanan.tanggalPesan
         tvOrderStatus.text = pesanan.pesanan.statusPesan
 
-        if(pesanan.pesanan.statusPesan == OrderStateModel.ORDER_PENDING.str)
+        if(pesanan.pesanan.statusPesan == OrderStateModel.ORDER_PENDING.str && pesanan.pesanan.fotoBayar == "")
         {
             cvOrderPay.visibility = View.VISIBLE
             btnUploadBukti.setOnClickListener {
-                if(pesanan.pesanan.fotoBayar != "") {
-                    previewImage()
-                } else {
-                    pickImage()
-                }
+                pickImage()
             }
-
         } else {
             cvOrderPay.visibility = View.INVISIBLE
             btnUploadBukti.text = "Lihat Bukti Pembayaran"
             btnUploadBukti.setOnClickListener {
-                if (pesanan.pesanan.fotoBayar != "") {
-                    previewImage()
-                }
+                previewImage()
             }
         }
 
@@ -150,7 +145,11 @@ class OrderDetailActivity : AppCompatActivity() {
         }
 
         btnPay.setOnClickListener {
-            vmOrderList.setPaymentImage(pesanan.pesanan, paymentImage)
+            val alertDialog = AlertDialogFragment(
+                "Konfirmasi pembayaran",
+                "Apakah Anda yakin melanjutkan pembayaran?"
+            )
+            alertDialog.show(supportFragmentManager, null)
         }
     }
 
@@ -220,5 +219,9 @@ class OrderDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun alertAction(tag: String?) {
+        vmOrderList.setPaymentImage(pesanan.pesanan, paymentImage)
     }
 }

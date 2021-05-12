@@ -3,6 +3,7 @@ package app.siakad.siakadtk.presentation.screens.profile
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -10,7 +11,7 @@ import androidx.preference.PreferenceFragmentCompat
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
-import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
@@ -18,9 +19,9 @@ class SettingsActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var btnLogout: Button
-    private lateinit var btnUbahProfil: Button
-    private lateinit var btnUbahPassword: Button
-    private lateinit var btnUbahEmail: Button
+    private lateinit var btnUbahProfil: TextView
+    private lateinit var btnUbahPassword: TextView
+    private lateinit var btnUbahEmail: TextView
 
     private val authRepository = AuthenticationRepository()
     private lateinit var alertDialog: AlertDialogFragment
@@ -63,7 +64,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         btnUbahEmail.setOnClickListener {
-
+            
         }
     }
 

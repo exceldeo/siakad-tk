@@ -23,6 +23,8 @@ import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.Regist
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
+import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
 import app.siakad.siakadtk.presentation.views.date.DateListener
 import app.siakad.siakadtk.presentation.views.date.DatePickerFragment
 import com.androidbuffer.kotlinfilepicker.KotConstants
@@ -31,7 +33,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, DateListener {
+class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, DateListener, AlertListener {
     private val pageTitle = "Form Pendaftaran"
 
     private lateinit var toolbar: Toolbar
@@ -215,21 +217,11 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             navigateBack()
         }
         btnSimpan.setOnClickListener {
-            if (validateInput()) {
-                vmRegistrationForm.setData(
-                    etName.text.toString(),
-                    spClass.selectedItem.toString(),
-                    etParentName.text.toString(),
-                    spGender.selectedItem.toString(),
-                    etBornDate.text.toString(),
-                    etAddress.text.toString(),
-                    etPhoneNumber.text.toString(),
-                    spTahunAjaran.selectedItem.toString(),
-                    0,
-                    paymentImage,
-                )
-                navigateBack()
-            }
+            val alertDialog = AlertDialogFragment(
+                "Konfirmasi daftar ulang",
+                "Apakah Anda yakin melanjutkan daftar ulang?"
+            )
+            alertDialog.show(supportFragmentManager, null)
         }
     }
 
@@ -291,5 +283,23 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+    override fun alertAction(tag: String?) {
+        if (validateInput()) {
+            vmRegistrationForm.setData(
+                etName.text.toString(),
+                spClass.selectedItem.toString(),
+                etParentName.text.toString(),
+                spGender.selectedItem.toString(),
+                etBornDate.text.toString(),
+                etAddress.text.toString(),
+                etPhoneNumber.text.toString(),
+                spTahunAjaran.selectedItem.toString(),
+                0,
+                paymentImage,
+            )
+            navigateBack()
+        }
     }
 }

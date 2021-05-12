@@ -23,8 +23,10 @@ import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFact
 import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.presentation.screens.product.basket.adapter.BasketAdapter
+import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
 
-class BasketActivity : AppCompatActivity(), BasketAddListener {
+class BasketActivity : AppCompatActivity(), BasketAddListener, AlertListener {
     private val pageTitle = "Keranjang Saya"
 
     private lateinit var toolbar: Toolbar
@@ -93,13 +95,11 @@ class BasketActivity : AppCompatActivity(), BasketAddListener {
         ).get(KeranjangViewModel::class.java)
 
         btnOrder.setOnClickListener {
-            var totalPayment = 0
-            for (item in checkedItems) {
-                newDetailKeranjang.add(detailKeranjangs[item])
-                totalPayment += detailKeranjangs[item].harga
-            }
-            tvTotalPaymentChecked.text = "Total : Rp " + totalPayment.toString()
-            if(checkedItems.size > 0) vmBasket.insertBasketToOrder(newDetailKeranjang)
+            val alertDialog = AlertDialogFragment(
+                "Konfirmasi pemesanan",
+                "Apakah Anda yakin melanjutkan pemesanan?"
+            )
+            alertDialog.show(supportFragmentManager, null)
         }
     }
 
@@ -142,5 +142,16 @@ class BasketActivity : AppCompatActivity(), BasketAddListener {
 
     override fun getStatusAllChecked(): Boolean {
         return cbAllCheckBox.isChecked
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun alertAction(tag: String?) {
+        var totalPayment = 0
+        for (item in checkedItems) {
+            newDetailKeranjang.add(detailKeranjangs[item])
+            totalPayment += detailKeranjangs[item].harga
+        }
+        tvTotalPaymentChecked.text = "Total : Rp $totalPayment"
+        if(checkedItems.size > 0) vmBasket.insertBasketToOrder(newDetailKeranjang)
     }
 }

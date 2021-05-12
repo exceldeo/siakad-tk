@@ -134,23 +134,23 @@
                     tools:targetApi="lollipop" />
             </GridLayout>
 
-            <TextView
-                android:id="@+id/tv_profile_activity_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity"
-                android:textSize="@dimen/header_subtitle_text"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/colorBlack"
-                android:layout_marginTop="@dimen/container_padding_y"
-                android:layout_marginBottom="@dimen/container_padding_y_min"/>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_profile_activity_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/activity"-->
+<!--                android:textSize="@dimen/header_subtitle_text"-->
+<!--                android:fontFamily="@font/poppins_semibold"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:layout_marginTop="@dimen/container_padding_y"-->
+<!--                android:layout_marginBottom="@dimen/container_padding_y_min"/>-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_profile_activity_list"
-                android:layout_below="@id/tv_profile_activity_title"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@layout/item_row_user_activity" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rv_profile_activity_list"-->
+<!--                android:layout_below="@id/tv_profile_activity_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                tools:listitem="@layout/item_row_user_activity" />-->
         </LinearLayout>
     </ScrollView>
 

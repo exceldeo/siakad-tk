@@ -32,9 +32,9 @@ class ProfileFragment : Fragment() {
     private lateinit var ibtnRegistration: ImageButton
     private lateinit var tvStudentName: TextView
     private lateinit var tvClassStudent: TextView
-    private lateinit var rvMyActivity: RecyclerView
+//    private lateinit var rvMyActivity: RecyclerView
     private lateinit var ivSetting: ImageView
-    private var list: ArrayList<Aktivitas> = arrayListOf()
+//    private var list: ArrayList<Aktivitas> = arrayListOf()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -54,13 +54,13 @@ class ProfileFragment : Fragment() {
             ibtnRegistration = v.findViewById(R.id.ibtn_profile_daful)
             tvStudentName = v.findViewById(R.id.tv_profile_nama_siswa)
             tvClassStudent = v.findViewById(R.id.tv_profile_kelas_siswa)
-            rvMyActivity = v.findViewById(R.id.rv_profile_activity_list)
+//            rvMyActivity = v.findViewById(R.id.rv_profile_activity_list)
             ivSetting = v.findViewById(R.id.iv_profile_btn_pengaturan)
 
-            rvMyActivity.setHasFixedSize(true)
+//            rvMyActivity.setHasFixedSize(true)
 
-            list.addAll(UserActivitiesData.listData)
-            showMyActivityRecyclerList()
+//            list.addAll(UserActivitiesData.listData)
+//            showMyActivityRecyclerList()
         }
     }
 
@@ -93,9 +93,9 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun showMyActivityRecyclerList() {
-        rvMyActivity.layoutManager = LinearLayoutManager(this.context)
-        val listUserActivitiesAdapter = UserActivitiesAdapter(list)
-        rvMyActivity.adapter = listUserActivitiesAdapter
-    }
+//    private fun showMyActivityRecyclerList() {
+//        rvMyActivity.layoutManager = LinearLayoutManager(this.context)
+//        val listUserActivitiesAdapter = UserActivitiesAdapter(list)
+//        rvMyActivity.adapter = listUserActivitiesAdapter
+//    }
 }
