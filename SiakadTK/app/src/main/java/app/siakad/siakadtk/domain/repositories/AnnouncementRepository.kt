@@ -17,7 +17,7 @@ class AnnouncementRepository() {
     private val announcementDB = FirebaseRef(FirebaseRef.PENGUMUMAN_REF).getRef()
 
     fun initEventListener() {
-        announcementDB.getRef().addValueEventListener(object : ValueEventListener {
+        announcementDB.ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(snapshot: DataSnapshot) {

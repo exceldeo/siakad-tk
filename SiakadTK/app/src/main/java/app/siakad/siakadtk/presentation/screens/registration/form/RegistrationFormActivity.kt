@@ -1,13 +1,17 @@
 package app.siakad.siakadtk.presentation.screens.registration.form
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
 import android.text.SpannableStringBuilder
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
@@ -17,7 +21,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.DetailPenggunaModel
+import app.siakad.siakadtk.domain.models.KelasModel
+import app.siakad.siakadtk.domain.utils.helpers.model.ClassTypeModel
 import app.siakad.siakadtk.infrastructure.data.Pengguna
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.classroom.ClassroomListViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -29,8 +37,11 @@ import app.siakad.siakadtk.presentation.views.date.DateListener
 import app.siakad.siakadtk.presentation.views.date.DatePickerFragment
 import com.androidbuffer.kotlinfilepicker.KotConstants
 import com.androidbuffer.kotlinfilepicker.KotRequest
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, DateListener, AlertListener {
@@ -40,10 +51,10 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private lateinit var etName: EditText
     private lateinit var etBornDate: EditText
     private lateinit var spGender: Spinner
-    private lateinit var spClass: Spinner
+    private lateinit var ddClass: TextInputLayout
     private lateinit var etParentName: EditText
     private lateinit var etAddress: EditText
-    private lateinit var spTahunAjaran: Spinner
+    private lateinit var ddTahunAjaran: TextInputLayout
     private lateinit var etPhoneNumber: EditText
     private lateinit var btnUploadBukti: Button
     private lateinit var btnCancel: TextView
@@ -53,6 +64,13 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private lateinit var calendar: Calendar
 
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
+    private lateinit var vmClassroom: ClassroomListViewModel
+
+    private var classrooms = arrayListOf<KelasModel>()
+    private var typeClassrooms = mutableListOf<String>()
+    private var tahunAjarans = mutableListOf<String>()
+
+    private var tempDetailPengguna = DetailPenggunaModel()
 
     private var paymentImage: Uri? = null
 
@@ -66,6 +84,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         setContentView(R.layout.activity_registration_form)
         setupItemView()
         setupView()
+        setupAdapterListener()
     }
 
     override fun onRequestPermissionsResult(
@@ -125,10 +144,10 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         etName = findViewById(R.id.et_registrationform_nama)
         etBornDate = findViewById(R.id.et_registrationform_ttl)
         spGender = findViewById(R.id.sp_registrationform_jenis_kelamin)
-        spClass = findViewById(R.id.sp_registrationform_kelas)
+        ddClass = findViewById(R.id.dd_registrationform_kelas)
         etParentName = findViewById(R.id.et_registrationform_nama_ortu)
         etAddress = findViewById(R.id.et_registrationform_alamat)
-        spTahunAjaran = findViewById(R.id.sp_registrationform_tahun_ajaran)
+        ddTahunAjaran = findViewById(R.id.dd_registrationform_tahun_ajaran)
         etPhoneNumber = findViewById(R.id.et_registrationform_no_hp_ortu)
 //        etTotalPayment = findViewById(R.id.et_registrationform_nominal)
         btnUploadBukti = findViewById(R.id.btn_registrationform_upload_bukti_bayar)
@@ -138,10 +157,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         datePicker = DatePickerFragment()
         calendar = Calendar.getInstance()
 
-        setupAdapterListener()
         spGender.onItemSelectedListener = this
-        spClass.onItemSelectedListener = this
-        spTahunAjaran.onItemSelectedListener = this
 
         vmRegistrationForm =
             ViewModelProvider(this, ViewModelFactory(this, this)).get(RegistrationFormViewModel::class.java)
@@ -156,6 +172,21 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
 
         vmRegistrationForm.getUserData()
             .observe(this, obsRegistrationGetUser)
+
+        vmClassroom =
+            ViewModelProvider(this, ViewModelFactory(this, this)).get(ClassroomListViewModel::class.java)
+
+        val obsGetClass = Observer<ArrayList<KelasModel>> {
+            classrooms.addAll(it)
+            for (classroom in classrooms) {
+                if (!typeClassrooms.contains(classroom.namaKelas))
+                    typeClassrooms.add(classroom.namaKelas)
+                if (!tahunAjarans.contains(classroom.tahunMulai.toString() + "/" + classroom.tahunSelesai.toString()))
+                    tahunAjarans.add(classroom.tahunMulai.toString() + "/" + classroom.tahunSelesai.toString())
+            }
+        }
+
+        vmClassroom.getClassroomList().observe(this, obsGetClass)
     }
 
     private fun setupAdapterListener() {
@@ -167,21 +198,49 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             spGender.adapter = adapter
         }
 
-        ArrayAdapter.createFromResource(
-            this, R.array.list_kelas,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spClass.adapter = adapter
-        }
+        val classAdapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, typeClassrooms)
 
-        ArrayAdapter.createFromResource(
-            this, R.array.list_ajaran,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spTahunAjaran.adapter = adapter
-        }
+        ddClass = findViewById(R.id.dd_registrationform_kelas)
+        (ddClass.editText as MaterialAutoCompleteTextView).setText("Pilih satu")
+        (ddClass.editText as MaterialAutoCompleteTextView).setAdapter(classAdapter)
+        (ddClass.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
+            TextWatcher {
+            @SuppressLint("SetTextI18n")
+            override fun afterTextChanged(str: Editable?) {
+                tempDetailPengguna.kelas = str.toString()
+            }
+
+            override fun beforeTextChanged(
+                str: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        val tahunAjaranAdapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, tahunAjarans)
+
+        ddTahunAjaran = findViewById(R.id.dd_registrationform_tahun_ajaran)
+        (ddTahunAjaran.editText as MaterialAutoCompleteTextView).setText("Pilih satu")
+        (ddTahunAjaran.editText as MaterialAutoCompleteTextView).setAdapter(tahunAjaranAdapter)
+        (ddTahunAjaran.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
+            TextWatcher {
+            @SuppressLint("SetTextI18n")
+            override fun afterTextChanged(str: Editable?) {
+                tempDetailPengguna.tahunAjaran = str.toString()
+            }
+
+            override fun beforeTextChanged(
+                str: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {}
+
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     private fun setupView() {
@@ -275,6 +334,16 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             returnState = false
         }
 
+        if(tempDetailPengguna.kelas.isEmpty()) {
+            ddClass.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
+        if(tempDetailPengguna.tahunAjaran.isEmpty()) {
+            ddTahunAjaran.error = getString(R.string.empty_input)
+            returnState = false
+        }
+
         return returnState
     }
 
@@ -289,13 +358,13 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         if (validateInput()) {
             vmRegistrationForm.setData(
                 etName.text.toString(),
-                spClass.selectedItem.toString(),
+                tempDetailPengguna.kelas.toString(),
                 etParentName.text.toString(),
                 spGender.selectedItem.toString(),
                 etBornDate.text.toString(),
                 etAddress.text.toString(),
                 etPhoneNumber.text.toString(),
-                spTahunAjaran.selectedItem.toString(),
+                tempDetailPengguna.tahunAjaran.toString(),
                 0,
                 paymentImage,
             )
