@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/container_padding_x"
-                android:text="Tambahkan"
+                android:text="Konfirmasi"
                 android:textColor="@android:color/white"
                 style="@style/CommonButton"/>
         </androidx.cardview.widget.CardView>
