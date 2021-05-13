@@ -121,7 +121,7 @@ class PasswordActivity : AppCompatActivity(), AlertListener {
 
     override fun alertAction(tag: String?) {
         if(validateForm()) {
-            vmProfile.updatePassword(etNewPassword.text.toString())
+            vmProfile.updatePassword(dataUser, etNewPassword.text.toString())
         }
         navigateBack()
     }

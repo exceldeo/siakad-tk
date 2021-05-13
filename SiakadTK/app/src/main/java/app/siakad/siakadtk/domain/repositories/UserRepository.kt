@@ -25,8 +25,6 @@ class UserRepository() {
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
     private var detailPengguna = DetailPenggunaModel()
-    private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
-    private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
     fun getUserById(listener: UserListener) {
         userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {

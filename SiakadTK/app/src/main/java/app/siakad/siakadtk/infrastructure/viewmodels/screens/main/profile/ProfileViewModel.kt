@@ -38,6 +38,8 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
     private val authRepository = AuthenticationRepository()
     private val liveDataUser = MutableLiveData<Pengguna>()
     private var dataUser = Pengguna()
+    private var newPasswd = ""
+    private var newEmail = ""
     private var dataDetailUser = DetailPenggunaModel()
 
     init {
@@ -77,9 +79,10 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
         }
     }
 
-    fun updatePassword(newPasswd: String) {
+    fun updatePassword(data: Pengguna, newPasswd: String) {
+        this.newPasswd = newPasswd
         vmCoroutineScope.launch {
-            authRepository.updatePassword(this@ProfileViewModel, newPasswd)
+            authRepository.updatePassword(this@ProfileViewModel, data.email, data.passwd, newPasswd)
         }
     }
 
@@ -148,6 +151,10 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
 
     override fun notifyUserDetailPasswordStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
+            vmCoroutineScope.launch {
+                dataUser.passwd = newPasswd
+                userRepository.updateDataFromProfile(this@ProfileViewModel, dataUser)
+            }
             showToast(context.getString(R.string.scs_set_passwd))
         } else {
             showToast(context.getString(R.string.fail_set_passwd))

@@ -50,9 +50,13 @@ class AuthenticationRepository {
         fbAuth.signOut()
     }
 
-    fun updatePassword(listener: SettingListener, newPasswd: String) {
-        fbAuth.currentUser!!.updatePassword(newPasswd).addOnSuccessListener {
-            listener.notifyUserDetailPasswordStatus(ModelContainer.getSuccesModel("Berhasil mengubah password!"))
-        }.addOnFailureListener { e -> listener.notifyUserDetailPasswordStatus(ModelContainer.getFailModel()) }
+    fun updatePassword(listener: SettingListener, email: String, passwd: String, newPasswd: String) {
+        fbAuth.signInWithEmailAndPassword(email, passwd).addOnCompleteListener() { it ->
+            if(it.isSuccessful) {
+                fbAuth.currentUser!!.updatePassword(newPasswd).addOnSuccessListener {
+                    listener.notifyUserDetailPasswordStatus(ModelContainer.getSuccesModel("Berhasil mengubah password!"))
+                }.addOnFailureListener { e -> listener.notifyUserDetailPasswordStatus(ModelContainer.getFailModel()) }
+            }
+        }
     }
 }
