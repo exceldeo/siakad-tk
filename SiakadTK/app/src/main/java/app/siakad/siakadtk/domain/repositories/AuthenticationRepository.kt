@@ -6,6 +6,7 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
+import app.siakad.siakadtk.domain.utils.listeners.setting.SettingListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -47,5 +48,11 @@ class AuthenticationRepository {
 
     fun logout() {
         fbAuth.signOut()
+    }
+
+    fun updatePassword(listener: SettingListener, newPasswd: String) {
+        fbAuth.currentUser!!.updatePassword(newPasswd).addOnSuccessListener {
+            listener.notifyUserDetailPasswordStatus(ModelContainer.getSuccesModel("Berhasil mengubah password!"))
+        }.addOnFailureListener { e -> listener.notifyUserDetailPasswordStatus(ModelContainer.getFailModel()) }
     }
 }

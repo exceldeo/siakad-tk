@@ -171,7 +171,8 @@
 
     <string name="empty_input">Isian tidak boleh kosong!</string>
     <string name="weak_passwd">Password harus lebih dari 6 karakter</string>
-    <string name="err_conf_passwd">Konfirmasi Password harus sama!</string>
+    <string name="err_conf_passwd">Konfirmasi password harus sama!</string>
+    <string name="err_conf_old_passwd">Password harus sama dengan password lama!</string>
     <string name="scs_regis">Berhasil daftar</string>
     <string name="fail_regis">Gagal daftar, pastikan masukkan data dengan benar dan coba lagi</string>
     <string name="scs_login">Berhasil masuk</string>
@@ -181,7 +182,9 @@
     <string name="scs_get_data">Data berhasil diambil</string>
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
+    <string name="scs_set_passwd">Password berhasil diubah</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
+    <string name="fail_set_passwd">Password gagal diubah</string>
     <string name="buku">Buku</string>
     <string name="seragam">Seragam</string>
 
@@ -208,5 +211,6 @@
     <string name="no_content">-</string>
     <string name="lihat_bukti_pembayaran">Lihat Bukti Pembayaran</string>
     <string name="riwayat_pemesanan">Riwayat Pemesanan</string>
+    <string name="konfirmasi_password_baru">Konfirmasi Password Baru</string>
 
 </resources>

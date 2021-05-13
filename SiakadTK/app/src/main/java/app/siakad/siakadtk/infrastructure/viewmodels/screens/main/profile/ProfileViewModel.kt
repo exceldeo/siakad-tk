@@ -17,6 +17,7 @@ import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.storage.WholeStorage
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
+import app.siakad.siakadtk.domain.utils.listeners.setting.SettingListener
 import app.siakad.siakadtk.domain.utils.listeners.storage.StorageListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.DetailPengguna
@@ -27,7 +28,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ProfileViewModel (private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel(), UserListener, StorageListener {
+    ViewModel(), UserListener, StorageListener, SettingListener {
     private val userDetailRepository = UserDetailRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -73,6 +74,12 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
             fbStorage.uploadImage(this@ProfileViewModel, fotoProfil!! ,
                 System.currentTimeMillis().toString() + "." + getFileExtension(fotoProfil!!)
             )
+        }
+    }
+
+    fun updatePassword(newPasswd: String) {
+        vmCoroutineScope.launch {
+            authRepository.updatePassword(this@ProfileViewModel, newPasswd)
         }
     }
 
@@ -137,5 +144,13 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
     private fun getFileExtension(uri: Uri): String? {
         return MimeTypeMap.getSingleton()
             .getExtensionFromMimeType(context.contentResolver.getType(uri))
+    }
+
+    override fun notifyUserDetailPasswordStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_set_passwd))
+        } else {
+            showToast(context.getString(R.string.fail_set_passwd))
+        }
     }
 }
