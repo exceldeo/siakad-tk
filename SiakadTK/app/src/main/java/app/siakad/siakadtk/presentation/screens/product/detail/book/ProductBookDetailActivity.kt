@@ -112,11 +112,7 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         if (p0 != null) {
-            Toast.makeText(
-                this,
-                "OnItemSelectedListener : " + p0.selectedItem.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+
         }
     }
 

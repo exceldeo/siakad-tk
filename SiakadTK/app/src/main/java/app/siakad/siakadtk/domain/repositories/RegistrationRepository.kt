@@ -60,7 +60,7 @@ class RegistrationRepository() {
 
     fun insertData(listener: UserListener, data: DaftarUlang) {
         val newKey = registrationDB.push().key.toString()
-        val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        val todayDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
         val newData = DaftarUlangModel(
             dafulId = newKey,
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
@@ -77,7 +77,7 @@ class RegistrationRepository() {
 
     fun updateData(data: DaftarUlang) {
         val currentKey = registrationDB.key.toString()
-        val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        val todayDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
         val updateData = DaftarUlangModel(
             dafulId = currentKey,
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,

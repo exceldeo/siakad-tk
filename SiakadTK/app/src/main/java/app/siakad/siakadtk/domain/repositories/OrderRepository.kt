@@ -67,7 +67,7 @@ class OrderRepository() {
 
     fun insertDataPesanan(listener: OrderListener, data: ArrayList<DetailKeranjangModel>) {
         val newKey = orderDB.push().key.toString()
-        val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        val todayDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
         val newData =
             PesananModel(
                 pesananId = newKey,
