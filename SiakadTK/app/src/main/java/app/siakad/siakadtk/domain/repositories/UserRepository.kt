@@ -7,12 +7,11 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
-import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
-import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
+import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import com.google.firebase.database.ChildEventListener
@@ -29,7 +28,7 @@ class UserRepository() {
     private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
     private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
-    fun getUserById(listener: RegistrationListener) {
+    fun getUserById(listener: UserListener) {
         userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
@@ -112,7 +111,7 @@ class UserRepository() {
         }
     }
 
-    fun updateDetailData(listener: RegistrationListener, detail: DaftarUlang, dataUser: Pengguna) {
+    fun updateDetailData(listener: UserListener, detail: DaftarUlang, dataUser: Pengguna) {
         detailPengguna = DetailPenggunaModel(
             kelas = detail.kelas,
             jenisKelamin = detail.jenisKelamin,
@@ -125,7 +124,7 @@ class UserRepository() {
     }
 
     private fun updateDataFromRegistration(
-        listener: RegistrationListener,
+        listener: UserListener,
         daful: DaftarUlang,
         dataUser: Pengguna
     ) {

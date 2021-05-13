@@ -6,7 +6,7 @@ import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.models.DaftarUlangModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
-import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
+import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -19,7 +19,7 @@ class RegistrationRepository() {
     private val insertState = MutableLiveData<ModelContainer<String>>()
     private val registrationDB = FirebaseRef(FirebaseRef.DAFTAR_ULANG_REF).getRef()
 
-    fun initEventListener(listener: RegistrationListener) {
+    fun initEventListener(listener: UserListener) {
         registrationDB.orderByChild("userId").equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!)
             .addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -58,7 +58,7 @@ class RegistrationRepository() {
         })
     }
 
-    fun insertData(listener: RegistrationListener, data: DaftarUlang) {
+    fun insertData(listener: UserListener, data: DaftarUlang) {
         val newKey = registrationDB.push().key.toString()
         val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val newData = DaftarUlangModel(

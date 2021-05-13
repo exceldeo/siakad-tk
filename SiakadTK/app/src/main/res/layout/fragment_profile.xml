@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/container_padding_x"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/nama_siswa"
+            android:text="@string/nama"
             android:layout_below="@id/tv_profile_title"
             android:textColor="@android:color/white"
             android:textSize="@dimen/header_subtitle_text" />
@@ -47,7 +47,7 @@
             android:layout_below="@+id/tv_profile_nama_siswa"
             android:layout_marginStart="@dimen/container_padding_x"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/kelas_siswa"
+            android:text="@string/kelas"
             android:textColor="@android:color/white"
             android:textSize="@dimen/header_subtitle_text" />
 
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/container_padding_x"
-        android:paddingRight="@dimen/container_padding_x"
+        android:paddingEnd="@dimen/container_padding_x"
         android:paddingBottom="60dp">
 
         <LinearLayout
