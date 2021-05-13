@@ -207,5 +207,6 @@
     <string name="tanggal_pesanan_selesai">Tanggal Pesanan Selesai</string>
     <string name="no_content">-</string>
     <string name="lihat_bukti_pembayaran">Lihat Bukti Pembayaran</string>
+    <string name="riwayat_pemesanan">Riwayat Pemesanan</string>
 
 </resources>
