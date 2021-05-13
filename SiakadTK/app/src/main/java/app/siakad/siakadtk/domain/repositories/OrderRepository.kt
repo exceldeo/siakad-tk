@@ -73,7 +73,7 @@ class OrderRepository() {
                 pesananId = newKey,
                 detailPesanan = data,
                 userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
-                tanggalPesan = todayDate,
+                tanggalDipesan = todayDate,
                 statusPesan = OrderStateModel.ORDER_PENDING.str,
                 fotoBayar = ""
             )

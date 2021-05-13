@@ -1,17 +1,23 @@
 package app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile
 
 import android.content.Context
+import android.net.Uri
+import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.lifecycle.*
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.db.storage.FirebaseStrg
 import app.siakad.siakadtk.domain.models.DaftarUlangModel
+import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.domain.repositories.UserDetailRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
+import app.siakad.siakadtk.domain.storage.WholeStorage
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
+import app.siakad.siakadtk.domain.utils.listeners.storage.StorageListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.DetailPengguna
 import app.siakad.siakadtk.infrastructure.data.Pengguna
@@ -21,15 +27,17 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ProfileViewModel (private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel(), UserListener {
+    ViewModel(), UserListener, StorageListener {
     private val userDetailRepository = UserDetailRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+    private val fbStorage = WholeStorage(FirebaseStrg.USER_DETAIL_REF)
 
     private lateinit var insertObserver: Observer<ModelContainer<String>>
     private val authRepository = AuthenticationRepository()
     private val liveDataUser = MutableLiveData<Pengguna>()
     private var dataUser = Pengguna()
+    private var dataDetailUser = DetailPenggunaModel()
 
     init {
         setupObserver()
@@ -48,16 +56,22 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
         userRepository.getUserById(this)
     }
 
-    fun setData(namaSiswa: String, kelas: String, namaWali: String, thnAjaran: String,  gender: String, bornDate: String, address: String, noHP: String) {
+    fun setData(namaSiswa: String, kelas: String, namaWali: String, thnAjaran: String,  gender: String, bornDate: String, address: String, noHP: String, fotoProfil: Uri?) {
+        dataDetailUser = dataUser.detail!!
+        dataDetailUser.namaOrtu = namaWali
+        dataDetailUser.kelas = kelas
+        dataDetailUser.tahunAjaran = thnAjaran
+        dataDetailUser.tanggalLahir = bornDate
+        dataDetailUser.jenisKelamin = gender
+
+        dataUser.nama = namaSiswa
+        dataUser.alamat = address
+        dataUser.noHP = noHP
+//        dataUser.detail = dataDetailUser
+
         vmCoroutineScope.launch {
-            userDetailRepository.insertData(
-                DetailPengguna(
-                    kelas = kelas,
-                    tahunAjaran = thnAjaran,
-                    jenisKelamin = gender,
-                    tanggalLahir = bornDate,
-                    namaOrtu = namaWali
-                )
+            fbStorage.uploadImage(this@ProfileViewModel, fotoProfil!! ,
+                System.currentTimeMillis().toString() + "." + getFileExtension(fotoProfil!!)
             )
         }
     }
@@ -104,5 +118,24 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
         } else {
             showToast(context.getString(R.string.fail_set_data))
         }
+    }
+
+    override fun notifyUploadStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            dataDetailUser.fotoSiswa = status.data!!
+            dataUser.detail = dataDetailUser
+            vmCoroutineScope.launch {
+                userRepository.updateDataFromProfile(
+                    this@ProfileViewModel, dataUser
+                )
+            }
+        } else if (status.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_upload_img))
+        }
+    }
+
+    private fun getFileExtension(uri: Uri): String? {
+        return MimeTypeMap.getSingleton()
+            .getExtensionFromMimeType(context.contentResolver.getType(uri))
     }
 }

@@ -85,6 +85,8 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         setupItemView()
         setupView()
         setupAdapterListener()
+
+        setupDate()
     }
 
     override fun onRequestPermissionsResult(

@@ -152,6 +152,31 @@ class UserRepository() {
         }
     }
 
+    fun updateDataFromProfile(listener: UserListener, dataUser: Pengguna) {
+        val currentKey = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        val updateData = PenggunaModel(
+            userId = currentKey,
+            email = dataUser.email,
+            nama = dataUser.nama,
+            passwd = dataUser.passwd,
+            role = UserRoleModel.SISWA.str,
+            noHP = dataUser.noHP,
+            alamat = dataUser.alamat,
+            detailPengguna = dataUser.detail
+        )
+        Log.i("UPDATE DATA", currentKey)
+        val newData = updateData.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${FirebaseRef.USER_REF}/${AuthenticationRepository.fbAuth.currentUser?.uid!!}" to newData
+        )
+
+        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+        }
+    }
+
     fun getUser(): LiveData<ModelContainer<PenggunaModel>> {
         return userState
     }

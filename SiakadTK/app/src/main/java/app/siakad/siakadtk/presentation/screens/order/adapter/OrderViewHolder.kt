@@ -45,7 +45,7 @@ class OrderViewHolder(private val v: View): RecyclerView.ViewHolder(v) {
             }
 
             tv_item_order_macam_produk.text = nameProduct
-            tv_item_order_tgl_disetujui.text = item.pesanan.tanggalPesan
+            tv_item_order_tgl_disetujui.text = item.pesanan.tanggalDipesan
             var totalPayment = 0
             for (product in item.pesanan.detailPesanan!!.withIndex())
                 totalPayment += product.value.harga * product.value.jumlah

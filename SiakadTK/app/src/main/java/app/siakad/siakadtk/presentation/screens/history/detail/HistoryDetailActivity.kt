@@ -80,7 +80,7 @@ class HistoryDetailActivity : AppCompatActivity() {
             totalPayment += item.jumlah * item.harga
 
         tvOrderTotalPayment.text = "Rp. $totalPayment"
-        tvOrderDate.text = pesanan.pesanan.tanggalPesan
+        tvOrderDate.text = pesanan.pesanan.tanggalDipesan
         tvOrderStatus.text = pesanan.pesanan.statusPesan
 
         btnLihatBukti.setOnClickListener {

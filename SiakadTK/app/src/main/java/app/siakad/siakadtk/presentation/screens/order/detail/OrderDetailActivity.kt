@@ -21,7 +21,6 @@ import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.PesananModel
 import app.siakad.siakadtk.domain.utils.helpers.model.OrderStateModel
-import app.siakad.siakadtk.domain.utils.listeners.order.OrderListListener
 import app.siakad.siakadtk.infrastructure.data.Pesanan
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -122,7 +121,7 @@ class OrderDetailActivity : AppCompatActivity(), AlertListener {
             totalPayment += item.jumlah * item.harga
 
         tvOrderTotalPayment.text = "Rp. $totalPayment"
-        tvOrderDate.text = pesanan.pesanan.tanggalPesan
+        tvOrderDate.text = pesanan.pesanan.tanggalDipesan
         tvOrderStatus.text = pesanan.pesanan.statusPesan
 
         if(pesanan.pesanan.statusPesan == OrderStateModel.ORDER_PENDING.str && pesanan.pesanan.fotoBayar == "")
