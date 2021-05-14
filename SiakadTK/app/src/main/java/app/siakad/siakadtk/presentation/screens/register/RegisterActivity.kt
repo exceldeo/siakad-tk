@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -133,6 +134,7 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         var isClickRegister = false
         btnSignup.setOnClickListener {
             if (validateForm() && !isClickRegister) {
+                pbLoading.visibility = View.VISIBLE
                 vmRegister.registerSiswa(
                     etEmail.text.toString(),
                     etPassword.text.toString(),
@@ -195,6 +197,8 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     }
 
     override fun navigateToMain() {
+        pbLoading.visibility = View.GONE
+
         val intent = Intent(this@RegisterActivity, MainActivity::class.java)
         startActivity(intent)
         finish()

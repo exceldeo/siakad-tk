@@ -72,6 +72,12 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
     override fun notifyLoginStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_login))
+
+            if (!AuthenticationRepository.userState) {
+                AuthenticationRepository.setUser(userId, email, passwd)
+            }
+
+            (context as AuthenticationListener).navigateToMain()
         } else {
             showToast(context.getString(R.string.fail_login))
         }

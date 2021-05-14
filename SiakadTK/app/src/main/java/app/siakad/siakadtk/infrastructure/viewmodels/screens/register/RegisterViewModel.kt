@@ -57,6 +57,11 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
             vmCoroutineScope.launch {
                 userRepository.insertData(this@RegisterViewModel, pengguna)
             }
+            if (!AuthenticationRepository.userState) {
+                AuthenticationRepository.setUser(pengguna.userId, pengguna.email, pengguna.passwd)
+            }
+
+            (context as AuthenticationListener).navigateToMain()
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_upload_img))
         }

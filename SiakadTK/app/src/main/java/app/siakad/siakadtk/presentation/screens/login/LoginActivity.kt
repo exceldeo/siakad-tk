@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
@@ -68,6 +69,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
         btnLogin.setOnClickListener {
             if (validateForm()) {
+                pbLoading.visibility = View.VISIBLE
                 vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
             }
         }
@@ -80,6 +82,8 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     }
 
     override fun navigateToMain() {
+        pbLoading.visibility = View.GONE
+
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
