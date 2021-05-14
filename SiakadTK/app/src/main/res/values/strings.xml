@@ -39,7 +39,7 @@
     <string name="kelas_siswa">Kelas : TK-A</string>
     <string name="title_user_activity">Pesananmu telah terverifikasi</string>
     <string name="nama_pesanan">Nama Pesanan</string>
-    <string name="example_date">21/01/2021</string>
+    <string name="example_date">Pilih Tanggal</string>
     <string name="click_to_see_order">Klik untuk melanjutkan pemesanan.</string>
     <string name="keranjang_saya">Keranjang Saya</string>
     <string name="daftar_pengguna">Daftar Pengguna</string>
@@ -110,7 +110,9 @@
     <string name="tanggal_pesan">Tanggal Pesan</string>
     <string name="tanggal_pesananan_disetujui">Tanggal Pesananan Disetujui</string>
     <string name="detail_nota">Detail Nota</string>
-    <string name="terverivikasi_dan_menunggu_pembayaran">Terverivikasi dan menunggu pembayaran.</string>
+    <string name="status_daful_0">Belum daftar.</string>
+    <string name="status_daful_1">Proses verifikasi.</string>
+    <string name="status_daful_2">Terverifikasi.</string>
     <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
     <string name="registration_detail_price">
@@ -169,7 +171,10 @@
 
     <string name="empty_input">Isian tidak boleh kosong!</string>
     <string name="weak_passwd">Password harus lebih dari 6 karakter</string>
-    <string name="err_conf_passwd">Konfirmasi Password harus sama!</string>
+    <string name="wrong_email">Masukkan email dengan benar</string>
+    <string name="err_conf_passwd">Konfirmasi password harus sama!</string>
+    <string name="err_conf_old_passwd">Password harus sama dengan password lama!</string>
+    <string name="err_conf_old_email">Email harus sama dengan email lama!</string>
     <string name="scs_regis">Berhasil daftar</string>
     <string name="fail_regis">Gagal daftar, pastikan masukkan data dengan benar dan coba lagi</string>
     <string name="scs_login">Berhasil masuk</string>
@@ -179,7 +184,11 @@
     <string name="scs_get_data">Data berhasil diambil</string>
     <string name="fail_get_data">Data gagal diambil</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
+    <string name="scs_set_passwd">Password berhasil diubah</string>
+    <string name="scs_set_email">Email berhasil diubah</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
+    <string name="fail_set_passwd">Password gagal diubah</string>
+    <string name="fail_set_email">Email gagal diubah</string>
     <string name="buku">Buku</string>
     <string name="seragam">Seragam</string>
 
@@ -201,5 +210,13 @@
     <string name="detail_proses_verifikasi">Pendaftaran telah terkirim, saat ini akun Anda sedang diverifikasi oleh pihak sekolah</string>
     <string name="proses_verifikasi">Proses Verifikasi</string>
     <string name="cek_status">Cek Status</string>
+    <string name="belum_bayar">Belum bayar.</string>
+    <string name="tanggal_pesanan_selesai">Tanggal Pesanan Selesai</string>
+    <string name="no_content">-</string>
+    <string name="lihat_bukti_pembayaran">Lihat Bukti Pembayaran</string>
+    <string name="riwayat_pemesanan">Riwayat Pemesanan</string>
+    <string name="konfirmasi_password_baru">Konfirmasi Password Baru</string>
+    <string name="email_lama">Email Lama</string>
+    <string name="email_baru">Email Baru</string>
 
 </resources>

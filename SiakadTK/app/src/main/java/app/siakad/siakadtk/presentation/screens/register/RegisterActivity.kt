@@ -15,16 +15,11 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
-import app.siakad.siakadtk.domain.repositories.AuthenticationRepository.Companion.userState
-import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
 import app.siakad.siakadtk.presentation.screens.main.PendingActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
-import app.siakad.siakadtk.presentation.views.alert.AlertListener
-import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
-import java.io.File
 
 
 class RegisterActivity : AppCompatActivity(), AuthenticationListener {

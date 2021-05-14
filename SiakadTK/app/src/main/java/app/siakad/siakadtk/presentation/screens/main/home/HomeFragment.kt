@@ -15,16 +15,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.presentation.screens.announcement.adapter.AnnouncementAdapter
 import app.siakad.siakadtk.presentation.screens.order.adapter.OrderAdapter
 import app.siakad.siakadtk.infrastructure.data.Pengumuman
 import app.siakad.siakadtk.infrastructure.data.Pesanan
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
-import app.siakad.siakadtk.presentation.screens.order.NotasData
 import app.siakad.siakadtk.presentation.screens.order.OrderListActivity
 import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
+import app.siakad.siakadtk.presentation.screens.order.detail.OrderDetailActivity
 
 class HomeFragment : Fragment() {
 
@@ -35,9 +38,15 @@ class HomeFragment : Fragment() {
     private lateinit var tvStatusRegistrationDesc: TextView
     private lateinit var ibtnStatusRegistration: ImageButton
     private lateinit var tvSeeAllOrderStatus: TextView
-    private lateinit var rvOrderStatus: RecyclerView
+    private lateinit var rvOrder: RecyclerView
     private lateinit var rvAnnouncementAdapter: AnnouncementAdapter
-    private var listNota: ArrayList<Pesanan> = arrayListOf()
+    private lateinit var rvOrderAdapter: OrderAdapter
+
+    private var dataUser = Pengguna()
+    private lateinit var vmRegistrationForm: RegistrationFormViewModel
+
+    private lateinit var vmOrderList: OrderViewModel
+    private lateinit var orderListObserver: Observer<ArrayList<Pesanan>>
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
     private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
@@ -62,28 +71,17 @@ class HomeFragment : Fragment() {
             tvStatusRegistrationDesc = v.findViewById(R.id.tv_home_item_daful_desc)
             ibtnStatusRegistration = v.findViewById(R.id.ibtn_home_item_daful)
             tvSeeAllOrderStatus = v.findViewById(R.id.tv_home_statuspesan_lihat_semua)
-            rvOrderStatus = v.findViewById(R.id.rv_home_statuspesan_list)
+            rvOrder = v.findViewById(R.id.rv_home_statuspesan_list)
 
             rvAnnouncement.setHasFixedSize(true)
             rvAnnouncementAdapter = AnnouncementAdapter()
 
-            rvOrderStatus.setHasFixedSize(true)
-            listNota.addAll(NotasData.listData)
-            showNotaRecyclerList()
+            rvOrder.setHasFixedSize(true)
+            rvOrderAdapter = OrderAdapter()
         }
 
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
-
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-    }
-
-    private fun showNotaRecyclerList() {
-        rvOrderStatus.layoutManager = LinearLayoutManager(this.context)
-        val notaAdapter = OrderAdapter(listNota)
-        rvOrderStatus.adapter = notaAdapter
     }
 
     private fun setupView() {
@@ -99,6 +97,25 @@ class HomeFragment : Fragment() {
             ViewModelFactory(this.viewLifecycleOwner, this.requireContext())
         ).get(AnnouncementViewModel::class.java)
 
+        rvOrderAdapter.setOnItemClickCallback(object: OrderAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Pesanan) {
+                val intent = Intent(this@HomeFragment.context, OrderDetailActivity::class.java)
+                intent.putExtra("pesanan", data);
+                startActivity(intent)
+            }
+        })
+
+        rvOrder.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@HomeFragment.context, LinearLayoutManager.VERTICAL, false)
+            adapter = rvOrderAdapter
+        }
+
+        vmOrderList = ViewModelProvider(
+            this,
+            ViewModelFactory(this.viewLifecycleOwner, this.requireContext())
+        ).get(OrderViewModel::class.java)
+
         tvSeeAllAnnouncement.setOnClickListener{
             val intent = Intent(this@HomeFragment.context, AnnouncementListActivity::class.java)
             startActivity(intent)
@@ -113,6 +130,39 @@ class HomeFragment : Fragment() {
             val intent = Intent(this@HomeFragment.context, OrderListActivity::class.java)
             startActivity(intent)
         }
+
+        vmRegistrationForm = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this.requireContext()
+            )
+        ).get(RegistrationFormViewModel::class.java)
+
+        val obsRegistrationGetUser = Observer<Pengguna> {
+            dataUser = it
+
+            if (it.detail!!.kelas == "") {
+                tvStatusRegistrationTitle.text = "Anda belum melakukan daftar ulang"
+                tvStatusRegistrationDesc.text = "Silahkan melakukan daftar ulang, sebelum\n" + "tanggal 31 Januari."
+                ibtnStatusRegistration.setImageResource(R.drawable.ic_daftar_ulang)
+            }
+            else
+            {
+                if(it.detail!!.dafulState)
+                {
+                    tvStatusRegistrationTitle.text = "Daftar ulang telah dilakukan, terimaksih!"
+                    tvStatusRegistrationDesc.text = "Daftar ulang selesai dan kami terima."
+                    ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_selesai)
+                } else {
+                    tvStatusRegistrationTitle.text = "Terimakasih telah melakukan daftar ulang"
+                    tvStatusRegistrationDesc.text = "Lihat secara berkala status daftar ulang anda."
+                    ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_proses)
+                }
+            }
+        }
+        vmRegistrationForm.getUserData()
+            .observe(this.viewLifecycleOwner, obsRegistrationGetUser)
     }
 
     private fun setupObserver() {
@@ -123,5 +173,14 @@ class HomeFragment : Fragment() {
         }
 
         vmAnnouncement.getAnnouncementList().observe(this.viewLifecycleOwner, announcementListObserver)
+
+
+        orderListObserver = Observer { list ->
+            if (list.size > 0) {
+                rvOrderAdapter.changeDataList(list)
+            }
+        }
+
+        vmOrderList.getOrderList().observe(this.viewLifecycleOwner, orderListObserver)
     }
 }

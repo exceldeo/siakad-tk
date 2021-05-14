@@ -22,7 +22,7 @@
             android:padding="@dimen/container_padding_x">
             
             <TextView
-                android:id="@+id/tv_nota_title"
+                android:id="@+id/tv_item_order_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/inner_padding"
@@ -40,7 +40,7 @@
                 android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
-                android:id="@+id/tv_nota_macam_produk"
+                android:id="@+id/tv_item_order_macam_produk"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/example_produk"
@@ -61,7 +61,7 @@
                     android:textColor="@color/colorBlack"
                     android:fontFamily="@font/poppins_regular"/>
                 <TextView
-                    android:id="@+id/tv_nota_tgl_disetujui"
+                    android:id="@+id/tv_item_order_tgl_disetujui"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/padding_text"
@@ -84,7 +84,7 @@
                     android:textColor="@color/colorBlack"
                     android:fontFamily="@font/poppins_semibold"/>
                 <TextView
-                    android:id="@+id/tv_nota_total_harga"
+                    android:id="@+id/tv_item_order_total_harga"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/example_price"
@@ -106,7 +106,7 @@
                     android:textColor="@color/colorBlack"
                     android:fontFamily="@font/poppins_semibold"/>
                 <ImageView
-                    android:id="@+id/iv_nota_status"
+                    android:id="@+id/iv_item_order_status"
                     android:layout_marginStart="@dimen/container_padding_x"
                     android:layout_width="122dp"
                     android:layout_height="28dp"

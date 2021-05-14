@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_row_basket.view.*
 class BasketViewHolder(private val v: View): RecyclerView.ViewHolder(v) {
     fun insertKeranjang(item: DetailKeranjangModel, pos: Int) {
         with(itemView) {
-            Picasso.get().load(item.gambar).into(riv_item_basket_product_img)
+            Picasso.with(v.context).load(item.gambar).into(riv_item_basket_product_img)
             tv_item_basket_product_name.text = item.nama
             tv_item_basket_product_price.text = "Total : Rp " + item.harga.toString()
             tv_item_basket_product_jumlah.text = item.jumlah.toString() + " buah"

@@ -7,12 +7,11 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
-import app.siakad.siakadtk.domain.models.KeranjangModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
-import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
+import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import com.google.firebase.database.ChildEventListener
@@ -26,25 +25,8 @@ class UserRepository() {
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
     private var detailPengguna = DetailPenggunaModel()
-    private val basketDB = FirebaseRef(FirebaseRef.KERANJANG_REF).getRef()
-    private var detailKeranjang = arrayListOf<DetailKeranjangModel>()
 
-    fun makeKeranjang(listener: LoginListener, userId: String) {
-        val newKey = basketDB.push().key.toString()
-        val newData = KeranjangModel(
-            userId = userId,
-            keranjangId = newKey,
-            detailKeranjang = detailKeranjang
-        )
-
-        basketDB.child(userId).setValue(newData).addOnSuccessListener {
-            listener.notifyMakeKeranjangStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyMakeKeranjangStatus(ModelContainer.getFailModel())
-        }
-    }
-
-    fun getUserById(listener: RegistrationListener) {
+    fun getUserById(listener: UserListener) {
         userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
@@ -127,20 +109,20 @@ class UserRepository() {
         }
     }
 
-    fun updateDetailData(listener: RegistrationListener, detail: DaftarUlang, dataUser: Pengguna) {
+    fun updateDetailData(listener: UserListener, detail: DaftarUlang, dataUser: Pengguna) {
         detailPengguna = DetailPenggunaModel(
             kelas = detail.kelas,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
             namaOrtu = detail.namaWali,
             tahunAjaran = detail.tahunAjaran,
-            fotoBayarAwal = dataUser.detail!!.fotoBayarAwal,
+            fotoBayarAwal = detail.fotoBayar,
         )
         updateDataFromRegistration(listener, detail, dataUser)
     }
 
     private fun updateDataFromRegistration(
-        listener: RegistrationListener,
+        listener: UserListener,
         daful: DaftarUlang,
         dataUser: Pengguna
     ) {
@@ -154,6 +136,31 @@ class UserRepository() {
             noHP = daful.noHP,
             alamat = daful.alamat,
             detailPengguna = detailPengguna
+        )
+        Log.i("UPDATE DATA", currentKey)
+        val newData = updateData.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${FirebaseRef.USER_REF}/${AuthenticationRepository.fbAuth.currentUser?.uid!!}" to newData
+        )
+
+        FirebaseDatabase.getInstance().reference.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+        }
+    }
+
+    fun updateDataFromProfile(listener: UserListener, dataUser: Pengguna) {
+        val currentKey = AuthenticationRepository.fbAuth.currentUser?.uid!!
+        val updateData = PenggunaModel(
+            userId = currentKey,
+            email = dataUser.email,
+            nama = dataUser.nama,
+            passwd = dataUser.passwd,
+            role = UserRoleModel.SISWA.str,
+            noHP = dataUser.noHP,
+            alamat = dataUser.alamat,
+            detailPengguna = dataUser.detail
         )
         Log.i("UPDATE DATA", currentKey)
         val newData = updateData.toMap()

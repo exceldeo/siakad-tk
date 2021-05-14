@@ -113,4 +113,12 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
             showToast(context.getString(R.string.fail_set_data))
         }
     }
+
+    override fun notifyOrderChangeStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_set_data))
+        } else {
+            showToast(context.getString(R.string.fail_set_data))
+        }
+    }
 }

@@ -15,7 +15,7 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.repositories.RegistrationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.storage.WholeStorage
-import app.siakad.siakadtk.domain.utils.listeners.registration.RegistrationListener
+import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
 import app.siakad.siakadtk.domain.utils.listeners.storage.StorageListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.Pengguna
@@ -25,7 +25,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class RegistrationFormViewModel (private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel(), RegistrationListener, StorageListener {
+    ViewModel(), UserListener, StorageListener {
     private val registrationRepository = RegistrationRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -33,7 +33,9 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
 
     private lateinit var insertObserver: Observer<ModelContainer<String>>
     private var daftarUlangUser = DaftarUlang()
-    private val dataUser = MutableLiveData<Pengguna>()
+    private val liveDataUser = MutableLiveData<Pengguna>()
+    private val liveDataDaful = MutableLiveData<DaftarUlang>()
+    private var dataUser = Pengguna()
     init {
         setupObserver()
         registrationRepository.initEventListener(this)
@@ -90,6 +92,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
                     fotoBayar = item.fotoBayar,
                     statusDaful = item.statusDaful
                 )
+                liveDataDaful.postValue(daftarUlangUser)
             } else if (user.status == ModelState.ERROR) {
                 showToast(context.getString(R.string.fail_get_user))
             }
@@ -101,14 +104,15 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
             val item = user.data
 
             if (item != null) {
-                dataUser.postValue(Pengguna(
+                dataUser = Pengguna(
                     nama = item.nama,
                     alamat = item.alamat,
                     noHP = item.noHP,
                     email = item.email,
                     passwd = item.passwd,
                     detail = item.detailPengguna!!
-                ))
+                )
+                liveDataUser.postValue(dataUser)
             } else if (user.status == ModelState.ERROR) {
                 showToast(context.getString(R.string.fail_get_user))
             }
@@ -116,9 +120,12 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     }
 
     fun getUserData(): LiveData<Pengguna> {
-        return dataUser
+        return liveDataUser
     }
 
+    fun getDaftarUlangData(): LiveData<DaftarUlang> {
+        return liveDataDaful
+    }
     override fun notifyUserDetailChangeStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             showToast(context.getString(R.string.scs_set_data))
@@ -137,7 +144,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
             }
             vmCoroutineScope.launch {
                 userRepository.updateDetailData(
-                    this@RegistrationFormViewModel, daftarUlangUser, dataUser.value!!
+                    this@RegistrationFormViewModel, daftarUlangUser, dataUser
                 )
             }
         } else if (status.status == ModelState.ERROR) {

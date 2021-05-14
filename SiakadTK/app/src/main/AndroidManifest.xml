@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_icon_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".presentation.screens.main.PendingActivity"></activity>
+        <activity android:name=".presentation.screens.profile.EmailActivity"></activity>
+        <activity android:name=".presentation.screens.main.PendingActivity" />
+        <activity android:name=".presentation.views.preview.ImagePreviewActivity" />
         <activity android:name=".presentation.screens.product.ProductListActivity" />
         <activity android:name=".presentation.screens.registration.RegistrationActivity" />
         <activity android:name=".presentation.screens.register.RegisterActivity" />

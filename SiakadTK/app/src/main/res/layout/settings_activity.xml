@@ -30,7 +30,7 @@
             android:layout_height="1dp"
             android:background="@color/colorUnSelect"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_settings_lihatubahprofil"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
@@ -41,7 +41,7 @@
             android:textColor="@color/colorBlack"
             style="@style/InputText.EdtTextNoMargin"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_settings_ubahemail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
@@ -52,7 +52,7 @@
             android:textColor="@color/colorBlack"
             style="@style/InputText.EdtTextNoMargin"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_settings_ubahpassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_height"
