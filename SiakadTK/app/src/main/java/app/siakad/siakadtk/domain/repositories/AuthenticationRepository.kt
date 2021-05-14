@@ -59,4 +59,14 @@ class AuthenticationRepository {
             }
         }
     }
+
+    fun updateEmail(listener: SettingListener, email: String, passwd: String, newEmail: String) {
+        fbAuth.signInWithEmailAndPassword(email, passwd).addOnCompleteListener() { it ->
+            if(it.isSuccessful) {
+                fbAuth.currentUser!!.updateEmail(newEmail).addOnSuccessListener {
+                    listener.notifyUserDetailEmailStatus(ModelContainer.getSuccesModel("Berhasil mengubah email!"))
+                }.addOnFailureListener { e -> listener.notifyUserDetailEmailStatus(ModelContainer.getFailModel()) }
+            }
+        }
+    }
 }

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.screens.profile.PasswordActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
+
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/DefaultMargin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_lama"
+            style="@style/LabelText"/>
+        <EditText
+            android:id="@+id/et_email_email_lama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_lama"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorBlack"
+            android:background="@android:color/transparent"
+            style="@style/InputText.EdtTextNoMargin"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorUnSelect"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_baru"
+            style="@style/LabelText"/>
+        <EditText
+            android:id="@+id/et_email_email_baru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorBlack"
+            android:background="@android:color/transparent"
+            style="@style/InputText.EdtTextNoMargin"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorUnSelect"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            style="@style/LabelText"/>
+        <EditText
+            android:id="@+id/et_email_konfirmasi_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorBlack"
+            android:background="@android:color/transparent"
+            style="@style/InputText.EdtTextNoMargin"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorUnSelect"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorUnSelect"/>
+
+        <Button
+            android:id="@+id/btn_password_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/simpan"
+            style="@style/CommonButton"
+            android:textColor="@android:color/white"
+            android:background="@drawable/fill_primary_button"
+            android:layout_marginTop="@dimen/container_double_padding_y" />
+    </LinearLayout>
+</LinearLayout>

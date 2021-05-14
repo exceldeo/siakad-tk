@@ -15,6 +15,7 @@ import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 
 class PendingActivity : AppCompatActivity(), AuthenticationListener {
@@ -61,7 +62,8 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
 
     private fun logout() {
         authRepository.logout()
-//        showToast("Berhasil logout")
+        val intent = Intent(this@PendingActivity, SplashActivity::class.java)
+        startActivity(intent)
     }
 
     override fun navigateToMain() {

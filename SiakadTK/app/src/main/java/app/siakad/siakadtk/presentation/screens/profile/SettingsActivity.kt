@@ -64,7 +64,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         btnUbahEmail.setOnClickListener {
-
+            val intent = Intent(this@SettingsActivity, EmailActivity::class.java)
+            startActivity(intent)
         }
     }
 

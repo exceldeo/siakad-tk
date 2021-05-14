@@ -160,4 +160,23 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
             showToast(context.getString(R.string.fail_set_passwd))
         }
     }
+
+    override fun notifyUserDetailEmailStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            vmCoroutineScope.launch {
+                dataUser.email = newEmail
+                userRepository.updateDataFromProfile(this@ProfileViewModel, dataUser)
+            }
+            showToast(context.getString(R.string.scs_set_email))
+        } else {
+            showToast(context.getString(R.string.fail_set_email))
+        }
+    }
+
+    fun updateEmail(data: Pengguna, newEmail: String) {
+        this.newEmail = newEmail
+        vmCoroutineScope.launch {
+            authRepository.updateEmail(this@ProfileViewModel, data.email, data.passwd, newEmail)
+        }
+    }
 }
