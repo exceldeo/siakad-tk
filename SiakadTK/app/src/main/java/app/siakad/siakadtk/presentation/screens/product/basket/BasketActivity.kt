@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -15,12 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.utils.listeners.basket.BasketAddListener
-import app.siakad.siakadtk.infrastructure.data.DetailKeranjang
-import app.siakad.siakadtk.infrastructure.data.Pengumuman
-import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
-import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.presentation.screens.product.basket.adapter.BasketAdapter
 import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment

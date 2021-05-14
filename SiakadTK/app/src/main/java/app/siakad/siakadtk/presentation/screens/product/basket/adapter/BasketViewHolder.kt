@@ -1,13 +1,10 @@
 package app.siakad.siakadtk.presentation.screens.product.basket.adapter
 
-import android.content.Context
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.utils.listeners.basket.BasketAddListener
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_basket.view.*
 import kotlinx.android.synthetic.main.item_row_basket.view.*
 
 
