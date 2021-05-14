@@ -37,7 +37,8 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
         pengguna = Pengguna(
             nama = name,
             email = email,
-            passwd = passwd
+            passwd = passwd,
+            status = false
         )
         thisImageUri = imageUri!!
         vmCoroutineScope.launch {
@@ -54,14 +55,17 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
         if (status.status == ModelState.SUCCESS) {
             detailPengguna.fotoBayarAwal = status.data!!
             pengguna.detail = detailPengguna
+
+            if (!AuthenticationRepository.userState) {
+                AuthenticationRepository.setUser(pengguna.userId, pengguna.email, pengguna.passwd, pengguna.status)
+            }
+
+            if(pengguna.status) (context as AuthenticationListener).navigateToMain()
+            else (context as AuthenticationListener).navigateToPendingMain()
+
             vmCoroutineScope.launch {
                 userRepository.insertData(this@RegisterViewModel, pengguna)
             }
-            if (!AuthenticationRepository.userState) {
-                AuthenticationRepository.setUser(pengguna.userId, pengguna.email, pengguna.passwd)
-            }
-
-            (context as AuthenticationListener).navigateToMain()
         } else if (status.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_upload_img))
         }

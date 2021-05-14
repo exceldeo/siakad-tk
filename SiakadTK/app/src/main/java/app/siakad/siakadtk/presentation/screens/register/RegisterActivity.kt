@@ -205,6 +205,8 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     }
 
     override fun navigateToPendingMain() {
+        pbLoading.visibility = View.GONE
+
         val intent = Intent(this@RegisterActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()

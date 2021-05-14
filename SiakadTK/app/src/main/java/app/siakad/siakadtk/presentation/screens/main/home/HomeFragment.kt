@@ -146,7 +146,7 @@ class HomeFragment : Fragment() {
             if (it.detail!!.kelas == "") {
                 tvStatusRegistrationTitle.text = "Anda belum melakukan daftar ulang"
                 tvStatusRegistrationDesc.text = "Silahkan melakukan daftar ulang, sebelum\n" + "tanggal 31 Januari."
-                ibtnStatusRegistration.setImageResource(R.drawable.ic_daftar_ulang)
+                ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_start)
             }
             else
             {

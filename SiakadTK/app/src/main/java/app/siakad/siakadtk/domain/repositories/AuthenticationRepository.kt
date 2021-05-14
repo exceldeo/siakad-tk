@@ -15,7 +15,6 @@ class AuthenticationRepository {
     companion object {
         val fbAuth = FirebaseAuth.getInstance()
         lateinit var currentPengguna: PenggunaModel
-        var isRegister: Boolean = false
         var userState: Boolean = false
 
         fun setUser(userId: String, email: String, passwd: String, status: Boolean = false) {
@@ -25,7 +24,6 @@ class AuthenticationRepository {
                 passwd = passwd,
                 status = status
             )
-            isRegister = true
             userState = status
         }
     }

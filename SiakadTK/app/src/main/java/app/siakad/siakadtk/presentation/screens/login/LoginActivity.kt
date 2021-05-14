@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
-    private lateinit var tvForgotPassword: TextView
+//    private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
 
@@ -44,11 +44,11 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-//            if (AuthenticationRepository.userState) {
+            if (AuthenticationRepository.userState) {
                 navigateToMain()
-//            } else {
-//                navigateToPendingMain()
-//            }
+            } else {
+                navigateToPendingMain()
+            }
         }
     }
 
@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         etEmail = findViewById(R.id.et_login_email)
         etPassword = findViewById(R.id.et_login_password)
         btnLogin = findViewById(R.id.btn_login_masuk)
-        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
+//        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
         tvSignUp = findViewById(R.id.tv_login_daftar)
         pbLoading = findViewById(R.id.loading)
 

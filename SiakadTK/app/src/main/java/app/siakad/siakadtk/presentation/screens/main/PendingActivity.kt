@@ -20,7 +20,6 @@ import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 
 class PendingActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var btnLogout: Button
-    private lateinit var btnCheck: Button
     private val authRepository = AuthenticationRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,6 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-            showToast(AuthenticationRepository.userState.toString())
             if (AuthenticationRepository.userState) {
                 navigateToMain()
             }
@@ -46,18 +44,10 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
         btnLogout.setOnClickListener{
             logout()
         }
-
-//        btnCheck.setOnClickListener{
-//            showToast(AuthenticationRepository.userState.toString())
-//            if (AuthenticationRepository.userState) {
-//                navigateToMain()
-//            }
-//        }
     }
 
     private fun setupItemView() {
         btnLogout = findViewById(R.id.btn_pending_logout)
-//        btnCheck = findViewById(R.id.btn_pending_check_status)
     }
 
     private fun logout() {
