@@ -120,7 +120,7 @@ class OrderViewModel(private val context: Context, private val lcOwner: Lifecycl
         if (status.status == ModelState.SUCCESS) {
             currentPesananModel.fotoBayar = status.data!!
             vmCoroutineScope.launch {
-                orderRepository.insertPaymentImage(
+                orderRepository.updateOrderData(
                     this@OrderViewModel, currentPesananModel
                 )
             }
