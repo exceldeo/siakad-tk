@@ -31,6 +31,15 @@
                 android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
+                android:id="@+id/tv_item_pengumumanin_tujuan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/to_all"
+                android:textSize="@dimen/card_desc_text"
+                android:layout_marginBottom="@dimen/inner_padding"
+                android:fontFamily="@font/poppins_regular"/>
+
+            <TextView
                 android:id="@+id/tv_item_pengumumanin_desc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
