@@ -109,7 +109,7 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
     }
   }
 
-  override fun onDataSet(year: Int, month: Int, day: Int) {
+  override fun onDataSet(year: Int, month: Int, day: Int, tag: String) {
     calendar.set(year, month, day)
     setupDate()
   }

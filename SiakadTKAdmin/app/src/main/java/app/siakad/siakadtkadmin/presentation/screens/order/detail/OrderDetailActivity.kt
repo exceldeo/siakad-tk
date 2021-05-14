@@ -1,10 +1,12 @@
 package app.siakad.siakadtkadmin.presentation.screens.order.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
@@ -17,13 +19,16 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.detail.O
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.order.OrderListFragment
 import app.siakad.siakadtkadmin.presentation.screens.order.detail.adapter.OrderDetailAdapter
+import app.siakad.siakadtkadmin.presentation.screens.order.detail.dialog.OrderConfirmDialog
 import app.siakad.siakadtkadmin.presentation.screens.order.detail.helper.OrderDetailHelper
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
+import app.siakad.siakadtkadmin.presentation.views.date.DateListener
+import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
 
-class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListener {
+class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListener, DateListener {
 
   private val pageTitle = "Detail Pesanan"
 
@@ -37,6 +42,11 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
   private lateinit var rvOrderList: RecyclerView
   private lateinit var btnCancel: MaterialButton
   private lateinit var btnSave: MaterialButton
+
+  private lateinit var btnProofPay: MaterialButton
+  private lateinit var tvStartDate: TextView
+  private lateinit var tvEndDate: TextView
+  private lateinit var dialogConfirm: OrderConfirmDialog
 
   private lateinit var orderListAdapter: OrderDetailAdapter
   private lateinit var vmOrderDetail: OrderDetailViewModel
@@ -63,6 +73,8 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
       orderType = intent.getStringExtra(OrderListFragment.ORDER_TYPE)
       if (orderType == OrderListFragment.ORDER_DONE) {
         setContentView(R.layout.activity_order_detail_finish)
+      } else if (orderType == OrderListFragment.ORDER_PROCESS) {
+        setContentView(R.layout.activity_order_detail_process)
       }
     }
 
@@ -88,12 +100,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     }
 
     setupAppBar()
-    if (orderType != OrderListFragment.ORDER_DONE) {
-      setupButtons()
-    } else {
-      cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
-      cbAccAll.visibility = View.GONE
-    }
+    setupButtons()
     setupViewModel()
     setupListAdapter()
 
@@ -111,42 +118,60 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
   }
 
   private fun setupButtons() {
-    cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
+    if (orderType == OrderListFragment.ORDER_PENDING) {
+      cbAccAll = findViewById(R.id.cb_order_detail_acc_all)
 
-    btnCancel = findViewById(R.id.btn_order_detail_tolak)
-    btnCancel.setOnClickListener {
-      val alertDialog = AlertDialogFragment(
-        "Tolak pesanan",
-        "Apakah Anda yakin menolak pesanan ini?"
-      )
-      alertDialog.show(supportFragmentManager, TAG_REJECT)
-    }
-
-    btnSave = findViewById(R.id.btn_order_detail_simpan)
-    btnSave.setOnClickListener {
-      var alertDialog: AlertDialogFragment? = null
-
-      if (orderType == OrderListFragment.ORDER_PENDING) {
-        alertDialog = AlertDialogFragment(
-          "Terima pesanan",
-          "Apakah Anda yakin menerima pesanan ini?"
-        )
-      } else {
-        alertDialog = AlertDialogFragment(
-          "Selesaikan pesanan",
-          "Apakah benar pesanan ini telah selesai?"
-        )
+      btnProofPay = findViewById(R.id.btn_order_detail_buktibayar)
+      btnProofPay.setOnClickListener {
+        if (pesanan != null) {
+          if (pesanan?.pesanan?.fotoBayar == "") {
+            btnProofPay.text = "Belum Diunggah"
+          } else {
+            val intent = Intent(this@OrderDetailActivity, ImagePreviewActivity::class.java)
+            intent.putExtra(ImagePreviewActivity.IMAGE_SOURCE_TYPE, ImagePreviewActivity.IMG_URL)
+            intent.putExtra(
+              ImagePreviewActivity.IMAGE_SOURCE,
+              pesanan?.pesanan?.fotoBayar
+            )
+            startActivity(intent)
+          }
+        }
       }
 
-      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
+      btnCancel = findViewById(R.id.btn_order_detail_tolak)
+      btnCancel.setOnClickListener {
+        val alertDialog = AlertDialogFragment(
+          "Tolak pesanan",
+          "Apakah Anda yakin menolak pesanan ini?"
+        )
+        alertDialog.show(supportFragmentManager, TAG_REJECT)
+      }
+    } else if (orderType == OrderListFragment.ORDER_PROCESS) {
+      tvStartDate = findViewById(R.id.tv_order_detail_tgl_mulai)
+      tvEndDate = findViewById(R.id.tv_order_detail_tgl_selesai)
+
+      if (pesanan != null) {
+        tvStartDate.text = pesanan?.pesanan?.tanggalDiproses
+        tvEndDate.text = pesanan?.pesanan?.tanggalSelesai
+      }
     }
 
-    if (orderType != OrderListFragment.ORDER_PENDING) {
-      cbAccAll.visibility = View.GONE
-      btnCancel.visibility = View.GONE
+    dialogConfirm = OrderConfirmDialog(supportFragmentManager)
 
-      if (orderType == OrderListFragment.ORDER_PROCESS) {
-        btnSave.text = "Pesanan Selesai"
+    if (orderType != OrderListFragment.ORDER_DONE) {
+      btnSave = findViewById(R.id.btn_order_detail_simpan)
+      btnSave.setOnClickListener {
+        if (orderType == OrderListFragment.ORDER_PENDING) {
+          dialogConfirm.show(supportFragmentManager, null)
+        } else {
+          var alertDialog: AlertDialogFragment?
+
+          alertDialog = AlertDialogFragment(
+            "Selesaikan pesanan",
+            "Apakah benar pesanan ini telah selesai?"
+          )
+          alertDialog.show(supportFragmentManager, TAG_CONFIRM)
+        }
       }
     }
   }
@@ -176,6 +201,16 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
     detailPesananListIndex.remove(pos)
   }
 
+  override fun confirmOrderDate(start: String, end: String) {
+    detailPesananListIndex.forEach {
+      detailPesananList.add(pesanan?.pesanan?.detailPesanan!![it])
+    }
+    pesanan?.pesanan?.detailPesanan = detailPesananList
+    pesanan?.pesanan?.tanggalDiproses = start
+    pesanan?.pesanan?.tanggalSelesai = end
+    vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_PROCESS)
+  }
+
   private fun setupViewModel() {
     vmOrderDetail = ViewModelProvider(
       this,
@@ -185,18 +220,14 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
 
   override fun alertAction(tag: String?) {
     if (tag == TAG_CONFIRM) {
-      if (orderType == OrderListFragment.ORDER_PENDING) {
-        detailPesananListIndex.forEach {
-          detailPesananList.add(pesanan?.pesanan?.detailPesanan!![it])
-        }
-        pesanan?.pesanan?.detailPesanan = detailPesananList
-        vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_PROCESS)
-      } else {
-        vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_DONE)
-      }
+      vmOrderDetail.updateDataToAccepted(pesanan?.pesanan!!, OrderListFragment.ORDER_DONE)
     } else if (tag == TAG_REJECT) {
       vmOrderDetail.removeData(pesanan?.pesanan!!)
       onBackPressed()
     }
+  }
+
+  override fun onDataSet(year: Int, month: Int, day: Int, tag: String) {
+    dialogConfirm.onDateSet(year, month, day, tag)
   }
 }

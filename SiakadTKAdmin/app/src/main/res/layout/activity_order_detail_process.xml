@@ -171,26 +171,51 @@
                 </LinearLayout>
             </com.google.android.flexbox.FlexboxLayout>
 
-            <TextView
+            <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bukti Pembayaran"
-                style="@style/mdTitle"
-                android:textAlignment="center"
-                android:layout_marginTop="@dimen/appbar_padding_top"
-                android:textColor="@color/colorPrimary"/>
+                app:flexDirection="row">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_order_detail_buktibayar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lihat Bukti"
-                android:fontFamily="@font/poppins_bold"
-                style="@style/CommonButton"
-                android:textAllCaps="false"
-                app:cornerRadius="@dimen/list_corner"
-                android:paddingEnd="@dimen/container_padding_x"
-                android:paddingStart="@dimen/container_padding_x"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Mulai"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_tgl_mulai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01/01/2021"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Selesai"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_tgl_selesai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01/01/2021"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
@@ -198,7 +223,7 @@
                 app:flexDirection="row"
                 app:alignItems="center"
                 app:justifyContent="space_between"
-                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:layout_marginTop="@dimen/list_space"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom">
 
                 <TextView
@@ -209,11 +234,6 @@
                     android:layout_marginTop="0dp"
                     android:layout_marginBottom="0dp"
                     android:textColor="@color/colorPrimary"/>
-
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/cb_order_detail_acc_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
             </com.google.android.flexbox.FlexboxLayout>
 
             <View
@@ -273,22 +293,10 @@
                 android:layout_marginBottom="@dimen/container_padding_y">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_order_detail_tolak"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tolak"
-                    android:fontFamily="@font/poppins_bold"
-                    android:backgroundTint="@color/colorDanger"
-                    style="@style/CommonButton"
-                    android:textAllCaps="false"
-                    app:cornerRadius="@dimen/list_corner"
-                    android:layout_marginEnd="@dimen/container_padding_x"/>
-
-                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_order_detail_simpan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Terima Pesanan"
+                    android:text="Pesanan Selesai"
                     android:fontFamily="@font/poppins_bold"
                     style="@style/CommonButton"
                     android:textAllCaps="false"
