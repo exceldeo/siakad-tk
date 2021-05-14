@@ -218,5 +218,7 @@
     <string name="konfirmasi_password_baru">Konfirmasi Password Baru</string>
     <string name="email_lama">Email Lama</string>
     <string name="email_baru">Email Baru</string>
-
+    <string name="scs_update_data">Data berhasil diubah</string>
+    <string name="fail_update_data">Data gagal diubah</string>
+    <string name="to_all">Kepada: SEMUA</string>
 </resources>

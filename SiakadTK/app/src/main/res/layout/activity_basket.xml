@@ -45,25 +45,25 @@
             style="@style/ListTitle"
             android:gravity="end"
             android:orientation="horizontal"
-            android:weightSum="5"
+            android:weightSum="6"
             android:layout_marginHorizontal="@dimen/container_padding_x"
             android:layout_marginBottom="@dimen/container_padding_y">
 
-            <CheckBox
-                android:id="@+id/cb_basket_select_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="@string/pilih_semua"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/colorPrimaryLight"
-                style="@style/DefaultMargin"/>
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_basket_select_all"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:text="@string/pilih_semua"-->
+<!--                android:layout_weight="1"-->
+<!--                android:fontFamily="@font/poppins_semibold"-->
+<!--                android:textColor="@color/colorPrimaryLight"-->
+<!--                style="@style/DefaultMargin"/>-->
 
             <TextView
                 android:id="@+id/tv_basket_total_payment"
                 android:layout_width="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/list_title_text"
                 android:gravity="center_vertical"
@@ -71,7 +71,7 @@
                 android:text="" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

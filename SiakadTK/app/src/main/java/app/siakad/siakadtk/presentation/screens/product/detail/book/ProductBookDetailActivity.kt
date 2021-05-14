@@ -47,6 +47,8 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         item.gambar = data.fotoProduk
         item.jumlah = data.jumlah
         item.harga = data.harga
+        item.produkId = data.produkId
+        item.adminId = data.adminId
 
         Picasso.with(this.applicationContext).load(item.gambar).into(ivProductImage)
         tvProductName.text = item.nama
@@ -95,7 +97,9 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                 name = item.nama,
                 image = item.gambar,
                 jumlah = Integer.valueOf(item.jumlah),
-                harga = item.harga * item.jumlah
+                harga = item.harga * item.jumlah,
+                produkId = item.produkId,
+                adminId = item.adminId
             )
         }
     }

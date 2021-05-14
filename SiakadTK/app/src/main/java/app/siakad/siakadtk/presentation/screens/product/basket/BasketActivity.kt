@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -15,12 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.utils.listeners.basket.BasketAddListener
-import app.siakad.siakadtk.infrastructure.data.DetailKeranjang
-import app.siakad.siakadtk.infrastructure.data.Pengumuman
-import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
-import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.presentation.screens.product.basket.adapter.BasketAdapter
 import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
@@ -32,7 +27,7 @@ class BasketActivity : AppCompatActivity(), BasketAddListener, AlertListener {
     private lateinit var toolbar: Toolbar
     private lateinit var rvBasket: RecyclerView
     private lateinit var btnOrder: TextView
-    private lateinit var cbAllCheckBox: CheckBox
+//    private lateinit var cbAllCheckBox: CheckBox
     private lateinit var tvTotalPaymentChecked: TextView
     private lateinit var rvBasketAdapter: BasketAdapter
 
@@ -57,7 +52,7 @@ class BasketActivity : AppCompatActivity(), BasketAddListener, AlertListener {
         toolbar = findViewById(R.id.toolbar_main)
         rvBasket = findViewById(R.id.rv_basket_order_nota_list)
         btnOrder = findViewById(R.id.btn_basket_order)
-        cbAllCheckBox = findViewById(R.id.cb_basket_select_all)
+//        cbAllCheckBox = findViewById(R.id.cb_basket_select_all)
         tvTotalPaymentChecked = findViewById(R.id.tv_basket_total_payment)
 
         rvBasket.setHasFixedSize(true)
@@ -95,6 +90,12 @@ class BasketActivity : AppCompatActivity(), BasketAddListener, AlertListener {
         ).get(KeranjangViewModel::class.java)
 
         btnOrder.setOnClickListener {
+            var totalPayment = 0
+            for (item in checkedItems) {
+                newDetailKeranjang.add(detailKeranjangs[item])
+                totalPayment += detailKeranjangs[item].harga
+            }
+            tvTotalPaymentChecked.text = "Total : Rp $totalPayment"
             val alertDialog = AlertDialogFragment(
                 "Konfirmasi pemesanan",
                 "Apakah Anda yakin melanjutkan pemesanan?"
@@ -119,15 +120,15 @@ class BasketActivity : AppCompatActivity(), BasketAddListener, AlertListener {
 
         vmBasket.getBasketList().observe(this, basketListObserver)
 
-//        cbAllCheckBox.setOnClickListener {
-//            if(cbAllCheckBox.isChecked) {
+//        cbAllCheckBox.setOnCheckedChangeListener { compoundButton, b ->
+//            if(compoundButton.isChecked) {
 //                if(detailKeranjangs.size > 0) {
 //                    for (it in 0 until detailKeranjangs.size) {
-//                        newDetailKeranjang.add(detailKeranjangs[it])
+//                        checkedItems.add(it)
 //                    }
 //                }
 //            } else {
-//                newDetailKeranjang.clear()
+//                checkedItems.clear()
 //            }
 //        }
     }
@@ -141,17 +142,12 @@ class BasketActivity : AppCompatActivity(), BasketAddListener, AlertListener {
     }
 
     override fun getStatusAllChecked(): Boolean {
-        return cbAllCheckBox.isChecked
+//        return cbAllCheckBox.isChecked
+        return false
     }
 
     @SuppressLint("SetTextI18n")
     override fun alertAction(tag: String?) {
-        var totalPayment = 0
-        for (item in checkedItems) {
-            newDetailKeranjang.add(detailKeranjangs[item])
-            totalPayment += detailKeranjangs[item].harga
-        }
-        tvTotalPaymentChecked.text = "Total : Rp $totalPayment"
         if(checkedItems.size > 0) vmBasket.insertBasketToOrder(newDetailKeranjang)
     }
 }

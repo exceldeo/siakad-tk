@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
@@ -24,7 +25,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
-    private lateinit var tvForgotPassword: TextView
+//    private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
 
@@ -43,11 +44,11 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-//            if (AuthenticationRepository.userState) {
+            if (AuthenticationRepository.userState) {
                 navigateToMain()
-//            } else {
-//                navigateToPendingMain()
-//            }
+            } else {
+                navigateToPendingMain()
+            }
         }
     }
 
@@ -55,7 +56,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         etEmail = findViewById(R.id.et_login_email)
         etPassword = findViewById(R.id.et_login_password)
         btnLogin = findViewById(R.id.btn_login_masuk)
-        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
+//        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
         tvSignUp = findViewById(R.id.tv_login_daftar)
         pbLoading = findViewById(R.id.loading)
 
@@ -68,6 +69,7 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
         btnLogin.setOnClickListener {
             if (validateForm()) {
+                pbLoading.visibility = View.VISIBLE
                 vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
             }
         }
@@ -80,6 +82,8 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     }
 
     override fun navigateToMain() {
+        pbLoading.visibility = View.GONE
+
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()

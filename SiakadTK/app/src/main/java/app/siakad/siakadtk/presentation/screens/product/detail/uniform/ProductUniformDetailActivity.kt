@@ -54,6 +54,8 @@ class ProductUniformDetailActivity : AppCompatActivity() {
             item.nama = data.namaProduk
             tvProductJenisKelamin.text = data.jenisKelamin
             item.gambar = data.fotoProduk
+            item.produkId = data.produkId
+            item.adminId = data.adminId
             for (it in data.detailSeragam) {
                 sizes.add(it.ukuran)
                 prices[it.ukuran] = it.harga
@@ -162,6 +164,8 @@ class ProductUniformDetailActivity : AppCompatActivity() {
                 ukuran = item.ukuran,
                 jumlah = item.jumlah,
                 harga = item.jumlah * item.harga,
+                produkId = item.produkId,
+                adminId = item.adminId
             )
         }
     }

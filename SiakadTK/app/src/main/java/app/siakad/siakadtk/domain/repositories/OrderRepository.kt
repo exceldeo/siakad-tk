@@ -85,24 +85,11 @@ class OrderRepository() {
         }
     }
 
-    fun updateOrderData(listener: OrderListener, data: PesananModel) {
-        val newData = data.toMap()
-        val childUpdates = hashMapOf<String, Any>(
-            "/${data.pesananId}" to newData
-        )
-
-        orderDB.updateChildren(childUpdates).addOnSuccessListener {
-            listener.notifyOrderChangeStatus(ModelContainer.getSuccesModel("Success"))
-        }.addOnFailureListener {
-            listener.notifyOrderChangeStatus(ModelContainer.getFailModel())
-        }
-    }
-
     fun getOrderList(): LiveData<ModelContainer<ArrayList<PesananModel>>> {
         return orderList
     }
 
-    fun insertPaymentImage(listener: OrderListener, data: PesananModel) {
+    fun updateOrderData(listener: OrderListener, data: PesananModel) {
         val newData = data.toMap()
         val childUpdates = hashMapOf<String, Any>(
             "/${data.pesananId}" to newData

@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Buku (
     var produkId: String = "",
+    var adminId: String = "",
     var namaProduk: String = "",
     var fotoProduk: String = "",
     var jumlah: Int = 0,

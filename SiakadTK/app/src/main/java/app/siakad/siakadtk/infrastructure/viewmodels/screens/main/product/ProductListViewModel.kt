@@ -55,6 +55,7 @@ class ProductListViewModel(private val context: Context, owner: LifecycleOwner) 
                     dataSeragamList.add(
                         Seragam(
                             produkId = item.produkId,
+                            adminId = item.adminId,
                             namaProduk = item.namaProduk,
                             jenisKelamin = item.jenisKelamin,
                             jumlah = item.jumlah,
@@ -77,6 +78,7 @@ class ProductListViewModel(private val context: Context, owner: LifecycleOwner) 
                     dataBukuList.add(
                         Buku(
                             produkId = item.produkId,
+                            adminId = item.adminId,
                             namaProduk = item.namaProduk,
                             jumlah = item.jumlah,
                             fotoProduk = item.fotoProduk
@@ -100,5 +102,13 @@ class ProductListViewModel(private val context: Context, owner: LifecycleOwner) 
 
     private fun showToast(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun notifyUpdateDataStatus(status: ModelContainer<String>) {
+        if (status.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_set_data))
+        } else {
+            showToast(context.getString(R.string.fail_set_data))
+        }
     }
 }

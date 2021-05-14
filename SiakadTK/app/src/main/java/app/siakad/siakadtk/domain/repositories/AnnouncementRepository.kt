@@ -7,6 +7,9 @@ import app.siakad.siakadtk.infrastructure.data.Pengumuman
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.db.ref.FirebaseRef
+import app.siakad.siakadtk.domain.utils.helpers.model.AnnouncementTypeModel
+import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -16,34 +19,115 @@ class AnnouncementRepository() {
     private var insertState = MutableLiveData<ModelContainer<String>>()
     private val announcementDB = FirebaseRef(FirebaseRef.PENGUMUMAN_REF).getRef()
 
-    fun initEventListener() {
-        announcementDB.ref.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {}
+    fun initGetAnnouncementListListener(
+        listener: AnnouncementListListener
+    ) {
+        announcementDB.orderByChild("tipe").equalTo(AnnouncementTypeModel.TO_ALL.str)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val dataRef = arrayListOf<PengumumanModel>()
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
-                for (dataSS in snapshot.children) {
-                    val data: PengumumanModel? = dataSS.getValue(PengumumanModel::class.java)
-                    data?.pengumumanId = dataSS.key.toString()
-                    dataRef.add(data!!)
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.updateAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
                 }
 
-                announcementList.postValue(
-                    ModelContainer(
-                    status = ModelState.SUCCESS,
-                    data = dataRef
-                )
-                )
-            }
-        })
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.addAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.removeAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+            })
     }
 
-    fun getAnnouncementList(): LiveData<ModelContainer<ArrayList<PengumumanModel>>> {
-        return announcementList
-    }
+    fun initGetAnnouncementListListenerByUserId(
+        listener: AnnouncementListListener
+    ) {
+        announcementDB.orderByChild("tujuanId").equalTo(AuthenticationRepository.fbAuth.currentUser!!.uid)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
 
-    fun getInsertState(): LiveData<ModelContainer<String>> {
-        return insertState
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.updateAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.addAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.removeAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+            })
     }
 }

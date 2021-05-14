@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.PengumumanModel
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.presentation.screens.announcement.adapter.AnnouncementAdapter
 import app.siakad.siakadtk.presentation.screens.order.adapter.OrderAdapter
@@ -49,7 +50,7 @@ class HomeFragment : Fragment() {
     private lateinit var orderListObserver: Observer<ArrayList<Pesanan>>
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
-    private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
+    private lateinit var announcementListObserver: Observer<ArrayList<PengumumanModel>>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -145,7 +146,7 @@ class HomeFragment : Fragment() {
             if (it.detail!!.kelas == "") {
                 tvStatusRegistrationTitle.text = "Anda belum melakukan daftar ulang"
                 tvStatusRegistrationDesc.text = "Silahkan melakukan daftar ulang, sebelum\n" + "tanggal 31 Januari."
-                ibtnStatusRegistration.setImageResource(R.drawable.ic_daftar_ulang)
+                ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_start)
             }
             else
             {
