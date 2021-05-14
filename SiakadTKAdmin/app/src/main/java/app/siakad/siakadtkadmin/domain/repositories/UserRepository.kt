@@ -1,11 +1,9 @@
 package app.siakad.siakadtkadmin.domain.repositories
 
-import androidx.lifecycle.MutableLiveData
 import app.siakad.siakadtkadmin.domain.db.ref.FirebaseRef
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
-import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
@@ -57,19 +55,23 @@ class UserRepository {
             data.userId = snapshot.key.toString()
 
             if (listener is UserListListener) {
-              listener.addUserItem(
-                ModelContainer(
-                  status = ModelState.SUCCESS,
-                  data = data
+              if (data.status == verified) {
+                listener.addUserItem(
+                  ModelContainer(
+                    status = ModelState.SUCCESS,
+                    data = data
+                  )
                 )
-              )
+              }
             } else if (listener is AnnouncementAddListener) {
-              listener.addUserItem(
-                ModelContainer(
-                  status = ModelState.SUCCESS,
-                  data = data
+              if (data.status) {
+                listener.addUserItem(
+                  ModelContainer(
+                    status = ModelState.SUCCESS,
+                    data = data
+                  )
                 )
-              )
+              }
             }
           }
         }
@@ -236,6 +238,12 @@ class UserRepository {
     }.addOnFailureListener {
       listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
     }
+  }
+
+  fun removeUserData(listener: UserDetailListener, data: PenggunaModel) {
+    userDB.child(data.userId).removeValue().addOnSuccessListener {
+      listener.notifyUserDeleteStatus(ModelContainer.getSuccesModel("Success"))
+    }.addOnFailureListener { listener.notifyUserDeleteStatus(ModelContainer.getFailModel()) }
   }
 
   fun removeEventListener() {

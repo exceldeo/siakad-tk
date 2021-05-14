@@ -22,15 +22,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tahun Ajaran:"
-                android:fontFamily="@font/poppins_regular"
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:textSize="@dimen/card_desc_text"/>
-
-            <TextView
                 android:id="@+id/tv_item_classroom_judul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,6 +31,15 @@
                 android:textColor="@color/colorPrimary"
                 android:fontFamily="@font/poppins_extrabold"
                 android:textSize="@dimen/card_title_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tahun Ajaran:"
+                android:fontFamily="@font/poppins_regular"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/card_desc_text"/>
 
             <TextView
                 android:id="@+id/tv_item_classroom_kelas"

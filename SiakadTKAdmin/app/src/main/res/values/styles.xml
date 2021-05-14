@@ -53,12 +53,12 @@
 
     <style name="lTitle" parent="ListTitle">
         <item name="android:textSize">@dimen/card_title_text</item>
-        <item name="android:fontFamily">@font/poppins_extrabold</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="mdTitle" parent="ListTitle">
         <item name="android:textSize">@dimen/card_subtitle_text</item>
-        <item name="android:fontFamily">@font/poppins_extrabold</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="mdContent">
