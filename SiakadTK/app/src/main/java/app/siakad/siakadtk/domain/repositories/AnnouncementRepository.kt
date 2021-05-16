@@ -130,4 +130,60 @@ class AnnouncementRepository() {
                 }
             })
     }
+
+    fun initGetAnnouncementListListenerByClass(
+        listener: AnnouncementListListener, classId: String
+    ) {
+        announcementDB.orderByChild("tujuanId").equalTo(classId)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) {}
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.updateAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.addAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    val data: PengumumanModel? =
+                        snapshot.getValue(PengumumanModel::class.java)
+
+                    if (data != null) {
+                        data.pengumumanId = snapshot.key.toString()
+                        listener.removeAnnouncementItem(
+                            ModelContainer(
+                                status = ModelState.SUCCESS,
+                                data = data
+                            )
+                        )
+                    }
+                }
+            })
+    }
 }

@@ -21,7 +21,6 @@ data class SeragamModel (
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "produkId" to produkId,
             "adminId" to adminId,
             "namaProduk" to namaProduk,
             "jenisKelamin" to jenisKelamin,

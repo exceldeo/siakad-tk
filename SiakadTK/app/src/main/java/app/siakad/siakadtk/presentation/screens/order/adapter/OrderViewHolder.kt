@@ -16,27 +16,47 @@ class OrderViewHolder(private val v: View): RecyclerView.ViewHolder(v) {
         with(itemView) {
             val imageArray = intArrayOf(
                 R.drawable.ic_status_menunggu_pembayaran,
+                R.drawable.ic_status_menunggu_diproses,
                 R.drawable.ic_status_proses,
+                R.drawable.ic_status_revisi,
                 R.drawable.ic_status_selesai
             )
 
-            when (item.pesanan.statusPesan) {
-                OrderStateModel.ORDER_PENDING.str -> Picasso.with(v.context)
-                    .load(imageArray[0]).placeholder(R.drawable.ic_status_menunggu_pembayaran).into(
-                    iv_item_order_status
-                )
-                OrderStateModel.ORDER_PROCESS.str -> Picasso.with(v.context)
-                    .load(imageArray[1]).placeholder(R.drawable.ic_status_proses).into(
-                    iv_item_order_status
-                )
-                OrderStateModel.ORDER_DONE.str -> Picasso.with(v.context)
-                    .load(imageArray[2]).placeholder(R.drawable.ic_status_selesai).into(
-                    iv_item_order_status
-                )
+            var statusPesan = item.pesanan.statusPesan
+            when (statusPesan) {
+                OrderStateModel.ORDER_PENDING.str -> {
+                    tv_item_order_tgl_disetujui.text = "Tanggal Dipesan : " + item.pesanan.tanggalDipesan
+                    Picasso.with(v.context)
+                        .load(imageArray[0]).placeholder(R.drawable.ic_status_menunggu_pembayaran).into(
+                            iv_item_order_status)
+                }
+                OrderStateModel.ORDER_PROCESS.str -> {
+                    tv_item_order_tgl_disetujui.text = "Tanggal Diproses : " + item.pesanan.tanggalDiproses
+                    Picasso.with(v.context)
+                        .load(imageArray[2]).placeholder(R.drawable.ic_status_proses).into(
+                            iv_item_order_status)
+                }
+                OrderStateModel.ORDER_REVISION.str -> {
+                    tv_item_order_tgl_disetujui.text = "Tanggal Dipesan : " + item.pesanan.tanggalDipesan
+                    Picasso.with(v.context)
+                        .load(imageArray[3]).placeholder(R.drawable.ic_status_revisi).into(
+                            iv_item_order_status)
+                }
+                OrderStateModel.ORDER_PROCESS.str -> {
+                    tv_item_order_tgl_disetujui.text = "Tanggal Selesai : " + item.pesanan.tanggalSelesai
+                    Picasso.with(v.context)
+                        .load(imageArray[4]).placeholder(R.drawable.ic_status_selesai).into(
+                            iv_item_order_status)
+                }
             }
 
-            tv_item_order_title.text = "Nota " + item.pesanan.statusPesan + " " + pos.toString()
+            if(item.pesanan.fotoBayar != "" && item.pesanan.statusPesan == OrderStateModel.ORDER_PENDING.str) {
+                Picasso.with(v.context)
+                    .load(imageArray[1]).placeholder(R.drawable.ic_status_menunggu_diproses).into(
+                        iv_item_order_status)
+            }
 
+            tv_item_order_title.text = "Nota " + pos.toString() + " : " + item.pesanan.statusPesan
             var nameProduct = ""
             for (product in item.pesanan.detailPesanan!!.withIndex())
             {
@@ -45,7 +65,6 @@ class OrderViewHolder(private val v: View): RecyclerView.ViewHolder(v) {
             }
 
             tv_item_order_macam_produk.text = nameProduct
-            tv_item_order_tgl_disetujui.text = item.pesanan.tanggalDipesan
             var totalPayment = 0
             for (product in item.pesanan.detailPesanan!!.withIndex())
                 totalPayment += product.value.harga * product.value.jumlah

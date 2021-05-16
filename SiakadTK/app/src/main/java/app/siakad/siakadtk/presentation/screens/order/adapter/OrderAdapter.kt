@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.utils.helpers.model.OrderStateModel
 import app.siakad.siakadtk.infrastructure.data.Pesanan
 import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.presentation.screens.product.adapter.ProductListAdapter
@@ -18,7 +19,8 @@ class OrderAdapter(): RecyclerView.Adapter<OrderViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        holder.insertNota(orderList[position], position)
+        if(orderList[position].pesanan.statusPesan != OrderStateModel.ORDER_DONE.str)
+            holder.insertNota(orderList[position], position)
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(orderList[holder.adapterPosition]) }
     }
 

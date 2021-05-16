@@ -24,6 +24,7 @@ import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.models.KelasModel
 import app.siakad.siakadtk.domain.utils.helpers.model.ClassTypeModel
+import app.siakad.siakadtk.infrastructure.data.DaftarUlang
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.classroom.ClassroomListViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
@@ -71,6 +72,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private var tahunAjarans = mutableListOf<String>()
 
     private var tempDetailPengguna = DetailPenggunaModel()
+    private var dataDaful = DaftarUlang()
 
     private var paymentImage: Uri? = null
 
@@ -175,6 +177,12 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         vmRegistrationForm.getUserData()
             .observe(this, obsRegistrationGetUser)
 
+        val obsRegistrationGetDaful = Observer<DaftarUlang> {
+            dataDaful = it
+        }
+        vmRegistrationForm.getDaftarUlangData()
+            .observe(this, obsRegistrationGetDaful)
+
         vmClassroom =
             ViewModelProvider(this, ViewModelFactory(this, this)).get(ClassroomListViewModel::class.java)
 
@@ -209,7 +217,8 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             TextWatcher {
             @SuppressLint("SetTextI18n")
             override fun afterTextChanged(str: Editable?) {
-                tempDetailPengguna.kelas = str.toString()
+                var indexThisClass = classrooms.indexOf(str.toString())
+                tempDetailPengguna.kelas = classrooms[indexThisClass].kelasId
             }
 
             override fun beforeTextChanged(

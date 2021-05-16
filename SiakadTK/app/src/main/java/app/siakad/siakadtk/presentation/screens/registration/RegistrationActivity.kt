@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
@@ -21,6 +22,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.Regist
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.registration.form.RegistrationFormActivity
 import app.siakad.siakadtk.presentation.views.preview.ImagePreviewActivity
+import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
     private val pageTitle = "Daftar Ulang"
@@ -39,6 +41,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var tvClassYear: TextView
     private lateinit var llViewData: LinearLayout
     private lateinit var btnLihatBukti: Button
+    private lateinit var cvToForm: CardView
     private var dataUser = Pengguna()
     private var dataDaful = DaftarUlang()
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
@@ -67,6 +70,8 @@ class RegistrationActivity : AppCompatActivity() {
         tvPhone = findViewById(R.id.tv_registration_dp_no_hp)
         tvClassYear = findViewById(R.id.tv_registration_dp_thn_ajaran)
         btnLihatBukti = findViewById(R.id.btn_registration_lihat_bukti)
+
+        cvToForm = findViewById(R.id.cv_registration_to_form)
     }
 
     private fun setupView() {
@@ -107,8 +112,13 @@ class RegistrationActivity : AppCompatActivity() {
                     tvRegistrationStatus.text = this.getString(R.string.status_daful_2)
                     ivRegistrationStatus.setImageResource(R.drawable.ic_status_selesai)
                 } else {
-                    tvRegistrationStatus.text = this.getString(R.string.status_daful_1)
-                    ivRegistrationStatus.setImageResource(R.drawable.ic_status_proses)
+                    if(dataDaful.dafulId == "" && dataDaful.fotoBayar == "") {
+                        tvRegistrationStatus.text = this.getString(R.string.status_daful_3)
+                        ivRegistrationStatus.setImageResource(R.drawable.ic_status_revisi)
+                    } else {
+                        tvRegistrationStatus.text = this.getString(R.string.status_daful_1)
+                        ivRegistrationStatus.setImageResource(R.drawable.ic_status_proses)
+                    }
                 }
                 llViewData.visibility = View.VISIBLE
             }

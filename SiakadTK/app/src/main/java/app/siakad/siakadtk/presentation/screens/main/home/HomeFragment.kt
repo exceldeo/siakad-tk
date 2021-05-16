@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.announcement.AnnouncementListActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PengumumanModel
+import app.siakad.siakadtk.domain.utils.helpers.model.OrderStateModel
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.presentation.screens.announcement.adapter.AnnouncementAdapter
 import app.siakad.siakadtk.presentation.screens.order.adapter.OrderAdapter
@@ -61,6 +62,9 @@ class HomeFragment : Fragment() {
         setupItemView(view)
         setupView()
         setupObserver()
+
+        vmAnnouncement.setAnnouncementByUserId()
+        dataUser.detail?.let { vmAnnouncement.setAnnouncementByClass(it.kelas) }
         return view
     }
     
@@ -177,9 +181,13 @@ class HomeFragment : Fragment() {
 
 
         orderListObserver = Observer { list ->
-            if (list.size > 0) {
-                rvOrderAdapter.changeDataList(list)
+            var undoneList = arrayListOf<Pesanan>()
+            for (item in list)
+            {
+                if(item.pesanan.statusPesan != OrderStateModel.ORDER_DONE.str)
+                    undoneList.add(item)
             }
+            rvOrderAdapter.changeDataList(undoneList)
         }
 
         vmOrderList.getOrderList().observe(this.viewLifecycleOwner, orderListObserver)

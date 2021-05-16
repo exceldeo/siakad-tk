@@ -135,6 +135,7 @@ class UserRepository() {
             role = UserRoleModel.SISWA.str,
             noHP = daful.noHP,
             alamat = daful.alamat,
+            status = dataUser.status,
             detailPengguna = detailPengguna
         )
         Log.i("UPDATE DATA", currentKey)
@@ -160,6 +161,7 @@ class UserRepository() {
             role = UserRoleModel.SISWA.str,
             noHP = dataUser.noHP,
             alamat = dataUser.alamat,
+            status = dataUser.status,
             detailPengguna = dataUser.detail
         )
         Log.i("UPDATE DATA", currentKey)

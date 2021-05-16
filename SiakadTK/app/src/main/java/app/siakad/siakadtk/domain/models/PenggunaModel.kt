@@ -28,7 +28,6 @@ data class PenggunaModel(
 
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "userId" to userId,
             "nama" to nama,
             "alamat" to alamat,
             "noHP" to noHP,

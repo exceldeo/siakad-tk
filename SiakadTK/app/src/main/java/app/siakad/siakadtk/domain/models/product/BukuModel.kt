@@ -19,7 +19,6 @@ data class BukuModel (
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "produkId" to produkId,
             "adminId" to adminId,
             "namaProduk" to namaProduk,
             "fotoProduk" to fotoProduk,

@@ -109,6 +109,7 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
                     noHP = item.noHP,
                     email = item.email,
                     passwd = item.passwd,
+                    status = item.status,
                     detail = item.detailPengguna!!
                 )
                 liveDataUser.postValue(dataUser)

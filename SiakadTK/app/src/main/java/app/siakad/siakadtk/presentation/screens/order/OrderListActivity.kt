@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
+import app.siakad.siakadtk.domain.utils.helpers.model.OrderStateModel
 import app.siakad.siakadtk.infrastructure.data.Pesanan
 import app.siakad.siakadtk.infrastructure.data.product.Seragam
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
@@ -101,7 +102,13 @@ class OrderListActivity : AppCompatActivity() {
     private fun setupObserver() {
         orderListObserver = Observer { list ->
             if (list.size > 0) {
-                rvOrderAdapter.changeDataList(list)
+                var undoneList = arrayListOf<Pesanan>()
+                for (item in list)
+                {
+                    if(item.pesanan.statusPesan != OrderStateModel.ORDER_DONE.str)
+                        undoneList.add(item)
+                }
+                rvOrderAdapter.changeDataList(undoneList)
             }
         }
 
