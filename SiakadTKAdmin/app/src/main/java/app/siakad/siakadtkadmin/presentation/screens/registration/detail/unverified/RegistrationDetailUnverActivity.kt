@@ -3,6 +3,7 @@ package app.siakad.siakadtkadmin.presentation.screens.registration.detail.unveri
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
@@ -72,6 +73,16 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
     setupButtons()
   }
 
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+        true
+      }
+      else -> super.onOptionsItemSelected(item)
+    }
+  }
+
   private fun setupButtons() {
     btnProofPrice = findViewById(R.id.btn_registration_detail_unver_buktibayar)
     btnProofPrice.setOnClickListener {
@@ -89,7 +100,7 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
         "Tolak daftar ulang",
         "Apakah Anda yakin menolak daftar ulang ini?"
       )
-      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
+      alertDialog.show(supportFragmentManager, TAG_REJECT)
     }
 
     btnSave = findViewById(R.id.btn_registration_detail_unver_simpan)
@@ -117,9 +128,9 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
   }
 
   override fun alertAction(tag: String?) {
-    if (tag == UserDetailUnverActivity.TAG_CONFIRM) {
-      vmRegisDetail.updateDataToVerified(daful?.daful!!)
-    } else if (tag == UserDetailUnverActivity.TAG_REJECT) {
+    if (tag == TAG_CONFIRM) {
+      vmRegisDetail.updateDataToVerified(daful?.daful!!, daful?.pengguna!!)
+    } else if (tag == TAG_REJECT) {
       vmRegisDetail.removeData(daful?.daful!!)
       onBackPressed()
     }
