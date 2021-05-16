@@ -32,6 +32,7 @@ class RegistrationListViewModel(private val context: Context) :
 
   private val resgistrationModelList = arrayListOf<DaftarUlangModel>()
   private val resgistrationList = arrayListOf<DaftarUlang>()
+  private val registrationKeyList = mutableSetOf<String>()
 
   fun setRegistrationType(verified: Boolean) {
     if (resgistrationModelList.isEmpty()) {
@@ -94,10 +95,9 @@ class RegistrationListViewModel(private val context: Context) :
     if (user.status == ModelState.SUCCESS) {
       if (user.data != null) {
         resgistrationModelList.forEach forE@{
-          if (it.userId == user.data?.userId) {
-            resgistrationList.add(
-              DaftarUlang(user.data!!, it)
-            )
+          if (it.userId == user.data?.userId && !registrationKeyList.contains(it.dafulId)) {
+            registrationKeyList.add(it.dafulId)
+            resgistrationList.add(DaftarUlang(user.data!!, it))
             registrationListLiveData.postValue(resgistrationList)
             return@forE
           }

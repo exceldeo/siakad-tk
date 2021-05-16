@@ -87,6 +87,7 @@ class ClassroomAddActivity : AppCompatActivity() {
         (ddClass.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
             TextWatcher {
             override fun afterTextChanged(str: Editable?) {
+                classroomType = str.toString()
             }
 
             override fun beforeTextChanged(

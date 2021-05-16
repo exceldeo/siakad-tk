@@ -7,6 +7,7 @@ import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.DaftarUlangModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.repositories.RegistrationRepository
+import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationDetailListener
@@ -18,13 +19,17 @@ import kotlinx.coroutines.launch
 class RegistrationDetailUnverViewModel(private val context: Context) :
   ViewModel(), RegistrationDetailListener {
   private val regisRepository = RegistrationRepository()
+  private val userRepository = UserRepository()
   private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+
+  private var user: PenggunaModel? = null
 
   private fun showToast(msg: String) {
     Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
   }
 
-  fun updateDataToVerified(daful: DaftarUlangModel) {
+  fun updateDataToVerified(daful: DaftarUlangModel, pengguna: PenggunaModel) {
+    user = pengguna
     daful.statusDaful = true
     vmCoroutineScope.launch {
       regisRepository.updateRegisData(this@RegistrationDetailUnverViewModel, daful)
@@ -33,9 +38,14 @@ class RegistrationDetailUnverViewModel(private val context: Context) :
 
   override fun notifyRegistrationDetailChangeStatus(status: ModelContainer<String>) {
     if (status.status == ModelState.SUCCESS) {
-      showToast(context.getString(R.string.scs_set_data))
+      if (user != null) {
+        user?.detailPengguna?.dafulState = true
+        vmCoroutineScope.launch {
+          userRepository.updateUserData(this@RegistrationDetailUnverViewModel, user!!)
+        }
+      }
     } else if (status.status == ModelState.ERROR) {
-      showToast(context.getString(R.string.fail_set_data))
+      showToast(context.getString(R.string.fail_update_data))
     }
   }
 
@@ -44,6 +54,14 @@ class RegistrationDetailUnverViewModel(private val context: Context) :
       showToast(context.getString(R.string.scs_del_data))
     } else if (status.status == ModelState.ERROR) {
       showToast(context.getString(R.string.fail_del_data))
+    }
+  }
+
+  override fun notifyUserDetailChangeStatus(status: ModelContainer<String>) {
+    if (status.status == ModelState.SUCCESS) {
+      showToast(context.getString(R.string.scs_update_data))
+    } else if (status.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_update_data))
     }
   }
 

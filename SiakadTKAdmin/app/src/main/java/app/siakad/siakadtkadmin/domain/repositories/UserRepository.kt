@@ -9,6 +9,7 @@ import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.Announcement
 import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
@@ -227,16 +228,24 @@ class UserRepository {
     }
   }
 
-  fun updateUserData(listener: UserDetailListener, data: PenggunaModel) {
+  fun updateUserData(listener: Any, data: PenggunaModel) {
     val newData = data.toMap()
     val childUpdates = hashMapOf<String, Any>(
       "/${data.userId}" to newData
     )
 
     userDB.updateChildren(childUpdates).addOnSuccessListener {
-      listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+      if (listener is UserDetailListener) {
+        listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+      } else if (listener is RegistrationDetailListener) {
+        listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+      }
     }.addOnFailureListener {
-      listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+      if (listener is UserDetailListener) {
+        listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+      } else if (listener is RegistrationDetailListener) {
+        listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+      }
     }
   }
 

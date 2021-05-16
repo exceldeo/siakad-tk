@@ -83,9 +83,9 @@ class RegistrationRepository() {
     )
 
     registrationDB.updateChildren(childUpdates).addOnSuccessListener {
-      listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getSuccesModel("Success"))
+      listener.notifyRegistrationDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
     }.addOnFailureListener {
-      listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getFailModel())
+      listener.notifyRegistrationDetailChangeStatus(ModelContainer.getFailModel())
     }
   }
 
