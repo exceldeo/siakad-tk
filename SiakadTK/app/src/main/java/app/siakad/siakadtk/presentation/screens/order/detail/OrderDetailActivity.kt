@@ -122,6 +122,8 @@ class OrderDetailActivity : AppCompatActivity(), AlertListener {
 
         tvOrderTotalPayment.text = "Rp. $totalPayment"
         tvOrderDate.text = pesanan.pesanan.tanggalDipesan
+        tvProcessDate.text = pesanan.pesanan.tanggalDiproses
+        tvDoneDate.text = pesanan.pesanan.tanggalSelesai
         tvOrderStatus.text = pesanan.pesanan.statusPesan
 
         if(pesanan.pesanan.statusPesan == OrderStateModel.ORDER_PENDING.str && pesanan.pesanan.fotoBayar == "")

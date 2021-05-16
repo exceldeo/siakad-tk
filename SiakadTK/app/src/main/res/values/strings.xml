@@ -113,6 +113,7 @@
     <string name="status_daful_0">Belum daftar.</string>
     <string name="status_daful_1">Proses verifikasi.</string>
     <string name="status_daful_2">Terverifikasi.</string>
+    <string name="status_daful_3">Revisi.</string>
     <string name="unggah_bukti_pembayaran">Unggah Bukti Pembayaran</string>
 
     <string name="registration_detail_price">

@@ -69,8 +69,8 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
         btnLogin.setOnClickListener {
             if (validateForm()) {
-                pbLoading.visibility = View.VISIBLE
                 vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
+                pbLoading.visibility = View.VISIBLE
             }
         }
 

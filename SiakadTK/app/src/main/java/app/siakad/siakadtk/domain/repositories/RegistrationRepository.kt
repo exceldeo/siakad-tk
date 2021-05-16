@@ -65,7 +65,8 @@ class RegistrationRepository() {
             dafulId = newKey,
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
             tanggal = todayDate,
-            fotoBayar = data.fotoBayar
+            fotoBayar = data.fotoBayar,
+            statusDaful = data.statusDaful
         )
 
         registrationDB.child(newKey).setValue(newData).addOnSuccessListener {
@@ -82,7 +83,8 @@ class RegistrationRepository() {
             dafulId = currentKey,
             userId = AuthenticationRepository.fbAuth.currentUser?.uid!!,
             tanggal = todayDate,
-            fotoBayar = data.fotoBayar
+            fotoBayar = data.fotoBayar,
+            statusDaful = data.statusDaful
         )
 
         registrationDB.child(currentKey).setValue(updateData).addOnSuccessListener {

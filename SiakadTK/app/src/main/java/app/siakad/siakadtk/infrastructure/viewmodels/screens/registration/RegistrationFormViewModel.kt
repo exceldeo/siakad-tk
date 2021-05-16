@@ -110,6 +110,7 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
                     noHP = item.noHP,
                     email = item.email,
                     passwd = item.passwd,
+                    status = item.status,
                     detail = item.detailPengguna!!
                 )
                 liveDataUser.postValue(dataUser)

@@ -52,7 +52,8 @@ class ProductListViewModel(private val context: Context, owner: LifecycleOwner) 
         if (product.status == ModelState.SUCCESS) {
             if (product.data?.isNotEmpty()!!) {
                 product.data?.forEach { item ->
-                    dataSeragamList.add(
+                    if(!dataSeragamList.contains(item))
+                        dataSeragamList.add(
                         Seragam(
                             produkId = item.produkId,
                             adminId = item.adminId,
@@ -75,12 +76,14 @@ class ProductListViewModel(private val context: Context, owner: LifecycleOwner) 
         if (product.status == ModelState.SUCCESS) {
             if (product.data?.isNotEmpty()!!) {
                 product.data?.forEach { item ->
-                    dataBukuList.add(
+                    if(!dataBukuList.contains(item))
+                        dataBukuList.add(
                         Buku(
                             produkId = item.produkId,
                             adminId = item.adminId,
                             namaProduk = item.namaProduk,
                             jumlah = item.jumlah,
+                            harga = item.harga,
                             fotoProduk = item.fotoProduk
                         )
                     )

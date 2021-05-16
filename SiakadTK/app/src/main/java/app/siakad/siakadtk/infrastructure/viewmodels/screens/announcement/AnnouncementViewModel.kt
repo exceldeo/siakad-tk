@@ -89,4 +89,12 @@ class AnnouncementViewModel(private val context: Context, private val lcOwner: L
             showToast(context.getString(R.string.fail_update_data))
         }
     }
+
+    fun setAnnouncementByClass(kelasId: String) {
+        vmCoroutineScope.launch {
+            announcementRepository.initGetAnnouncementListListenerByClass(
+                this@AnnouncementViewModel, kelasId
+            )
+        }
+    }
 }
