@@ -12,6 +12,7 @@ import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
@@ -217,8 +218,9 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             TextWatcher {
             @SuppressLint("SetTextI18n")
             override fun afterTextChanged(str: Editable?) {
-                var indexThisClass = classrooms.indexOf(str.toString())
-                tempDetailPengguna.kelas = classrooms[indexThisClass].kelasId
+                for (croom in classrooms) {
+                    if (croom.namaKelas == str.toString()) tempDetailPengguna.kelas = croom.kelasId
+                }
             }
 
             override fun beforeTextChanged(
