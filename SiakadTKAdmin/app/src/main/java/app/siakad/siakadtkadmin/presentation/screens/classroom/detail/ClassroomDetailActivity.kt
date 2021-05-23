@@ -42,10 +42,8 @@ class ClassroomDetailActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_classroom_detail)
 
-    if (intent.getParcelableExtra(CLASSROOM_ID)) {
-      kelas = intent.getParcelableExtra(CLASSROOM_ID)
-      pageTitle = kelas.namaKelas
-    }
+    kelas = intent.getParcelableExtra(CLASSROOM_ID)
+    pageTitle = kelas.namaKelas
 
     tvClassroomDetailCount = findViewById(R.id.tv_classroom_detail_jumlah_siswa)
     svClassroomDetail = findViewById(R.id.sv_classroom_detail_cari)
