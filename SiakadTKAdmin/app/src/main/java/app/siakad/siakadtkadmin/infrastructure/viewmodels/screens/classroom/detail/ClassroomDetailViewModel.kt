@@ -10,6 +10,7 @@ import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.user.UserListListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,59 +18,33 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ClassroomDetailViewModel(private val context: Context) :
-  ViewModel(),
-  UserListListener {
+  ViewModel(), ClassroomDetailListener {
   private val userListLiveData = MutableLiveData<ArrayList<PenggunaModel>>()
   private val userRepository = UserRepository()
-  private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-  private val dataPenggunaList = arrayListOf<PenggunaModel>()
 
-  fun setUserClassType(kelasId: String) {
+  private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+
+  private val dataPenggunaList = arrayListOf<PenggunaModel>()
+  private val dataPenggunaKeyList = mutableSetOf<String>()
+
+  fun setUsers(users: ArrayList<String>) {
     if (dataPenggunaList.isEmpty()) {
       vmCoroutineScope.launch {
-        userRepository.initGetUserListByClassListener(this@ClassroomDetailViewModel, kelasId)
-      }
-    }
-  }
-
-  override fun addUserItem(pengguna: ModelContainer<PenggunaModel>) {
-    if (pengguna.status == ModelState.SUCCESS) {
-      if (pengguna.data != null) {
-        dataPenggunaList.add(pengguna.data!!)
-        userListLiveData.postValue(dataPenggunaList)
-      }
-    } else if (pengguna.status == ModelState.ERROR) {
-      showToast(context.getString(R.string.fail_get_user))
-    }
-  }
-
-  override fun updateUserItem(pengguna: ModelContainer<PenggunaModel>) {
-    if (pengguna.status == ModelState.SUCCESS) {
-      if (pengguna.data != null) {
-        dataPenggunaList.forEachIndexed { index, item ->
-          if (item.userId == pengguna.data?.userId) {
-            dataPenggunaList[index] = pengguna.data!!
-          }
+        users.forEach {
+          userRepository.getUserById(this@ClassroomDetailViewModel, it)
         }
-        userListLiveData.postValue(dataPenggunaList)
       }
-    } else if (pengguna.status == ModelState.ERROR) {
-      showToast(context.getString(R.string.fail_get_user))
     }
   }
 
-  override fun removeUserItem(pengguna: ModelContainer<PenggunaModel>) {
+  override fun setUser(pengguna: ModelContainer<PenggunaModel>) {
     if (pengguna.status == ModelState.SUCCESS) {
       if (pengguna.data != null) {
-        var target = 0
-        dataPenggunaList.forEachIndexed forE@{ index, item ->
-          if (item.userId == pengguna.data?.userId) {
-            target = index
-            return@forE
-          }
+        if (!dataPenggunaKeyList.contains(pengguna.data?.userId!!)) {
+          dataPenggunaKeyList.add(pengguna.data?.userId!!)
+          dataPenggunaList.add(pengguna.data!!)
+          userListLiveData.postValue(dataPenggunaList)
         }
-        dataPenggunaList.removeAt(target)
-        userListLiveData.postValue(dataPenggunaList)
       }
     } else if (pengguna.status == ModelState.ERROR) {
       showToast(context.getString(R.string.fail_get_user))

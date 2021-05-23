@@ -13,7 +13,6 @@ import app.siakad.siakadtkadmin.infrastructure.data.DaftarUlang
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.detail.RegistrationDetailUnverViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationListFragment
-import app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
@@ -59,12 +58,12 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
     tvPrice = findViewById(R.id.tv_registration_detail_unver_nobayar)
 
     if (daful != null) {
-      tvName.text = daful?.pengguna?.nama
-      tvClass.text = daful?.pengguna?.detailPengguna?.kelas
-      tvGender.text = daful?.pengguna?.detailPengguna?.jenisKelamin
-      tvParent.text = daful?.pengguna?.detailPengguna?.namaOrtu
-      tvAddress.text = daful?.pengguna?.alamat
-      tvHP.text = daful?.pengguna?.noHP
+      tvName.text = daful?.pengguna?.pengguna?.nama
+      tvClass.text = daful?.pengguna?.kelas?.namaKelas
+      tvGender.text = daful?.pengguna?.pengguna?.detailPengguna?.jenisKelamin
+      tvParent.text = daful?.pengguna?.pengguna?.detailPengguna?.namaOrtu
+      tvAddress.text = daful?.pengguna?.pengguna?.alamat
+      tvHP.text = daful?.pengguna?.pengguna?.noHP
       tvPrice.text = ""
     }
 
@@ -129,7 +128,7 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
 
   override fun alertAction(tag: String?) {
     if (tag == TAG_CONFIRM) {
-      vmRegisDetail.updateDataToVerified(daful?.daful!!, daful?.pengguna!!)
+      vmRegisDetail.updateDataToVerified(daful!!)
     } else if (tag == TAG_REJECT) {
       vmRegisDetail.removeData(daful?.daful!!)
       onBackPressed()
