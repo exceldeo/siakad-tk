@@ -93,7 +93,7 @@ class ProfileFragment : Fragment() {
         val obsProfileGetUser = Observer<Pengguna> {
             dataUser = it
             tvStudentName.text = "Nama Siswa : " + it.nama
-            tvClassStudent.text = "Kelas : " + it.detail!!.kelas
+            tvClassStudent.text = "Kelas : " + it.detail!!.kelasId
         }
         vmProfile.getUserData()
             .observe(this.viewLifecycleOwner, obsProfileGetUser)

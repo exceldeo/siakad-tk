@@ -24,6 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.lifecycle.Observer
+import app.siakad.siakadtk.domain.models.KelasModel
 import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtk.presentation.views.alert.AlertListener
 import com.squareup.picasso.Picasso
@@ -51,6 +52,7 @@ class ProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     private lateinit var vmProfile : ProfileViewModel
 
     private var dataUser = Pengguna()
+    private var dataKelasUser = KelasModel()
     private var profileImage: Uri? = null
 
     companion object {
@@ -111,18 +113,28 @@ class ProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         val obsProfileGetUser = Observer<Pengguna> {
             dataUser = it
             etName.setText(it.nama)
-            tvClass.text = it.detail!!.kelas
-            tvTahunAjaran.text = it.detail!!.tahunAjaran
             tvGender.text = it.detail!!.jenisKelamin
             etBornDate.setText(it.detail!!.tanggalLahir)
             etAddress.setText(it.alamat)
             etPhoneNumber.setText(it.noHP)
             etParentName.setText(it.detail!!.namaOrtu)
             if(it.detail!!.fotoSiswa != "") Picasso.with(this.applicationContext).load(it.detail!!.fotoSiswa).into(civProfileImg)
+
+            vmProfile.setKelasName(it.detail!!.kelasId)
         }
 
         vmProfile.getUserData()
             .observe(this, obsProfileGetUser)
+
+        val obsRegistrationGetClass = Observer<KelasModel> {
+            dataKelasUser = it
+
+            tvTahunAjaran.text = it.tahunMulai.toString() + "/" + it.tahunSelesai.toString()
+            tvClass.text = it.namaKelas
+        }
+
+        vmProfile.getClassroomListById()
+            .observe(this, obsRegistrationGetClass)
     }
 
     private fun setupItemView() {

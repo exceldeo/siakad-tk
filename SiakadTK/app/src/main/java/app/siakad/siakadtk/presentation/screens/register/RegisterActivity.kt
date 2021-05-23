@@ -54,11 +54,7 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-//            if (userState) {
-                navigateToMain()
-//            } else {
-//                navigateToPendingMain()
-//            }
+            navigateToMain()
         }
     }
 
@@ -134,13 +130,13 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         var isClickRegister = false
         btnSignup.setOnClickListener {
             if (validateForm() && !isClickRegister) {
-                pbLoading.visibility = View.VISIBLE
                 vmRegister.registerSiswa(
                     etEmail.text.toString(),
                     etPassword.text.toString(),
                     etName.text.toString(),
                     firstPaymentImage
                 )
+                pbLoading.visibility = View.VISIBLE
                 isClickRegister = true
             } else if (validateForm() && isClickRegister) {
                 showToast("Pendaftaran masih di proses")

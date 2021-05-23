@@ -47,8 +47,7 @@ class UserDetailRepository() {
     fun insertData(detail: DetailPengguna) {
         val currentKey = userDetailDB.push().key.toString()
         val newData = DetailPenggunaModel(
-            kelas = detail.kelas,
-            tahunAjaran = detail.tahunAjaran,
+            kelasId = detail.kelas,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
             namaOrtu = detail.namaOrtu

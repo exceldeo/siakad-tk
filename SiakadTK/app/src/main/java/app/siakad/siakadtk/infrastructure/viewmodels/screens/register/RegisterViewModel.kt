@@ -56,9 +56,7 @@ class RegisterViewModel(private val context: Context, private val lcOwner: Lifec
             detailPengguna.fotoBayarAwal = status.data!!
             pengguna.detail = detailPengguna
 
-            if (!AuthenticationRepository.userState) {
-                AuthenticationRepository.setUser(pengguna.userId, pengguna.email, pengguna.passwd, pengguna.status)
-            }
+            AuthenticationRepository.setUser(pengguna.userId, pengguna.email, pengguna.passwd, pengguna.status)
 
             if(pengguna.status) (context as AuthenticationListener).navigateToMain()
             else (context as AuthenticationListener).navigateToPendingMain()

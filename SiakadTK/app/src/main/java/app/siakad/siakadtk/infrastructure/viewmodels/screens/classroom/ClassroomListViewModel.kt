@@ -16,6 +16,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ClassroomListViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
     ViewModel(),
@@ -27,15 +29,16 @@ class ClassroomListViewModel(private val context: Context, private val lcOwner: 
 
     init {
         vmCoroutineScope.launch {
-            classroomRepository.initGetClassroomList(this@ClassroomListViewModel)
-        }
-    }
+            val calendar = Calendar.getInstance()
+            var year = calendar.get(Calendar.YEAR)
 
-    fun setClassroomType(type: String) {
-        if (dataKelasList.isEmpty()) {
-            vmCoroutineScope.launch {
-                classroomRepository.initGetClassroomListListenerByType(this@ClassroomListViewModel, type)
+            if (calendar.get(Calendar.MONTH) > 6) {
+                year += 1
             }
+            classroomRepository.initGetClassroomListByYearListener(
+                this@ClassroomListViewModel,
+                year
+            )
         }
     }
 

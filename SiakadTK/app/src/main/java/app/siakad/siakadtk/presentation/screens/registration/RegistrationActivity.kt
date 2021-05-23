@@ -1,5 +1,6 @@
 package app.siakad.siakadtk.presentation.screens.registration
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.KelasModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.models.PesananModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
@@ -44,6 +46,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var cvToForm: CardView
     private var dataUser = Pengguna()
     private var dataDaful = DaftarUlang()
+    private var dataKelasUser = KelasModel()
     private lateinit var vmRegistrationForm: RegistrationFormViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +77,7 @@ class RegistrationActivity : AppCompatActivity() {
         cvToForm = findViewById(R.id.cv_registration_to_form)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupView() {
         setupAppBar()
         btnRegistrationForm.setOnClickListener{
@@ -89,18 +93,19 @@ class RegistrationActivity : AppCompatActivity() {
             )
         ).get(RegistrationFormViewModel::class.java)
 
-        val obsRegistrationGetUser = Observer<Pengguna> {
+        val obsRegistrationGetUser = Observer<Pengguna> { it ->
             dataUser = it
             tvName.text = it.nama
             tvBornDate.text = it.detail!!.tanggalLahir
             tvGender.text = it.detail!!.jenisKelamin
-            tvClass.text = it.detail!!.kelas
             tvParentName.text = it.detail!!.namaOrtu
             tvAddress.text = it.alamat
             tvPhone.text = it.noHP
-            tvClassYear.text = it.detail!!.tahunAjaran
 
-            if (it.detail!!.kelas == "") {
+            vmRegistrationForm.setKelasName(it.detail!!.kelasId)
+            dataKelasUser.kelasId = it.detail!!.kelasId
+
+            if (it.detail!!.kelasId == "") {
                 llViewData.visibility = View.INVISIBLE
                 tvRegistrationStatus.text = this.getString(R.string.status_daful_0)
                 ivRegistrationStatus.setImageResource(R.drawable.ic_belum_isi)
@@ -125,6 +130,16 @@ class RegistrationActivity : AppCompatActivity() {
         }
         vmRegistrationForm.getUserData()
             .observe(this, obsRegistrationGetUser)
+
+        val obsRegistrationGetClass = Observer<KelasModel> {
+            dataKelasUser = it
+
+            tvClassYear.text = it.tahunMulai.toString() + "/" + it.tahunSelesai.toString()
+            tvClass.text = it.namaKelas 
+        }
+
+        vmRegistrationForm.getClassroomListById()
+            .observe(this, obsRegistrationGetClass)
 
         val obsRegistrationGetDaful = Observer<DaftarUlang> {
             dataDaful = it

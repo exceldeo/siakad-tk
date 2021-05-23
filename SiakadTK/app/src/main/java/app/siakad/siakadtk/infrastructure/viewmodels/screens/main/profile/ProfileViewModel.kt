@@ -9,13 +9,17 @@ import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.db.storage.FirebaseStrg
 import app.siakad.siakadtk.domain.models.DaftarUlangModel
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
+import app.siakad.siakadtk.domain.models.KelasModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.ClassroomRepository
 import app.siakad.siakadtk.domain.repositories.UserDetailRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.storage.WholeStorage
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
+import app.siakad.siakadtk.domain.utils.listeners.classroom.ClassroomListListener
+import app.siakad.siakadtk.domain.utils.listeners.classroom.ClassroomListener
 import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
 import app.siakad.siakadtk.domain.utils.listeners.setting.SettingListener
 import app.siakad.siakadtk.domain.utils.listeners.storage.StorageListener
@@ -28,7 +32,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ProfileViewModel (private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel(), UserListener, StorageListener, SettingListener {
+    ViewModel(), UserListener, StorageListener, SettingListener, ClassroomListener {
     private val userDetailRepository = UserDetailRepository()
     private val userRepository = UserRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -36,11 +40,14 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
 
     private lateinit var insertObserver: Observer<ModelContainer<String>>
     private val authRepository = AuthenticationRepository()
+    private val classroomRepository = ClassroomRepository()
     private val liveDataUser = MutableLiveData<Pengguna>()
     private var dataUser = Pengguna()
     private var newPasswd = ""
     private var newEmail = ""
     private var dataDetailUser = DetailPenggunaModel()
+    private val classroomLiveData = MutableLiveData<KelasModel>()
+    private var dataKelas = KelasModel()
 
     init {
         setupObserver()
@@ -59,11 +66,16 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
         userRepository.getUserById(this)
     }
 
+    fun setKelasName(kelasId: String) {
+        vmCoroutineScope.launch {
+            classroomRepository.initGetClassroomListListenerById(this@ProfileViewModel, kelasId)
+        }
+    }
+
     fun setData(namaSiswa: String, kelas: String, namaWali: String, thnAjaran: String,  gender: String, bornDate: String, address: String, noHP: String, fotoProfil: Uri?) {
         dataDetailUser = dataUser.detail!!
         dataDetailUser.namaOrtu = namaWali
-        dataDetailUser.kelas = kelas
-        dataDetailUser.tahunAjaran = thnAjaran
+        dataDetailUser.kelasId = kelas
         dataDetailUser.tanggalLahir = bornDate
         dataDetailUser.jenisKelamin = gender
 
@@ -179,5 +191,28 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
         vmCoroutineScope.launch {
             authRepository.updateEmail(this@ProfileViewModel, data.email, data.passwd, newEmail)
         }
+    }
+
+    override fun setClassroomById(kelas: ModelContainer<KelasModel>) {
+        if (kelas.status == ModelState.SUCCESS) {
+            val item = kelas.data
+
+            if (item != null) {
+                dataKelas = KelasModel(
+                    kelasId = item.kelasId,
+                    namaKelas = item.namaKelas,
+                    tahunMulai = item.tahunMulai,
+                    tahunSelesai = item.tahunSelesai,
+                    daftarSiswa = item.daftarSiswa
+                )
+                classroomLiveData.postValue(dataKelas)
+            } else if (kelas.status == ModelState.ERROR) {
+                showToast(context.getString(R.string.fail_get_user))
+            }
+        }
+    }
+
+    fun getClassroomListById() : LiveData<KelasModel> {
+        return classroomLiveData
     }
 }

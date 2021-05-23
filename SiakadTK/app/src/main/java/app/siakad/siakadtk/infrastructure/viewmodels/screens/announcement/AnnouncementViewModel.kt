@@ -38,6 +38,14 @@ class AnnouncementViewModel(private val context: Context, private val lcOwner: L
         }
     }
 
+    fun setAnnouncementByClass(kelasId: String) {
+        vmCoroutineScope.launch {
+            announcementRepository.initGetAnnouncementListListenerByClass(
+                this@AnnouncementViewModel, kelasId
+            )
+        }
+    }
+
     fun getAnnouncementList(): LiveData<ArrayList<PengumumanModel>> {
         return announcementList
     }
@@ -87,14 +95,6 @@ class AnnouncementViewModel(private val context: Context, private val lcOwner: L
             }
         } else if (pengumuman.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_update_data))
-        }
-    }
-
-    fun setAnnouncementByClass(kelasId: String) {
-        vmCoroutineScope.launch {
-            announcementRepository.initGetAnnouncementListListenerByClass(
-                this@AnnouncementViewModel, kelasId
-            )
         }
     }
 }
