@@ -8,6 +8,7 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.Clas
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.ClassroomListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.login.LoginViewModel
+import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.main.MainViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.OrderListViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.order.detail.OrderDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.product.ProductListViewModel
@@ -29,6 +30,11 @@ class ViewModelFactory(
         AnnouncementListViewModel(
           ctx!!,
           owner
+        ) as T
+      }
+      modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+        MainViewModel(
+          ctx!!,
         ) as T
       }
       modelClass.isAssignableFrom(AnnouncementAddViewModel::class.java) -> {

@@ -6,7 +6,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DetailKeranjangModel (
-  @get:Exclude
   var produkId: String = "",
   var nama: String = "",
   var gambar: String = "",

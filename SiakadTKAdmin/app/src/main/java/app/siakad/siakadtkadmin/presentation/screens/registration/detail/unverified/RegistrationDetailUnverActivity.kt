@@ -3,6 +3,7 @@ package app.siakad.siakadtkadmin.presentation.screens.registration.detail.unveri
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
@@ -12,7 +13,6 @@ import app.siakad.siakadtkadmin.infrastructure.data.DaftarUlang
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.registration.detail.RegistrationDetailUnverViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationListFragment
-import app.siakad.siakadtkadmin.presentation.screens.user.detail.unverified.UserDetailUnverActivity
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
 import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.preview.ImagePreviewActivity
@@ -58,18 +58,28 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
     tvPrice = findViewById(R.id.tv_registration_detail_unver_nobayar)
 
     if (daful != null) {
-      tvName.text = daful?.pengguna?.nama
-      tvClass.text = daful?.pengguna?.detailPengguna?.kelas
-      tvGender.text = daful?.pengguna?.detailPengguna?.jenisKelamin
-      tvParent.text = daful?.pengguna?.detailPengguna?.namaOrtu
-      tvAddress.text = daful?.pengguna?.alamat
-      tvHP.text = daful?.pengguna?.noHP
+      tvName.text = daful?.pengguna?.pengguna?.nama
+      tvClass.text = daful?.pengguna?.kelas?.namaKelas
+      tvGender.text = daful?.pengguna?.pengguna?.detailPengguna?.jenisKelamin
+      tvParent.text = daful?.pengguna?.pengguna?.detailPengguna?.namaOrtu
+      tvAddress.text = daful?.pengguna?.pengguna?.alamat
+      tvHP.text = daful?.pengguna?.pengguna?.noHP
       tvPrice.text = ""
     }
 
     setupAppBar()
     setupViewModel()
     setupButtons()
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+        true
+      }
+      else -> super.onOptionsItemSelected(item)
+    }
   }
 
   private fun setupButtons() {
@@ -89,7 +99,7 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
         "Tolak daftar ulang",
         "Apakah Anda yakin menolak daftar ulang ini?"
       )
-      alertDialog.show(supportFragmentManager, TAG_CONFIRM)
+      alertDialog.show(supportFragmentManager, TAG_REJECT)
     }
 
     btnSave = findViewById(R.id.btn_registration_detail_unver_simpan)
@@ -117,9 +127,9 @@ class RegistrationDetailUnverActivity : AppCompatActivity(), AlertListener {
   }
 
   override fun alertAction(tag: String?) {
-    if (tag == UserDetailUnverActivity.TAG_CONFIRM) {
-      vmRegisDetail.updateDataToVerified(daful?.daful!!)
-    } else if (tag == UserDetailUnverActivity.TAG_REJECT) {
+    if (tag == TAG_CONFIRM) {
+      vmRegisDetail.updateDataToVerified(daful!!)
+    } else if (tag == TAG_REJECT) {
       vmRegisDetail.removeData(daful?.daful!!)
       onBackPressed()
     }

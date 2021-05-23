@@ -68,11 +68,20 @@ class OrderListFragment(private val type: String) : Fragment() {
     return view
   }
 
+  override fun onStart() {
+    super.onStart()
+    vmOrderList.setOrderType(type)
+  }
+
+  override fun onStop() {
+    super.onStop()
+    vmOrderList.clearListener()
+  }
+
   private fun setupViewModel() {
     vmOrderList = ViewModelProvider(
       this, ViewModelFactory(this.viewLifecycleOwner, this.context)
     ).get(OrderListViewModel::class.java)
-    vmOrderList.setOrderType(type)
 
     val obsOrderList = Observer<ArrayList<Pesanan>> { newOrderList ->
       if (newOrderList.size > 0) {
