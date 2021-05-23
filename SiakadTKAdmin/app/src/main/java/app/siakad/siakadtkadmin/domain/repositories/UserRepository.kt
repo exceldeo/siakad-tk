@@ -6,7 +6,9 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.utils.helpers.model.UserRoleModel
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementAddListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.classroom.ClassroomDetailListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.login.LoginListener
+import app.siakad.siakadtkadmin.domain.utils.listeners.main.MainListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.order.OrderListListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtkadmin.domain.utils.listeners.registration.RegistrationDetailListener
@@ -65,6 +67,15 @@ class UserRepository {
                 )
               }
             } else if (listener is AnnouncementAddListener) {
+              if (data.status) {
+                listener.addUserItem(
+                  ModelContainer(
+                    status = ModelState.SUCCESS,
+                    data = data
+                  )
+                )
+              }
+            } else if (listener is MainListener) {
               if (data.status) {
                 listener.addUserItem(
                   ModelContainer(
@@ -175,6 +186,8 @@ class UserRepository {
             listener.setUser(ModelContainer.getSuccesModel(user))
           } else if (listener is RegistrationListListener) {
             listener.setUser(ModelContainer.getSuccesModel(user))
+          } else if (listener is ClassroomDetailListener) {
+            listener.setUser(ModelContainer.getSuccesModel(user))
           }
         }
       }
@@ -239,11 +252,15 @@ class UserRepository {
         listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
       } else if (listener is RegistrationDetailListener) {
         listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
+      } else if (listener is MainListener) {
+        listener.notifyUserDetailChangeStatus(ModelContainer.getSuccesModel("Success"))
       }
     }.addOnFailureListener {
       if (listener is UserDetailListener) {
         listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
       } else if (listener is RegistrationDetailListener) {
+        listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
+      } else if (listener is MainListener) {
         listener.notifyUserDetailChangeStatus(ModelContainer.getFailModel())
       }
     }

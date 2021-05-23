@@ -1,6 +1,5 @@
 package app.siakad.siakadtkadmin.presentation.screens.classroom.detail
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,7 +16,6 @@ import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
-import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.adapter.UserListAdapter
 
 class ClassroomDetailActivity : AppCompatActivity() {
@@ -44,8 +42,11 @@ class ClassroomDetailActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_classroom_detail)
 
-    kelas = intent.getParcelableExtra(CLASSROOM_ID)
-    pageTitle = kelas.namaKelas
+    if (intent.getParcelableExtra(CLASSROOM_ID)) {
+      kelas = intent.getParcelableExtra(CLASSROOM_ID)
+      pageTitle = kelas.namaKelas
+    }
+
     tvClassroomDetailCount = findViewById(R.id.tv_classroom_detail_jumlah_siswa)
     svClassroomDetail = findViewById(R.id.sv_classroom_detail_cari)
 
@@ -58,7 +59,7 @@ class ClassroomDetailActivity : AppCompatActivity() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     return when (item.itemId) {
       android.R.id.home -> {
-        navigateBack()
+        onBackPressed()
         true
       }
       else -> super.onOptionsItemSelected(item)
@@ -82,7 +83,7 @@ class ClassroomDetailActivity : AppCompatActivity() {
     vmClassroomDetail = ViewModelProvider(
       this, ViewModelFactory(this, this)
     ).get(ClassroomDetailViewModel::class.java)
-    vmClassroomDetail.setUserClassType(kelas.kelasId)
+    vmClassroomDetail.setUsers(kelas.daftarSiswa)
 
     val obsClassroomDetail = Observer<ArrayList<PenggunaModel>> { newUserList ->
       if (newUserList.size > 0) {
@@ -101,14 +102,5 @@ class ClassroomDetailActivity : AppCompatActivity() {
       adapter = userListAdapter
       layoutManager = LinearLayoutManager(this.context)
     }
-  }
-
-  private fun navigateBack() {
-    startActivity(
-      Intent(
-        this@ClassroomDetailActivity,
-        ClassroomActivity::class.java
-      ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-    )
   }
 }

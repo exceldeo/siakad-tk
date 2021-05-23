@@ -55,15 +55,25 @@ class RegistrationListFragment(private val type: String) : Fragment() {
     return view
   }
 
-  private fun setupViewModel() {
-    vmRegistrationList = ViewModelProvider(
-      this, ViewModelFactory(this.viewLifecycleOwner, this.context)
-    ).get(RegistrationListViewModel::class.java)
+  override fun onStart() {
+    super.onStart()
+
     if (type == VERIFIED_REGISTRATION) {
       vmRegistrationList.setRegistrationType(true)
     } else {
       vmRegistrationList.setRegistrationType(false)
     }
+  }
+
+  override fun onStop() {
+    super.onStop()
+    vmRegistrationList.clearListener()
+  }
+
+  private fun setupViewModel() {
+    vmRegistrationList = ViewModelProvider(
+      this, ViewModelFactory(this.viewLifecycleOwner, this.context)
+    ).get(RegistrationListViewModel::class.java)
 
     val obsRegistrationList = Observer<ArrayList<DaftarUlang>> { newRegistrationList ->
       if (newRegistrationList.size > 0) {

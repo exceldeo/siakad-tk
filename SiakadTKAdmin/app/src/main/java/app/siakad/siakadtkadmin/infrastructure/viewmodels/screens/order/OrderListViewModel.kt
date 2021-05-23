@@ -120,8 +120,7 @@ class OrderListViewModel(private val context: Context) :
     Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
   }
 
-  override fun onCleared() {
-    super.onCleared()
+  fun clearListener() {
     orderRepository.removeEventListener()
     userRepository.removeEventListener()
   }

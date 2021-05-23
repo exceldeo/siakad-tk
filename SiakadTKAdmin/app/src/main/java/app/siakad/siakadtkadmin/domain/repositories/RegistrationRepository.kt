@@ -16,7 +16,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class RegistrationRepository() {
+class RegistrationRepository {
+  private val eventListeners: ArrayList<Any> = arrayListOf()
 
   private val registrationDB = FirebaseRef(
     FirebaseRef.DAFTAR_ULANG_REF
@@ -26,7 +27,7 @@ class RegistrationRepository() {
     listener: RegistrationListListener,
     verified: Boolean = true
   ) {
-    registrationDB.orderByChild("statusDaful").equalTo(verified)
+    val eventListener = registrationDB.orderByChild("statusDaful").equalTo(verified)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -74,6 +75,8 @@ class RegistrationRepository() {
           }
         }
       })
+
+    eventListeners.add(eventListener)
   }
 
   fun updateRegisData(listener: RegistrationDetailListener, data: DaftarUlangModel) {
@@ -93,5 +96,15 @@ class RegistrationRepository() {
     registrationDB.child(data.dafulId).removeValue().addOnSuccessListener {
       listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getSuccesModel("Success"))
     }.addOnFailureListener { listener.notifyRegistrationDetailDeleteStatus(ModelContainer.getFailModel()) }
+  }
+
+  fun removeEventListener() {
+    eventListeners.forEach {
+      if (it is ChildEventListener) {
+        registrationDB.removeEventListener(it)
+      } else if (it is ValueEventListener) {
+        registrationDB.removeEventListener(it)
+      }
+    }
   }
 }
