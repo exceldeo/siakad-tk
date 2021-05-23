@@ -77,6 +77,7 @@ class AnnouncementListActivity : AppCompatActivity() {
 
         val obsProfileGetUser = Observer<Pengguna> {
             dataUser = it
+            vmAnnouncement.setAnnouncementByClass(it.detail!!.kelasId)
         }
 
         vmProfile.getUserData()
@@ -88,7 +89,6 @@ class AnnouncementListActivity : AppCompatActivity() {
         ).get(AnnouncementViewModel::class.java)
 
         vmAnnouncement.setAnnouncementByUserId()
-        dataUser.detail?.let { vmAnnouncement.setAnnouncementByClass(it.kelas) }
     }
 
     private fun setupAppBar() {

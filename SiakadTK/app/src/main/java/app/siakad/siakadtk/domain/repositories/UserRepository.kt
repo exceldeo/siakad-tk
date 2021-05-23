@@ -111,11 +111,10 @@ class UserRepository() {
 
     fun updateDetailData(listener: UserListener, detail: DaftarUlang, dataUser: Pengguna) {
         detailPengguna = DetailPenggunaModel(
-            kelas = detail.kelas,
+            kelasId = detail.kelas,
             jenisKelamin = detail.jenisKelamin,
             tanggalLahir = detail.tanggalLahir,
             namaOrtu = detail.namaWali,
-            tahunAjaran = detail.tahunAjaran,
             fotoBayarAwal = detail.fotoBayar,
         )
         updateDataFromRegistration(listener, detail, dataUser)

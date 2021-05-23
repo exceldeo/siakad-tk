@@ -8,13 +8,17 @@ import androidx.lifecycle.*
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.db.storage.FirebaseStrg
 import app.siakad.siakadtk.domain.models.DaftarUlangModel
+import app.siakad.siakadtk.domain.models.KelasModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.domain.repositories.ClassroomRepository
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.repositories.RegistrationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.storage.WholeStorage
+import app.siakad.siakadtk.domain.utils.listeners.classroom.ClassroomListListener
+import app.siakad.siakadtk.domain.utils.listeners.classroom.ClassroomListener
 import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
 import app.siakad.siakadtk.domain.utils.listeners.storage.StorageListener
 import app.siakad.siakadtk.infrastructure.data.DaftarUlang
@@ -25,9 +29,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class RegistrationFormViewModel (private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel(), UserListener, StorageListener {
+    ViewModel(), UserListener, StorageListener, ClassroomListener {
     private val registrationRepository = RegistrationRepository()
     private val userRepository = UserRepository()
+    private val classroomRepository = ClassroomRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
     private val fbStorage = WholeStorage(FirebaseStrg.USER_DETAIL_REF)
 
@@ -36,6 +41,9 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     private val liveDataUser = MutableLiveData<Pengguna>()
     private val liveDataDaful = MutableLiveData<DaftarUlang>()
     private var dataUser = Pengguna()
+    private val classroomLiveData = MutableLiveData<KelasModel>()
+    private var dataKelas = KelasModel()
+
     init {
         setupObserver()
         registrationRepository.initEventListener(this)
@@ -74,6 +82,35 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
                 System.currentTimeMillis().toString() + "." + getFileExtension(fotoBayar!!)
             )
         }
+    }
+
+    fun setKelasName(kelasId: String) {
+        vmCoroutineScope.launch {
+            classroomRepository.initGetClassroomListListenerById(this@RegistrationFormViewModel, kelasId)
+        }
+    }
+
+    override fun setClassroomById(kelas: ModelContainer<KelasModel>) {
+        if (kelas.status == ModelState.SUCCESS) {
+            val item = kelas.data
+
+            if (item != null) {
+                dataKelas = KelasModel(
+                    kelasId = item.kelasId,
+                    namaKelas = item.namaKelas,
+                    tahunMulai = item.tahunMulai,
+                    tahunSelesai = item.tahunSelesai,
+                    daftarSiswa = item.daftarSiswa
+                )
+                classroomLiveData.postValue(dataKelas)
+            } else if (kelas.status == ModelState.ERROR) {
+                showToast("Gagal mendapat kelas")
+            }
+        }
+    }
+
+    fun getClassroomListById() : LiveData<KelasModel> {
+        return classroomLiveData
     }
 
     private fun showToast(msg: String) {

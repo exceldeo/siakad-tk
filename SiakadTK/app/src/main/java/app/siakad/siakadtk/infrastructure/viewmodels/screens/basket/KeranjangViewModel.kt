@@ -57,8 +57,7 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
                 gambar = image,
                 ukuran = ukuran,
                 jumlah = jumlah,
-                harga = harga,
-                adminId = adminId,
+                harga = harga
             ))
         }
     }
@@ -108,7 +107,6 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
                 basket.data?.forEach { item ->
                     dataKeranjang.add(
                         DetailKeranjangModel(
-                            adminId = item.adminId,
                             produkId = item.produkId,
                             nama = item.nama,
                             gambar = item.gambar,
@@ -136,7 +134,6 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
                             jumlah = item.jumlah,
                             harga = item.harga,
                             ukuran = item.ukuran,
-                            adminId = item.adminId,
                             produkId = item.produkId
                         )
                     )

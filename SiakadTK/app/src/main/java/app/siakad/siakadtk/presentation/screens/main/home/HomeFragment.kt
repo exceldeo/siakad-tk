@@ -2,6 +2,7 @@ package app.siakad.siakadtk.presentation.screens.main.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +65,6 @@ class HomeFragment : Fragment() {
         setupObserver()
 
         vmAnnouncement.setAnnouncementByUserId()
-        dataUser.detail?.let { vmAnnouncement.setAnnouncementByClass(it.kelas) }
         return view
     }
     
@@ -147,7 +147,9 @@ class HomeFragment : Fragment() {
         val obsRegistrationGetUser = Observer<Pengguna> {
             dataUser = it
 
-            if (it.detail!!.kelas == "") {
+            vmAnnouncement.setAnnouncementByClass(it.detail!!.kelasId)
+
+            if (it.detail!!.kelasId == "") {
                 tvStatusRegistrationTitle.text = "Anda belum melakukan daftar ulang"
                 tvStatusRegistrationDesc.text = "Silahkan melakukan daftar ulang, sebelum\n" + "tanggal 31 Januari."
                 ibtnStatusRegistration.setImageResource(R.drawable.ic_daful_start)

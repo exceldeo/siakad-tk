@@ -12,6 +12,7 @@ import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
@@ -55,7 +56,6 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private lateinit var ddClass: TextInputLayout
     private lateinit var etParentName: EditText
     private lateinit var etAddress: EditText
-    private lateinit var ddTahunAjaran: TextInputLayout
     private lateinit var etPhoneNumber: EditText
     private lateinit var btnUploadBukti: Button
     private lateinit var btnCancel: TextView
@@ -73,6 +73,7 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
 
     private var tempDetailPengguna = DetailPenggunaModel()
     private var dataDaful = DaftarUlang()
+    private var tahunAjaran = ""
 
     private var paymentImage: Uri? = null
 
@@ -151,7 +152,6 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         ddClass = findViewById(R.id.dd_registrationform_kelas)
         etParentName = findViewById(R.id.et_registrationform_nama_ortu)
         etAddress = findViewById(R.id.et_registrationform_alamat)
-        ddTahunAjaran = findViewById(R.id.dd_registrationform_tahun_ajaran)
         etPhoneNumber = findViewById(R.id.et_registrationform_no_hp_ortu)
 //        etTotalPayment = findViewById(R.id.et_registrationform_nominal)
         btnUploadBukti = findViewById(R.id.btn_registrationform_upload_bukti_bayar)
@@ -217,30 +217,12 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             TextWatcher {
             @SuppressLint("SetTextI18n")
             override fun afterTextChanged(str: Editable?) {
-                var indexThisClass = classrooms.indexOf(str.toString())
-                tempDetailPengguna.kelas = classrooms[indexThisClass].kelasId
-            }
-
-            override fun beforeTextChanged(
-                str: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {}
-
-            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        val tahunAjaranAdapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, tahunAjarans)
-
-        ddTahunAjaran = findViewById(R.id.dd_registrationform_tahun_ajaran)
-        (ddTahunAjaran.editText as MaterialAutoCompleteTextView).setText("Pilih satu")
-        (ddTahunAjaran.editText as MaterialAutoCompleteTextView).setAdapter(tahunAjaranAdapter)
-        (ddTahunAjaran.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
-            TextWatcher {
-            @SuppressLint("SetTextI18n")
-            override fun afterTextChanged(str: Editable?) {
-                tempDetailPengguna.tahunAjaran = str.toString()
+                for (croom in classrooms) {
+                    if (croom.namaKelas == str.toString()) {
+                        tempDetailPengguna.kelasId = croom.kelasId
+                        tahunAjaran = croom.tahunMulai.toString() + "/" + croom.tahunSelesai.toString()
+                    }
+                }
             }
 
             override fun beforeTextChanged(
@@ -345,13 +327,8 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
             returnState = false
         }
 
-        if(tempDetailPengguna.kelas.isEmpty()) {
+        if(tempDetailPengguna.kelasId.isEmpty()) {
             ddClass.error = getString(R.string.empty_input)
-            returnState = false
-        }
-
-        if(tempDetailPengguna.tahunAjaran.isEmpty()) {
-            ddTahunAjaran.error = getString(R.string.empty_input)
             returnState = false
         }
 
@@ -369,13 +346,13 @@ class RegistrationFormActivity : AppCompatActivity(), AdapterView.OnItemSelected
         if (validateInput()) {
             vmRegistrationForm.setData(
                 etName.text.toString(),
-                tempDetailPengguna.kelas.toString(),
+                tempDetailPengguna.kelasId,
                 etParentName.text.toString(),
                 spGender.selectedItem.toString(),
                 etBornDate.text.toString(),
                 etAddress.text.toString(),
                 etPhoneNumber.text.toString(),
-                tempDetailPengguna.tahunAjaran.toString(),
+                tahunAjaran,
                 0,
                 paymentImage,
             )
