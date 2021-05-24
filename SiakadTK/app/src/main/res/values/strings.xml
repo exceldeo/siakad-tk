@@ -47,14 +47,14 @@
     <string name="until_date">Hingga 30 Januari 2021</string>
     <string name="pengumuman">Pengumuman</string>
     <string name="lihat_semua">Lihat Semua</string>
-    <string name="example_pengumuman_title">Pendaftaran Ulang Dibuka</string>
+    <string name="example_pengumuman_title">Tidak Ada Pengumuman</string>
     <string name="belum_daftar_ulang">Anda Belum Daftar Ulang</string>
     <string name="desc_daftar_ulang">Silahkan melakukan daftar ulang, sebelum tanggal 31 Januari.</string>
     <string name="status_pemesanan">Status Pemesanan</string>
     <string name="nota_pemesanan">Nota Pemesanan</string>
     <string name="example_produk">Seragam Olahraga, Buku Tema, Seragam Formal</string>
     <string name="pendaftaran_ulang_dibuka">Pendaftaran Ulang Dibuka</string>
-    <string name="example_desc_pengumuman">Untuk seluruh wali murid TK Ini dimohon untuk segera melakukan pendaftaran ulang sebelum tanggal 31 Januari, Terimakasih!</string>
+    <string name="example_desc_pengumuman">Belum ada pengumuman untuk saat ini, terima kasih!</string>
     <string name="example_date_pengumuman_inside">Diumumkan pada, 12 Januari 2021</string>
     <string name="keranjang_pesanan">Keranjang Pesanan</string>
     <string name="example_desc_basket_1">1 Buku Tema 5 Tanaman</string>
@@ -184,12 +184,14 @@
     <string name="fail_basket">Terjadi kesalahan, keranjang Anda gagal dibuat!</string>
     <string name="scs_get_data">Data berhasil diambil</string>
     <string name="fail_get_data">Data gagal diambil</string>
+    <string name="fail_remove_daful">Data daftar ulang gagal dihapus</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
     <string name="scs_set_passwd">Password berhasil diubah</string>
     <string name="scs_set_email">Email berhasil diubah</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
     <string name="fail_set_passwd">Password gagal diubah</string>
     <string name="fail_set_email">Email gagal diubah</string>
+    <string name="rejected_please_regis_again">Pendaftaran email ini pernah ditolak, mohon registrasi ulang</string>
     <string name="buku">Buku</string>
     <string name="seragam">Seragam</string>
 

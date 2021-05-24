@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -36,11 +38,13 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var tvSeeAllAnnouncement: TextView
+    private lateinit var flAnnouncement: FrameLayout
     private lateinit var rvAnnouncement: RecyclerView
     private lateinit var tvStatusRegistrationTitle: TextView
     private lateinit var tvStatusRegistrationDesc: TextView
     private lateinit var ibtnStatusRegistration: ImageButton
     private lateinit var tvSeeAllOrderStatus: TextView
+    private lateinit var hsvAnnouncement: HorizontalScrollView
     private lateinit var rvOrder: RecyclerView
     private lateinit var rvAnnouncementAdapter: AnnouncementAdapter
     private lateinit var rvOrderAdapter: OrderAdapter
@@ -71,6 +75,8 @@ class HomeFragment : Fragment() {
     private fun setupItemView(v: View?) {
         if(v != null) {
             tvSeeAllAnnouncement = v.findViewById(R.id.tv_home_pengumuman_lihat_semua)
+            flAnnouncement = v.findViewById(R.id.fl_home_pengumuman_jika_kosong)
+            hsvAnnouncement = v.findViewById(R.id.hs_home_pengumuman_list)
             rvAnnouncement = v.findViewById(R.id.rv_home_pengumuman_list)
             tvStatusRegistrationTitle = v.findViewById(R.id.tv_home_item_daful_title)
             tvStatusRegistrationDesc = v.findViewById(R.id.tv_home_item_daful_desc)
@@ -175,6 +181,8 @@ class HomeFragment : Fragment() {
     private fun setupObserver() {
         announcementListObserver = Observer { list ->
             if (list.size > 0) {
+                hsvAnnouncement.visibility = View.VISIBLE
+                flAnnouncement.visibility = View.GONE
                 rvAnnouncementAdapter.changeDataList(list)
             }
         }

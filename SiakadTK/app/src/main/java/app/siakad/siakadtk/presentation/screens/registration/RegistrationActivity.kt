@@ -135,7 +135,7 @@ class RegistrationActivity : AppCompatActivity() {
             dataKelasUser = it
 
             tvClassYear.text = it.tahunMulai.toString() + "/" + it.tahunSelesai.toString()
-            tvClass.text = it.namaKelas 
+            tvClass.text = it.namaKelas
         }
 
         vmRegistrationForm.getClassroomListById()
@@ -143,6 +143,10 @@ class RegistrationActivity : AppCompatActivity() {
 
         val obsRegistrationGetDaful = Observer<DaftarUlang> {
             dataDaful = it
+
+            if(it == null) {
+                cvToForm.visibility = View.VISIBLE
+            }
         }
         vmRegistrationForm.getDaftarUlangData()
             .observe(this, obsRegistrationGetDaful)

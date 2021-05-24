@@ -68,8 +68,8 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
 
-    fun getPengguna(): PenggunaModel {
-        return pengguna
+    fun isRejected(): Boolean {
+        return pengguna.nama == ""
     }
 
     override fun notifyLoginStatus(status: ModelContainer<String>) {
