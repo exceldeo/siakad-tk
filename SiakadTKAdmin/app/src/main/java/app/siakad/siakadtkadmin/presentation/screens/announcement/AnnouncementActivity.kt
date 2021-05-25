@@ -70,8 +70,14 @@ class AnnouncementActivity : AppCompatActivity(), AnnouncementEditListener {
   }
 
   override fun navigateToAnnouncementEdit(announecement: PengumumanModel) {
-    val intent = Intent(this, AnnouncementAddActivity::class.java)
-    intent.putExtra(AnnouncementAddActivity.ANNOUNCEMENT_EDIT, announecement)
-    startActivity(intent)
+    if (announecement.confirmable) {
+      val intent = Intent(this, AnnouncementDetailActivity::class.java)
+      intent.putExtra(AnnouncementAddActivity.ANNOUNCEMENT_EDIT, announecement)
+      startActivity(intent)
+    } else {
+      val intent = Intent(this, AnnouncementAddActivity::class.java)
+      intent.putExtra(AnnouncementAddActivity.ANNOUNCEMENT_EDIT, announecement)
+      startActivity(intent)
+    }
   }
 }

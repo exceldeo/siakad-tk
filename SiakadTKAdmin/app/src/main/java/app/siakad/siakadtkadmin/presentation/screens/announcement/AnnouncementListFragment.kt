@@ -20,92 +20,92 @@ import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewMode
 import app.siakad.siakadtkadmin.presentation.screens.announcement.adapter.AnnouncementListAdater
 
 class AnnouncementListFragment(private val type: String) : Fragment() {
-    private lateinit var tvAnnouncementCount: TextView
-    private lateinit var rvAnnouncementList: RecyclerView
+  private lateinit var tvAnnouncementCount: TextView
+  private lateinit var rvAnnouncementList: RecyclerView
 
-    private lateinit var vmAnnouncementList: AnnouncementListViewModel
-    private lateinit var announcementListAdapter: AnnouncementListAdater
+  private lateinit var vmAnnouncementList: AnnouncementListViewModel
+  private lateinit var announcementListAdapter: AnnouncementListAdater
 
-    private lateinit var svAnnouncement: SearchView
-    private lateinit var ivAddAnnouncement: ImageView
+  private lateinit var svAnnouncement: SearchView
+  private lateinit var ivAddAnnouncement: ImageView
 
-    companion object {
-        const val ANNOUNCEMENT_TYPE = "Announcement_Type"
-        const val TO_ALL = "Semua"
-        const val TO_SISWA = "Siswa"
-        const val TO_KELAS = "Kelas"
+  companion object {
+    const val ANNOUNCEMENT_TYPE = "Announcement_Type"
+    const val TO_ALL = "Semua"
+    const val TO_SISWA = "Siswa"
+    const val TO_KELAS = "Kelas"
 
-        fun getAllAnnouncementListFragment(): AnnouncementListFragment {
-            return AnnouncementListFragment(
-                TO_ALL
-            )
-        }
-
-        fun getUserAnnouncementListFragment(): AnnouncementListFragment {
-            return AnnouncementListFragment(
-                TO_SISWA
-            )
-        }
-
-        fun getClassAnnouncementListFragment(): AnnouncementListFragment {
-            return AnnouncementListFragment(
-                TO_KELAS
-            )
-        }
+    fun getAllAnnouncementListFragment(): AnnouncementListFragment {
+      return AnnouncementListFragment(
+          TO_ALL
+      )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_announcement_list, container, false)
-
-        tvAnnouncementCount = view.findViewById(R.id.tv_announcement_list_jumlah_pengumuman)
-        svAnnouncement = view.findViewById(R.id.sv_announcement_list_cari)
-
-        setupButton(view)
-        setupListAdapter(view)
-        setupViewModel()
-
-        return view
+    fun getUserAnnouncementListFragment(): AnnouncementListFragment {
+      return AnnouncementListFragment(
+          TO_SISWA
+      )
     }
 
-    private fun setupButton(v: View?) {
-        if (v != null) {
-            ivAddAnnouncement = v.findViewById(R.id.iv_announcement_list_tambah_announ)
-            ivAddAnnouncement.setOnClickListener {
-                val intent = Intent(this.context, AnnouncementAddActivity::class.java)
-                intent.putExtra(ANNOUNCEMENT_TYPE, type)
-                startActivity(intent)
-            }
-        }
+    fun getClassAnnouncementListFragment(): AnnouncementListFragment {
+      return AnnouncementListFragment(
+          TO_KELAS
+      )
     }
+  }
 
-    private fun setupViewModel() {
-        vmAnnouncementList = ViewModelProvider(
-            this, ViewModelFactory(this.viewLifecycleOwner, this.context)
-        ).get(AnnouncementListViewModel::class.java)
-        vmAnnouncementList.setAnnouncementType(type)
+  override fun onCreateView(
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
+  ): View? {
+    val view = inflater.inflate(R.layout.fragment_announcement_list, container, false)
 
-        val obsAnnouncementList = Observer<ArrayList<PengumumanModel>> { newAnnouncementList ->
-            if (newAnnouncementList.size > 0) {
-                announcementListAdapter.changeDataList(newAnnouncementList)
-            }
-        }
-        vmAnnouncementList.getAnnouncementList()
-            .observe(this.viewLifecycleOwner, obsAnnouncementList)
+    tvAnnouncementCount = view.findViewById(R.id.tv_announcement_list_jumlah_pengumuman)
+    svAnnouncement = view.findViewById(R.id.sv_announcement_list_cari)
+
+    setupButton(view)
+    setupListAdapter(view)
+    setupViewModel()
+
+    return view
+  }
+
+  private fun setupButton(v: View?) {
+    if (v != null) {
+      ivAddAnnouncement = v.findViewById(R.id.iv_announcement_list_tambah_announ)
+      ivAddAnnouncement.setOnClickListener {
+        val intent = Intent(this.context, AnnouncementAddActivity::class.java)
+        intent.putExtra(ANNOUNCEMENT_TYPE, type)
+        startActivity(intent)
+      }
     }
+  }
 
-    private fun setupListAdapter(v: View?) {
-        if (v != null) {
-            rvAnnouncementList = v.findViewById(R.id.rv_announcement_list_daftar_pengumuman)
-            announcementListAdapter = AnnouncementListAdater()
-            rvAnnouncementList.apply {
-                setHasFixedSize(true)
-                adapter = announcementListAdapter
-                layoutManager = LinearLayoutManager(this.context)
-            }
-        }
+  private fun setupViewModel() {
+    vmAnnouncementList = ViewModelProvider(
+        this, ViewModelFactory(this.viewLifecycleOwner, this.context)
+    ).get(AnnouncementListViewModel::class.java)
+    vmAnnouncementList.setAnnouncementType(type)
+
+    val obsAnnouncementList = Observer<ArrayList<PengumumanModel>> { newAnnouncementList ->
+      if (newAnnouncementList.size > 0) {
+        announcementListAdapter.changeDataList(newAnnouncementList)
+      }
     }
+    vmAnnouncementList.getAnnouncementList()
+      .observe(this.viewLifecycleOwner, obsAnnouncementList)
+  }
+
+  private fun setupListAdapter(v: View?) {
+    if (v != null) {
+      rvAnnouncementList = v.findViewById(R.id.rv_announcement_list_daftar_pengumuman)
+      announcementListAdapter = AnnouncementListAdater()
+      rvAnnouncementList.apply {
+        setHasFixedSize(true)
+        adapter = announcementListAdapter
+        layoutManager = LinearLayoutManager(this.context)
+      }
+    }
+  }
 }
