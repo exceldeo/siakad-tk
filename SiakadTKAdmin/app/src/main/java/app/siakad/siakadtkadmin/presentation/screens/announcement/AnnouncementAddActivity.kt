@@ -19,6 +19,9 @@ import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.announcement.AnnouncementAddViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtkadmin.presentation.screens.classroom.ClassroomListFragment
+import app.siakad.siakadtkadmin.presentation.screens.order.detail.OrderDetailActivity
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtkadmin.presentation.views.alert.AlertListener
 import app.siakad.siakadtkadmin.presentation.views.date.DateListener
 import app.siakad.siakadtkadmin.presentation.views.date.DatePickerFragment
 import com.google.android.material.button.MaterialButton
@@ -28,7 +31,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AnnouncementAddActivity : AppCompatActivity(), DateListener {
+class AnnouncementAddActivity : AppCompatActivity(), DateListener, AlertListener {
 
   private val pageTitle = "Tambah Pengumuman"
 
@@ -36,6 +39,9 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
   private lateinit var etContent: EditText
   private lateinit var ivDate: ImageView
   private lateinit var etDate: EditText
+  private lateinit var cbConfirmable: CheckBox
+
+  private lateinit var btnDelete: MaterialButton
   private lateinit var btnCancel: MaterialButton
   private lateinit var btnSave: MaterialButton
 
@@ -80,6 +86,8 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
 
     etTitle = findViewById(R.id.et_announcement_add_judul)
     etContent = findViewById(R.id.et_announcement_add_isi)
+    cbConfirmable = findViewById(R.id.cb_announcement_add_confirmable)
+
     datePicker = DatePickerFragment()
     calendar = Calendar.getInstance()
 
@@ -305,23 +313,58 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
     btnSave.setOnClickListener {
       if (validateInput()) {
         if (pengumuman != null) {
-          vmAnnouncementAdd.updateAnnouncement(
-            etTitle.text.toString(),
-            etContent.text.toString(),
-            etDate.text.toString(),
-            announcementType,
-            tujuanId,
-            pengumuman!!
-          )
+          if (announcementType == AnnouncementListFragment.TO_SISWA) {
+            vmAnnouncementAdd.updateAnnouncement(
+              etTitle.text.toString(),
+              etContent.text.toString(),
+              etDate.text.toString(),
+              announcementType,
+              tujuanId,
+              pengumuman!!,
+              cbConfirmable.isChecked,
+            )
+          } else {
+            vmAnnouncementAdd.updateAnnouncement(
+              etTitle.text.toString(),
+              etContent.text.toString(),
+              etDate.text.toString(),
+              announcementType,
+              tujuanId,
+              pengumuman!!
+            )
+          }
         } else {
-          vmAnnouncementAdd.insertAnnouncement(
-            etTitle.text.toString(),
-            etContent.text.toString(),
-            etDate.text.toString(),
-            announcementType,
-            tujuanId
-          )
+          if (announcementType == AnnouncementListFragment.TO_SISWA) {
+            vmAnnouncementAdd.insertAnnouncement(
+              etTitle.text.toString(),
+              etContent.text.toString(),
+              etDate.text.toString(),
+              announcementType,
+              tujuanId,
+              cbConfirmable.isChecked
+            )
+          } else {
+            vmAnnouncementAdd.insertAnnouncement(
+              etTitle.text.toString(),
+              etContent.text.toString(),
+              etDate.text.toString(),
+              announcementType,
+              tujuanId
+            )
+          }
         }
+      }
+    }
+
+    if (pengumuman != null) {
+      btnDelete = findViewById(R.id.btn_announcement_add_hapus)
+      btnDelete.visibility = View.VISIBLE
+      btnDelete.setOnClickListener {
+        val alertDialog = AlertDialogFragment(
+          "Hapus pengumuman",
+          "Apakah Anda yakin menghapus pesanan ini?"
+        )
+        alertDialog.show(supportFragmentManager, null)
       }
     }
   }
@@ -395,5 +438,10 @@ class AnnouncementAddActivity : AppCompatActivity(), DateListener {
 
   private fun showToast(msg: String) {
     Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+  }
+
+  override fun alertAction(tag: String?) {
+    vmAnnouncementAdd.removeData(pengumuman!!)
+    onBackPressed()
   }
 }

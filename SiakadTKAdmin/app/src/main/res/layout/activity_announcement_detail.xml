@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.screens.announcement.AnnouncementAddActivity">
+    tools:context=".presentation.screens.announcement.AnnouncementDetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/appbar_height"
-        android:paddingBottom="@dimen/appbar_padding_top"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/appbar_padding_top">
 
-        <include layout="@layout/item_toolbar"/>
+        <include layout="@layout/item_toolbar" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -28,32 +27,7 @@
             android:paddingHorizontal="@dimen/container_padding_x"
             android:paddingVertical="@dimen/container_padding_y">
 
-            <TextView
-                style="@style/sTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="Tujuan" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dd_announcement_add"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/colorPrimaryLight"
-                app:boxCornerRadiusBottomEnd="@dimen/list_corner"
-                app:boxCornerRadiusBottomStart="@dimen/list_corner"
-                app:boxCornerRadiusTopEnd="@dimen/list_corner"
-                app:boxCornerRadiusTopStart="@dimen/list_corner">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <LinearLayout
-                android:id="@+id/ll_announcement_add_siswa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -62,94 +36,30 @@
                     style="@style/sTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     android:text="Nama Siswa" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_announcement_detail_siswa"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:elevation="0dp"
-                        app:cardBackgroundColor="@color/colorPrimary"
-                        app:cardCornerRadius="@dimen/list_corner">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            app:cardBackgroundColor="@color/colorPrimaryLight"
-                            app:cardCornerRadius="@dimen/list_corner">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/et_announcement_add_nama_siswa"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@android:color/transparent"
-                                android:hint="Nama Siswa"
-                                android:padding="@dimen/input_text_padding" />
-                        </androidx.cardview.widget.CardView>
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
+                    android:text="Namaku"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/card_subtitle_text" />
 
                 <TextView
                     style="@style/sTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Konfirmasi" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.checkbox.MaterialCheckBox
-                        android:id="@+id/cb_announcement_add_confirmable"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Membutuhkan Konfirmasi Siswa"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/card_subtitle_text" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_announcement_add_kelas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
+                    android:text="Status Konfirmasi" />
 
                 <TextView
-                    style="@style/sTitle"
+                    android:id="@+id/tv_announcement_detail_status_konfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kelas" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dd_announcement_add_nama_kelas"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxBackgroundColor="@color/colorPrimaryLight"
-                    app:boxCornerRadiusBottomEnd="@dimen/list_corner"
-                    app:boxCornerRadiusBottomStart="@dimen/list_corner"
-                    app:boxCornerRadiusTopEnd="@dimen/list_corner"
-                    app:boxCornerRadiusTopStart="@dimen/list_corner">
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:text="Namaku"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/card_subtitle_text" />
             </LinearLayout>
 
             <TextView
@@ -173,7 +83,7 @@
                     app:cardCornerRadius="@dimen/list_corner">
 
                     <EditText
-                        android:id="@+id/et_announcement_add_judul"
+                        android:id="@+id/et_announcement_detail_judul"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -205,7 +115,7 @@
                     app:cardCornerRadius="@dimen/list_corner">
 
                     <EditText
-                        android:id="@+id/et_announcement_add_isi"
+                        android:id="@+id/et_announcement_detail_isi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -227,7 +137,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/iv_announcement_add_tanggal"
+                    android:id="@+id/iv_announcement_detail_tanggal"
                     android:layout_width="@dimen/card_title_ic_size"
                     android:layout_height="@dimen/card_title_ic_size"
                     android:layout_marginEnd="@dimen/container_padding_x"
@@ -248,7 +158,7 @@
                         app:cardCornerRadius="@dimen/list_corner">
 
                         <EditText
-                            android:id="@+id/et_announcement_add_tanggal"
+                            android:id="@+id/et_announcement_detail_tanggal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -272,7 +182,7 @@
                     app:layout_flexGrow="1">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_announcement_add_batal"
+                        android:id="@+id/btn_announcement_detail_batal"
                         style="@style/CommonButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -282,11 +192,11 @@
                         android:text="Batal"
                         android:textSize="@dimen/button_text_text"
                         android:textAlignment="center"
-                        app:cornerRadius="@dimen/list_corner" />
+                        app:cornerRadius="@dimen/list_corner"/>
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_announcement_add_hapus"
+                    android:id="@+id/btn_announcement_detail_hapus"
                     style="@style/CommonButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -297,22 +207,21 @@
                     android:paddingEnd="@dimen/container_padding_x"
                     android:text="Hapus"
                     android:textSize="@dimen/button_text_text"
-                    android:visibility="gone"
                     app:cornerRadius="@dimen/list_corner"
-                    app:layout_alignSelf="flex_end" />
+                    app:layout_alignSelf="flex_end"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_announcement_add_simpan"
+                    android:id="@+id/btn_announcement_detail_simpan"
                     style="@style/CommonButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:paddingStart="@dimen/container_padding_x"
                     android:paddingEnd="@dimen/container_padding_x"
-                    android:text="Tambahkan"
+                    android:text="Simpan"
                     android:textSize="@dimen/button_text_text"
                     app:cornerRadius="@dimen/list_corner"
-                    app:layout_alignSelf="flex_end" />
+                    app:layout_alignSelf="flex_end"/>
             </com.google.android.flexbox.FlexboxLayout>
         </LinearLayout>
     </ScrollView>
