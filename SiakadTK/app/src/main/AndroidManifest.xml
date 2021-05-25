@@ -11,9 +11,19 @@
         android:roundIcon="@mipmap/ic_icon_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+<<<<<<< HEAD
         <activity android:name=".presentation.screens.announcement.AnnouncementDetailActivity"></activity>
         <activity android:name=".presentation.screens.profile.EmailActivity" />
+=======
+
+        <service
+            android:name=".presentation.utils.services.AnnouncementService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+>>>>>>> 6f32be283e601d6e0369ba193d1d38fc4ade23c7
         <activity android:name=".presentation.screens.main.PendingActivity" />
+        <activity android:name=".presentation.screens.profile.EmailActivity"/>
         <activity android:name=".presentation.views.preview.ImagePreviewActivity" />
         <activity android:name=".presentation.screens.product.ProductListActivity" />
         <activity android:name=".presentation.screens.registration.RegistrationActivity" />
