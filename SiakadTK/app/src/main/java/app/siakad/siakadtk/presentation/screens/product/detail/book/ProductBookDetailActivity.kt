@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangVie
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_row_product_detail.view.*
 
 class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private val pageTitle = "Produk Buku"
@@ -46,8 +48,9 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         item.gambar = data.fotoProduk
         item.jumlah = data.jumlah
         item.harga = data.harga
+        item.produkId = data.produkId
 
-        Picasso.get().load(item.gambar).into(ivProductImage)
+        Picasso.with(this.applicationContext).load(item.gambar).into(ivProductImage)
         tvProductName.text = item.nama
         tvProductPrice.text = item.harga.toString()
         etProductSum.setText(item.jumlah.toString())
@@ -65,7 +68,11 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
         etProductSum.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                item.jumlah = Integer.valueOf(etProductSum.text.toString())
+                if (etProductSum.text.isEmpty() || etProductSum.text.toString() == "") {
+                    item.jumlah = 0
+                } else {
+                    item.jumlah = Integer.valueOf(etProductSum.text.toString())
+                }
                 tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.harga) * Integer.valueOf(item.jumlah)).toString()
             }
 
@@ -90,7 +97,8 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                 name = item.nama,
                 image = item.gambar,
                 jumlah = Integer.valueOf(item.jumlah),
-                harga = item.harga * item.jumlah
+                harga = item.harga * item.jumlah,
+                produkId = item.produkId
             )
         }
     }
@@ -107,11 +115,7 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         if (p0 != null) {
-            Toast.makeText(
-                this,
-                "OnItemSelectedListener : " + p0.selectedItem.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+
         }
     }
 

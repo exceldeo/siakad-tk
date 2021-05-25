@@ -13,7 +13,7 @@ class OrderListViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
       tv_item_order_judul.text = item.pengguna.nama
       tv_item_order_kelas.text = item.pengguna.noHP
       tv_item_order_alamat.text = "Jumlah pesanan: " + item.pesanan.detailPesanan?.size.toString()
-      tv_item_order_tanggal.text = item.pesanan.tanggalPesan
+      tv_item_order_tanggal.text = item.pesanan.tanggalDipesan
 
       iv_item_order_detail.setOnClickListener {
         (v.context as OrderClickHelper).navigateToOrderDetail(item)

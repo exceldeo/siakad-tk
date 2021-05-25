@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
-import app.siakad.siakadtk.infrastructure.data.Pengumuman
+import app.siakad.siakadtk.domain.models.PengumumanModel
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 
@@ -25,7 +27,9 @@ class AnnouncementListActivity : AppCompatActivity() {
     private lateinit var rvAnnouncementAdapter: AnnouncementInsideAdapter
 
     private lateinit var vmAnnouncement: AnnouncementViewModel
-    private lateinit var announcementListObserver: Observer<ArrayList<Pengumuman>>
+    private lateinit var vmProfile: ProfileViewModel
+    private var dataUser = Pengguna()
+    private lateinit var announcementListObserver: Observer<ArrayList<PengumumanModel>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,10 +70,25 @@ class AnnouncementListActivity : AppCompatActivity() {
             adapter = rvAnnouncementAdapter
         }
 
+        vmProfile = ViewModelProvider(
+            this,
+            ViewModelFactory(this, this)
+        ).get(ProfileViewModel::class.java)
+
+        val obsProfileGetUser = Observer<Pengguna> {
+            dataUser = it
+            vmAnnouncement.setAnnouncementByClass(it.detail!!.kelasId)
+        }
+
+        vmProfile.getUserData()
+            .observe(this, obsProfileGetUser)
+
         vmAnnouncement = ViewModelProvider(
             this,
             ViewModelFactory(this, this)
         ).get(AnnouncementViewModel::class.java)
+
+        vmAnnouncement.setAnnouncementByUserId()
     }
 
     private fun setupAppBar() {

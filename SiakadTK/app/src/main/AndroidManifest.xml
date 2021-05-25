@@ -11,12 +11,15 @@
         android:roundIcon="@mipmap/ic_icon_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
         <service
             android:name=".presentation.utils.services.AnnouncementService"
             android:enabled="true"
             android:exported="true"></service>
 
         <activity android:name=".presentation.screens.main.PendingActivity" />
+        <activity android:name=".presentation.screens.profile.EmailActivity"/>
+        <activity android:name=".presentation.views.preview.ImagePreviewActivity" />
         <activity android:name=".presentation.screens.product.ProductListActivity" />
         <activity android:name=".presentation.screens.registration.RegistrationActivity" />
         <activity android:name=".presentation.screens.register.RegisterActivity" />

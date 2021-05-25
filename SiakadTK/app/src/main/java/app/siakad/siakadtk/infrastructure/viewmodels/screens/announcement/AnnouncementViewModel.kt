@@ -9,57 +9,92 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.models.PengumumanModel
 import app.siakad.siakadtk.domain.repositories.AnnouncementRepository
 import app.siakad.siakadtk.infrastructure.data.Pengumuman
+import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AnnouncementViewModel(private val context: Context, private val lcOwner: LifecycleOwner) :
-    ViewModel() {
-    private val announcementList = MutableLiveData<ArrayList<Pengumuman>>()
+    ViewModel(), AnnouncementListListener {
+    private val announcementList = MutableLiveData<ArrayList<PengumumanModel>>()
     private val announcementRepository = AnnouncementRepository()
     private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-
-    private lateinit var announcementRepoObserver: Observer<ModelContainer<ArrayList<PengumumanModel>>>
+    private val dataPengumumanList = arrayListOf<PengumumanModel>()
 
     init {
         vmCoroutineScope.launch {
-            announcementRepository.initEventListener()
+            announcementRepository.initGetAnnouncementListListener(
+                this@AnnouncementViewModel
+            )
         }
-        setupObserver()
     }
 
-    private fun setupObserver() {
-        announcementRepoObserver = Observer { data ->
-            if (data.status == ModelState.SUCCESS) {
-                val dataRepo = arrayListOf<Pengumuman>()
-                val list = data.data
-
-                list?.forEach{ item ->
-                    dataRepo.add(
-                        Pengumuman(
-                            pengumumanId = item.pengumumanId,
-                            judul = item.judul,
-                            keterangan = item.keterangan,
-                            tanggal = item.tanggal
-                        )
-                    )
-                }
-                announcementList.postValue(dataRepo)
-                showToast(context.getString(R.string.scs_get_data))
-            } else if (data.status == ModelState.ERROR) {
-                showToast(context.getString(R.string.fail_get_data))
-            }
+    fun setAnnouncementByUserId() {
+        vmCoroutineScope.launch {
+            announcementRepository.initGetAnnouncementListListenerByUserId(
+                this@AnnouncementViewModel
+            )
         }
-
-        announcementRepository.getAnnouncementList().observe(lcOwner, announcementRepoObserver)
     }
 
-    fun getAnnouncementList(): LiveData<ArrayList<Pengumuman>> {
+    fun setAnnouncementByClass(kelasId: String) {
+        vmCoroutineScope.launch {
+            announcementRepository.initGetAnnouncementListListenerByClass(
+                this@AnnouncementViewModel, kelasId
+            )
+        }
+    }
+
+    fun getAnnouncementList(): LiveData<ArrayList<PengumumanModel>> {
         return announcementList
     }
 
     private fun showToast(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun addAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                dataPengumumanList.add(pengumuman.data!!)
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_get_user))
+        }
+    }
+
+    override fun updateAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                dataPengumumanList.forEachIndexed { index, item ->
+                    if (item.tujuanId == pengumuman.data?.tujuanId) {
+                        dataPengumumanList[index] = pengumuman.data!!
+                    }
+                }
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
+        }
+    }
+
+    override fun removeAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            if (pengumuman.data != null) {
+                var target = 0
+                dataPengumumanList.forEachIndexed feData@{ index, item ->
+                    if (item.tujuanId == pengumuman.data?.tujuanId) {
+                        target = index
+                        return@feData
+                    }
+                }
+                dataPengumumanList.removeAt(target)
+                announcementList.postValue(dataPengumumanList)
+            }
+        } else if (pengumuman.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_update_data))
+        }
     }
 }

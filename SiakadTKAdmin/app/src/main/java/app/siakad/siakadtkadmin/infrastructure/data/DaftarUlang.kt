@@ -8,6 +8,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DaftarUlang (
-    var pengguna: PenggunaModel,
+    var pengguna: Pengguna,
     var daful: DaftarUlangModel
 ): Parcelable

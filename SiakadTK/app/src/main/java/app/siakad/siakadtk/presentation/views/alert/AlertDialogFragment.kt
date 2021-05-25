@@ -1,12 +1,10 @@
-package app.siakad.siakadtkadmin.presentation.views.alert
+package app.siakad.siakadtk.presentation.views.alert
 
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import app.siakad.siakadtk.R
-import app.siakad.siakadtk.presentation.views.alert.AlertListener
 
 class AlertDialogFragment(private val title: String, private val msg: String): DialogFragment() {
     private lateinit var alertDialog: AlertDialog.Builder
@@ -17,7 +15,11 @@ class AlertDialogFragment(private val title: String, private val msg: String): D
             .setTitle(title)
             .setMessage(msg)
             .setPositiveButton("Ya") { _, _ ->
-                alertListener?.alertAction()
+                if (tag != null) {
+                    alertListener?.alertAction(tag)
+                } else {
+                    alertListener?.alertAction("")
+                }
             }
             .setNegativeButton("Tidak") { dialogInterface, _ -> dialogInterface.dismiss() }
 

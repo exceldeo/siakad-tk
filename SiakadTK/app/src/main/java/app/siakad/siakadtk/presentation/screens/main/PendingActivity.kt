@@ -6,21 +6,27 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
+import com.squareup.picasso.Picasso
 
 class PendingActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var btnLogout: Button
-    private lateinit var btnCheck: Button
     private val authRepository = AuthenticationRepository()
+    private lateinit var vmProfile : ProfileViewModel
+    private var dataUser = Pengguna()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +40,7 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-            showToast(AuthenticationRepository.userState.toString())
-            if (AuthenticationRepository.userState) {
+            if (dataUser.status) {
                 navigateToMain()
             }
         }
@@ -46,22 +51,31 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
             logout()
         }
 
-//        btnCheck.setOnClickListener{
-//            showToast(AuthenticationRepository.userState.toString())
-//            if (AuthenticationRepository.userState) {
-//                navigateToMain()
-//            }
-//        }
+        vmProfile = ViewModelProvider(
+            this,
+            ViewModelFactory(
+                this,
+                this
+            )
+        ).get(ProfileViewModel::class.java)
+
+        val obsProfileGetUser = Observer<Pengguna> {
+            dataUser = it
+            AuthenticationRepository.setUser(it.userId, it.email, it.passwd, it.status)
+        }
+
+        vmProfile.getUserData()
+            .observe(this, obsProfileGetUser)
     }
 
     private fun setupItemView() {
         btnLogout = findViewById(R.id.btn_pending_logout)
-//        btnCheck = findViewById(R.id.btn_pending_check_status)
     }
 
     private fun logout() {
         authRepository.logout()
-//        showToast("Berhasil logout")
+        val intent = Intent(this@PendingActivity, SplashActivity::class.java)
+        startActivity(intent)
     }
 
     override fun navigateToMain() {
@@ -76,7 +90,7 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
         finish()
     }
 
-     override fun showToast(msg: String) {
+    override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

@@ -171,13 +171,34 @@
                 </LinearLayout>
             </com.google.android.flexbox.FlexboxLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bukti Pembayaran"
+                style="@style/mdTitle"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/appbar_padding_top"
+                android:textColor="@color/colorPrimary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_order_detail_buktibayar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lihat Bukti"
+                android:fontFamily="@font/poppins_bold"
+                style="@style/CommonButton"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/list_corner"
+                android:paddingEnd="@dimen/container_padding_x"
+                android:paddingStart="@dimen/container_padding_x"/>
+
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:flexDirection="row"
                 app:alignItems="center"
                 app:justifyContent="space_between"
-                android:layout_marginTop="@dimen/list_space"
+                android:layout_marginTop="@dimen/appbar_padding_top"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom">
 
                 <TextView

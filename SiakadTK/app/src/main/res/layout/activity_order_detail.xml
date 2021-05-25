@@ -27,10 +27,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_aorder_nota_title"
+                android:id="@+id/tv_order_detail_nota_title"
                 android:layout_width="match_parent"
                 android:layout_weight="3"
                 android:layout_marginTop="@dimen/container_padding_x"
@@ -54,7 +55,6 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
                     <TextView
-                        android:id="@+id/tv_aorder_tglorder_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -63,11 +63,11 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/list_desc_text" />
                     <TextView
-                        android:id="@+id/tv_aorder_tglorder_date"
+                        android:id="@+id/tv_order_detail_tglorder_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="@string/example_date"
+                        android:text="@string/no_content"
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="@dimen/list_desc_text" />
@@ -79,7 +79,6 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
                     <TextView
-                        android:id="@+id/tv_aorder_tglsetuju_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -88,11 +87,11 @@
                         android:layout_weight="2"
                         android:textSize="@dimen/list_desc_text" />
                     <TextView
-                        android:id="@+id/tv_aorder_tglsetuju_date"
+                        android:id="@+id/tv_order_detail_tglsetuju_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="@string/example_date"
+                        android:text="@string/no_content"
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="@dimen/list_desc_text" />
@@ -104,20 +103,19 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
                     <TextView
-                        android:id="@+id/tv_aorder_tglbayar_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="@string/tanggal_pesanan_dibayar"
+                        android:text="@string/tanggal_pesanan_selesai"
                         android:layout_weight="2"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/list_desc_text" />
                     <TextView
-                        android:id="@+id/tv_aorder_tglbayar_date"
+                        android:id="@+id/tv_order_detail_tglselesai_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="@string/example_date"
+                        android:text="@string/no_content"
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="@dimen/list_desc_text" />
@@ -126,15 +124,15 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_order_detail_status_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/container_padding_x"
                 android:background="@drawable/fill_input"
-                android:padding="@dimen/container_padding_x"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/container_padding_x">
 
                 <TextView
-                    android:id="@+id/tv_aorder_detail_title_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -144,23 +142,24 @@
                     tools:targetApi="lollipop" />
 
                 <TextView
-                    android:id="@+id/tv_aorder_detail_desc_status"
+                    android:id="@+id/tv_order_detail_detail_desc_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@string/terverivikasi_dan_menunggu_pembayaran"
+                    android:text="@string/belum_bayar"
                     android:textSize="@dimen/list_desc_text"
                     tools:targetApi="lollipop" />
 
                 <Button
+                    android:id="@+id/btn_order_detail_upload_bukti"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/container_padding_x"
+                    android:layout_marginTop="@dimen/padding_text"
+                    android:layout_marginBottom="@dimen/container_double_padding_y"
                     android:background="@drawable/fill_upload_img"
-                    android:gravity="center"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="@string/unggah_bukti_pembayaran"
-                    android:textColor="@color/colorPrimary" />
+                    android:gravity="center"
+                    android:text="@string/unggah_bukti_pembayaran" />
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +171,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_aorder_detail_title_detail_order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -181,11 +179,11 @@
                     android:textSize="@dimen/list_title_text"
                     tools:targetApi="lollipop"/>
 
-                <ListView
-                    android:layout_marginTop="@dimen/container_padding_x"
-                    android:id="@+id/rv_aorder_product_list"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_order_detail_product_list"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/container_padding_x"
                     tools:listitem="@layout/item_row_orderdetail_product" />
 
                 <View
@@ -196,7 +194,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv_subitem_name"
+                    android:id="@+id/tv_order_detail_total_payment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
@@ -209,4 +207,58 @@
 
         </LinearLayout>
     </ScrollView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_order_detail_bayar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="28dp"
+        app:cardCornerRadius="@dimen/list_corner"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ListTitle"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/container_padding_x"
+            android:layout_marginBottom="@dimen/container_padding_y">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:layout_marginEnd="@dimen/container_padding_x"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorUnSelect">
+
+                <TextView
+                    android:id="@+id/btn_order_detail_batal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="@string/batal"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/list_corner"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/btn_order_detail_bayar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/container_padding_x"
+                    android:text="Bayar"
+                    android:textColor="@android:color/white"
+                    style="@style/CommonButton"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

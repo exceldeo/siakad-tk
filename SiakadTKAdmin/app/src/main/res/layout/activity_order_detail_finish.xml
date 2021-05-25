@@ -183,11 +183,6 @@
                 android:layout_marginBottom="0dp"
                 android:text="Daftar Pesananan"
                 android:textColor="@color/colorPrimary" />
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/cb_order_detail_acc_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </com.google.android.flexbox.FlexboxLayout>
 
         <View

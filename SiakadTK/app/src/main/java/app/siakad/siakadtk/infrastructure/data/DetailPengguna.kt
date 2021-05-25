@@ -9,7 +9,6 @@ import kotlinx.android.parcel.Parcelize
 data class DetailPengguna(
     @get:Exclude
     var tanggalLahir: String = "",
-    var tahunAjaran: String = "",
     var namaOrtu: String = "",
     var fotoSiswa: String = "",
     var fotoBayarAwal: String = "",

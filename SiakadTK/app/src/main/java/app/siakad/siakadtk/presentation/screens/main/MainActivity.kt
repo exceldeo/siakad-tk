@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.MainViewModel
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity(), AlertListener {
         botnavMain.setupWithNavController(navconMain)
     }
 
-    override fun alertAction() {
+    override fun alertAction(tag: String?) {
         vmMain.logout()
         val intent = Intent(this@MainActivity, SplashActivity::class.java)
         startActivity(intent)

@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nama"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:textColor="@color/colorBlack"
                 android:background="@android:color/transparent"
                 style="@style/InputText.EdtTextNoMargin"/>
@@ -68,14 +68,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/kelas"
                 style="@style/LabelText"/>
-            <Spinner
-                android:id="@+id/sp_aprofile_kelas"
+            <TextView
+                android:id="@+id/tv_aprofile_kelas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/InputText"
-                android:entries="@array/list_kelas"
-                android:spinnerMode="dropdown"
+                android:text="@string/kelas"
                 style="@style/InputText.EdtTextNoMargin"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -85,13 +85,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tahun_ajaran"
                 style="@style/LabelText"/>
-            <Spinner
-                android:id="@+id/sp_aprofile_tahunajaran"
+            <TextView
+                android:id="@+id/tv_aprofile_tahunajaran"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/InputText"
-                android:entries="@array/list_ajaran"
-                android:spinnerMode="dropdown"
+                android:text="@string/tahun_ajaran"
                 style="@style/InputText.EdtTextNoMargin"/>
             <View
                 android:layout_width="match_parent"
@@ -103,13 +102,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/jenis_kelamin"
                 style="@style/LabelText"/>
-            <Spinner
-                android:id="@+id/sp_aprofile_jeniskelamin"
+            <TextView
+                android:id="@+id/tv_aprofile_jeniskelamin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/InputText"
-                android:entries="@array/list_jenis_kelamin"
-                android:spinnerMode="dropdown"
+                android:text="@string/jenis_kelamin"
                 style="@style/InputText.EdtTextNoMargin"/>
             <View
                 android:layout_width="match_parent"

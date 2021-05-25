@@ -28,6 +28,7 @@ class OrderListViewModel(private val context: Context) :
 
   private var dataPesananModelList: ArrayList<PesananModel> = arrayListOf()
   private var dataPesananList: ArrayList<Pesanan> = arrayListOf()
+  private var dataPesananKeyList: MutableSet<String> = mutableSetOf()
 
   fun setOrderType(type: String) {
     if (dataPesananList.isEmpty()) {
@@ -98,10 +99,9 @@ class OrderListViewModel(private val context: Context) :
     if (user.status == ModelState.SUCCESS) {
       if (user.data != null) {
         dataPesananModelList.forEach forE@{
-          if (it.userId == user.data?.userId) {
-            dataPesananList.add(
-              Pesanan(user.data!!, it)
-            )
+          if (it.userId == user.data?.userId && !dataPesananKeyList.contains(it.pesananId)) {
+            dataPesananKeyList.add(it.pesananId)
+            dataPesananList.add(Pesanan(user.data!!, it))
             orderList.postValue(dataPesananList)
             return@forE
           }
@@ -120,8 +120,8 @@ class OrderListViewModel(private val context: Context) :
     Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
   }
 
-  override fun onCleared() {
-    super.onCleared()
+  fun clearListener() {
     orderRepository.removeEventListener()
+    userRepository.removeEventListener()
   }
 }

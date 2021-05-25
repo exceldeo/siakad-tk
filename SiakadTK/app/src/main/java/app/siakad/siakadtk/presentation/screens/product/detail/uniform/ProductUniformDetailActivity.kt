@@ -19,6 +19,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFact
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_row_product_detail.view.*
 
 class ProductUniformDetailActivity : AppCompatActivity() {
     private val pageTitle = "Produk Seragam"
@@ -53,6 +54,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
             item.nama = data.namaProduk
             tvProductJenisKelamin.text = data.jenisKelamin
             item.gambar = data.fotoProduk
+            item.produkId = data.produkId
             for (it in data.detailSeragam) {
                 sizes.add(it.ukuran)
                 prices[it.ukuran] = it.harga
@@ -61,7 +63,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
         }
 
         tvProductName.text = item.nama
-        Picasso.get().load(item.gambar).into(ivProductImage)
+        Picasso.with(this.applicationContext).load(item.gambar).into(ivProductImage)
         setupAdapterListener()
     }
 
@@ -90,7 +92,11 @@ class ProductUniformDetailActivity : AppCompatActivity() {
                 item.ukuran = str.toString()
                 totals[str.toString()].toString().let {
                     etProductSum.setText(it)
-                    item.jumlah = Integer.valueOf(it)
+                    if (it.isEmpty() || it == "") {
+                        item.jumlah = 0
+                    } else {
+                        item.jumlah = Integer.valueOf(it)
+                    }
                 }
                 prices[str.toString()].toString().let {
                     tvProductPrice.text = it
@@ -126,7 +132,11 @@ class ProductUniformDetailActivity : AppCompatActivity() {
 //        }
         etProductSum.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                item.jumlah = Integer.valueOf(etProductSum.text.toString())
+                if (etProductSum.text.isEmpty() || etProductSum.text.toString() == "") {
+                    item.jumlah = 0
+                } else {
+                    item.jumlah = Integer.valueOf(etProductSum.text.toString())
+                }
                 tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(tvProductPrice.text.toString()) * Integer.valueOf(etProductSum.text.toString())).toString()
             }
 
@@ -153,6 +163,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
                 ukuran = item.ukuran,
                 jumlah = item.jumlah,
                 harga = item.jumlah * item.harga,
+                produkId = item.produkId
             )
         }
     }

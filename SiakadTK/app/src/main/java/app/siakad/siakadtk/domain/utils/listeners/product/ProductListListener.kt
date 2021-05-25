@@ -7,4 +7,5 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 interface ProductListListener {
     fun setUniformList(product: ModelContainer<ArrayList<SeragamModel>>)
     fun setBookList(product: ModelContainer<ArrayList<BukuModel>>)
+    fun notifyUpdateDataStatus(status: ModelContainer<String>)
 }

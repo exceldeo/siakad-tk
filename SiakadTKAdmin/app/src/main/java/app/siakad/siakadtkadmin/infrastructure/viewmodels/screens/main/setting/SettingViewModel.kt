@@ -6,10 +6,9 @@ import app.siakad.siakadtkadmin.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 
 class SettingViewModel : ViewModel() {
-    private val _text = MutableLiveData<ModelContainer<String>>()
-    private val authRepository = AuthenticationRepository()
+  private val authRepository = AuthenticationRepository()
 
-    fun logout() {
-        authRepository.logout()
-    }
+  fun logout() {
+    authRepository.logout()
+  }
 }

@@ -22,5 +22,5 @@
         android:layout_marginTop="@dimen/container_padding_x"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_grid_order" />
+        tools:listitem="@layout/item_row_order" />
 </LinearLayout>

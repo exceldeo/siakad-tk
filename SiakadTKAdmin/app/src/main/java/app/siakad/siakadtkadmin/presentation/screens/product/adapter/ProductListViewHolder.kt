@@ -11,7 +11,9 @@ import kotlinx.android.synthetic.main.item_product_list.view.*
 class ProductListViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
     fun insertUniform(item: SeragamModel) {
         with(itemView) {
-            Picasso.with(v.context).load(item.fotoProduk).into(iv_item_product)
+            if (item.fotoProduk != "") {
+                Picasso.with(v.context).load(item.fotoProduk).into(iv_item_product)
+            }
             tv_item_product_nama.text = item.namaProduk
             tv_item_product_stok.text = "Stok: " + item.jumlah.toString()
 
@@ -23,7 +25,9 @@ class ProductListViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
 
     fun insertBook(item: BukuModel) {
         with(itemView) {
-            Picasso.with(v.context).load(item.fotoProduk).into(iv_item_product)
+            if (item.fotoProduk != "") {
+                Picasso.with(v.context).load(item.fotoProduk).into(iv_item_product)
+            }
             tv_item_product_nama.text = item.namaProduk
             tv_item_product_stok.text = "Stok: " + item.jumlah.toString()
 

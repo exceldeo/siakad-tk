@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="100dp">
+        android:orientation="vertical">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/appbar_height"
@@ -30,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/DefaultMargin"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="100dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="@string/terverivikasi_dan_menunggu_pembayaran"
+                        android:text="@string/status_daful_0"
                         android:textSize="@dimen/list_desc_text" />
 
                     <ImageView
@@ -128,6 +128,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_data_pendaftaran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/container_padding_x"
@@ -296,17 +297,29 @@
                             android:text="@string/tahun_ajaran"
                             android:textSize="@dimen/list_desc_text" />
                     </LinearLayout>
+                    <Button
+                        android:id="@+id/btn_registration_lihat_bukti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/container_padding_x"
+                        android:layout_marginBottom="@dimen/container_double_padding_y"
+                        android:background="@drawable/fill_upload_img"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/lihat_bukti_pembayaran" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_to_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:elevation="28dp"
+        android:visibility="gone"
         app:cardCornerRadius="@dimen/list_corner">
 
         <Button

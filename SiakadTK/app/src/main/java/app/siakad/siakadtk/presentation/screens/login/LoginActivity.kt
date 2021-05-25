@@ -5,14 +5,18 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import android.widget.*
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.main.PendingActivity
@@ -24,9 +28,10 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
-    private lateinit var tvForgotPassword: TextView
+//    private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
+    private var isRejected = false
 
     private lateinit var vmLogin: LoginViewModel
 
@@ -43,11 +48,11 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     override fun onStart() {
         super.onStart()
         if (AuthenticationRepository.fbAuth.currentUser != null) {
-//            if (AuthenticationRepository.userState) {
+            if (AuthenticationRepository.userState) {
                 navigateToMain()
-//            } else {
-//                navigateToPendingMain()
-//            }
+            } else {
+                navigateToPendingMain()
+            }
         }
     }
 
@@ -55,20 +60,26 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         etEmail = findViewById(R.id.et_login_email)
         etPassword = findViewById(R.id.et_login_password)
         btnLogin = findViewById(R.id.btn_login_masuk)
-        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
+//        tvForgotPassword = findViewById(R.id.tv_login_forgot_password)
         tvSignUp = findViewById(R.id.tv_login_daftar)
         pbLoading = findViewById(R.id.loading)
 
         vmLogin =
             ViewModelProvider(this, ViewModelFactory(this, this)).get(LoginViewModel::class.java)
+
+        isRejected = vmLogin.isRejected()
     }
 
     private fun setupView() {
         etPassword.transformationMethod = PasswordTransformationMethod()
 
         btnLogin.setOnClickListener {
-            if (validateForm()) {
+            if (validateForm() && !isRejected) {
                 vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
+                pbLoading.visibility = View.VISIBLE
+            } else if (isRejected) {
+                pbLoading.visibility = View.GONE
+                showToast(application.applicationContext.getString(R.string.rejected_please_regis_again))
             }
         }
 
@@ -80,6 +91,8 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     }
 
     override fun navigateToMain() {
+        pbLoading.visibility = View.GONE
+
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()

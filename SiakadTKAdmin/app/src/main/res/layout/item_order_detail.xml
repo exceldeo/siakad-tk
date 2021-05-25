@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/container_padding_x"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -43,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="Buku Tema"
                 android:textColor="@android:color/black"
-                android:fontFamily="@font/poppins_extrabold"
+                android:fontFamily="@font/poppins_semibold"
                 android:textSize="@dimen/card_title_text"/>
 
             <TextView

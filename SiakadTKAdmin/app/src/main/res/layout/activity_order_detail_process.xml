@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.screens.order.detail.OrderDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_height"
+        android:paddingBottom="@dimen/appbar_padding_top"
+        android:gravity="bottom">
+
+        <include layout="@layout/item_toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/container_padding_x"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/container_padding_y"
+            android:layout_above="@id/v_gudieline">
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Lengkap"
+                        style="@style/mdTitle"
+                        android:layout_marginTop="0dp"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_registration_detail_nama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Namamu"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kelas"
+                        style="@style/mdTitle"
+                        android:layout_marginTop="0dp"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_kelas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TK-B"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_alamat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jalan Terserah"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No. Handphone"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_nohp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="089112345678"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_jumlah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Harga"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. 12313"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Mulai"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_tgl_mulai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01/01/2021"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Selesai"
+                        style="@style/mdTitle"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_detail_tgl_selesai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01/01/2021"
+                        style="@style/mdContent"/>
+                </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:alignItems="center"
+                app:justifyContent="space_between"
+                android:layout_marginTop="@dimen/list_space"
+                android:layout_marginBottom="@dimen/card_title_margin_bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar Pesananan"
+                    style="@style/mdTitle"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:textColor="@color/colorPrimary"/>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/colorPrimary"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_order_detail_daftar_pesanan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/item_order_detail"/>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_gudieline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/v2_gudieline"
+            android:background="@android:color/transparent" />
+
+        <View
+            android:id="@+id/v2_gudieline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/cv_order_detail"
+            android:background="@android:color/darker_gray" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_order_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="28dp"
+            app:cardCornerRadius="@dimen/list_corner"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ListTitle"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/container_padding_x"
+                android:layout_marginBottom="@dimen/container_padding_y">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_order_detail_simpan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesanan Selesai"
+                    android:fontFamily="@font/poppins_bold"
+                    style="@style/CommonButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/list_corner"
+                    android:paddingEnd="@dimen/container_padding_x"
+                    android:paddingStart="@dimen/container_padding_x"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</LinearLayout>

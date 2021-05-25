@@ -43,12 +43,12 @@ class RegistrationDetailActivity : AppCompatActivity() {
     tvPrice = findViewById(R.id.tv_registration_detail_nobayar)
 
     if (daful != null) {
-      tvName.text = daful?.pengguna?.nama
-      tvClass.text = daful?.pengguna?.detailPengguna?.kelas
-      tvGender.text = daful?.pengguna?.detailPengguna?.jenisKelamin
-      tvParent.text = daful?.pengguna?.detailPengguna?.namaOrtu
-      tvAddress.text = daful?.pengguna?.alamat
-      tvHP.text = daful?.pengguna?.noHP
+      tvName.text = daful?.pengguna?.pengguna?.nama
+      tvClass.text = daful?.pengguna?.kelas?.namaKelas
+      tvGender.text = daful?.pengguna?.pengguna?.detailPengguna?.jenisKelamin
+      tvParent.text = daful?.pengguna?.pengguna?.detailPengguna?.namaOrtu
+      tvAddress.text = daful?.pengguna?.pengguna?.alamat
+      tvHP.text = daful?.pengguna?.pengguna?.noHP
       tvPrice.text = ""
     }
 

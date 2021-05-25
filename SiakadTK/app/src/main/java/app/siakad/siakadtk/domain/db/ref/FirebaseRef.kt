@@ -17,6 +17,7 @@ class FirebaseRef(private val refName: String) {
         const val AKTIVITAS_REF = "Aktivitas"
         const val KERANJANG_REF = "Keranjang"
         const val DETAIL_PESANAN_PRODUK_REF = "DetailPesananProduk"
+        const val KELAS_REF = "Kelas"
     }
 
     fun getRef(): DatabaseReference {
