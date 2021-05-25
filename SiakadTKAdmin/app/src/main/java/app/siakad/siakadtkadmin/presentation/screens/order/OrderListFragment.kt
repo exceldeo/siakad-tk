@@ -69,13 +69,13 @@ class OrderListFragment(private val type: String) : Fragment() {
   }
 
   override fun onStart() {
-    super.onStart()
     vmOrderList.setOrderType(type)
+    super.onStart()
   }
 
   override fun onStop() {
-    super.onStop()
     vmOrderList.clearListener()
+    super.onStop()
   }
 
   private fun setupViewModel() {

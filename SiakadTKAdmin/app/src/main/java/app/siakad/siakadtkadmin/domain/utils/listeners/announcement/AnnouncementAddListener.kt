@@ -7,6 +7,7 @@ import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 interface AnnouncementAddListener {
   fun notifyAnnouncementAddStatus(status: ModelContainer<String>)
   fun notifyAnnouncementUpdateStatus(status: ModelContainer<String>)
+  fun notifyAnnouncementDeleteStatus(status: ModelContainer<String>)
 
   fun addUserItem(pengguna: ModelContainer<PenggunaModel>)
   fun setUserById(pengguna: ModelContainer<PenggunaModel>)

@@ -10,6 +10,7 @@ import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
 import app.siakad.siakadtkadmin.domain.models.PengumumanModel
+import app.siakad.siakadtkadmin.domain.models.PesananModel
 import app.siakad.siakadtkadmin.domain.repositories.AnnouncementRepository
 import app.siakad.siakadtkadmin.domain.repositories.ClassroomRepository
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
@@ -79,6 +80,14 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
     }
   }
 
+  override fun notifyAnnouncementDeleteStatus(status: ModelContainer<String>) {
+    if (status.status == ModelState.SUCCESS) {
+      showToast(context.getString(R.string.scs_del_data))
+    } else if (status.status == ModelState.ERROR) {
+      showToast(context.getString(R.string.fail_del_data))
+    }
+  }
+
   override fun setUserById(pengguna: ModelContainer<PenggunaModel>) {
     if (pengguna.status == ModelState.SUCCESS) {
       userLiveData.postValue(pengguna.data!!)
@@ -126,7 +135,8 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
     content: String,
     date: String,
     type: String,
-    target: String?
+    target: String?,
+    confirmable: Boolean = false
   ) {
     vmCoroutineScope.launch {
       var newTarget = ""
@@ -141,7 +151,8 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
           judul = title,
           keterangan = content,
           tanggal = date,
-          tujuanId = newTarget
+          tujuanId = newTarget,
+          confirmable = confirmable
         )
       )
     }
@@ -153,7 +164,8 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
     date: String,
     type: String,
     target: String?,
-    pengumuman: PengumumanModel
+    pengumuman: PengumumanModel,
+    confirmable: Boolean = false
   ) {
     var newTarget = ""
     if (target != null) {
@@ -164,6 +176,7 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
     pengumuman.tanggal = date
     pengumuman.tipe = type
     pengumuman.keterangan = content
+    pengumuman.confirmable = confirmable
     if (type == AnnouncementListFragment.TO_ALL) {
       pengumuman.tujuanId = ""
     } else {
@@ -175,6 +188,12 @@ class AnnouncementAddViewModel(private val context: Context, private val lcOwner
         this@AnnouncementAddViewModel,
         pengumuman
       )
+    }
+  }
+
+  fun removeData(pengumuman: PengumumanModel) {
+    vmCoroutineScope.launch {
+      announcementRepository.removeAnnouncementData(this@AnnouncementAddViewModel, pengumuman)
     }
   }
 
