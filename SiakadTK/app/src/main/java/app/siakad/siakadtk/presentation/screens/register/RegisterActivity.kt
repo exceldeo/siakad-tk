@@ -36,8 +36,6 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var pbLoading: ProgressBar
     private lateinit var btnUploadBukti: Button
 
-    private var isRejected = false
-
     private lateinit var vmRegister: RegisterViewModel
 
     private var firstPaymentImage: Uri? = null
@@ -213,8 +211,8 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         finish()
     }
 
-    override fun getAccountStatus(isRejected: Boolean) {
-        this.isRejected = isRejected
+    override fun getAccountStatus() {
+
     }
 
     override fun showToast(msg: String) {

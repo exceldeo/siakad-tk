@@ -21,6 +21,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterVi
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.main.PendingActivity
 import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
+import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 
 class LoginActivity : AppCompatActivity(), AuthenticationListener {
@@ -28,12 +29,11 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
-//    private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
-    private var isRejected = false
 
     private lateinit var vmLogin: LoginViewModel
+    private val authRepository = AuthenticationRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,10 +75,6 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
             if (validateForm()) {
                 vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
                 pbLoading.visibility = View.VISIBLE
-                if (isRejected) {
-                    pbLoading.visibility = View.GONE
-                    showToast(application.applicationContext.getString(R.string.rejected_please_regis_again))
-                }
             }
         }
 
@@ -103,8 +99,10 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         finish()
     }
 
-    override fun getAccountStatus(isRejected: Boolean) {
-        this.isRejected = isRejected
+    override fun getAccountStatus() {
+        showToast(application.applicationContext.getString(R.string.rejected_please_regis_again))
+        pbLoading.visibility = View.GONE
+        authRepository.logout()
     }
 
     private fun validateForm(): Boolean {

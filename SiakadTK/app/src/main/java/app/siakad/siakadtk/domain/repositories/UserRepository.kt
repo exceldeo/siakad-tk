@@ -58,6 +58,10 @@ class UserRepository() {
     }
 
     fun getUserByEmail(listener: LoginListener, email: String) {
+        userDB.child(AuthenticationRepository.fbAuth.currentUser!!.uid).get().addOnSuccessListener {
+            if(it.value == null) listener.setUser(ModelContainer.getFailModel())
+        }
+
         userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
