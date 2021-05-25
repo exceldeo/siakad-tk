@@ -66,20 +66,19 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
 
         vmLogin =
             ViewModelProvider(this, ViewModelFactory(this, this)).get(LoginViewModel::class.java)
-
-        isRejected = vmLogin.isRejected()
     }
 
     private fun setupView() {
         etPassword.transformationMethod = PasswordTransformationMethod()
 
         btnLogin.setOnClickListener {
-            if (validateForm() && !isRejected) {
+            if (validateForm()) {
                 vmLogin.loginSiswa(etEmail.text.toString(), etPassword.text.toString())
                 pbLoading.visibility = View.VISIBLE
-            } else if (isRejected) {
-                pbLoading.visibility = View.GONE
-                showToast(application.applicationContext.getString(R.string.rejected_please_regis_again))
+                if (isRejected) {
+                    pbLoading.visibility = View.GONE
+                    showToast(application.applicationContext.getString(R.string.rejected_please_regis_again))
+                }
             }
         }
 
@@ -102,6 +101,10 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         val intent = Intent(this@LoginActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun getAccountStatus(isRejected: Boolean) {
+        this.isRejected = isRejected
     }
 
     private fun validateForm(): Boolean {

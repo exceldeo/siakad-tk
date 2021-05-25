@@ -85,7 +85,6 @@
     <string name="example_jumlah">0</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
     <string name="example_sum_price">Total: Rp 0</string>
-    <string name="ubah_password">Ubah Password</string>
     <string name="password_baru">Password Baru</string>
     <string name="username">Username</string>
     <string name="password_lama">Password Lama</string>
@@ -224,4 +223,10 @@
     <string name="scs_update_data">Data berhasil diubah</string>
     <string name="fail_update_data">Data gagal diubah</string>
     <string name="to_all">Kepada: SEMUA</string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="detail_pengumuman">Detail Pengumuman</string>
+    <string name="tanggal_pengumuman">Tanggal Pengumuman</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="semua">Semua</string>
 </resources>

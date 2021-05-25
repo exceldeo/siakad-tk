@@ -90,6 +90,10 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
         finish()
     }
 
+    override fun getAccountStatus(isRejected: Boolean) {
+
+    }
+
     override fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }

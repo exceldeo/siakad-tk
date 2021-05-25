@@ -27,7 +27,6 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
     private var passwd: String = ""
     private var userId: String = ""
     private var userStatus: Boolean = false
-
     private var pengguna = PenggunaModel()
 
     fun loginSiswa(email: String, passwd: String) {
@@ -43,7 +42,9 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         if (user.status == ModelState.SUCCESS) {
             val item = user.data
 
+            showToast("ngeset")
             if (item != null) {
+                (context as AuthenticationListener).getAccountStatus(false)
                 if (item.role == UserRoleModel.SISWA.str) {
                     userId = item.userId
                     userStatus = item.status
@@ -60,16 +61,16 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
                 }
             } else if (user.status == ModelState.ERROR) {
                 showToast(context.getString(R.string.fail_get_user))
+                (context as AuthenticationListener).getAccountStatus(true)
+            } else {
+                    showToast("masuk")
+                (context as AuthenticationListener).getAccountStatus(true)
             }
         }
     }
 
     private fun showToast(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-    }
-
-    fun isRejected(): Boolean {
-        return pengguna.nama == ""
     }
 
     override fun notifyLoginStatus(status: ModelContainer<String>) {

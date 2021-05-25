@@ -64,6 +64,8 @@ class UserRepository() {
 
                 if (user != null) {
                     listener.setUser(ModelContainer.getSuccesModel(user))
+                } else {
+                    listener.setUser(ModelContainer.getFailModel())
                 }
             }
 
@@ -72,6 +74,8 @@ class UserRepository() {
 
                 if (user != null) {
                     listener.setUser(ModelContainer.getSuccesModel(user))
+                } else {
+                    listener.setUser(ModelContainer.getFailModel())
                 }
             }
 
