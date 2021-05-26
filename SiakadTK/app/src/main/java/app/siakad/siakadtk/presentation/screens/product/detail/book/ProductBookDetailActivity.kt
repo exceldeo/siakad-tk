@@ -35,6 +35,7 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
     private lateinit var vmBasket: KeranjangViewModel
     private var item = DetailKeranjangModel()
+    private var limitOrder = 100
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +45,7 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         setupView()
 
         val data = intent.getParcelableExtra<Parcelable>("buku") as Buku
+        limitOrder = data.jumlah
         item.nama = data.namaProduk
         item.gambar = data.fotoProduk
         item.jumlah = data.jumlah
@@ -70,10 +72,11 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             override fun afterTextChanged(s: Editable) {
                 if (etProductSum.text.isEmpty() || etProductSum.text.toString() == "") {
                     item.jumlah = 0
-                } else {
+                }
+                else {
                     item.jumlah = Integer.valueOf(etProductSum.text.toString())
                 }
-                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.harga) * Integer.valueOf(item.jumlah)).toString()
+                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.harga) * item.jumlah).toString()
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -92,14 +95,25 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             )
         ).get(KeranjangViewModel::class.java)
 
+        var isClicked = false
         btnProductAddToBasket.setOnClickListener{
-            vmBasket.insertItemBasket(
-                name = item.nama,
-                image = item.gambar,
-                jumlah = Integer.valueOf(item.jumlah),
-                harga = item.harga * item.jumlah,
-                produkId = item.produkId
-            )
+            if(validateInput() && limitOrder > 0) {
+                if (!isClicked) {
+                    isClicked = true
+                    vmBasket.insertItemBasket(
+                        name = item.nama,
+                        image = item.gambar,
+                        jumlah = Integer.valueOf(item.jumlah),
+                        harga = item.harga * item.jumlah,
+                        produkId = item.produkId
+                    )
+                }
+                else {
+                    showToast(application.applicationContext.getString(R.string.wait_process))
+                }
+            } else if (!validateInput() && limitOrder > 0) {
+                showToast(application.applicationContext.getString(R.string.wrong_input))
+            }
         }
     }
 
@@ -110,7 +124,18 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     }
 
     private fun validateInput(): Boolean {
-        return true
+        var returnState = true
+        if (limitOrder == 0) {
+            showToast(application.applicationContext.getString(R.string.sold_out))
+            returnState = false
+        } else if (Integer.valueOf(etProductSum.text.toString()) > limitOrder) {
+            etProductSum.error = getString(R.string.over_order)
+            returnState = false
+        } else if (Integer.valueOf(etProductSum.text.toString()) <= 0) {
+            etProductSum.error = getString(R.string.min_order)
+            returnState = false
+        }
+        return returnState
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -121,6 +146,10 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }
 

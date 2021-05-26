@@ -7,17 +7,21 @@ import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.*
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
 import app.siakad.siakadtk.domain.repositories.UserRepository
+import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.login.LoginViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.presentation.screens.main.PendingActivity
 import app.siakad.siakadtk.presentation.screens.register.RegisterActivity
+import app.siakad.siakadtk.presentation.screens.splash.SplashActivity
 import app.siakad.siakadtk.presentation.utils.listener.AuthenticationListener
 
 class LoginActivity : AppCompatActivity(), AuthenticationListener {
@@ -25,11 +29,11 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
-//    private lateinit var tvForgotPassword: TextView
     private lateinit var tvSignUp: TextView
     private lateinit var pbLoading: ProgressBar
 
     private lateinit var vmLogin: LoginViewModel
+    private val authRepository = AuthenticationRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +97,12 @@ class LoginActivity : AppCompatActivity(), AuthenticationListener {
         val intent = Intent(this@LoginActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun getAccountStatus() {
+        showToast(application.applicationContext.getString(R.string.rejected_please_regis_again))
+        pbLoading.visibility = View.GONE
+        authRepository.logout()
     }
 
     private fun validateForm(): Boolean {

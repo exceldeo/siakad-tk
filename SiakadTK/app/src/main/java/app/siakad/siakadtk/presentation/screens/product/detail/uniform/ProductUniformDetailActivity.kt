@@ -42,6 +42,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
 
     private lateinit var vmBasket: KeranjangViewModel
     private var item = DetailKeranjangModel()
+    private var limitOrder = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +97,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
                         item.jumlah = 0
                     } else {
                         item.jumlah = Integer.valueOf(it)
+                        limitOrder = Integer.valueOf(it)
                     }
                 }
                 prices[str.toString()].toString().let {
@@ -156,21 +158,50 @@ class ProductUniformDetailActivity : AppCompatActivity() {
             )
         ).get(KeranjangViewModel::class.java)
 
+        var isClicked = false
         btnProductAddToBasket.setOnClickListener{
-            vmBasket.insertItemBasket(
-                name = tvProductName.text.toString(),
-                image = item.gambar,
-                ukuran = item.ukuran,
-                jumlah = item.jumlah,
-                harga = item.jumlah * item.harga,
-                produkId = item.produkId
-            )
+            if (validateInput() && limitOrder > 0) {
+                if (!isClicked) {
+                    isClicked = true
+                    vmBasket.insertItemBasket(
+                        name = tvProductName.text.toString(),
+                        image = item.gambar,
+                        ukuran = item.ukuran,
+                        jumlah = item.jumlah,
+                        harga = item.jumlah * item.harga,
+                        produkId = item.produkId
+                    )
+                } else {
+                    showToast(application.applicationContext.getString(R.string.wait_process))
+                }
+            } else if (!validateInput() && limitOrder > 0) {
+                showToast(application.applicationContext.getString(R.string.wrong_input))
+            }
         }
+    }
+
+    private fun validateInput(): Boolean {
+        var returnState = true
+        if (limitOrder == 0) {
+            showToast(application.applicationContext.getString(R.string.sold_out))
+            returnState = false
+        } else if (Integer.valueOf(etProductSum.text.toString()) > limitOrder) {
+            etProductSum.error = getString(R.string.over_order)
+            returnState = false
+        } else if (Integer.valueOf(etProductSum.text.toString()) <= 0) {
+            etProductSum.error = getString(R.string.min_order)
+            returnState = false
+        }
+        return returnState
     }
 
     private fun setupAppBar() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

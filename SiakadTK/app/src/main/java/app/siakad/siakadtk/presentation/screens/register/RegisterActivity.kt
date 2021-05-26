@@ -12,10 +12,13 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.main.MainActivity
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.repositories.AuthenticationRepository
+import app.siakad.siakadtk.infrastructure.data.Pengguna
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.register.RegisterViewModel
 import app.siakad.siakadtk.presentation.screens.login.LoginActivity
@@ -206,6 +209,10 @@ class RegisterActivity : AppCompatActivity(), AuthenticationListener {
         val intent = Intent(this@RegisterActivity, PendingActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun getAccountStatus() {
+
     }
 
     override fun showToast(msg: String) {

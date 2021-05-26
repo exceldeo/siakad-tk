@@ -38,13 +38,11 @@
                 android:id="@+id/tv_item_pengumuman_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hingga 31 Januari 2021"
+                android:text="@string/example_desc_pengumuman"
                 android:gravity="left"
                 android:textSize="@dimen/card_desc_text"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </FrameLayout>
-
-
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -75,6 +76,7 @@ class RegistrationActivity : AppCompatActivity() {
         btnLihatBukti = findViewById(R.id.btn_registration_lihat_bukti)
 
         cvToForm = findViewById(R.id.cv_registration_to_form)
+        cvToForm.visibility = View.VISIBLE
     }
 
     @SuppressLint("SetTextI18n")
@@ -135,7 +137,7 @@ class RegistrationActivity : AppCompatActivity() {
             dataKelasUser = it
 
             tvClassYear.text = it.tahunMulai.toString() + "/" + it.tahunSelesai.toString()
-            tvClass.text = it.namaKelas 
+            tvClass.text = it.namaKelas
         }
 
         vmRegistrationForm.getClassroomListById()
@@ -143,6 +145,10 @@ class RegistrationActivity : AppCompatActivity() {
 
         val obsRegistrationGetDaful = Observer<DaftarUlang> {
             dataDaful = it
+
+            if(it.dafulId != "") {
+                cvToForm.visibility = View.GONE
+            }
         }
         vmRegistrationForm.getDaftarUlangData()
             .observe(this, obsRegistrationGetDaful)

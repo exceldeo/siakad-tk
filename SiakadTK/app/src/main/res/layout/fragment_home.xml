@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorLightGrey"
     tools:context=".presentation.screens.main.home.HomeFragment">
 
     <RelativeLayout
@@ -67,9 +68,49 @@
                     android:layout_marginBottom="@dimen/container_padding_y_min"/>
             </LinearLayout>
 
+            <FrameLayout
+                android:id="@+id/fl_home_pengumuman_jika_kosong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="308dp"
+                    android:layout_height="128dp"
+                    android:src="@drawable/vc_pengumuman"/>
+
+                <LinearLayout
+                    android:layout_width="308dp"
+                    android:layout_height="128dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/container_double_padding_y">
+
+                    <TextView
+                        android:id="@+id/tv_item_pengumuman_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/example_pengumuman_title"
+                        android:gravity="left"
+                        android:textColor="@color/colorProcess"
+                        android:textSize="@dimen/card_title_text" />
+                    <TextView
+                        android:id="@+id/tv_item_pengumuman_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/example_desc_pengumuman"
+                        android:gravity="left"
+                        android:textSize="@dimen/card_desc_text"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </FrameLayout>
+
             <HorizontalScrollView
+                android:id="@+id/hs_home_pengumuman_list"
                 android:layout_width="match_parent"
-                android:layout_height="128dp">
+                android:layout_height="128dp"
+                android:visibility="gone">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_home_pengumuman_list"

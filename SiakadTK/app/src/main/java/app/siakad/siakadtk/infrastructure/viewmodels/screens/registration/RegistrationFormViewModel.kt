@@ -45,21 +45,8 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     private var dataKelas = KelasModel()
 
     init {
-        setupObserver()
         registrationRepository.initEventListener(this)
         userRepository.getUserById(this)
-    }
-
-    private fun setupObserver() {
-        insertObserver = Observer { data ->
-            if (data.status == ModelState.SUCCESS) {
-                showToast(context.getString(R.string.scs_set_data))
-            } else if (data.status == ModelState.ERROR) {
-                showToast(context.getString(R.string.fail_set_data))
-            }
-        }
-
-        registrationRepository.getInsertState().observe(lcOwner, insertObserver)
     }
 
     fun setData(namaSiswa: String, kelas: String, namaWali: String, gender: String, bornDate: String, address: String, noHP: String, thnAjaran: String, nominal: Int, fotoBayar: Uri?) {
@@ -136,6 +123,34 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
         }
     }
 
+    override fun changeDataDafulUser(user: ModelContainer<DaftarUlangModel>) {
+        if (user.status == ModelState.SUCCESS) {
+            val item = user.data
+
+            if (item != null) {
+                daftarUlangUser = DaftarUlang(
+                    userId = AuthenticationRepository.fbAuth.currentUser?.uid.toString(),
+                    dafulId = item.dafulId,
+                    tanggalDaful = item.tanggal,
+                    fotoBayar = item.fotoBayar,
+                    statusDaful = item.statusDaful
+                )
+                liveDataDaful.postValue(daftarUlangUser)
+            } else if (user.status == ModelState.ERROR) {
+                showToast(context.getString(R.string.fail_get_user))
+            }
+        }
+    }
+
+    override fun removeDataDafulUser(user: ModelContainer<DaftarUlangModel>) {
+        if (user.status == ModelState.SUCCESS) {
+            daftarUlangUser = DaftarUlang()
+            liveDataDaful.postValue(daftarUlangUser)
+        }  else if (user.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_remove_daful))
+        }
+    }
+
     override fun addDataUser(user: ModelContainer<PenggunaModel>) {
         if (user.status == ModelState.SUCCESS) {
             val item = user.data
@@ -175,11 +190,20 @@ class RegistrationFormViewModel (private val context: Context, private val lcOwn
     override fun notifyUploadStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
             daftarUlangUser.fotoBayar = status.data!!
-            vmCoroutineScope.launch {
-                registrationRepository.insertData(
-                    this@RegistrationFormViewModel, daftarUlangUser
-                )
+            if (daftarUlangUser.namaSiswa != "") {
+                vmCoroutineScope.launch {
+                    registrationRepository.insertData(
+                        this@RegistrationFormViewModel, daftarUlangUser
+                    )
+                }
+            } else {
+                vmCoroutineScope.launch {
+                    registrationRepository.updateData(
+                        this@RegistrationFormViewModel, daftarUlangUser
+                    )
+                }
             }
+
             vmCoroutineScope.launch {
                 userRepository.updateDetailData(
                     this@RegistrationFormViewModel, daftarUlangUser, dataUser

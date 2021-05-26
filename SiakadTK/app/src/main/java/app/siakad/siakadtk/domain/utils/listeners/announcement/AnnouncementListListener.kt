@@ -5,6 +5,7 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 
 interface AnnouncementListListener {
     fun addAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>)
+    fun notifyAnnouncementUpdateStatus(pengumuman: ModelContainer<String>)
     fun updateAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>)
     fun removeAnnouncementItem(pengumuman: ModelContainer<PengumumanModel>)
 }

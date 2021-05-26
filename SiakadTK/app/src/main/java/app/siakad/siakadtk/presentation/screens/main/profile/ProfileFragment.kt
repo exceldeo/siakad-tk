@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.presentation.screens.history.HistoryActivity
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.KelasModel
 import app.siakad.siakadtk.infrastructure.data.Pengguna
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -29,11 +30,8 @@ class ProfileFragment : Fragment() {
     private lateinit var tvClassStudent: TextView
 
     private lateinit var ivSetting: ImageView
-
-//    private lateinit var rvMyActivity: RecyclerView
-//    private var list: ArrayList<Aktivitas> = arrayListOf()
-
     private var dataUser = Pengguna()
+    private var dataKelasUser = KelasModel()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -93,10 +91,18 @@ class ProfileFragment : Fragment() {
         val obsProfileGetUser = Observer<Pengguna> {
             dataUser = it
             tvStudentName.text = "Nama Siswa : " + it.nama
-            tvClassStudent.text = "Kelas : " + it.detail!!.kelasId
+            vmProfile.setKelasName(it.detail!!.kelasId)
         }
         vmProfile.getUserData()
             .observe(this.viewLifecycleOwner, obsProfileGetUser)
+
+        val obsRegistrationGetClass = Observer<KelasModel> {
+            dataKelasUser = it
+            tvClassStudent.text = "Kelas : " + it.namaKelas
+        }
+
+        vmProfile.getClassroomListById()
+            .observe(this.viewLifecycleOwner, obsRegistrationGetClass)
     }
 
 //    private fun showMyActivityRecyclerList() {

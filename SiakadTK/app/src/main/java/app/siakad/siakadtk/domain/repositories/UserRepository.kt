@@ -9,6 +9,7 @@ import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.DetailPenggunaModel
 import app.siakad.siakadtk.domain.models.PenggunaModel
 import app.siakad.siakadtk.domain.utils.helpers.model.UserRoleModel
+import app.siakad.siakadtk.domain.utils.listeners.announcement.AnnouncementServiceListener
 import app.siakad.siakadtk.domain.utils.listeners.login.LoginListener
 import app.siakad.siakadtk.domain.utils.listeners.register.RegisterListener
 import app.siakad.siakadtk.domain.utils.listeners.registration.UserListener
@@ -19,20 +20,24 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 
-class UserRepository() {
+class UserRepository {
     private var userState = MutableLiveData<ModelContainer<PenggunaModel>>()
     private var insertState = MutableLiveData<ModelContainer<String>>()
 
     private val userDB = FirebaseRef(FirebaseRef.USER_REF).getRef()
     private var detailPengguna = DetailPenggunaModel()
 
-    fun getUserById(listener: UserListener) {
+    fun getUserById(listener: Any) {
         userDB.orderByKey().equalTo(AuthenticationRepository.fbAuth.currentUser?.uid!!).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
-                    listener.addDataUser(ModelContainer.getSuccesModel(user))
+                    if (listener is UserListener) {
+                        listener.addDataUser(ModelContainer.getSuccesModel(user))
+                    } else if (listener is AnnouncementServiceListener) {
+                        listener.setUser(ModelContainer.getSuccesModel(user))
+                    }
                 }
             }
 
@@ -40,7 +45,9 @@ class UserRepository() {
                 val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
-                    listener.addDataUser(ModelContainer.getSuccesModel(user))
+                    if (listener is UserListener) {
+                        listener.addDataUser(ModelContainer.getSuccesModel(user))
+                    }
                 }
             }
 
@@ -58,12 +65,18 @@ class UserRepository() {
     }
 
     fun getUserByEmail(listener: LoginListener, email: String) {
+        userDB.child(AuthenticationRepository.fbAuth.currentUser!!.uid).get().addOnSuccessListener {
+            if(it.value == null) listener.setUser(ModelContainer.getFailModel())
+        }
+
         userDB.orderByChild("email").equalTo(email).addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val user = snapshot.getValue(PenggunaModel::class.java)
 
                 if (user != null) {
                     listener.setUser(ModelContainer.getSuccesModel(user))
+                } else {
+                    listener.setUser(ModelContainer.getFailModel())
                 }
             }
 
@@ -72,6 +85,8 @@ class UserRepository() {
 
                 if (user != null) {
                     listener.setUser(ModelContainer.getSuccesModel(user))
+                } else {
+                    listener.setUser(ModelContainer.getFailModel())
                 }
             }
 

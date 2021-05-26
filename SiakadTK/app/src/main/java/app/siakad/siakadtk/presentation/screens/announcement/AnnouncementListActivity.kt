@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.Announ
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.profile.ProfileViewModel
 import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.main.product.detail.book.ProductBookDetailActivity
 
 class AnnouncementListActivity : AppCompatActivity() {
 
@@ -70,6 +72,14 @@ class AnnouncementListActivity : AppCompatActivity() {
             adapter = rvAnnouncementAdapter
         }
 
+        rvAnnouncementAdapter.setOnItemClickCallback(object: AnnouncementInsideAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: PengumumanModel) {
+                val intent = Intent(this@AnnouncementListActivity, AnnouncementDetailActivity::class.java)
+                intent.putExtra("pengumuman", data);
+                startActivity(intent)
+            }
+        })
+
         vmProfile = ViewModelProvider(
             this,
             ViewModelFactory(this, this)
@@ -105,5 +115,9 @@ class AnnouncementListActivity : AppCompatActivity() {
         }
 
         vmAnnouncement.getAnnouncementList().observe(this, announcementListObserver)
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

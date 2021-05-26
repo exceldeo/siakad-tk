@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="100dp">
+        android:orientation="vertical">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/appbar_height"
@@ -30,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/DefaultMargin"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="100dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -306,6 +306,7 @@
                         android:background="@drawable/fill_upload_img"
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
+                        android:textColor="@android:color/white"
                         android:text="@string/lihat_bukti_pembayaran" />
                 </LinearLayout>
             </LinearLayout>
@@ -319,6 +320,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:elevation="28dp"
+        android:visibility="gone"
         app:cardCornerRadius="@dimen/list_corner">
 
         <Button

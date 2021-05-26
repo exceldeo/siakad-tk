@@ -27,7 +27,6 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
     private var passwd: String = ""
     private var userId: String = ""
     private var userStatus: Boolean = false
-
     private var pengguna = PenggunaModel()
 
     fun loginSiswa(email: String, passwd: String) {
@@ -35,14 +34,13 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         this.passwd = passwd
 
         vmCoroutineScope.launch {
-            userRepository.getUserByEmail(this@LoginViewModel, email)
+            authRepository.login(this@LoginViewModel, email, passwd)
         }
     }
 
     override fun setUser(user: ModelContainer<PenggunaModel>) {
         if (user.status == ModelState.SUCCESS) {
             val item = user.data
-
             if (item != null) {
                 if (item.role == UserRoleModel.SISWA.str) {
                     userId = item.userId
@@ -54,13 +52,15 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
                         status = item.status
                     )
                     AuthenticationRepository.setUser(userId, email, passwd, item.status)
-                    authRepository.login(this@LoginViewModel, email, passwd)
+                    if(pengguna.status) (context as AuthenticationListener).navigateToMain()
+                    else (context as AuthenticationListener).navigateToPendingMain()
                 } else {
                     showToast(context.getString(R.string.fail_login_not_siswa))
                 }
-            } else if (user.status == ModelState.ERROR) {
-                showToast(context.getString(R.string.fail_get_user))
             }
+        } else if (user.status == ModelState.ERROR) {
+            showToast(context.getString(R.string.fail_get_user))
+            (context as AuthenticationListener).getAccountStatus()
         }
     }
 
@@ -68,20 +68,10 @@ class LoginViewModel (private val context: Context, private val lcOwner: Lifecyc
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
 
-    fun getPengguna(): PenggunaModel {
-        return pengguna
-    }
-
     override fun notifyLoginStatus(status: ModelContainer<String>) {
         if (status.status == ModelState.SUCCESS) {
-            showToast(context.getString(R.string.scs_login))
-
-            if (!AuthenticationRepository.userState) {
-                AuthenticationRepository.setUser(userId, email, passwd, userStatus)
-            }
-
-            if(pengguna.status) (context as AuthenticationListener).navigateToMain()
-            else (context as AuthenticationListener).navigateToPendingMain()
+            AuthenticationRepository.setUser(userId, email, passwd, userStatus)
+            userRepository.getUserByEmail(this@LoginViewModel, email)
         } else {
             showToast(context.getString(R.string.fail_login))
         }

@@ -47,14 +47,14 @@
     <string name="until_date">Hingga 30 Januari 2021</string>
     <string name="pengumuman">Pengumuman</string>
     <string name="lihat_semua">Lihat Semua</string>
-    <string name="example_pengumuman_title">Pendaftaran Ulang Dibuka</string>
+    <string name="example_pengumuman_title">Tidak Ada Pengumuman</string>
     <string name="belum_daftar_ulang">Anda Belum Daftar Ulang</string>
     <string name="desc_daftar_ulang">Silahkan melakukan daftar ulang, sebelum tanggal 31 Januari.</string>
     <string name="status_pemesanan">Status Pemesanan</string>
     <string name="nota_pemesanan">Nota Pemesanan</string>
     <string name="example_produk">Seragam Olahraga, Buku Tema, Seragam Formal</string>
     <string name="pendaftaran_ulang_dibuka">Pendaftaran Ulang Dibuka</string>
-    <string name="example_desc_pengumuman">Untuk seluruh wali murid TK Ini dimohon untuk segera melakukan pendaftaran ulang sebelum tanggal 31 Januari, Terimakasih!</string>
+    <string name="example_desc_pengumuman">Belum ada pengumuman untuk saat ini, terima kasih!</string>
     <string name="example_date_pengumuman_inside">Diumumkan pada, 12 Januari 2021</string>
     <string name="keranjang_pesanan">Keranjang Pesanan</string>
     <string name="example_desc_basket_1">1 Buku Tema 5 Tanaman</string>
@@ -85,7 +85,6 @@
     <string name="example_jumlah">0</string>
     <string name="add_to_basket">Tambahkan Ke Keranjang</string>
     <string name="example_sum_price">Total: Rp 0</string>
-    <string name="ubah_password">Ubah Password</string>
     <string name="password_baru">Password Baru</string>
     <string name="username">Username</string>
     <string name="password_lama">Password Lama</string>
@@ -171,8 +170,13 @@
     <string name="hingga">Hingga</string>
 
     <string name="empty_input">Isian tidak boleh kosong!</string>
+    <string name="over_order">Pembelian tidak boleh melebihi stok!</string>
+    <string name="min_order">Pembelian minimal 1 produk!</string>
+    <string name="sold_out">Stok produk habis!</string>
     <string name="weak_passwd">Password harus lebih dari 6 karakter</string>
     <string name="wrong_email">Masukkan email dengan benar</string>
+    <string name="wrong_input">Masukkan data dengan benar</string>
+    <string name="wait_process">Harap menunggu, data sedang diproses</string>
     <string name="err_conf_passwd">Konfirmasi password harus sama!</string>
     <string name="err_conf_old_passwd">Password harus sama dengan password lama!</string>
     <string name="err_conf_old_email">Email harus sama dengan email lama!</string>
@@ -184,12 +188,14 @@
     <string name="fail_basket">Terjadi kesalahan, keranjang Anda gagal dibuat!</string>
     <string name="scs_get_data">Data berhasil diambil</string>
     <string name="fail_get_data">Data gagal diambil</string>
+    <string name="fail_remove_daful">Data daftar ulang gagal dihapus</string>
     <string name="scs_set_data">Data berhasil ditambahkan</string>
     <string name="scs_set_passwd">Password berhasil diubah</string>
     <string name="scs_set_email">Email berhasil diubah</string>
     <string name="fail_set_data">Data gagal ditambahkan</string>
     <string name="fail_set_passwd">Password gagal diubah</string>
     <string name="fail_set_email">Email gagal diubah</string>
+    <string name="rejected_please_regis_again">Pendaftaran email ini pernah ditolak, mohon registrasi ulang</string>
     <string name="buku">Buku</string>
     <string name="seragam">Seragam</string>
 
@@ -222,4 +228,11 @@
     <string name="scs_update_data">Data berhasil diubah</string>
     <string name="fail_update_data">Data gagal diubah</string>
     <string name="to_all">Kepada: SEMUA</string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="detail_pengumuman">Detail Pengumuman</string>
+    <string name="tanggal_pengumuman">Tanggal Pengumuman</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="semua">Semua</string>
+    <string name="tidak_ada_produk">Tidak Ada Produk</string>
 </resources>

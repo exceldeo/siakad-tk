@@ -110,6 +110,14 @@ class ProfileViewModel (private val context: Context, private val lcOwner: Lifec
 
     }
 
+    override fun changeDataDafulUser(user: ModelContainer<DaftarUlangModel>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeDataDafulUser(user: ModelContainer<DaftarUlangModel>) {
+        TODO("Not yet implemented")
+    }
+
     override fun addDataUser(user: ModelContainer<PenggunaModel>) {
         if (user.status == ModelState.SUCCESS) {
             val item = user.data
