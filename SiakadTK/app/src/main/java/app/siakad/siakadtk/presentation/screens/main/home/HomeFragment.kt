@@ -32,6 +32,8 @@ import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFact
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.home.HomeViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.order.OrderViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
+import app.siakad.siakadtk.presentation.screens.announcement.AnnouncementDetailActivity
+import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 import app.siakad.siakadtk.presentation.screens.order.detail.OrderDetailActivity
 
 class HomeFragment : Fragment() {
@@ -102,6 +104,14 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(this@HomeFragment.context, LinearLayoutManager.HORIZONTAL, false)
             adapter = rvAnnouncementAdapter
         }
+
+        rvAnnouncementAdapter.setOnItemClickCallback(object: AnnouncementAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: PengumumanModel) {
+                val intent = Intent(this@HomeFragment.context, AnnouncementDetailActivity::class.java)
+                intent.putExtra("pengumuman", data);
+                startActivity(intent)
+            }
+        })
 
         vmAnnouncement = ViewModelProvider(
             this,

@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/inner_padding"
-                    android:text="@string/product_xxx"
+                    android:text="@string/tidak_ada_produk"
                     android:textSize="@dimen/list_title_text"
                     android:fontFamily="@font/poppins_medium"/>
 
@@ -48,7 +48,6 @@
                     android:id="@+id/tv_item_product_jumlah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/inner_padding"
                     android:text="@string/jumlah_produk"
                     android:textSize="@dimen/list_status_text"
                     android:fontFamily="@font/poppins_regular"/>

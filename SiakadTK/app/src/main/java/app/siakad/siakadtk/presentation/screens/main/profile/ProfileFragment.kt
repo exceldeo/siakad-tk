@@ -90,7 +90,7 @@ class ProfileFragment : Fragment() {
 
         val obsProfileGetUser = Observer<Pengguna> {
             dataUser = it
-            tvStudentName.text = "Nama Siswa : " + it.nama + it.status
+            tvStudentName.text = "Nama Siswa : " + it.nama
             vmProfile.setKelasName(it.detail!!.kelasId)
         }
         vmProfile.getUserData()

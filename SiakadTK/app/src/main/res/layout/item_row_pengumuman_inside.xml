@@ -50,6 +50,19 @@
                 android:fontFamily="@font/poppins_regular"/>
 
             <TextView
+                android:id="@+id/tv_item_pengumumanin_confirmable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Perlu Dikonfirmasi"
+                android:drawablePadding="@dimen/inner_padding"
+                android:textColor="@color/colorDanger"
+                android:visibility="gone"
+                android:textSize="@dimen/card_desc_text"
+                android:layout_marginBottom="@dimen/inner_padding"
+                android:fontFamily="@font/poppins_regular"
+                card_view:drawableStartCompat="@drawable/ic_alert_circle" />
+
+            <TextView
                 android:id="@+id/tv_item_pengumumanin_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

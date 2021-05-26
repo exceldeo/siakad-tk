@@ -157,6 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_text"
                     android:layout_marginBottom="@dimen/container_double_padding_y"
+                    android:textColor="@android:color/white"
                     android:background="@drawable/fill_upload_img"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"

@@ -226,6 +226,19 @@ class AnnouncementRepository {
             })
     }
 
+    fun updateData(listener: AnnouncementListListener, data: PengumumanModel) {
+        val newData = data.toMap()
+        val childUpdates = hashMapOf<String, Any>(
+            "/${data.pengumumanId}" to newData
+        )
+
+        announcementDB.updateChildren(childUpdates).addOnSuccessListener {
+            listener.notifyAnnouncementUpdateStatus(ModelContainer.getSuccesModel("Success"))
+        }.addOnFailureListener {
+            listener.notifyAnnouncementUpdateStatus(ModelContainer.getFailModel())
+        }
+    }
+
     fun removeListener() {
         eventListeners.forEachIndexed { index, any ->
             if (any is ValueEventListener) {

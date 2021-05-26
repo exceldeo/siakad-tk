@@ -13,6 +13,10 @@ class AnnouncementInsideViewHolder(v: View): RecyclerView.ViewHolder(v) {
             tv_item_pengumumanin_desc.text = item.keterangan
             tv_item_pengumumanin_date.text = item.tanggal
             tv_item_pengumumanin_tujuan.text = "Kepada : " + item.tipe.toUpperCase()
+
+            if(!item.confirmableState && item.confirmable ) {
+                tv_item_pengumumanin_confirmable.visibility =  View.VISIBLE
+            }
         }
     }
 }

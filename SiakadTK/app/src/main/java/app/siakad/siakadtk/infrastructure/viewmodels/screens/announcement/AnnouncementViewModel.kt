@@ -8,6 +8,7 @@ import app.siakad.siakadtk.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtk.domain.utils.helpers.container.ModelState
 import app.siakad.siakadtk.domain.models.PengumumanModel
 import app.siakad.siakadtk.domain.repositories.AnnouncementRepository
+import app.siakad.siakadtk.domain.utils.helpers.model.AnnouncementTypeModel
 import app.siakad.siakadtk.infrastructure.data.Pengumuman
 import app.siakad.siakadtkadmin.domain.utils.listeners.announcement.AnnouncementListListener
 import kotlinx.coroutines.CoroutineScope
@@ -46,6 +47,15 @@ class AnnouncementViewModel(private val context: Context, private val lcOwner: L
         }
     }
 
+    fun updateAnnouncement(confirmableState: Boolean, pengumuman: PengumumanModel)
+    {
+        pengumuman.confirmableState = confirmableState
+
+        vmCoroutineScope.launch {
+            announcementRepository.updateData(this@AnnouncementViewModel, pengumuman)
+        }
+    }
+
     fun getAnnouncementList(): LiveData<ArrayList<PengumumanModel>> {
         return announcementList
     }
@@ -62,6 +72,14 @@ class AnnouncementViewModel(private val context: Context, private val lcOwner: L
             }
         } else if (pengumuman.status == ModelState.ERROR) {
             showToast(context.getString(R.string.fail_get_user))
+        }
+    }
+
+    override fun notifyAnnouncementUpdateStatus(pengumuman: ModelContainer<String>) {
+        if (pengumuman.status == ModelState.SUCCESS) {
+            showToast(context.getString(R.string.scs_update_data))
+        } else {
+            showToast(context.getString(R.string.fail_update_data))
         }
     }
 

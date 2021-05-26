@@ -28,6 +28,10 @@ class AnnouncementInsideAdapter() : RecyclerView.Adapter<AnnouncementInsideViewH
         this.onItemClickCallback = onItemClickCallback
     }
 
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PengumumanModel)
+    }
+
     override fun getItemCount(): Int {
         return announcementList.size
     }
@@ -40,7 +44,5 @@ class AnnouncementInsideAdapter() : RecyclerView.Adapter<AnnouncementInsideViewH
         this.notifyDataSetChanged()
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: PengumumanModel)
-    }
+
 }

@@ -16,6 +16,9 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
     private val seragam = arrayListOf<Seragam>()
     private val buku = arrayListOf<Buku>()
 
+    private var soldOutBook = 0
+    private var soldOutUniform = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_row_product_detail, parent, false)
         return ProductListViewHolder(viewHolder)
@@ -31,19 +34,27 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
 
     override fun getItemCount(): Int {
         return if (type == ProductType.SERAGAM) {
-            seragam.size
+            seragam.size - soldOutUniform
         } else {
-            buku.size
+            buku.size - soldOutBook
         }
     }
 
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
         if (type == ProductType.SERAGAM) {
-            holder.insertUniform(seragam[position])
-            holder.itemView.setOnClickListener { onItemClickCallbackUniform.onItemClicked(seragam[holder.adapterPosition]) }
+            if(seragam[position].jumlah >= 0) {
+                holder.insertUniform(seragam[position])
+                holder.itemView.setOnClickListener { onItemClickCallbackUniform.onItemClicked(seragam[holder.adapterPosition]) }
+            } else {
+                soldOutUniform++
+            }
         } else {
-            holder.insertBook(buku[position])
-            holder.itemView.setOnClickListener { onItemClickCallbackBook.onItemClicked(buku[holder.adapterPosition]) }
+            if(buku [position].jumlah >= 0) {
+                holder.insertBook(buku[position])
+                holder.itemView.setOnClickListener { onItemClickCallbackBook.onItemClicked(buku[holder.adapterPosition]) }
+            } else {
+                soldOutBook++
+            }
         }
     }
 

@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.PengumumanModel
 import app.siakad.siakadtk.infrastructure.data.Pengumuman
+import app.siakad.siakadtk.presentation.screens.announcement.inside.adapter.AnnouncementInsideAdapter
 
 class AnnouncementAdapter() : RecyclerView.Adapter<AnnouncementViewHolder>(){
-
+    private lateinit var onItemClickCallback: OnItemClickCallback
     private val announcementList: ArrayList<PengumumanModel> = arrayListOf()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AnnouncementViewHolder {
@@ -20,6 +21,15 @@ class AnnouncementAdapter() : RecyclerView.Adapter<AnnouncementViewHolder>(){
     override fun onBindViewHolder(holder: AnnouncementViewHolder, position: Int) {
         val announcement = announcementList[position]
         holder.insertAnnouncement(announcement)
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(announcementList[holder.adapterPosition]) }
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PengumumanModel)
     }
 
     override fun getItemCount(): Int {

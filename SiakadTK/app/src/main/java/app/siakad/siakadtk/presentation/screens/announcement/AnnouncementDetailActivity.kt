@@ -1,18 +1,25 @@
 package app.siakad.siakadtk.presentation.screens.announcement
-
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.PengumumanModel
+import app.siakad.siakadtk.infrastructure.viewmodels.screens.announcement.AnnouncementViewModel
+import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtk.presentation.screens.registration.RegistrationActivity
+import app.siakad.siakadtk.presentation.views.alert.AlertDialogFragment
+import app.siakad.siakadtk.presentation.views.alert.AlertListener
 
-class AnnouncementDetailActivity : AppCompatActivity() {
+class AnnouncementDetailActivity : AppCompatActivity(), AlertListener {
 
     private var pageTitle = ""
 
@@ -22,9 +29,13 @@ class AnnouncementDetailActivity : AppCompatActivity() {
     private lateinit var tvAnnouncementDesc: TextView
     private lateinit var tvAnnouncementDate: TextView
     private lateinit var cvConfirm: CardView
+    private lateinit var llConfirmState: LinearLayout
+    private lateinit var tvConfirmState: TextView
     private lateinit var btnYesConfirm: TextView
     private lateinit var btnNoConfirm: TextView
     private var item = PengumumanModel()
+
+    private lateinit var vmAnnouncement: AnnouncementViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,14 +56,28 @@ class AnnouncementDetailActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        btnYesConfirm.setOnClickListener {
+        if (item.confirmable) {
+            llConfirmState.visibility = View.VISIBLE
+            tvConfirmState.text = item.confirmableState.toString()
 
+            if(!item.confirmableState) cvConfirm.visibility = View.VISIBLE
+            else cvConfirm.visibility = View.GONE
+        }
+        else {
+            cvConfirm.visibility = View.GONE
+            llConfirmState.visibility = View.GONE
+        }
+
+        btnYesConfirm.setOnClickListener {
+            val alertDialog = AlertDialogFragment(
+                "Konfirmasi Pengumuman",
+                "Apakah Anda yakin mengonfirmasi \"Iya\"?"
+            )
+            alertDialog.show(supportFragmentManager, "YA")
         }
         btnNoConfirm.setOnClickListener {
-
+            navigateBack()
         }
-        if (item.confirmable) cvConfirm.visibility = View.VISIBLE
-        else cvConfirm.visibility = View.GONE
     }
 
     private fun setupItemView() {
@@ -65,7 +90,14 @@ class AnnouncementDetailActivity : AppCompatActivity() {
         btnYesConfirm = findViewById(R.id.btn_announcement_detail_ya)
         btnNoConfirm = findViewById(R.id.btn_announcement_detail_tidak)
 
+        llConfirmState = findViewById(R.id.ll_announcement_state_view)
+        tvConfirmState = findViewById(R.id.tv_announcement_detail_confirm_state)
         cvConfirm = findViewById(R.id.cv_announcement_confirm)
+
+        vmAnnouncement = ViewModelProvider(
+            this,
+            ViewModelFactory(this, this)
+        ).get(AnnouncementViewModel::class.java)
     }
 
     private fun setupAppBar() {
@@ -77,5 +109,21 @@ class AnnouncementDetailActivity : AppCompatActivity() {
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun alertAction(tag: String?) {
+        if(tag == "YA") {
+            item.confirmableState = true
+            vmAnnouncement.updateAnnouncement(true, item)
+        }
+    }
+
+    private fun navigateBack() {
+        startActivity(
+            Intent(
+                this@AnnouncementDetailActivity,
+                AnnouncementListActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        )
     }
 }
