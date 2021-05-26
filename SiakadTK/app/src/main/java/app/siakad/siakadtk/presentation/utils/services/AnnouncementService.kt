@@ -112,6 +112,8 @@ class AnnouncementService : Service(), AnnouncementServiceListener {
                         val notification = mBuilder.build()
                         mNotificationManager.notify(idNotification, notification)
                     } else {
+                        idNotification = 0
+                        notifIdList.clear()
 //                        val inboxStyle = NotificationCompat.InboxStyle()
 //                            .addLine("Pengumuman baru: " + notifList[idNotification - 1])
 //                            .addLine("Pengumuman baru: " + notifList[idNotification - 2])
