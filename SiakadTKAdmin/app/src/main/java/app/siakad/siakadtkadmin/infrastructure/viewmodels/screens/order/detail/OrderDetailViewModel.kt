@@ -4,9 +4,14 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import app.siakad.siakadtkadmin.R
+import app.siakad.siakadtkadmin.domain.models.DetailKeranjangModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.domain.models.PengumumanModel
 import app.siakad.siakadtkadmin.domain.models.PesananModel
+import app.siakad.siakadtkadmin.domain.models.product.BukuModel
+import app.siakad.siakadtkadmin.domain.models.product.SeragamModel
 import app.siakad.siakadtkadmin.domain.repositories.OrderRepository
+import app.siakad.siakadtkadmin.domain.repositories.ProductRepository
 import app.siakad.siakadtkadmin.domain.repositories.UserRepository
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelContainer
 import app.siakad.siakadtkadmin.domain.utils.helpers.container.ModelState
@@ -20,7 +25,19 @@ import kotlinx.coroutines.launch
 class OrderDetailViewModel(private val context: Context) :
   ViewModel(), OrderDetailListener {
   private val orderRepository = OrderRepository()
+  private val productRepository = ProductRepository()
+
   private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+  private val dataProdukList = arrayListOf<Any>()
+
+  fun getProductList(products: ArrayList<DetailKeranjangModel>) {
+    vmCoroutineScope.launch {
+      products.forEach {
+        productRepository.initGetBookListById(this@OrderDetailViewModel, it.produkId)
+        productRepository.initGetUniformListById(this@OrderDetailViewModel, it.produkId)
+      }
+    }
+  }
 
   override fun notifyOrderChangeStatus(status: ModelContainer<String>) {
     if (status.status == ModelState.SUCCESS) {
@@ -35,6 +52,86 @@ class OrderDetailViewModel(private val context: Context) :
       showToast(context.getString(R.string.scs_del_data))
     } else if (status.status == ModelState.ERROR) {
       showToast(context.getString(R.string.fail_del_data))
+    }
+  }
+
+  override fun addBukuItem(buku: ModelContainer<BukuModel>) {
+    if (buku.status == ModelState.SUCCESS) {
+      if (buku.data != null) {
+        dataProdukList.add(buku.data!!)
+      }
+    }
+  }
+
+  override fun updateBukuItem(buku: ModelContainer<BukuModel>) {
+    if (buku.status == ModelState.SUCCESS) {
+      if (buku.data != null) {
+        dataProdukList.add(buku.data!!)
+        dataProdukList.forEachIndexed { index, item ->
+          if (item is BukuModel) {
+            if (item.produkId == buku.data?.produkId) {
+              dataProdukList[index] = buku.data!!
+            }
+          }
+        }
+      }
+    }
+  }
+
+  override fun removeBukuItem(buku: ModelContainer<BukuModel>) {
+    if (buku.status == ModelState.SUCCESS) {
+      if (buku.data != null) {
+        var target = 0
+        dataProdukList.forEachIndexed feData@{ index, item ->
+          if (item is BukuModel) {
+            if (item.produkId == buku.data?.produkId) {
+              target = index
+              return@feData
+            }
+          }
+        }
+        dataProdukList.removeAt(target)
+      }
+    }
+  }
+
+  override fun addSeragamItem(seragam: ModelContainer<SeragamModel>) {
+    if (seragam.status == ModelState.SUCCESS) {
+      if (seragam.data != null) {
+        dataProdukList.add(seragam.data!!)
+      }
+    }
+  }
+
+  override fun updateSeragamItem(seragam: ModelContainer<SeragamModel>) {
+    if (seragam.status == ModelState.SUCCESS) {
+      if (seragam.data != null) {
+        dataProdukList.add(seragam.data!!)
+        dataProdukList.forEachIndexed { index, item ->
+          if (item is SeragamModel) {
+            if (item.produkId == seragam.data?.produkId) {
+              dataProdukList[index] = seragam.data!!
+            }
+          }
+        }
+      }
+    }
+  }
+
+  override fun removeSeragamItem(seragam: ModelContainer<SeragamModel>) {
+    if (seragam.status == ModelState.SUCCESS) {
+      if (seragam.data != null) {
+        var target = 0
+        dataProdukList.forEachIndexed feData@{ index, item ->
+          if (item is SeragamModel) {
+            if (item.produkId == seragam.data?.produkId) {
+              target = index
+              return@feData
+            }
+          }
+        }
+        dataProdukList.removeAt(target)
+      }
     }
   }
 

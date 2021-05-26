@@ -216,6 +216,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailHelper, AlertListene
       this,
       ViewModelFactory(this, this)
     ).get(OrderDetailViewModel::class.java)
+    vmOrderDetail.getProductList(pesanan?.pesanan?.detailPesanan!!)
   }
 
   override fun alertAction(tag: String?) {
