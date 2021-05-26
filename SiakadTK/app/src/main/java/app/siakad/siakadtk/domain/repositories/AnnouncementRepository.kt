@@ -25,7 +25,7 @@ class AnnouncementRepository {
     private var eventListeners: ArrayList<Any> = arrayListOf()
 
     fun initGetAnnouncementListListener(
-        listener: AnnouncementListListener
+        listener: Any
     ) {
         announcementDB.orderByChild("tipe").equalTo(AnnouncementTypeModel.TO_ALL.str)
             .addChildEventListener(object : ChildEventListener {
@@ -39,12 +39,14 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.updateAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.updateAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        }
                     }
                 }
 
@@ -54,12 +56,16 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.addAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.addAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        } else if (listener is AnnouncementServiceListener) {
+                            listener.sendAnnouncementNotification(ModelContainer.getSuccesModel(data!!))
+                        }
                     }
                 }
 
@@ -69,40 +75,21 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.removeAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.removeAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        }
                     }
                 }
             })
     }
 
-    fun initServiceChildEventListener(listener: AnnouncementServiceListener) {
-        val eventListener = announcementDB.addChildEventListener(object: ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val data: PengumumanModel? = snapshot.getValue(PengumumanModel::class.java)
-                data?.pengumumanId = snapshot.key.toString()
-
-                listener.sendAnnouncementNotification(ModelContainer.getSuccesModel(data!!))
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
-
-        eventListeners.add(eventListener)
-    }
-
     fun initGetAnnouncementListListenerByUserId(
-        listener: AnnouncementListListener
+        listener: Any
     ) {
         announcementDB.orderByChild("tujuanId").equalTo(AuthenticationRepository.fbAuth.currentUser!!.uid)
             .addChildEventListener(object : ChildEventListener {
@@ -116,12 +103,14 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.updateAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.updateAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        }
                     }
                 }
 
@@ -131,12 +120,21 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.addAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.addAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        } else if (listener is AnnouncementServiceListener) {
+                            listener.sendAnnouncementNotification(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
+                            )
+                        }
                     }
                 }
 
@@ -146,19 +144,21 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.removeAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.removeAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        }
                     }
                 }
             })
     }
 
     fun initGetAnnouncementListListenerByClass(
-        listener: AnnouncementListListener, classId: String
+        listener: Any, classId: String
     ) {
         announcementDB.orderByChild("tujuanId").equalTo(classId)
             .addChildEventListener(object : ChildEventListener {
@@ -172,12 +172,14 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.updateAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.updateAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        }
                     }
                 }
 
@@ -187,12 +189,21 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.addAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.addAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        } else if (listener is AnnouncementServiceListener) {
+                            listener.sendAnnouncementNotification(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
+                            )
+                        }
                     }
                 }
 
@@ -202,12 +213,14 @@ class AnnouncementRepository {
 
                     if (data != null) {
                         data.pengumumanId = snapshot.key.toString()
-                        listener.removeAnnouncementItem(
-                            ModelContainer(
-                                status = ModelState.SUCCESS,
-                                data = data
+                        if (listener is AnnouncementListListener) {
+                            listener.removeAnnouncementItem(
+                                ModelContainer(
+                                    status = ModelState.SUCCESS,
+                                    data = data
+                                )
                             )
-                        )
+                        }
                     }
                 }
             })

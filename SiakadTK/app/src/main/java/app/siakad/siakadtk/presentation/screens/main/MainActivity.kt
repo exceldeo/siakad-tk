@@ -38,14 +38,6 @@ class MainActivity : AppCompatActivity(), AlertListener {
             val mStartServiceIntent = Intent(this, AnnouncementService::class.java)
             startService(mStartServiceIntent)
         }
-
-//        val preferences = applicationContext.getSharedPreferences(AnnouncementService.SP_NAME, Context.MODE_PRIVATE)
-//        if (!preferences.getBoolean(AnnouncementService.SP_NOTIF_KEY, false)) {
-//            val editor = preferences.edit()
-//            editor.putBoolean(AnnouncementService.SP_NOTIF_KEY, true)
-//            editor.apply()
-//
-//        }
     }
 
     @Suppress("DEPRECATION")
