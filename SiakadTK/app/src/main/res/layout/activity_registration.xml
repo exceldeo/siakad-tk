@@ -306,6 +306,7 @@
                         android:background="@drawable/fill_upload_img"
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
+                        android:textColor="@android:color/white"
                         android:text="@string/lihat_bukti_pembayaran" />
                 </LinearLayout>
             </LinearLayout>

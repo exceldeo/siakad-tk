@@ -90,7 +90,7 @@ class PendingActivity : AppCompatActivity(), AuthenticationListener {
         finish()
     }
 
-    override fun getAccountStatus(isRejected: Boolean) {
+    override fun getAccountStatus() {
 
     }
 
