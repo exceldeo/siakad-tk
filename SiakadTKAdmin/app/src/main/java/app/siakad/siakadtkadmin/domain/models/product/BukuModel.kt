@@ -10,7 +10,6 @@ import kotlinx.android.parcel.Parcelize
 data class BukuModel (
     @get:Exclude
     var produkId: String = "",
-    var adminId: String = "",
     var namaProduk: String = "",
     var fotoProduk: String = "",
     var jumlah: Int = 0,
@@ -19,7 +18,6 @@ data class BukuModel (
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "adminId" to adminId,
             "namaProduk" to namaProduk,
             "fotoProduk" to fotoProduk,
             "jumlah" to jumlah,

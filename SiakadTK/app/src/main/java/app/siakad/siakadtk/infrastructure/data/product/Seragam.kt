@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Seragam (
     var produkId: String = "",
-    var adminId: String = "",
     var namaProduk: String = "",
     var jenisKelamin: String = "",
     var fotoProduk: String = "",

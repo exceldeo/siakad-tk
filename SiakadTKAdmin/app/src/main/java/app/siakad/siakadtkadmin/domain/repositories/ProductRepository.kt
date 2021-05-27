@@ -188,7 +188,6 @@ class ProductRepository {
 
   fun insertDataSeragam(listener: ProductListener, data: SeragamModel) {
     val newKey = uniformDB.push().key.toString()
-    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
     data.produkId = newKey
 
     uniformDB.child(newKey).setValue(data).addOnSuccessListener {
@@ -217,7 +216,6 @@ class ProductRepository {
 
   fun insertDataBuku(listener: ProductListener, data: BukuModel) {
     val newKey = bookDB.push().key.toString()
-    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
     data.produkId = newKey
 
     bookDB.child(newKey).setValue(data).addOnSuccessListener {

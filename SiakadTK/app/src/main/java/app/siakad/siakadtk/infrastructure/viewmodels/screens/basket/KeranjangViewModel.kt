@@ -49,7 +49,7 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
         }
     }
 
-    fun insertItemBasket(name: String, image: String, ukuran: String = "", jumlah: Int, harga: Int, produkId: String = "", adminId: String= "") {
+    fun insertItemBasket(name: String, image: String, ukuran: String = "", jumlah: Int, harga: Int, produkId: String = "") {
         vmCoroutineScope.launch {
             basketRepository.addItem(this@KeranjangViewModel, DetailKeranjangModel(
                 produkId = produkId,
@@ -198,7 +198,6 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
                             jumlah = item.jumlah,
                             detailSeragam = item.detailSeragam,
                             fotoProduk = item.fotoProduk,
-                            adminId = item.adminId
                         )
                     )
                 }
@@ -218,7 +217,6 @@ class KeranjangViewModel(private val context: Context, private val lcOwner: Life
                             namaProduk = item.namaProduk,
                             jumlah = item.jumlah,
                             fotoProduk = item.fotoProduk,
-                            adminId = item.adminId
                         )
                     )
                 }

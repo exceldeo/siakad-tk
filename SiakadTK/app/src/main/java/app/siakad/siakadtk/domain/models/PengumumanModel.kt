@@ -8,7 +8,6 @@ import com.google.firebase.database.Exclude
 data class PengumumanModel(
     @get:Exclude
     var pengumumanId: String = "",
-    var adminId: String = "",
     var tipe: String = "",
     var tujuanId: String = "",
     var judul: String = "",
@@ -19,7 +18,6 @@ data class PengumumanModel(
 ) : Parcelable {
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "adminId" to adminId,
             "tipe" to tipe,
             "tujuanId" to tujuanId,
             "judul" to judul,

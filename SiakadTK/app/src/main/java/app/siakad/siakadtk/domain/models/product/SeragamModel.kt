@@ -11,7 +11,6 @@ import kotlinx.android.parcel.Parcelize
 data class SeragamModel (
     @get:Exclude
     var produkId: String = "",
-    var adminId: String = "",
     var namaProduk: String = "",
     var jenisKelamin: String = "",
     var fotoProduk: String = "",
@@ -21,7 +20,6 @@ data class SeragamModel (
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "adminId" to adminId,
             "namaProduk" to namaProduk,
             "jenisKelamin" to jenisKelamin,
             "fotoProduk" to fotoProduk,
