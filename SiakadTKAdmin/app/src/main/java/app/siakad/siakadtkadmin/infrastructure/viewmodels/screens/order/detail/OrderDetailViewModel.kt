@@ -29,12 +29,18 @@ class OrderDetailViewModel(private val context: Context) :
 
   private val vmCoroutineScope = CoroutineScope(Job() + Dispatchers.Main)
   private val dataProdukList = arrayListOf<Any>()
+  private val dataAcceptedMapList = mutableMapOf<String, DetailKeranjangModel>()
 
   fun getProductList(products: ArrayList<DetailKeranjangModel>) {
     vmCoroutineScope.launch {
       products.forEach {
-        productRepository.initGetBookListById(this@OrderDetailViewModel, it.produkId)
-        productRepository.initGetUniformListById(this@OrderDetailViewModel, it.produkId)
+        dataAcceptedMapList[it.produkId] = it
+
+        if (it.ukuran != "") {
+          productRepository.initGetUniformListById(this@OrderDetailViewModel, it.produkId)
+        } else {
+          productRepository.initGetBookListById(this@OrderDetailViewModel, it.produkId)
+        }
       }
     }
   }
@@ -140,11 +146,52 @@ class OrderDetailViewModel(private val context: Context) :
     vmCoroutineScope.launch {
       orderRepository.updateOrderData(this@OrderDetailViewModel, pesanan)
     }
+
+    revertProductCount(pesanan.detailPesanan!!)
   }
 
   fun removeData(pesanan: PesananModel) {
     vmCoroutineScope.launch {
       orderRepository.removeOrderData(this@OrderDetailViewModel, pesanan)
+    }
+
+    revertProductCount(arrayListOf())
+  }
+
+  fun revertProductCount(dataAccepted: ArrayList<DetailKeranjangModel>) {
+    val dataAcceptedKeyList = mutableSetOf<String>()
+
+    vmCoroutineScope.launch {
+      dataAccepted.forEach {
+        dataAcceptedKeyList.add(it.produkId)
+      }
+
+      dataProdukList.forEach {
+        if (it is SeragamModel) {
+          if (!dataAcceptedKeyList.contains(it.produkId)) {
+            val data = dataAcceptedMapList[it.produkId]
+            val newData = it
+
+            newData.detailSeragam.forEachIndexed forE@{ index, detailSeragamModel ->
+              if (detailSeragamModel.ukuran == data?.ukuran) {
+                newData.detailSeragam[index].jumlah += data?.jumlah
+                return@forE
+              }
+            }
+
+            productRepository.updateDataSeragam(this@OrderDetailViewModel, newData)
+          }
+        } else if (it is BukuModel) {
+          if (!dataAcceptedKeyList.contains(it.produkId)) {
+            val data = dataAcceptedMapList[it.produkId]
+            val newData = it
+
+            newData.jumlah += data?.jumlah!!
+
+            productRepository.updateDataBuku(this@OrderDetailViewModel, newData)
+          }
+        }
+      }
     }
   }
 

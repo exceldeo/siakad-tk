@@ -72,7 +72,7 @@ class ProductRepository {
     listener: OrderDetailListener,
     bookId: String
   ) {
-    val eventListener = bookDB.orderByChild("produkId").equalTo(bookId)
+    val eventListener = bookDB.orderByKey().equalTo(bookId)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -129,9 +129,9 @@ class ProductRepository {
 
   fun initGetUniformListById(
     listener: OrderDetailListener,
-    bookId: String
+    uniformId: String
   ) {
-    val eventListener = bookDB.orderByChild("produkId").equalTo(bookId)
+    val eventListener = uniformDB.orderByKey().equalTo(uniformId)
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 
@@ -198,17 +198,20 @@ class ProductRepository {
     }
   }
 
-  fun updateDataSeragam(listener: ProductListener, data: SeragamModel) {
-    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+  fun updateDataSeragam(listener: Any, data: SeragamModel) {
     val newData = data.toMap()
     val childUpdates = hashMapOf<String, Any>(
       "/${data.produkId}" to newData
     )
 
     uniformDB.updateChildren(childUpdates).addOnSuccessListener {
-      listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+      if (listener is ProductListener) {
+        listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+      }
     }.addOnFailureListener {
-      listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+      if (listener is ProductListener) {
+        listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+      }
     }
   }
 
@@ -224,17 +227,20 @@ class ProductRepository {
     }
   }
 
-  fun updateDataBuku(listener: ProductListener, data: BukuModel) {
-    data.adminId = AuthenticationRepository.fbAuth.currentUser?.uid!!
+  fun updateDataBuku(listener: Any, data: BukuModel) {
     val newData = data.toMap()
     val childUpdates = hashMapOf<String, Any>(
       "/${data.produkId}" to newData
     )
 
     bookDB.updateChildren(childUpdates).addOnSuccessListener {
-      listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+      if (listener is ProductListener) {
+        listener.notifyInsertDataStatus(ModelContainer.getSuccesModel("Success"))
+      }
     }.addOnFailureListener {
-      listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+      if (listener is ProductListener) {
+        listener.notifyInsertDataStatus(ModelContainer.getFailModel())
+      }
     }
   }
 
