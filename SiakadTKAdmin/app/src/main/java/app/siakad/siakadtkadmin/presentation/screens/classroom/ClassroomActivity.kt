@@ -18,67 +18,67 @@ import com.google.android.material.tabs.TabLayout
 
 class ClassroomActivity : AppCompatActivity(), ClassroomClickListener {
 
-    private val pageTitle = "Kelas"
+  private val pageTitle = "Kelas"
 
-    private lateinit var pagerAdapter: ViewPagerAdapter
-    private lateinit var viewPager: ViewPager
-    private lateinit var tab: TabLayout
+  private lateinit var pagerAdapter: ViewPagerAdapter
+  private lateinit var viewPager: ViewPager
+  private lateinit var tab: TabLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_classroom)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_classroom)
 
-        setupAppBar()
-        setupTabLayout()
-    }
+    setupAppBar()
+    setupTabLayout()
+  }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                startActivity(
-                    Intent(
-                        this@ClassroomActivity,
-                        MainActivity::class.java
-                    ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                )
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun setupAppBar() {
-        val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = pageTitle
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    private fun setupTabLayout() {
-        pagerAdapter =
-            ViewPagerAdapter(
-                this,
-                supportFragmentManager
-            )
-        pagerAdapter.addFragment(
-            ClassroomListFragment.TK_A,
-            ClassroomListFragment.getTKAListFragment()
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      android.R.id.home -> {
+        startActivity(
+          Intent(
+            this@ClassroomActivity,
+            MainActivity::class.java
+          ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         )
-        pagerAdapter.addFragment(
-            ClassroomListFragment.TK_B,
-            ClassroomListFragment.getTKBListFragment()
-        )
-
-        viewPager = findViewById(R.id.view_pager_classroom)
-        viewPager.adapter = pagerAdapter
-
-        tab = findViewById(R.id.tabs_classroom)
-        tab.setupWithViewPager(viewPager)
+        true
+      }
+      else -> super.onOptionsItemSelected(item)
     }
+  }
 
-    override fun navigateToClassroomDetail(kelas: KelasModel) {
-        val intent = Intent(this, ClassroomDetailActivity::class.java)
-        intent.putExtra(ClassroomDetailActivity.CLASSROOM_ID, kelas)
-        startActivity(intent)
-    }
+  private fun setupAppBar() {
+    val toolbar = findViewById<Toolbar>(R.id.toolbar_main)
+    setSupportActionBar(toolbar)
+    supportActionBar?.title = pageTitle
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+  }
+
+  private fun setupTabLayout() {
+    pagerAdapter =
+      ViewPagerAdapter(
+        this,
+        supportFragmentManager
+      )
+    pagerAdapter.addFragment(
+      ClassroomListFragment.TK_A,
+      ClassroomListFragment.getTKAListFragment()
+    )
+    pagerAdapter.addFragment(
+      ClassroomListFragment.TK_B,
+      ClassroomListFragment.getTKBListFragment()
+    )
+
+    viewPager = findViewById(R.id.view_pager_classroom)
+    viewPager.adapter = pagerAdapter
+
+    tab = findViewById(R.id.tabs_classroom)
+    tab.setupWithViewPager(viewPager)
+  }
+
+  override fun navigateToClassroomDetail(kelas: KelasModel) {
+    val intent = Intent(this, ClassroomDetailActivity::class.java)
+    intent.putExtra(ClassroomDetailActivity.CLASSROOM_ID, kelas)
+    startActivity(intent)
+  }
 }
