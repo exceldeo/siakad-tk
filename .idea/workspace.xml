@@ -31,7 +31,9 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/SiakadTKAdmin" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -46,8 +48,8 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1612541806396">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="743" y="285" width="424" height="491" key="FileChooserDialogImpl" timestamp="1628089300738">
+      <screen x="0" y="27" width="1920" height="1001" />
     </state>
     <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1612541806396" />
     <state x="542" y="189" key="AndroidCreateXmlResourceDialog" timestamp="1612541499326">
@@ -63,5 +65,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="356" y="68" key="NewModule_or_Project.wizard/0.0.1366.728@0.0.1366.728" timestamp="1612541624319" />
+    <!-- <state x="743" y="285" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1001@0.27.1920.1001" timestamp="1628089300738" /> -->
   </component>
 </project>

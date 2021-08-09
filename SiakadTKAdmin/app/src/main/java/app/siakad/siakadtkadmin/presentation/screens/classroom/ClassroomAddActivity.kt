@@ -51,10 +51,10 @@ class ClassroomAddActivity : AppCompatActivity() {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     return when (item.itemId) {
-        android.R.id.home -> {
-            navigateBack()
-            true
-        }
+      android.R.id.home -> {
+        navigateBack()
+        true
+      }
       else -> super.onOptionsItemSelected(item)
     }
   }
@@ -68,18 +68,18 @@ class ClassroomAddActivity : AppCompatActivity() {
 
   private fun setupViewModel() {
     vmClassroomAdd = ViewModelProvider(
+      this,
+      ViewModelFactory(
         this,
-        ViewModelFactory(
-            this,
-            this
-        )
+        this
+      )
     ).get(ClassroomAddViewModel::class.java)
   }
 
   private fun setupDropDown() {
     val menus = arrayListOf(
-        ClassroomListFragment.TK_A,
-        ClassroomListFragment.TK_B
+      ClassroomListFragment.TK_A,
+      ClassroomListFragment.TK_B
     )
     val adapter = ArrayAdapter(this.applicationContext, R.layout.item_dropdown, menus)
 
@@ -87,20 +87,20 @@ class ClassroomAddActivity : AppCompatActivity() {
     (ddClass.editText as MaterialAutoCompleteTextView).setText(classroomType)
     (ddClass.editText as MaterialAutoCompleteTextView).setAdapter(adapter)
     (ddClass.editText as MaterialAutoCompleteTextView).addTextChangedListener(object :
-        TextWatcher {
-        override fun afterTextChanged(str: Editable?) {
-            classroomType = str.toString()
-        }
+      TextWatcher {
+      override fun afterTextChanged(str: Editable?) {
+        classroomType = str.toString()
+      }
 
-        override fun beforeTextChanged(
-            str: CharSequence?,
-            start: Int,
-            count: Int,
-            after: Int
-        ) {
-        }
+      override fun beforeTextChanged(
+        str: CharSequence?,
+        start: Int,
+        count: Int,
+        after: Int
+      ) {
+      }
 
-        override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
+      override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {}
     })
   }
 
@@ -124,10 +124,10 @@ class ClassroomAddActivity : AppCompatActivity() {
 
   private fun navigateBack() {
     startActivity(
-        Intent(
-            this@ClassroomAddActivity,
-            ClassroomActivity::class.java
-        ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+      Intent(
+        this@ClassroomAddActivity,
+        ClassroomActivity::class.java
+      ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
     )
   }
 
