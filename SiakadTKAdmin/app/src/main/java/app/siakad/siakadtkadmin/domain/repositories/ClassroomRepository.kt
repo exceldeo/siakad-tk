@@ -29,7 +29,7 @@ class ClassroomRepository {
     listener: ClassroomListListener,
     type: String = ClassroomListFragment.TK_A
   ) {
-    val eventListener = classroomDB.orderByChild("namaKelas").equalTo(type)
+    val eventListener = classroomDB.orderByChild("namaKelas").startAt(type).endAt(type + "\uf8ff")
       .addChildEventListener(object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
 

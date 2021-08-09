@@ -27,6 +27,7 @@ class ClassroomAddActivity : AppCompatActivity() {
   private lateinit var btnCancel: MaterialButton
   private lateinit var btnSave: MaterialButton
   private lateinit var ddClass: TextInputLayout
+  private lateinit var etKelas: TextInputLayout
 
   private lateinit var vmClassroomAdd: ClassroomAddViewModel
 
@@ -38,6 +39,7 @@ class ClassroomAddActivity : AppCompatActivity() {
 
     etSelesai = findViewById(R.id.et_classroom_add_selesai)
     etMulai = findViewById(R.id.et_classroom_add_mulai)
+    etKelas = findViewById(R.id.et_classroom_add_kelas)
 
     classroomType = intent.getStringExtra(ClassroomListFragment.CLASSROOM_TYPE)!!
 
@@ -112,7 +114,7 @@ class ClassroomAddActivity : AppCompatActivity() {
     btnSave.setOnClickListener {
       if (validateInput()) {
         vmClassroomAdd.insertClassroom(
-            classroomType,
+            classroomType + etKelas.editText?.text.toString(),
             etSelesai.editText?.text.toString().toInt(),
             etMulai.editText?.text.toString().toInt()
         )
@@ -139,6 +141,11 @@ class ClassroomAddActivity : AppCompatActivity() {
 
     if (etMulai.editText?.text.toString().isEmpty()) {
       etMulai.error = getString(R.string.empty_input)
+      returnState = false
+    }
+
+    if (etKelas.editText?.text.toString().isEmpty()) {
+      etKelas.error = getString(R.string.empty_input)
       returnState = false
     }
 

@@ -63,7 +63,7 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         ivProductImage = findViewById(R.id.iv_product_bookdetail_img)
         tvProductName = findViewById(R.id.tv_product_bookdetail_nama)
         tvProductPrice = findViewById(R.id.tv_product_bookdetail_harga)
-        tvProductOrderDeadline = findViewById(R.id.tv_product_bookdetail_batas_pesan)
+//        tvProductOrderDeadline = findViewById(R.id.tv_product_bookdetail_batas_pesan)
         etProductSum = findViewById(R.id.et_product_bookdetail_jumlah)
         tvProductTotalPayment = findViewById(R.id.tv_product_bookdetail_total_harga)
         btnProductAddToBasket = findViewById(R.id.btn_product_bookdetail_tambah_ke_basket)

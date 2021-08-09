@@ -136,11 +136,11 @@
                     </androidx.cardview.widget.CardView>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/sTitle"
-                    android:text="Nama Produk"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/sTitle"-->
+<!--                    android:text="Nama Produk"/>-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_uniform_add_daftar_ukuran"

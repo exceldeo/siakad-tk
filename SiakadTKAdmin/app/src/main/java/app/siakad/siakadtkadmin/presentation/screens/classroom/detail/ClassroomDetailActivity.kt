@@ -72,9 +72,9 @@ class ClassroomDetailActivity : AppCompatActivity() {
   }
 
   private fun setupButtons() {
-    ivAddClassroomDetail = findViewById(R.id.btn_classroom_detail_tambah_siswa)
-    ivAddClassroomDetail.setOnClickListener {
-    }
+//    ivAddClassroomDetail = findViewById(R.id.btn_classroom_detail_tambah_siswa)
+//    ivAddClassroomDetail.setOnClickListener {
+//    }
   }
 
   private fun setupViewModel() {

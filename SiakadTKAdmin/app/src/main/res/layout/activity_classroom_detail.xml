@@ -61,28 +61,28 @@
                 android:text="Siswa"
                 android:textSize="@dimen/card_title_text" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Tambah"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/list_status_text" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:text="Tambah"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="@dimen/list_status_text" />-->
 
-                <ImageButton
-                    android:id="@+id/btn_classroom_detail_tambah_siswa"
-                    android:layout_width="@dimen/card_title_ic_size"
-                    android:layout_height="@dimen/card_title_ic_size"
-                    android:src="@drawable/ic_baseline_add_24"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    app:tint="@color/colorPrimary" />
-            </LinearLayout>
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btn_classroom_detail_tambah_siswa"-->
+<!--                    android:layout_width="@dimen/card_title_ic_size"-->
+<!--                    android:layout_height="@dimen/card_title_ic_size"-->
+<!--                    android:src="@drawable/ic_baseline_add_24"-->
+<!--                    android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--                    app:tint="@color/colorPrimary" />-->
+<!--            </LinearLayout>-->
         </com.google.android.flexbox.FlexboxLayout>
 
         <View

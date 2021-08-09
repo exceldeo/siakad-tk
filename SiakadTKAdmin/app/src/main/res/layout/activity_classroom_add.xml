@@ -55,6 +55,29 @@
                 style="@style/sTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Kelas" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_classroom_add_kelas"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/colorPrimaryLight"
+                app:boxCornerRadiusBottomEnd="@dimen/list_corner"
+                app:boxCornerRadiusBottomStart="@dimen/list_corner"
+                app:boxCornerRadiusTopEnd="@dimen/list_corner"
+                app:boxCornerRadiusTopStart="@dimen/list_corner"
+                app:boxStrokeColor="@color/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/sTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Tahun Mulai" />
 
             <com.google.android.material.textfield.TextInputLayout

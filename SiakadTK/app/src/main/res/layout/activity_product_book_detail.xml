@@ -48,13 +48,13 @@
             android:textColor="@color/colorBlack"
             android:fontFamily="@font/poppins_regular"/>
 
-        <TextView
-            android:id="@+id/tv_product_bookdetail_batas_pesan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/until_date"
-            android:textSize="@dimen/list_desc_text"
-            android:fontFamily="@font/poppins_regular"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_product_bookdetail_batas_pesan"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/until_date"-->
+<!--            android:textSize="@dimen/list_desc_text"-->
+<!--            android:fontFamily="@font/poppins_regular"/>-->
 
         <View
             android:layout_width="match_parent"
@@ -85,6 +85,7 @@
                 android:padding="@dimen/input_text_padding"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="number"
                 android:hint="@string/example_jumlah"
                 style="@style/InputText"
                 android:background="@android:color/transparent"/>
