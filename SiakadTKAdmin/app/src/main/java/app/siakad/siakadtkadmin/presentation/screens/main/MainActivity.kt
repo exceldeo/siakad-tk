@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(), AlertListener {
     if (tag == SettingFragment.TAG_LOGOUT) {
       vmMain.logout()
       val intent = Intent(this@MainActivity, SplashScreenActivity::class.java)
+      intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
       startActivity(intent)
       finish()
     } else if (tag == SettingFragment.TAG_RESET) {

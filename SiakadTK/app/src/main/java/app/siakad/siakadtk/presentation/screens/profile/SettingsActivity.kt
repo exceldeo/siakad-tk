@@ -50,6 +50,7 @@ class SettingsActivity : AppCompatActivity() {
         btnLogout.setOnClickListener {
             logout()
             val intent = Intent(this@SettingsActivity, SplashActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
