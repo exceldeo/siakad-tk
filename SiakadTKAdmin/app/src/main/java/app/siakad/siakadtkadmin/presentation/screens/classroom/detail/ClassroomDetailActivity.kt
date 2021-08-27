@@ -1,5 +1,6 @@
 package app.siakad.siakadtkadmin.presentation.screens.classroom.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -14,11 +15,18 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtkadmin.R
 import app.siakad.siakadtkadmin.domain.models.KelasModel
 import app.siakad.siakadtkadmin.domain.models.PenggunaModel
+import app.siakad.siakadtkadmin.infrastructure.data.DaftarUlang
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.screens.classroom.detail.ClassroomDetailViewModel
 import app.siakad.siakadtkadmin.infrastructure.viewmodels.utils.factory.ViewModelFactory
+import app.siakad.siakadtkadmin.presentation.screens.classroom.adapter.ClassroomDetailListAdapter
+import app.siakad.siakadtkadmin.presentation.screens.classroom.detail.siswa.ClassroomSiswaDetailActivity
+import app.siakad.siakadtkadmin.presentation.screens.classroom.helper.DetailClassClickHelper
+import app.siakad.siakadtkadmin.presentation.screens.registration.RegistrationListFragment
+import app.siakad.siakadtkadmin.presentation.screens.registration.detail.unverified.RegistrationDetailUnverActivity
+import app.siakad.siakadtkadmin.presentation.screens.registration.detail.verified.RegistrationDetailActivity
 import app.siakad.siakadtkadmin.presentation.screens.user.detail.verified.adapter.UserListAdapter
 
-class ClassroomDetailActivity : AppCompatActivity() {
+class ClassroomDetailActivity : AppCompatActivity(), DetailClassClickHelper {
 
   private var pageTitle = "Kelas"
 
@@ -30,12 +38,13 @@ class ClassroomDetailActivity : AppCompatActivity() {
   private lateinit var svClassroomDetail: SearchView
   private lateinit var ivAddClassroomDetail: ImageView
 
-  private lateinit var userListAdapter: UserListAdapter
+  private lateinit var classroomDetailListAdapter: ClassroomDetailListAdapter
 
   private var kelas = KelasModel()
 
   companion object {
     const val CLASSROOM_ID = "classroom_id"
+    const val DATA_SISWA = "data_siswa"
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,7 +94,7 @@ class ClassroomDetailActivity : AppCompatActivity() {
 
     val obsClassroomDetail = Observer<ArrayList<PenggunaModel>> { newUserList ->
       if (newUserList.size > 0) {
-        userListAdapter.changeDataList(newUserList)
+        classroomDetailListAdapter.changeDataList(newUserList)
       }
     }
     vmClassroomDetail.getUserList()
@@ -94,11 +103,17 @@ class ClassroomDetailActivity : AppCompatActivity() {
 
   private fun setupAdapter() {
     rvClassroomDetail = findViewById(R.id.rv_classroom_detail_daftar_siswa)
-    userListAdapter = UserListAdapter()
+    classroomDetailListAdapter = ClassroomDetailListAdapter()
     rvClassroomDetail.apply {
       setHasFixedSize(true)
-      adapter = userListAdapter
+      adapter = classroomDetailListAdapter
       layoutManager = LinearLayoutManager(this.context)
     }
+  }
+
+  override fun navigateToClassroomDetailDetail(siswa: PenggunaModel) {
+      val intent = Intent(this, ClassroomSiswaDetailActivity::class.java)
+      intent.putExtra(DATA_SISWA, siswa)
+      startActivity(intent)
   }
 }
