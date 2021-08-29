@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.KeranjangModel
+import app.siakad.siakadtk.domain.models.product.BukuModel
 import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.registration.RegistrationFormViewModel
@@ -27,7 +28,6 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     private lateinit var toolbar: Toolbar
     private lateinit var tvProductName: TextView
     private lateinit var tvProductPrice: TextView
-    private lateinit var tvProductOrderDeadline: TextView
     private lateinit var etProductSum: EditText
     private lateinit var ivProductImage: ImageView
     private lateinit var tvProductTotalPayment: TextView
@@ -44,7 +44,7 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         setupItemView()
         setupView()
 
-        val data = intent.getParcelableExtra<Parcelable>("buku") as Buku
+        val data = intent.getParcelableExtra<Parcelable>("buku") as BukuModel
         limitOrder = data.jumlah
         item.nama = data.namaProduk
         item.gambar = data.fotoProduk
@@ -63,7 +63,6 @@ class ProductBookDetailActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         ivProductImage = findViewById(R.id.iv_product_bookdetail_img)
         tvProductName = findViewById(R.id.tv_product_bookdetail_nama)
         tvProductPrice = findViewById(R.id.tv_product_bookdetail_harga)
-//        tvProductOrderDeadline = findViewById(R.id.tv_product_bookdetail_batas_pesan)
         etProductSum = findViewById(R.id.et_product_bookdetail_jumlah)
         tvProductTotalPayment = findViewById(R.id.tv_product_bookdetail_total_harga)
         btnProductAddToBasket = findViewById(R.id.btn_product_bookdetail_tambah_ke_basket)

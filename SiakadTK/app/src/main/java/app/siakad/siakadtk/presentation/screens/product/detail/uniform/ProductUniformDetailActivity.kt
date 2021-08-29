@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import app.siakad.siakadtk.R
 import app.siakad.siakadtk.domain.models.DetailKeranjangModel
 import app.siakad.siakadtk.domain.models.product.DetailSeragamModel
+import app.siakad.siakadtk.domain.models.product.SeragamModel
 import app.siakad.siakadtk.infrastructure.data.product.Seragam
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.basket.KeranjangViewModel
 import app.siakad.siakadtk.infrastructure.viewmodels.utils.factory.ViewModelFactory
@@ -50,7 +51,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
         setupItemView()
         setupView()
 
-        val data = intent.getParcelableExtra<Parcelable>("seragam") as Seragam
+        val data = intent.getParcelableExtra<Parcelable>("seragam") as SeragamModel
         if (data != null) {
             item.nama = data.namaProduk
             tvProductJenisKelamin.text = data.jenisKelamin
@@ -139,7 +140,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
                 } else {
                     item.jumlah = Integer.valueOf(etProductSum.text.toString())
                 }
-                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(tvProductPrice.text.toString()) * Integer.valueOf(etProductSum.text.toString())).toString()
+                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.jumlah.toString()) * Integer.valueOf(item.jumlah.toString())).toString()
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

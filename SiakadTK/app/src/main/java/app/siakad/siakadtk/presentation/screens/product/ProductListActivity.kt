@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import app.siakad.siakadtk.domain.models.product.BukuModel
+import app.siakad.siakadtk.domain.models.product.SeragamModel
 import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.infrastructure.data.product.Seragam
 import app.siakad.siakadtk.infrastructure.viewmodels.screens.main.product.ProductListViewModel
@@ -59,7 +61,7 @@ class ProductListActivity : AppCompatActivity() {
             rvProductAdapter = ProductListAdapter(ProductType.BUKU)
 
             rvProductAdapter.setOnItemClickCallbackBook(object: ProductListAdapter.OnItemClickCallbackBook {
-                override fun onItemClicked(data: Buku) {
+                override fun onItemClicked(data: BukuModel) {
                     showToast("Kamu memilih " + data.namaProduk)
                     val intent = Intent(this@ProductListActivity, ProductBookDetailActivity::class.java)
                     intent.putExtra("buku", data);
@@ -70,7 +72,7 @@ class ProductListActivity : AppCompatActivity() {
             rvProductAdapter = ProductListAdapter(ProductType.SERAGAM)
 
             rvProductAdapter.setOnItemClickCallbackUniform(object: ProductListAdapter.OnItemClickCallbackUniform {
-                override fun onItemClicked(data: Seragam) {
+                override fun onItemClicked(data: SeragamModel) {
                     showToast("Kamu memilih " + data.namaProduk)
                     val intent = Intent(this@ProductListActivity, ProductUniformDetailActivity::class.java)
                     intent.putExtra("seragam", data);
@@ -94,14 +96,14 @@ class ProductListActivity : AppCompatActivity() {
         vmProductList.setProductType(pageTitle)
 
         if (pageTitle == UNIFORM_PAGE) {
-            val observer = Observer<ArrayList<Seragam>> { list ->
+            val observer = Observer<ArrayList<SeragamModel>> { list ->
                 if (list.size > 0) {
                     rvProductAdapter.changeUniformList(list)
                 }
             }
             vmProductList.getUniformList().observe(this, observer)
         } else {
-            val observer = Observer<ArrayList<Buku>> { list ->
+            val observer = Observer<ArrayList<BukuModel>> { list ->
                 if (list.size > 0) {
                     rvProductAdapter.changeBookList(list)
                 }

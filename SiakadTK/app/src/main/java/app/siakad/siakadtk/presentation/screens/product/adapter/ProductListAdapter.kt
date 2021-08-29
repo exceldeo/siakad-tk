@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.siakad.siakadtk.R
+import app.siakad.siakadtk.domain.models.product.BukuModel
+import app.siakad.siakadtk.domain.models.product.SeragamModel
 import app.siakad.siakadtk.infrastructure.data.product.Buku
 import app.siakad.siakadtk.infrastructure.data.product.Seragam
 import app.siakad.siakadtk.presentation.screens.main.product.adapter.ProductListViewHolder
@@ -13,8 +15,8 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
 
     private lateinit var onItemClickCallbackBook: OnItemClickCallbackBook
     private lateinit var onItemClickCallbackUniform: OnItemClickCallbackUniform
-    private val seragam = arrayListOf<Seragam>()
-    private val buku = arrayListOf<Buku>()
+    private val seragam = arrayListOf<SeragamModel>()
+    private val buku = arrayListOf<BukuModel>()
 
     private var soldOutBook = 0
     private var soldOutUniform = 0
@@ -58,7 +60,7 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
         }
     }
 
-    fun changeUniformList(data: ArrayList<Seragam>) {
+    fun changeUniformList(data: ArrayList<SeragamModel>) {
         if (seragam.isNotEmpty()) {
             seragam.clear()
         }
@@ -67,7 +69,7 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
         notifyDataSetChanged()
     }
 
-    fun changeBookList(data: ArrayList<Buku>) {
+    fun changeBookList(data: ArrayList<BukuModel>) {
         if (buku.isNotEmpty()) {
             buku.clear()
         }
@@ -77,10 +79,10 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
     }
 
     interface OnItemClickCallbackUniform {
-        fun onItemClicked(data: Seragam)
+        fun onItemClicked(data: SeragamModel)
     }
 
     interface OnItemClickCallbackBook {
-        fun onItemClicked(data: Buku)
+        fun onItemClicked(data: BukuModel)
     }
 }
