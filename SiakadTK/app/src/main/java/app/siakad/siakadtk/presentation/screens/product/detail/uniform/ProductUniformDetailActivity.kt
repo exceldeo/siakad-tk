@@ -140,7 +140,7 @@ class ProductUniformDetailActivity : AppCompatActivity() {
                 } else {
                     item.jumlah = Integer.valueOf(etProductSum.text.toString())
                 }
-                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.jumlah.toString()) * Integer.valueOf(item.jumlah.toString())).toString()
+                tvProductTotalPayment.text = "Total : Rp " + (Integer.valueOf(item.jumlah.toString()) * Integer.valueOf(item.harga.toString())).toString()
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

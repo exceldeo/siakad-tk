@@ -47,12 +47,26 @@
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/poppins_semibold"/>
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="Harga"
+                    android:textSize="@dimen/list_desc_text"
+                    android:fontFamily="@font/poppins_regular"/>
+                <TextView
                     android:id="@+id/tv_product_unidetail_price"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/example_price"
                     android:textSize="@dimen/list_subtitle_text"
                     android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_regular"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/inner_padding"
+                    android:text="Jenis Kelamin"
+                    android:textSize="@dimen/list_desc_text"
                     android:fontFamily="@font/poppins_regular"/>
 
                 <TextView
