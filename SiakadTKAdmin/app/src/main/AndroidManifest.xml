@@ -34,6 +34,7 @@
         <activity android:name=".presentation.screens.announcement.AnnouncementAddActivity" />
         <activity android:name=".presentation.screens.announcement.AnnouncementActivity" />
         <activity android:name=".presentation.screens.login.LoginActivity" />
+        <activity android:name=".presentation.screens.classroom.detail.siswa.ClassroomSiswaDetailActivity" />
         <activity android:name=".presentation.screens.splash.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.screens.classroom.detail.siswa.ClassroomSiswaDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_height"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/appbar_padding_top">
+
+        <include layout="@layout/item_toolbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/container_padding_x"
+            android:paddingVertical="@dimen/container_padding_y">
+
+            <TextView
+                style="@style/mdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Nama Lengkap"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_siswa_detail_nama"
+                style="@style/mdContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Namamu" />
+
+            <TextView
+                style="@style/mdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jenis Kelamin"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_siswa_detail_jenkel"
+                style="@style/mdContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perempuan" />
+
+            <TextView
+                style="@style/mdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Wali"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_siswa_detail_wali"
+                style="@style/mdContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Wali" />
+
+            <TextView
+                style="@style/mdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_siswa_detail_alamat"
+                style="@style/mdContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jalan Terserah" />
+
+            <TextView
+                style="@style/mdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. Handphone"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_siswa_detail_nohp"
+                style="@style/mdContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="089112345678" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
