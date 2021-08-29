@@ -140,14 +140,16 @@
                         android:src="@drawable/vc_bg_input_unfilled"
                         android:scaleType="fitXY"
                         app:riv_corner_radius="10dip"/>
+
                     <EditText
                         android:id="@+id/et_product_unidetail_jumlah"
-                        android:padding="@dimen/input_text_padding"
+                        style="@style/InputText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
                         android:hint="@string/example_jumlah"
-                        style="@style/InputText"
-                        android:background="@android:color/transparent"/>
+                        android:inputType="number"
+                        android:padding="@dimen/input_text_padding" />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
