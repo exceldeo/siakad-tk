@@ -18,9 +18,6 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
     private val seragam = arrayListOf<SeragamModel>()
     private val buku = arrayListOf<BukuModel>()
 
-    private var soldOutBook = 0
-    private var soldOutUniform = 0
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_row_product_detail, parent, false)
         return ProductListViewHolder(viewHolder)
@@ -36,9 +33,9 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
 
     override fun getItemCount(): Int {
         return if (type == ProductType.SERAGAM) {
-            seragam.size - soldOutUniform
+            seragam.size
         } else {
-            buku.size - soldOutBook
+            buku.size
         }
     }
 
@@ -47,15 +44,11 @@ class ProductListAdapter(private val type: ProductType) : RecyclerView.Adapter<P
             if(seragam[position].jumlah >= 0) {
                 holder.insertUniform(seragam[position])
                 holder.itemView.setOnClickListener { onItemClickCallbackUniform.onItemClicked(seragam[holder.adapterPosition]) }
-            } else {
-                soldOutUniform++
             }
         } else {
             if(buku [position].jumlah >= 0) {
                 holder.insertBook(buku[position])
                 holder.itemView.setOnClickListener { onItemClickCallbackBook.onItemClicked(buku[holder.adapterPosition]) }
-            } else {
-                soldOutBook++
             }
         }
     }

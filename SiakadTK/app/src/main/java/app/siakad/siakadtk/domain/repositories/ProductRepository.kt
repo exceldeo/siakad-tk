@@ -22,37 +22,20 @@ class ProductRepository() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val dataRef = arrayListOf<SeragamModel>()
 
-                forloop@ for (dataSS in snapshot.children) {
-                    when (dataSS.value) {
-                        is String -> {
-                            val data: SeragamModel? =
-                                snapshot.getValue(SeragamModel::class.java)
-                            if (data != null) {
-                                data.produkId = snapshot.key.toString()
-                                dataRef.add(data)
-                            }
+                for (dataSS in snapshot.children) {
+                    val data: SeragamModel? = dataSS.getValue(SeragamModel::class.java)
+                    data?.produkId = dataSS.key.toString()
 
-                            listener.setUniformList(
-                                ModelContainer(
-                                    status = ModelState.SUCCESS,
-                                    data = dataRef
-                                )
-                            )
-                            break@forloop
-                        }
-                        else -> {
-                            val data: SeragamModel? = dataSS.getValue(SeragamModel::class.java)
-                            data?.produkId = dataSS.key.toString()
-                            dataRef.add(data!!)
+                    if (data?.jumlah!! <= 0) continue
 
-                            listener.setUniformList(
-                                ModelContainer(
-                                    status = ModelState.SUCCESS,
-                                    data = dataRef
-                                )
-                            )
-                        }
-                    }
+                    dataRef.add(data)
+
+                    listener.setUniformList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = dataRef
+                        )
+                    )
                 }
             }
         })
@@ -65,37 +48,20 @@ class ProductRepository() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val dataRef = arrayListOf<BukuModel>()
 
-                forloop@ for (dataSS in snapshot.children) {
-                    when (dataSS.value) {
-                        is String -> {
-                            val data: BukuModel? =
-                                snapshot.getValue(BukuModel::class.java)
-                            if (data != null) {
-                                data.produkId = snapshot.key.toString()
-                                dataRef.add(data)
-                            }
+                for (dataSS in snapshot.children) {
+                    val data: BukuModel? = dataSS.getValue(BukuModel::class.java)
+                    data?.produkId = dataSS.key.toString()
 
-                            listener.setBookList(
-                                ModelContainer(
-                                    status = ModelState.SUCCESS,
-                                    data = dataRef
-                                )
-                            )
-                            break@forloop
-                        }
-                        else -> {
-                            val data: BukuModel? = dataSS.getValue(BukuModel::class.java)
-                            data!!.produkId = dataSS.key.toString()
-                            dataRef.add(data!!)
+                    if (data?.jumlah!! <= 0) continue
 
-                            listener.setBookList(
-                                ModelContainer(
-                                    status = ModelState.SUCCESS,
-                                    data = dataRef
-                                )
-                            )
-                        }
-                    }
+                    dataRef.add(data)
+
+                    listener.setBookList(
+                        ModelContainer(
+                            status = ModelState.SUCCESS,
+                            data = dataRef
+                        )
+                    )
                 }
             }
         })
